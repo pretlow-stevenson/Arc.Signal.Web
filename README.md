@@ -1,8 +1,9 @@
 # Arc Signal
 
-The company website for **Arc Signal LLC**, introducing **Spectra** for iPhone.
+The company website for **Arc Signal LLC**, featuring **Spectra** for Apple iPhone.
 The site presents the product’s capabilities and limitations, its on-device
-privacy approach, and its prelaunch App Store availability.
+privacy approach, and its App Store availability. Supported devices are Apple
+iPhone 16 and iPhone 17 running iOS 27.
 
 ## Development
 
@@ -21,7 +22,7 @@ The build validates the source and creates a fresh public-only directory in the
 system temporary directory. It prints that directory for preview or portability.
 There is no dependency installation step. Tests check local assets and anchors,
 metadata, accessibility structure, contrast pairs, privacy boundaries, and the
-inactive download state. These checks do not replace visual or assistive-technology
+download link and compatibility copy. These checks do not replace visual or assistive-technology
 testing in browsers.
 
 ## Publishing
@@ -35,17 +36,23 @@ The site uses a restrictive meta Content Security Policy and loads only its own
 fonts, styles, and images. The hosting platform controls response headers and
 routine request logging; this site does not claim to eliminate those logs.
 
-## App Store launch
+## App Store download
 
-The availability control is deliberately disabled, not a fake download link.
-At launch, replace the button beside the `RELEASE` comment in `index.html` with
-an anchor to the verified Spectra listing. Update the adjacent availability copy
-and prelaunch test, and use Apple-approved badge artwork only when appropriate.
-No release date, price, rating, testimonial, or App Store approval is implied.
+The site presents Spectra as available on the App Store. The badge anchor
+`app-store-download` in `index.html` currently uses the requested literal
+`http://` placeholder. It is not a working App Store destination. Replace that
+value with the verified Spectra listing URL and update the download-link
+validation in `tests/site.test.mjs` when the final URL is supplied.
 
-Review final app compatibility, customer-support contact, and the app’s complete
-privacy policy before launch. The homepage’s privacy overview is not a substitute
-for that policy or for App Store disclosures.
+The official black [Download on the App Store badge](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)
+is stored locally and used without altering the artwork. Preserve its proportions
+and surrounding clear space, following [Apple’s marketing guidelines](https://developer.apple.com/app-store/marketing/guidelines/).
+The footer credits Apple, the Apple logo, iPhone, and App Store, and includes the
+IOS credit from [Apple’s trademark list](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html).
+
+Keep compatibility, customer-support details, and privacy disclosures aligned
+with the app. The homepage’s privacy overview is not a substitute for the app’s
+complete privacy policy or App Store disclosures.
 
 ## App screenshots
 

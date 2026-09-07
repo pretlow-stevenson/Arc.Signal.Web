@@ -29,6 +29,7 @@ nav a:hover, .text-link:hover { color: var(--blue); }
 h1 { font-size: clamp(3.25rem, 6.9vw, 6.1rem); line-height: 1.01; }
 .hero-summary { max-width: 36rem; font-size: clamp(1.0625rem, 1.5vw, 1.25rem); color: var(--muted); margin-top: 1.75rem; }
 .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2.25rem; }
+.hero-compatibility { margin-top: 1rem; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 1.5rem; min-height: 48px; padding: .875rem 1.4rem; border: 1px solid var(--ink); border-radius: 4px; font: 500 .875rem/1.5 var(--font-sans); text-decoration: none; }
 .primary { color: white; background: var(--ink); transition: background .2s ease; }
 .primary:hover { background: var(--blue); border-color: var(--blue); }
@@ -84,7 +85,9 @@ h1 { font-size: clamp(3.25rem, 6.9vw, 6.1rem); line-height: 1.01; }
 .download-layout h2 { margin-bottom: 1.5rem; }
 .download-layout p { max-width: 36rem; }
 .download-action { justify-self: end; }
-.store-placeholder { background: #f7f7f5; border-color: #f7f7f5; color: #333b46; cursor: not-allowed; opacity: 1; }
+.app-store-link { display: inline-flex; padding: 1rem; border-radius: 4px; }
+.app-store-link img { width: 180px; height: auto; }
+.app-store-link:focus-visible { outline-color: #f7f7f5; }
 .download-action .caption { margin-top: 1rem; }
 .site-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem 2rem; padding-block: 2rem; font-size: .875rem; color: var(--muted); }
 .site-footer a:not(.brand-mark) { display: inline-flex; align-items: center; min-height: 44px; }

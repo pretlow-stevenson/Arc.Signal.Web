@@ -25,6 +25,9 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
   for (const [name, html] of pages) {
     for (const [, value] of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
       assert.notEqual(value, '', `${name}: empty link`);
+      // The launch brief requests this exact temporary download URL. Its sole
+      // use on the App Store anchor is checked separately below.
+      if (name === 'index.html' && value === 'http://') continue;
       if (value.startsWith('https://')) {
         assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
         continue;
@@ -57,11 +60,18 @@ test('no scripts, embedded third-party content, forms, trackers or remote fonts'
   assert.doesNotMatch(css, /@import|https?:|data:/i);
 });
 
-test('App Store availability is explicit and cannot navigate to a fabricated listing', () => {
+test('App Store download uses the requested placeholder and states supported devices', () => {
   const html = pages.get('index.html');
-  assert.match(html, /<button\b[^>]*disabled[^>]*>App Store · Coming soon<\/button>/);
-  assert.match(html, /isn’t available to download yet/);
-  assert.doesNotMatch(html, /apps\.apple\.com|itunes\.apple\.com|Download now|Get it now/i);
+  const download = html.match(/<a\b[^>]*\bid="app-store-download"[^>]*>[\s\S]*?<\/a>/)?.[0];
+  assert.ok(download, 'Missing App Store download anchor');
+  assert.match(download, /\bhref="http:\/\/"/);
+  assert.match(download, /<img\b[^>]*src="assets\/images\/download-on-the-app-store\.svg"/);
+  assert.doesNotMatch(download, /\bdisabled\b|aria-disabled="true"|tabindex="-1"/);
+  assert.equal([...html.matchAll(/\b(?:href|src)="http:\/\/"/g)].length, 1, 'Placeholder must be confined to the download link');
+  assert.match(html, /Now available on the App Store/);
+  assert.match(html, /Apple iPhone 16 and iPhone 17 running iOS 27/);
+  assert.match(html, /id="compatibility"[^>]*>For Apple iPhone 16 and iPhone 17\.<br>Compatible with iOS 27\./);
+  assert.doesNotMatch(html, /coming soon|pre-?release|prelaunch|isn’t available|not available|at launch|no release date/i);
 });
 
 test('marketing retains the important measurement and identity limits', () => {
