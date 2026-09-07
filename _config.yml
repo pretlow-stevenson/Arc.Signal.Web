@@ -1,0 +1,9 @@
+# Keep developer-only files out of the existing GitHub Pages branch build.
+exclude:
+  - scripts
+  - tests
+  - node_modules
+  - dist
+  - package.json
+  - package-lock.json
+  - README.md
