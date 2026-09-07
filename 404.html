@@ -12,7 +12,15 @@
   <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body>
-  <header class="site-header"><a class="brand-mark" href="/">Arc Signal<span class="brand-period" aria-hidden="true">.</span></a></header>
+  <header class="site-header">
+    <a class="brand-mark" href="/" aria-label="Arc Signal home">
+      <svg class="brand-signal" viewBox="112 208 800 608" width="36" height="28" aria-hidden="true" focusable="false">
+        <defs><mask id="brand-signal-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024" mask-type="luminance"><image href="/assets/images/spectra-icon.png" width="1024" height="1024"/></mask></defs>
+        <rect width="1024" height="1024" fill="#000" mask="url(#brand-signal-mask)"/>
+      </svg>
+      <span>Arc Signal<span class="brand-period" aria-hidden="true">.</span></span>
+    </a>
+  </header>
   <main class="shell error-page"><p class="eyebrow">404 / Page not found</p><h1>This isn’t the<br>signal you’re after.</h1><p>The page may have moved, or the address may be incomplete.</p><a class="button primary" href="/">Return to Arc Signal</a></main>
 </body>
 </html>

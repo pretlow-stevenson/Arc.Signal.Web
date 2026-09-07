@@ -69,8 +69,9 @@ test('App Store download uses the requested placeholder and states supported dev
   assert.doesNotMatch(download, /\bdisabled\b|aria-disabled="true"|tabindex="-1"/);
   assert.equal([...html.matchAll(/\b(?:href|src)="http:\/\/"/g)].length, 1, 'Placeholder must be confined to the download link');
   assert.match(html, /Now available on the App Store/);
-  assert.match(html, /Apple iPhone 16 and iPhone 17 running iOS 27/);
-  assert.match(html, /id="compatibility"[^>]*>For Apple iPhone 16 and iPhone 17\.<br>Compatible with iOS 27\./);
+  assert.match(html, /Apple iPhone 16\/17 running iOS 27/);
+  assert.match(html, /id="compatibility"[^>]*>Apple iPhone 16\/17 · iOS 27<\/p>/);
+  assert.doesNotMatch(html, /iPhone 16 and iPhone 17|iPhone 18/);
   assert.doesNotMatch(html, /coming soon|pre-?release|prelaunch|isn’t available|not available|at launch|no release date/i);
 });
 

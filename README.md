@@ -2,8 +2,8 @@
 
 The company website for **Arc Signal LLC**, featuring **Spectra** for Apple iPhone.
 The site presents the product’s capabilities and limitations, its on-device
-privacy approach, and its App Store availability. Supported devices are Apple
-iPhone 16 and iPhone 17 running iOS 27.
+privacy approach, and its App Store availability. Compatibility is listed as
+**Apple iPhone 16/17 · iOS 27**.
 
 ## Development
 
@@ -22,8 +22,8 @@ The build validates the source and creates a fresh public-only directory in the
 system temporary directory. It prints that directory for preview or portability.
 There is no dependency installation step. Tests check local assets and anchors,
 metadata, accessibility structure, contrast pairs, privacy boundaries, and the
-download link and compatibility copy. These checks do not replace visual or assistive-technology
-testing in browsers.
+download link and compatibility copy. These checks do not replace visual or
+assistive-technology testing in browsers.
 
 ## Publishing
 
@@ -63,7 +63,9 @@ device-detection results. The page labels that distinction visibly and retains
 the simulator notice where shown. Screenshot controls open the unaltered image;
 below-the-fold captures load lazily.
 
-The waveform icon comes from Spectra’s original app asset catalog. Inter and
-Bodoni Moda Latin WOFF2 assets were obtained from Google Fonts; no Google Fonts
-service is contacted by visitors. Preserve the accompanying license files when
-redistributing these assets.
+The waveform icon comes from Spectra’s original app asset catalog. The header
+reuses that waveform through an SVG luminance mask, displaying only the black
+signal with transparent surroundings. Inter and Bodoni Moda Latin WOFF2 assets
+were obtained from Google Fonts; no Google Fonts service is contacted by
+visitors. Preserve the accompanying license files when redistributing these
+assets.
