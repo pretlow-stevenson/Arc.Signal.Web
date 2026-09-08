@@ -27,7 +27,7 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
       assert.notEqual(value, '', `${name}: empty link`);
       // The launch brief requests this exact temporary download URL. Its sole
       // use on the App Store anchor is checked separately below.
-      if (name === 'index.html' && value === 'http://') continue;
+      if (name === 'spectra.html' && value === 'http://') continue;
       if (value.startsWith('https://')) {
         assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
         continue;
@@ -61,7 +61,7 @@ test('no scripts, embedded third-party content, forms, trackers or remote fonts'
 });
 
 test('App Store download uses the requested placeholder and states supported devices', () => {
-  const html = pages.get('index.html');
+  const html = pages.get('spectra.html');
   const download = html.match(/<a\b[^>]*\bid="app-store-download"[^>]*>[\s\S]*?<\/a>/)?.[0];
   assert.ok(download, 'Missing App Store download anchor');
   assert.match(download, /\bhref="http:\/\/"/);
@@ -76,7 +76,7 @@ test('App Store download uses the requested placeholder and states supported dev
 });
 
 test('marketing retains the important measurement and identity limits', () => {
-  const html = pages.get('index.html');
+  const html = pages.get('spectra.html');
   for (const text of ['Arc Signal LLC', 'joined Wi-Fi network', 'not an exact distance or direction', 'cannot guarantee', 'Foreground', 'possible or probable', 'without pairing with or connecting']) {
     assert.ok(html.includes(text), `Missing qualification: ${text}`);
   }
@@ -84,8 +84,9 @@ test('marketing retains the important measurement and identity limits', () => {
 });
 
 test('keyboard access, reduced motion, responsive layouts and image dimensions remain present', () => {
-  assert.match(pages.get('index.html'), /class="skip-link" href="#main"/);
   for (const html of pages.values()) {
+    assert.match(html, /class="skip-link" href="#main"/);
+    assert.match(html, /<main[^>]*id="main"[^>]*tabindex="-1"/);
     for (const [tag] of html.matchAll(/<img\b[^>]*>/g)) {
       assert.match(tag, /\balt="[^"]+"/);
       assert.match(tag, /\bwidth="\d+"/);
@@ -104,7 +105,7 @@ test('body and action colors have sufficient contrast on their intended surfaces
       .map(value => value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4);
     return rgb[0] * .2126 + rgb[1] * .7152 + rgb[2] * .0722;
   };
-  for (const [foreground, background] of [['535a65', 'f7f7f5'], ['535a65', 'e1ecf8'], ['075bb5', 'eef2f6'], ['b6c4d4', '111820'], ['ffffff', '075bb5']]) {
+  for (const [foreground, background] of [['535a65', 'f7f7f5'], ['535a65', 'e1ecf8'], ['075bb5', 'eef2f6'], ['b6c4d4', '111820'], ['ffffff', '075bb5'], ['295e4f', 'e8f0eb'], ['535a65', 'e4ece5'], ['ffffff', '295e4f']]) {
     const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
     assert.ok((values[0] + .05) / (values[1] + .05) >= 4.5, `${foreground} on ${background}`);
   }
@@ -120,7 +121,7 @@ test('fonts are real WOFF2 files with retained redistribution licenses', async (
 });
 
 test('app screenshots have matching dimensions and explicit simulated-data disclosure', async () => {
-  const html = pages.get('index.html');
+  const html = pages.get('spectra.html');
   assert.match(html, /Readings are simulated examples, not evidence of nearby devices/);
   for (const name of ['spectra-home', 'spectra-magnetic']) {
     const image = await readFile(join(root, `assets/images/${name}.png`));
@@ -134,7 +135,52 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
 test('public bundle excludes development files and remains lightweight', async () => {
   assert.ok(files.every(name => !/(^|\/)(?:\.git|tests|scripts|node_modules|\.env)(\/|$)/.test(name)));
   const bytes = await Promise.all(files.map(async name => (await stat(join(root, name))).size));
-  assert.ok(bytes.reduce((sum, value) => sum + value, 0) < 2_000_000, 'Public assets exceed the 2 MB budget');
+  assert.ok(bytes.reduce((sum, value) => sum + value, 0) < 3_000_000, 'Public assets exceed the 3 MB budget for two products');
   assert.equal((await readFile(join(root, 'CNAME'), 'utf8')).trim(), 'arcsignal.app');
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/arcsignal\.app\/<\/loc>/);
+});
+
+test('product pages are reachable, independently indexed, and have active navigation', async () => {
+  const home = pages.get('index.html');
+  const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
+  const descriptions = new Set();
+  for (const name of ['index.html', 'spectra.html', 'seamless.html']) {
+    const html = pages.get(name);
+    const url = `https://arcsignal.app/${name === 'index.html' ? '' : name}`;
+    assert.ok(html.includes(`<link rel="canonical" href="${url}">`), name);
+    assert.ok(html.includes(`<meta property="og:url" content="${url}">`), name);
+    assert.ok(sitemap.includes(`<loc>${url}</loc>`), name);
+    descriptions.add(html.match(/<meta name="description" content="([^"]+)"/)?.[1]);
+    if (name !== 'index.html') {
+      assert.ok(home.includes(`href="${name}"`), name);
+      assert.ok(html.includes(`href="${name}" aria-current="page"`), name);
+    }
+  }
+  assert.equal(descriptions.size, 3, 'Each page needs its own search description');
+  assert.ok(!descriptions.has(undefined));
+  assert.match(home, /Security tools &amp; everyday utilities/);
+  assert.match(pages.get('404.html'), /<meta name="robots" content="noindex">/);
+  assert.doesNotMatch(sitemap, /404/);
+  for (const [, value] of pages.get('404.html').matchAll(/(?:href|src)="([^"]+)"/g)) {
+    assert.ok(value.startsWith('/') || value.startsWith('#') || value.startsWith('https://'), `404 resource must work at any depth: ${value}`);
+  }
+});
+
+test('Seamless describes the verified workflow, release status, and privacy limits', () => {
+  const html = pages.get('seamless.html');
+  for (const text of ['2–20', 'original pixel width', 'PNG', 'uncertain', 'Nothing is silently skipped', 'iOS 18 or later', 'Coming soon', 'iCloud', 'according to your settings', 'fictional sample content']) {
+    assert.ok(html.includes(text), `Missing Seamless constraint: ${text}`);
+  }
+  assert.doesNotMatch(html, /href="http:\/\/"|Download on the App Store|Now available|iPhone 16\/17|iOS 27/);
+  assert.doesNotMatch(pages.get('index.html'), /href="http:\/\/"/);
+});
+
+test('Seamless preview images retain source dimensions', async () => {
+  for (const name of ['seamless-sequence', 'seamless-result']) {
+    const image = await readFile(join(root, `assets/images/${name}.png`));
+    assert.equal(image.subarray(1, 4).toString(), 'PNG');
+    assert.equal(image.readUInt32BE(16), 1206);
+    assert.equal(image.readUInt32BE(20), 2622);
+    assert.ok(pages.get('seamless.html').includes(`src="assets/images/${name}.png" width="1206" height="2622"`));
+  }
 });

@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
-export const documents = ['index.html', '404.html'];
+export const documents = ['index.html', 'spectra.html', 'seamless.html', '404.html'];
 const publicFiles = [...documents, 'CNAME', 'robots.txt', 'sitemap.xml'];
 
 // One explicit public surface for validation and export. Never follow symlinks
