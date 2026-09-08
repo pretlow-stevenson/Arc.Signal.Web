@@ -76,12 +76,23 @@ stitching from iCloud retrieval and destination services chosen by the user.
 
 ## App screenshots
 
-The Spectra home and magnetic-meter images are actual simulator captures from the
-Spectra application on September 7, 2026, using its UI regression tests.
-They contain synthetic preview data, not personal observations or measured
-device-detection results. The page labels that distinction visibly and retains
-the simulator notice where shown. Screenshot controls open the unaltered image;
-below-the-fold captures load lazily.
+The Spectra home and Area Sweep magnetic-meter images were captured from the
+current app on September 8, 2026, in a disposable simulator and source copy.
+Both screens use native dark appearance. The home view’s simulator-only notice
+was suppressed for the website capture;
+app measurement behavior and the original app repository were unchanged. The
+magnetic screen uses the actual Area Sweep flow and synthetic sensor fixtures,
+with example readings disclosed in the website caption. No measurements are
+presented as real detection evidence. The PNGs are native captures, not retouched
+or generated interface mockups.
+
+Quick Check supports Bluetooth and optional local-network observations. Magnetic
+measurement is shown in Area Sweep, which supersedes the old Room Sweep name.
+The website also reflects the current Smart Glasses specialist and the removal
+of Lens/Sound checks. The screenshot capture verified that Quick Check offers no
+magnetic source and that Area Sweep can run a magnetic-only session.
+
+Screenshot links open the complete image; below-the-fold captures load lazily.
 
 The Seamless sequence and finished-image previews are unaltered simulator
 captures from the app’s built-in fictional sample flow, exported September 6,

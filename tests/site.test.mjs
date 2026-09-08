@@ -123,7 +123,7 @@ test('fonts are real WOFF2 files with retained redistribution licenses', async (
 test('app screenshots have matching dimensions and explicit simulated-data disclosure', async () => {
   const html = pages.get('spectra.html');
   assert.match(html, /Readings are simulated examples, not evidence of nearby devices/);
-  for (const name of ['spectra-home', 'spectra-magnetic']) {
+  for (const name of ['spectra-overview', 'spectra-area-sweep']) {
     const image = await readFile(join(root, `assets/images/${name}.png`));
     assert.equal(image.subarray(1, 4).toString(), 'PNG');
     assert.equal(image.readUInt32BE(16), 1206);
@@ -182,5 +182,22 @@ test('Seamless preview images retain source dimensions', async () => {
     assert.equal(image.readUInt32BE(16), 1206);
     assert.equal(image.readUInt32BE(20), 2622);
     assert.ok(pages.get('seamless.html').includes(`src="assets/images/${name}.png" width="1206" height="2622"`));
+  }
+});
+
+test('Spectra imagery and mode descriptions match current radio and magnetic workflows', () => {
+  const html = pages.get('spectra.html');
+  const quickCheck = html.match(/<article><p class="step-label">01 \/ Quick Check[\s\S]*?<\/article>/)?.[0];
+  assert.ok(quickCheck);
+  assert.match(quickCheck, /Bluetooth broadcasts, with optional local-network observations/);
+  assert.match(quickCheck, /No magnetic measurement or calibration/);
+  assert.match(html, /02 \/ Area Sweep/);
+  assert.match(html, /Magnetic measurement is available in Area Sweep/);
+  assert.match(html, /focused Smart Glasses check/);
+  assert.match(html, /Available in Area Sweep and Monitor This Area/);
+  assert.ok(!files.includes('assets/images/spectra-home.png'));
+  assert.ok(!files.includes('assets/images/spectra-magnetic.png'));
+  for (const page of [html, pages.get('index.html')]) {
+    assert.doesNotMatch(page, /Room Sweep|simulator-preview notice|Use Lens|Sound Check|Camera frames and audio/);
   }
 });
