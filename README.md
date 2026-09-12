@@ -4,9 +4,10 @@ The company website for **Arc Signal LLC**, presenting security products and
 practical utilities through a company homepage and dedicated product pages:
 
 - `index.html`: company introduction, product discovery, and privacy approach.
-- `spectra.html`: Spectra, available for **Apple iPhone 16/17 · iOS 27**.
+- `spectra.html`: Spectra, preparing for release; **iPhone 16 or later · iOS 27 or later**.
 - `seamless.html`: Seamless screenshot stitching, coming soon for **Apple iPhone · iOS 18 or later**.
 - `guide.html`: the complete Spectra Guide and support contact, generated from native app content.
+- `spectra-privacy.html`: the public Spectra privacy policy, also linked in the app before setup and from Guide.
 - `404.html`: recovery links that work even when the requested URL is nested.
 
 Shared navigation connects every page. Each marketing page has its own title,
@@ -42,7 +43,8 @@ The neighboring Spectra checkout's `scripts/ExportGuide.swift` exports them to
 `assets/data/spectra-guide.json`; `npm run guide` then produces `guide.html`.
 Both generated files are committed so GitHub Pages needs no Swift or JavaScript
 runtime. `npm test` checks exact HTML parity, twelve stable topic routes, the
-release lock (1.0.0 / 1000), and the support address `support@arcsignal.app`.
+release lock (1.0.0 / 1A1000, numeric bundle build 1000), support address,
+compatibility, and the public policy link.
 
 After editing native help, compile its exporter with the two Guide sources,
 run the executable with this repository's JSON path, then run:
@@ -63,6 +65,8 @@ Email support opens the user's mail client with no scan data or attachments.
 
 The existing GitHub Pages configuration publishes the root of `main` at
 **https://arcsignal.app/**. Keep `CNAME` in sync with the configured custom domain.
+HTTPS enforcement is enabled in the existing Pages configuration. Confirm its
+redirect and certificate when changing hosting or domain settings.
 `_config.yml` excludes development-only files from the Pages build. Changes to
 `main` can publish the website; review content and test before pushing.
 
@@ -72,21 +76,24 @@ routine request logging; this site does not claim to eliminate those logs.
 
 ## App Store download
 
-The site presents Spectra as available on the App Store. The badge anchor
-`app-store-download` in `spectra.html` currently uses the requested literal
-`http://` placeholder. It is not a working App Store destination. Replace that
-value with the verified Spectra listing URL and update the download-link
-validation in `tests/site.test.mjs` when the final URL is supplied.
+The site presents Spectra as coming to the App Store. `app-store-download` is a
+noninteractive status, not a broken `http://` link or a simulated download button.
+At release, replace it with the official badge and verified Spectra listing URL;
+update the homepage status, metadata, and download validation together.
 
 The official black [Download on the App Store badge](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)
-is stored locally and used without altering the artwork. Preserve its proportions
+is stored locally for use at release. Preserve its proportions
 and surrounding clear space, following [Apple’s marketing guidelines](https://developer.apple.com/app-store/marketing/guidelines/).
 The footer credits Apple, the Apple logo, iPhone, and App Store, and includes the
 IOS credit from [Apple’s trademark list](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html).
 
 Keep compatibility, customer-support details, and privacy disclosures aligned
-with the app. The site’s privacy overviews are not a substitute for the app’s
-complete privacy policy or App Store disclosures.
+with the app. The complete policy is https://arcsignal.app/spectra-privacy.html.
+The owner should review its support-retention and provider statements before
+submission. App Store Connect privacy labels remain a separate declaration.
+iOS 27 is enforced in the app; iPhone 16+ is the supported hardware range, not a
+nonexistent exact-model App Store capability filter. Older compatible phones
+are not blocked by a fabricated hardware requirement.
 
 ## Seamless release status
 
@@ -103,15 +110,25 @@ stitching from iCloud retrieval and destination services chosen by the user.
 
 ## App screenshots
 
-The Spectra home and Area Sweep magnetic-meter images were captured from the
-current app on September 8, 2026, in a disposable simulator and source copy.
-Both screens use native dark appearance. The home view’s simulator-only notice
-was suppressed for the website capture;
-app measurement behavior and the original app repository were unchanged. The
-magnetic screen uses the actual Area Sweep flow and synthetic sensor fixtures,
-with example readings disclosed in the website caption. No measurements are
-presented as real detection evidence. The PNGs are native captures, not retouched
-or generated interface mockups.
+The September 12 refresh uses the same verified native captures as Spectra’s
+App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
+Monitor change dashboard. The approved app interface is not retouched. Fictional
+Acme names and isolated simulator readings are disclosed in the gallery caption.
+Light/dark appearance follows each original capture. App Store marketing frames
+and traveler artwork remain in the app repository; website images are UI-only.
+
+`assets/data/spectra-screenshots.json` records the exact app source commit,
+capture SHA-256 hashes, output hashes, dimensions, and decoded-pixel hashes.
+After the app capture suite, manifest verification, and OCR audit pass, run:
+
+```sh
+node scripts/import-spectra-captures.mjs /path/to/Spectra/repository
+```
+
+Refresh tooling requires `cwebp` and ImageMagick. Lossless WebP preserves native
+1320 × 2868 dimensions and every decoded pixel while reducing transfer size.
+Normal site tests/builds need only Node and verify the committed asset hashes.
+The retired PNGs are removed; their earlier versions remain recoverable in Git.
 
 Quick Check supports Bluetooth and optional local-network observations. Magnetic
 measurement is shown in Area Sweep, which supersedes the old Room Sweep name.

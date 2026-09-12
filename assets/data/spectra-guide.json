@@ -247,6 +247,11 @@
             "title" : "History is your choice"
           },
           {
+            "body" : "Open Privacy policy from Welcome or Guide → About for the public policy, including local observations, permissions, erasure, optional exports, support correspondence, and website hosting. Reading the website requires an internet connection; this practical Guide stays available offline.",
+            "id" : "policy",
+            "title" : "Read the full privacy policy"
+          },
+          {
             "body" : "Export JSON on completed or saved results lets you choose Full evidence or Reduced identifying information, then save or share a file for analysis. Full evidence includes retained advertised data, session name and notes. Reduced omits identifying text and raw payloads but is not anonymous. Both ignore visible results filters. Nothing is uploaded automatically.",
             "id" : "export",
             "title" : "Share only when you choose"
@@ -385,6 +390,11 @@
         "navigationTitle" : "Measurement setup",
         "sections" : [
           {
+            "body" : "Spectra requires iOS 27 or later. The supported hardware range starts with iPhone 16, including iPhone 16e, and later iPhones. Measurement availability still depends on permissions, hardware, and the signals a device makes available.",
+            "id" : "compatibility",
+            "title" : "Supported iPhones"
+          },
+          {
             "body" : "Welcome explains the app. Get Started opens measurement setup. Tap a measurement to request its access; a readiness checkmark reflects the system response. You can continue without every permission. A prompt explains what remains unconfigured, and a later check requests only missing access.",
             "id" : "welcome",
             "title" : "Start with access"
@@ -497,7 +507,7 @@
         "navigationTitle" : "Sessions",
         "sections" : [
           {
-            "body" : "Saving completed sessions is on by default and can be changed in Guide. Turning it off affects future saving, not existing history. The completed check tells you whether it was saved. If saving fails, keep the result open and use Retry Saving or Export JSON before discarding it.",
+            "body" : "Saving completed sessions is on by default and can be changed in Guide. Turning it off affects future saving, not existing history. The completed check tells you whether it was saved. If saving fails, keep the result open and use Retry Saving or Export JSON before discarding it. A forced close, crash, or shutdown before saving can lose an unfinished check; there is no continuous autosaved draft. Finish and confirm important checks before closing the app.",
             "id" : "saving",
             "title" : "Confirm a check was saved"
           },
@@ -525,6 +535,11 @@
         "symbol" : "clock.arrow.circlepath",
         "takeaway" : "Keep the checks you need, add context, and stay in control of local history.",
         "technicalSections" : [
+          {
+            "body" : "Unlock the iPhone and return to Spectra or retry saving. A temporary read failure pauses history changes and is retried; it does not trigger damaged-file recovery or authorize overwriting existing sessions. If the problem persists, keep any unsaved result open and export it if possible before contacting support.",
+            "id" : "temporary",
+            "title" : "Storage is temporarily unavailable"
+          },
           {
             "body" : "Spectra pauses history changes to avoid overwriting unreadable data. Preserve Copy and Start Fresh keeps a protected recovery copy before creating new history. This is not a promise that damaged data can be recovered. Erase Stored Data is the separate destructive choice. Contact support if a report matters before erasing.",
             "id" : "recovery",
@@ -648,6 +663,10 @@
     }
   ],
   "build" : "1000",
+  "buildIdentifier" : "1A1000",
+  "minimumOS" : "iOS 27 or later",
+  "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,
-  "supportEmail" : "support@arcsignal.app"
+  "supportEmail" : "support@arcsignal.app",
+  "supportedHardware" : "iPhone 16 or later"
 }

@@ -36,7 +36,8 @@ export async function renderGuide() {
   <main id="main" tabindex="-1" class="shell guide-page">
     <div class="guide-intro"><p class="eyebrow">Spectra / Guide &amp; support</p><h1>Understand what<br>you’re <em>seeing.</em></h1>
     <p class="lead">Choose a topic for practical steps, clear explanations, and the limits that matter.</p>
-    <p class="caption">Release ${escape(document.appVersion)} · Build ${escape(document.build)} · Also available offline in the app.</p></div>
+    <p class="caption">Release ${escape(document.appVersion)} · Build ${escape(document.buildIdentifier)} · Also available offline in the app.</p>
+    <p class="caption">${escape(document.supportedHardware)} · ${escape(document.minimumOS)}</p></div>
     <div class="guide-layout"><nav class="guide-contents" aria-label="Guide topics">
       <h2>Find an answer</h2>
       ${[...new Set(articles.map(a => a.category))].map(category => {

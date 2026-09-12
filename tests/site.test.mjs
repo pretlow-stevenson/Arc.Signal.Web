@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { join, posix } from 'node:path';
+import { createHash } from 'node:crypto';
 import { root, documents, listPublicFiles } from '../scripts/site-files.mjs';
 import { renderGuide } from '../scripts/render-guide.mjs';
 
@@ -26,10 +27,8 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
   for (const [name, html] of pages) {
     for (const [, value] of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
       assert.notEqual(value, '', `${name}: empty link`);
-      // The launch brief requests this exact temporary download URL. Its sole
-      // use on the App Store anchor is checked separately below.
-      if (name === 'spectra.html' && value === 'http://') continue;
-      if (value === 'mailto:support@arcsignal.app' && name === 'guide.html') continue;
+      if (value === 'mailto:support@arcsignal.app' && ['guide.html', 'spectra-privacy.html'].includes(name)) continue;
+      if (name === 'spectra-privacy.html' && value === 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement') continue;
       if (value.startsWith('https://')) {
         assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
         continue;
@@ -62,19 +61,13 @@ test('no scripts, embedded third-party content, forms, trackers or remote fonts'
   assert.doesNotMatch(css, /@import|https?:|data:/i);
 });
 
-test('App Store download uses the requested placeholder and states supported devices', () => {
+test('unreleased download is a truthful status rather than a broken link', () => {
   const html = pages.get('spectra.html');
-  const download = html.match(/<a\b[^>]*\bid="app-store-download"[^>]*>[\s\S]*?<\/a>/)?.[0];
-  assert.ok(download, 'Missing App Store download anchor');
-  assert.match(download, /\bhref="http:\/\/"/);
-  assert.match(download, /<img\b[^>]*src="assets\/images\/download-on-the-app-store\.svg"/);
-  assert.doesNotMatch(download, /\bdisabled\b|aria-disabled="true"|tabindex="-1"/);
-  assert.equal([...html.matchAll(/\b(?:href|src)="http:\/\/"/g)].length, 1, 'Placeholder must be confined to the download link');
-  assert.match(html, /Now available on the App Store/);
-  assert.match(html, /Apple iPhone 16\/17 running iOS 27/);
-  assert.match(html, /id="compatibility"[^>]*>Apple iPhone 16\/17 · iOS 27<\/p>/);
-  assert.doesNotMatch(html, /iPhone 16 and iPhone 17|iPhone 18/);
-  assert.doesNotMatch(html, /coming soon|pre-?release|prelaunch|isn’t available|not available|at launch|no release date/i);
+  assert.match(html, /<p id="app-store-download" class="status">App Store release coming soon<\/p>/);
+  assert.match(html, /id="compatibility"[^>]*>iPhone 16 or later · iOS 27 or later<\/p>/);
+  for (const page of [html, pages.get('index.html')]) {
+    assert.doesNotMatch(page, /href="http:\/\/"|Available now|Now available|iPhone 16\/17/);
+  }
 });
 
 test('marketing retains the important measurement and identity limits', () => {
@@ -125,13 +118,39 @@ test('fonts are real WOFF2 files with retained redistribution licenses', async (
 test('app screenshots have matching dimensions and explicit simulated-data disclosure', async () => {
   const html = pages.get('spectra.html');
   assert.match(html, /Readings are simulated examples, not evidence of nearby devices/);
-  for (const name of ['spectra-overview', 'spectra-area-sweep']) {
-    const image = await readFile(join(root, `assets/images/${name}.png`));
-    assert.equal(image.subarray(1, 4).toString(), 'PNG');
-    assert.equal(image.readUInt32BE(16), 1206);
-    assert.equal(image.readUInt32BE(20), 2622);
-    assert.match(html, new RegExp(`<img src="assets/images/${name}\\.png"[^>]*loading="lazy"`));
+  const provenance = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
+  assert.equal(provenance.exampleData, true);
+  assert.match(provenance.appSourceCommit, /^[a-f0-9]{40}$/);
+  assert.match(provenance.transformation, /Lossless WebP/);
+  assert.deepEqual(provenance.items.map(item => item.id), ['01-quick-check', '02-smart-glasses', '03-magnetic-sweep', '05-monitor']);
+  for (const item of provenance.items) {
+    assert.match(item.output, /^assets\/images\/spectra-[a-z-]+\.webp$/);
+    const image = await readFile(join(root, item.output));
+    assert.equal(image.subarray(0, 4).toString(), 'RIFF');
+    assert.equal(image.subarray(8, 12).toString(), 'WEBP');
+    assert.equal(createHash('sha256').update(image).digest('hex'), item.outputSHA256);
+    assert.match(item.sourceSHA256, /^[a-f0-9]{64}$/);
+    assert.match(item.pixelSHA256, /^[a-f0-9]{64}$/);
+    let size;
+    for (let offset = 12; offset + 8 <= image.length;) {
+      const type = image.subarray(offset, offset + 4).toString();
+      const length = image.readUInt32LE(offset + 4), start = offset + 8;
+      assert.ok(start + length <= image.length, 'Truncated image chunk');
+      if (type === 'VP8X') size = [image.readUIntLE(start + 4, 3) + 1, image.readUIntLE(start + 7, 3) + 1];
+      if (type === 'VP8L' && !size) {
+        assert.equal(image[start], 0x2f);
+        const bits = image.readUInt32LE(start + 1);
+        size = [(bits & 0x3fff) + 1, ((bits >>> 14) & 0x3fff) + 1];
+      }
+      offset = start + length + (length % 2);
+    }
+    assert.deepEqual(size, [1320, 2868]);
+    assert.equal(item.width, 1320); assert.equal(item.height, 2868);
+    assert.ok(html.includes(`<img src="${item.output}" width="1320" height="2868"`));
+    assert.ok(html.includes(`href="${item.output}"`));
   }
+  assert.ok(!files.includes('assets/images/spectra-overview.png'));
+  assert.ok(!files.includes('assets/images/spectra-area-sweep.png'));
 });
 
 test('public bundle excludes development files and remains lightweight', async () => {
@@ -195,7 +214,7 @@ test('Spectra imagery and mode descriptions match current radio and magnetic wor
   assert.match(quickCheck, /No magnetic measurement or calibration/);
   assert.match(html, /02 \/ Area Sweep/);
   assert.match(html, /Magnetic measurement is available in Area Sweep/);
-  assert.match(html, /focused Smart Glasses check/);
+  assert.match(html, /Focused glasses and watch checks/);
   assert.match(html, /Available in Area Sweep\. See actual field readings/);
   assert.doesNotMatch(html, /Optional detector sound|Available in Area Sweep and Monitor/);
   assert.ok(!files.includes('assets/images/spectra-home.png'));
@@ -209,6 +228,10 @@ test('website Guide is generated from all twelve native topics with release and 
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   assert.equal(payload.appVersion, '1.0.0');
   assert.equal(payload.build, '1000');
+  assert.equal(payload.buildIdentifier, '1A1000');
+  assert.equal(payload.minimumOS, 'iOS 27 or later');
+  assert.equal(payload.supportedHardware, 'iPhone 16 or later');
+  assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
   assert.equal(payload.supportEmail, 'support@arcsignal.app');
   assert.equal(payload.articles.length, 12);
   assert.equal(pages.get('guide.html'), await renderGuide(), 'Stale generated Guide');
@@ -216,4 +239,22 @@ test('website Guide is generated from all twelve native topics with release and 
   assert.match(pages.get('guide.html'), /not anonymous/);
   assert.match(pages.get('guide.html'), /mailto:support@arcsignal.app/);
   assert.match(pages.get('guide.html'), /Nothing is attached or sent automatically/);
+  assert.match(pages.get('guide.html'), /Build 1A1000/);
+  assert.match(pages.get('guide.html'), /forced close, crash, or shutdown/);
+});
+
+test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
+  const policy = pages.get('spectra-privacy.html');
+  assert.match(policy, /Effective September 12, 2026/);
+  assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
+  for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '32 MiB', 'recovery copies',
+      'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
+      'do not sell', 'under 13', 'iOS file protection', 'camera images', 'geographic coordinates', 'privacy regulator']) {
+    assert.ok(policy.includes(text), `Missing privacy explanation: ${text}`);
+  }
+  assert.doesNotMatch(policy, /<details\b/, 'Policy provisions remain readable without opening disclosures');
+  for (const name of ['index.html', 'spectra.html', 'guide.html']) {
+    assert.ok(pages.get(name).includes('href="spectra-privacy.html"'), `Missing policy link: ${name}`);
+  }
+  assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /https:\/\/arcsignal.app\/spectra-privacy.html/);
 });
