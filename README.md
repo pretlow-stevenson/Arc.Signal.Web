@@ -6,6 +6,7 @@ practical utilities through a company homepage and dedicated product pages:
 - `index.html`: company introduction, product discovery, and privacy approach.
 - `spectra.html`: Spectra, available for **Apple iPhone 16/17 · iOS 27**.
 - `seamless.html`: Seamless screenshot stitching, coming soon for **Apple iPhone · iOS 18 or later**.
+- `guide.html`: the complete Spectra Guide and support contact, generated from native app content.
 - `404.html`: recovery links that work even when the requested URL is nested.
 
 Shared navigation connects every page. Each marketing page has its own title,
@@ -33,6 +34,32 @@ download link and compatibility copy. These checks do not replace visual or
 assistive-technology testing in browsers.
 
 ## Publishing
+
+### Shared Guide content
+
+The app's `GuideArticle.swift` and `GuideReleaseArticles.swift` are canonical.
+The neighboring Spectra checkout's `scripts/ExportGuide.swift` exports them to
+`assets/data/spectra-guide.json`; `npm run guide` then produces `guide.html`.
+Both generated files are committed so GitHub Pages needs no Swift or JavaScript
+runtime. `npm test` checks exact HTML parity, twelve stable topic routes, the
+release lock (1.0.0 / 1000), and the support address `support@arcsignal.app`.
+
+After editing native help, compile its exporter with the two Guide sources,
+run the executable with this repository's JSON path, then run:
+
+```sh
+npm run guide
+npm run guide:check
+npm test
+npm run build
+```
+
+Do not edit generated HTML or JSON by hand. Native search is available offline;
+the website uses a topic index, in-page anchors, and browser Find without adding
+tracking, forms, or client scripts. Technical detail uses native disclosure.
+Email support opens the user's mail client with no scan data or attachments.
+
+### Existing hosting
 
 The existing GitHub Pages configuration publishes the root of `main` at
 **https://arcsignal.app/**. Keep `CNAME` in sync with the configured custom domain.

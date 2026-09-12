@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { join, posix } from 'node:path';
 import { root, documents, listPublicFiles } from '../scripts/site-files.mjs';
+import { renderGuide } from '../scripts/render-guide.mjs';
 
 const files = await listPublicFiles();
 const pages = new Map(await Promise.all(documents.map(async name => [name, await readFile(join(root, name), 'utf8')])));
@@ -28,6 +29,7 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
       // The launch brief requests this exact temporary download URL. Its sole
       // use on the App Store anchor is checked separately below.
       if (name === 'spectra.html' && value === 'http://') continue;
+      if (value === 'mailto:support@arcsignal.app' && name === 'guide.html') continue;
       if (value.startsWith('https://')) {
         assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
         continue;
@@ -194,10 +196,24 @@ test('Spectra imagery and mode descriptions match current radio and magnetic wor
   assert.match(html, /02 \/ Area Sweep/);
   assert.match(html, /Magnetic measurement is available in Area Sweep/);
   assert.match(html, /focused Smart Glasses check/);
-  assert.match(html, /Available in Area Sweep and Monitor This Area/);
+  assert.match(html, /Available in Area Sweep\. See actual field readings/);
+  assert.doesNotMatch(html, /Optional detector sound|Available in Area Sweep and Monitor/);
   assert.ok(!files.includes('assets/images/spectra-home.png'));
   assert.ok(!files.includes('assets/images/spectra-magnetic.png'));
   for (const page of [html, pages.get('index.html')]) {
     assert.doesNotMatch(page, /Room Sweep|simulator-preview notice|Use Lens|Sound Check|Camera frames and audio/);
   }
+});
+
+test('website Guide is generated from all twelve native topics with release and support context', async () => {
+  const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  assert.equal(payload.appVersion, '1.0.0');
+  assert.equal(payload.build, '1000');
+  assert.equal(payload.supportEmail, 'support@arcsignal.app');
+  assert.equal(payload.articles.length, 12);
+  assert.equal(pages.get('guide.html'), await renderGuide(), 'Stale generated Guide');
+  for (const {content} of payload.articles) assert.ok(ids(pages.get('guide.html')).includes(content.id));
+  assert.match(pages.get('guide.html'), /not anonymous/);
+  assert.match(pages.get('guide.html'), /mailto:support@arcsignal.app/);
+  assert.match(pages.get('guide.html'), /Nothing is attached or sent automatically/);
 });

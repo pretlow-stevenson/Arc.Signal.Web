@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "guide": "node scripts/render-guide.mjs",
+    "guide:check": "node scripts/render-guide.mjs --check",
     "test": "node --test tests/*.test.mjs",
     "build": "node scripts/build.mjs"
   },

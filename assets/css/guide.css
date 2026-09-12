@@ -1,0 +1,29 @@
+.guide-page { padding-top: 5rem; padding-bottom: 5rem; }
+.guide-intro { max-width: 48rem; margin-bottom: 4rem; }
+.guide-intro h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+.guide-intro .lead { margin-top: 1.25rem; margin-bottom: .75rem; }
+.guide-layout { display: grid; grid-template-columns: minmax(14rem, 1fr) minmax(0, 3fr); gap: 4rem; align-items: start; }
+.guide-contents { display: block; position: sticky; top: 6rem; max-height: calc(100dvh - 7rem); overflow-y: auto; padding-right: .5rem; }
+.guide-contents h2 { font-size: 1.25rem; }
+.guide-contents .eyebrow { margin: 1.5rem 0 .5rem; }
+.guide-contents ul { list-style: none; padding: 0; margin: .75rem 0 1.5rem; }
+.guide-contents li { margin: .6rem 0; }
+.guide-contents a { font-size: 1rem; display: inline-block; padding: .35rem 0; text-underline-offset: .2em; }
+.guide-topic { max-width: 48rem; padding: 0 0 3rem; margin: 0 0 3rem; border-bottom: 1px solid #cdd3dc; scroll-margin-top: 6rem; }
+.guide-topic h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; }
+.guide-topic h3 { font-family: inherit; font-size: 1.125rem; margin: 1.75rem 0 .5rem; }
+.guide-topic p, .guide-topic li { font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
+.guide-topic h2 + p, .guide-topic p + p { margin-top: 1rem; }
+.guide-topic li { padding-left: .3rem; margin: .8rem 0; }
+.guide-takeaway { font-size: 1.125rem !important; color: #075bb5; }
+.guide-important { border-left: 3px solid #075bb5; padding: 1rem 1.25rem; background: #eef2f6; margin: 1.75rem 0; }
+.guide-important p { margin-bottom: 0; }
+.guide-topic details { border-top: 1px solid #cdd3dc; padding: 1rem 0; margin: 1.5rem 0; }
+.guide-topic summary { cursor: pointer; font-weight: 600; padding: .5rem 0; color: #075bb5; }
+@media (max-width: 760px) {
+  .guide-page { padding-top: 2.5rem; }
+  .guide-intro { margin-bottom: 2.5rem; }
+  .guide-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .guide-contents { position: static; max-height: none; overflow: visible; padding-bottom: 1rem; border-bottom: 1px solid #cdd3dc; }
+  .guide-topic { scroll-margin-top: 1rem; }
+}

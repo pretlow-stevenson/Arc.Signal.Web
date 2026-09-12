@@ -1,0 +1,653 @@
+{
+  "appVersion" : "1.0.0",
+  "articles" : [
+    {
+      "category" : "gettingStarted",
+      "categoryTitle" : "Getting started",
+      "content" : {
+        "example" : "sources",
+        "id" : "detection",
+        "important" : "An observation does not prove that a device is recording or malicious. A quiet check cannot prove that a space is clear.",
+        "navigationTitle" : "Detection",
+        "sections" : [
+          {
+            "body" : "Spectra reads broadcasts, advertised network services, and iPhone sensor measurements. It does not pair with or open sessions to discovered devices.",
+            "id" : "observe",
+            "title" : "Observe without connecting"
+          },
+          {
+            "body" : "Summary keeps related observations together and unclassified activity compact. Expand a result to see its measurements, likely identity, and the evidence behind it.",
+            "id" : "explore",
+            "title" : "Start with the summary"
+          },
+          {
+            "body" : "Choose Smart Glasses or Smart Watches from Specialist checks for a 30-second Bluetooth observation. Only recognizable product-family indicators appear. Spectra cannot tell whether a microphone, camera, or conversation-summary feature is active.",
+            "id" : "specialists",
+            "title" : "Check for glasses or watches"
+          },
+          {
+            "body" : "Monitor compares Bluetooth and local-network observations with a starting baseline while your iPhone stays in one place. The dashboard retains new, returned, and no-longer-recent observations. Finish to review details. Rotating or intermittent broadcasts can cause changes without a device arriving or leaving. Magnetic exploration belongs in Area Sweep.",
+            "id" : "monitor",
+            "title" : "Watch for radio changes"
+          }
+        ],
+        "steps" : [
+          "Choose a 30-second radio Quick Check, untimed Area Sweep for hands-on exploration, or Monitor to watch one area.",
+          "Choose measurements; Quick Check records every supported category. Filter completed results by measurement and device category, or use a Bluetooth-only specialist check. Keep Spectra visible while scanning.",
+          "Review what stood out, then open Coverage to see what was—and was not—measured."
+        ],
+        "symbol" : "point.3.connected.trianglepath.dotted",
+        "takeaway" : "Spectra helps you investigate nearby signals. A signal is a clue—not proof of a hidden device.",
+        "technicalSections" : [
+          {
+            "body" : "Product-family and manufacturer labels come from advertised metadata and a local signature catalog. Possible, Probable, and signature labels describe the supporting pattern; transmitted information can be changed or spoofed.",
+            "id" : "claims",
+            "title" : "Names are claims, not authentication"
+          },
+          {
+            "body" : "Bluetooth and local-network identities are not merged into one physical device from a shared name, manufacturer, strength, or timing. Magnetic observations are area clues, not device identities.",
+            "id" : "sources",
+            "title" : "Different sources remain distinct"
+          }
+        ],
+        "title" : "How detection works"
+      }
+    },
+    {
+      "category" : "understandingResults",
+      "categoryTitle" : "Understanding results",
+      "content" : {
+        "example" : "bluetoothBands",
+        "id" : "bluetooth",
+        "important" : "A strong signal is not proof of a hidden or recording device. It does not necessarily belong to the closest device.",
+        "navigationTitle" : "Bluetooth",
+        "sections" : [
+          {
+            "body" : "Strong, Moderate, and Faint describe the signal received by your iPhone. Walls, bodies, reflections, antenna orientation, and transmit power can change the reading—even when neither device moves.",
+            "id" : "bands",
+            "title" : "Read the band, not a distance"
+          },
+          {
+            "body" : "A device found only through your joined Wi-Fi network has no measurable physical proximity in Spectra. Its network presence cannot tell you which room it is in.",
+            "id" : "network",
+            "title" : "Network presence is different"
+          },
+          {
+            "body" : "Briefly observed means only one or two usable Bluetooth signal readings were retained. Repeatedly observed means at least three were retained. These labels describe observation, not an authenticated device model or continuous presence. A weak or intermittent advertiser may produce only a brief sighting.",
+            "id" : "persistence",
+            "title" : "Briefly or repeatedly observed"
+          }
+        ],
+        "steps" : [
+          "Choose Check Bluetooth Proximity in results, then select a found device. Its individual details can open it directly.",
+          "Start Signal Check to see live dBm readings. A saved result may require confirming a possible match; a name does not verify identity.",
+          "Mark a stable reference, move a little, then pause in a similar phone orientation. Compare the graph and the change in dB from your reference."
+        ],
+        "symbol" : "dot.radiowaves.left.and.right",
+        "takeaway" : "Use signal strength to compare observations—not to measure distance.",
+        "technicalSections" : [
+          {
+            "body" : "The live graph shows received signal strength (RSSI) in dBm. Less-negative values are stronger; gaps mean no readings. The reference comparison uses recent readings and shows their difference in dB, not metres or a bearing. Technical details retain the earlier check’s signal evidence.",
+            "id" : "rssi",
+            "title" : "The underlying measurement"
+          },
+          {
+            "body" : "A similarity set shows the range across its currently observed Bluetooth identities rather than averaging unlike signals. Expand it to inspect each identity and its own measurement. A physical device may advertise more than one identity.",
+            "id" : "range",
+            "title" : "Several identities in one result"
+          },
+          {
+            "body" : "iOS 27 Channel Sounding requires a paired, connected accessory with compatible hardware. It cannot range arbitrary broadcasts. Spectra keeps discovery connection-free and compares received signal strength instead; it does not display invented meters or direction.",
+            "id" : "channelSounding",
+            "title" : "Why not precise Bluetooth ranging?"
+          }
+        ],
+        "title" : "What Bluetooth signal means"
+      }
+    },
+    {
+      "category" : "understandingResults",
+      "categoryTitle" : "Understanding results",
+      "content" : {
+        "example" : "grouping",
+        "id" : "grouping",
+        "important" : "A shared name, vendor, or signal strength does not establish one physical device. Bluetooth and network identities are not merged across radios.",
+        "navigationTitle" : "Signal grouping",
+        "sections" : [
+          {
+            "body" : "Several local-network services may appear together when their advertised relationship suggests the same endpoint. Expand the group to see its services and why they were linked.",
+            "id" : "network",
+            "title" : "Likely network endpoints"
+          },
+          {
+            "body" : "Bluetooth identities with matching product or advertised profiles can share a similarity set. Its members may be separate devices; Spectra keeps their individual records.",
+            "id" : "profiles",
+            "title" : "Similar is not the same"
+          },
+          {
+            "body" : "Summary folds low-evidence identities into a compact disclosure. All Signals lists every retained source identity and area clue, including those without a recognizable product name.",
+            "id" : "unknown",
+            "title" : "Unclassified activity stays available"
+          },
+          {
+            "body" : "Filters opens a checklist. Select several device categories and measurements, then Apply. A result can match any selected category but must also match a selected measurement. With nothing selected, all retained results are included. Cancel keeps the current filter; Clear restores all results. Filters never change collection, saved reports, or export scope.",
+            "id" : "filters",
+            "title" : "Filter what was found"
+          }
+        ],
+        "steps" : [
+          "Expand a Summary result to inspect its members and grouping explanation.",
+          "Choose All Signals above Results for the exact retained inventory, or Show signals to expand unclassified activity. If Summary and All Signals look alike, the check may contain only separate identities without supported relationships."
+        ],
+        "symbol" : "square.stack.3d.up",
+        "takeaway" : "Fewer cards make results easier to explore. They are not a count of confirmed physical devices.",
+        "technicalSections" : [
+          {
+            "body" : "Repeated callbacks for the same exact framework identity accumulate in one record during a check. A rotating Bluetooth identifier can still create another record; the app does not assume it is the same physical device.",
+            "id" : "repeat",
+            "title" : "Repeated observations"
+          },
+          {
+            "body" : "Bonjour grouping uses a session-scoped hint based on service instance, domain, and interface. It is evidence of a likely endpoint relationship, not authenticated hardware identity. Every service retains its exact record.",
+            "id" : "bonjour",
+            "title" : "The local-network relationship"
+          },
+          {
+            "body" : "Session identifiers reset for each check. Spectra does not use them to track a product across sessions. Similarity sets and compact disclosures change presentation, not the underlying retained evidence.",
+            "id" : "session",
+            "title" : "A new check starts fresh"
+          }
+        ],
+        "title" : "How signals are grouped"
+      }
+    },
+    {
+      "category" : "understandingResults",
+      "categoryTitle" : "Understanding results",
+      "content" : {
+        "example" : "magneticDelta",
+        "id" : "magnetic",
+        "important" : "Speakers, magnets, metal, wiring, chargers, and phone cases can all change the field. A spike cannot identify a device or show its distance or intent.",
+        "navigationTitle" : "Magnetic meter",
+        "sections" : [
+          {
+            "body" : "Pause away from obvious magnets or electronics so a stable display reference can form. Use Rebuild Reference to choose a fresh display comparison point. Automatic event detection has its own calibrated baseline.",
+            "id" : "reference",
+            "title" : "Establish a comparison point"
+          },
+          {
+            "body" : "If prompted, make one gentle figure eight and then pause. If calibration stays limited, the actual-field trace can continue even though automatic spike marking is unavailable.",
+            "id" : "calibration",
+            "title" : "Follow the calibration guidance"
+          },
+          {
+            "body" : "Automatic detection has its own baseline and adaptive threshold. A sustained change or an unusually strong spike can create an event. Ordinary small fluctuations should not.",
+            "id" : "events",
+            "title" : "A fluctuation is not always an event"
+          },
+          {
+            "body" : "Saved magnetic graph retains a downsampled, bounded view of display readings, independently of detector events. Choose Review graph in completed or saved results, switch Actual field or Δ Reference, and move the slider to inspect a reading. Reference changes and missing readings break the line. Older checks without graph data cannot recreate it.",
+            "id" : "replay",
+            "title" : "Review the graph after finishing"
+          }
+        ],
+        "steps" : [
+          "Choose Motion and magnetic for an Area Sweep, establish the reference, then move slowly and pause to compare areas.",
+          "Switch between Actual Field and Δ Reference to make changes easier to see.",
+          "Review the event timeline for meaningful spikes, then revisit the area to see whether the change repeats."
+        ],
+        "symbol" : "waveform.path.ecg",
+        "takeaway" : "Actual Field shows the measurement. Delta shows how far it has moved from your display reference.",
+        "technicalSections" : [
+          {
+            "body" : "The display reference supports the actual/delta graph. The event detector independently evaluates calibrated samples against a noise-adaptive threshold with persistence and strong-spike rules. Rebuilding the display reference does not erase events or reset the detector.",
+            "id" : "baselines",
+            "title" : "Two different baselines"
+          },
+          {
+            "body" : "Events retain time, duration, measured field at the strongest change, signed change from the detector baseline, and threshold overage. These are magnetic excursions—not identified speakers, microphones, or other devices.",
+            "id" : "events",
+            "title" : "What an event records"
+          },
+          {
+            "body" : "Measurement Details exposes calibration, motion quality, and baseline status. Abrupt movement and unusable calibration remain excluded from event detection even while the actual-field trace is visible.",
+            "id" : "quality",
+            "title" : "Measurement quality"
+          },
+          {
+            "body" : "Half-second buckets preserve actual-field and delta extrema plus endpoints. At most 2,048 points are retained; long sweeps keep the most recent graph window and show an earlier-points-omitted notice. This is not a continuous recording. The graph does not determine which changes qualify as detector events.",
+            "id" : "graphBounds",
+            "title" : "What the graph keeps"
+          }
+        ],
+        "title" : "Reading the magnetic meter"
+      }
+    },
+    {
+      "category" : "privacyAndLimitations",
+      "categoryTitle" : "Privacy & limitations",
+      "content" : {
+        "id" : "privacy",
+        "important" : "Advertised device names can contain personal information. Those names may appear in results and saved checks on this iPhone.",
+        "navigationTitle" : "Privacy",
+        "sections" : [
+          {
+            "body" : "Spectra processes observations on device and does not automatically share your results. The app does not capture camera frames or microphone recordings.",
+            "id" : "local",
+            "title" : "Analysis stays on your phone"
+          },
+          {
+            "body" : "Set up access here in Guide or when you start a check. Spectra checks selected sources again before scanning and explains when a source cannot run. Setup does not create a saved session. The camera and microphone are not accessed.",
+            "id" : "permissions",
+            "title" : "You choose what gets measured"
+          },
+          {
+            "body" : "Completed checks are saved locally by default. Turning saving off keeps future checks out of history; it does not delete reports you already saved.",
+            "id" : "history",
+            "title" : "History is your choice"
+          },
+          {
+            "body" : "Export JSON on completed or saved results lets you choose Full evidence or Reduced identifying information, then save or share a file for analysis. Full evidence includes retained advertised data, session name and notes. Reduced omits identifying text and raw payloads but is not anonymous. Both ignore visible results filters. Nothing is uploaded automatically.",
+            "id" : "export",
+            "title" : "Share only when you choose"
+          }
+        ],
+        "steps" : [
+          "Use Save completed sessions on the Guide screen to control future history saving.",
+          "Open Sessions to delete one report, use Select for several, or Erase All Sessions to also remove recovery copies.",
+          "Use Reset Spectra in Guide to erase local sessions and preferences and return to Welcome. iOS permissions are controlled in Settings; copies you saved or shared elsewhere remain."
+        ],
+        "symbol" : "hand.raised",
+        "takeaway" : "No account. No advertising or analytics SDK. Your checks are processed and saved on this iPhone. Sharing is your choice.",
+        "technicalSections" : [
+          {
+            "body" : "Saved reports and notes use iOS file protection and are excluded from device backup. History retains up to 50 sessions within a 32 MiB budget; older sessions may be removed when either limit is reached. These are not tamper-evident forensic records or an unlimited archive.",
+            "id" : "storage",
+            "title" : "Protected, bounded history"
+          },
+          {
+            "body" : "Identifiers reset with each check. Recognizable advertised names and product metadata remain unverified claims and can contain personal information; resetting an identifier does not anonymize a transmitted name.",
+            "id" : "identity",
+            "title" : "Session-scoped identifiers"
+          },
+          {
+            "body" : "When selected, Spectra browses a fixed catalog of Bonjour services on the joined network. It does not pair with discovered devices or open application sessions to their endpoints.",
+            "id" : "network",
+            "title" : "What local-network access does"
+          },
+          {
+            "body" : "Show Wi-Fi name asks for Precise Location While Using the App because iOS requires it for this information. Scanning does not need Location access. Spectra does not request your coordinates or save your network name; the name is cleared when the app backgrounds. A network name does not identify your router or establish that it is safe.",
+            "id" : "wifiName",
+            "title" : "The optional Wi-Fi name"
+          }
+        ],
+        "title" : "Privacy and storage"
+      }
+    },
+    {
+      "category" : "privacyAndLimitations",
+      "categoryTitle" : "Privacy & limitations",
+      "content" : {
+        "id" : "limitations",
+        "important" : "Powered-off, silent, wired, shielded, cellular-only, or locally recording devices may not appear. No result guarantees that a space is clear.",
+        "navigationTitle" : "Blind spots",
+        "sections" : [
+          {
+            "body" : "Bluetooth sees devices currently advertising in a form available to the app. Local Network sees supported services on your joined network—not all nearby Wi-Fi radios.",
+            "id" : "wireless",
+            "title" : "Wireless visibility is limited"
+          },
+          {
+            "body" : "Local Network browsing can send queries visible to other network participants. Guest isolation, blocked multicast, or a separate network can hide devices. Do not join an unfamiliar network merely to improve a scan.",
+            "id" : "networkScope",
+            "title" : "Network discovery is not covert"
+          },
+          {
+            "body" : "Metal, magnets, wiring, and ordinary electronics can cause excursions. A quiet magnetic trace cannot rule out a microphone, camera, or other device.",
+            "id" : "magnetic",
+            "title" : "Magnetic changes are not identities"
+          }
+        ],
+        "steps" : [
+          "Review Coverage to distinguish a source you did not select from one that was unavailable or only partially observed.",
+          "Compare repeatable observations and inspect the surroundings. Treat device names, reflections, and magnetic spikes as clues to investigate."
+        ],
+        "symbol" : "scope",
+        "takeaway" : "A completed check tells you what Spectra observed—not everything that might be present.",
+        "technicalSections" : [
+          {
+            "body" : "Keep Spectra visible during measurement. A foreground interruption ends an active scan with a coverage limitation; Monitor is not an unrestricted background detector.",
+            "id" : "foreground",
+            "title" : "Foreground operation"
+          },
+          {
+            "body" : "Live buffers and retained evidence are bounded. High activity can cause observation drops or candidate retirement, which are reported as coverage limitations. All Signals means every retained record, not every transmission in the environment.",
+            "id" : "bounds",
+            "title" : "Busy-environment limits"
+          }
+        ],
+        "title" : "Capabilities and blind spots"
+      }
+    },
+    {
+      "category" : "gettingStarted",
+      "categoryTitle" : "Getting started",
+      "content" : {
+        "id" : "travel",
+        "important" : "For a credible threat or highly sensitive activity, do not rely on a phone scan. Move sensitive conversations to a more appropriate location and consult a trusted security contact. Do not tamper with equipment or confront people based on an app result.",
+        "navigationTitle" : "Travel review",
+        "sections" : [
+          {
+            "body" : "Review partial or unavailable sources before interpreting results. A 30-second snapshot can miss intermittent broadcasts. Local Network reaches only visible services on your joined network.",
+            "id" : "coverage",
+            "title" : "Check what was actually measured"
+          },
+          {
+            "body" : "A product name can be changed or spoofed. Strong Bluetooth readings are not distance, and magnetic spikes can come from ordinary magnets or wiring. Neither identifies recording activity. Clear filters to include unclassified results.",
+            "id" : "interpret",
+            "title" : "Separate clues from conclusions"
+          },
+          {
+            "body" : "Rename a saved session and add notes about areas inspected, repeatable changes, alternative explanations, and unresolved questions. Notes are yours, not sensor evidence. Avoid sensitive itinerary or personal details.",
+            "id" : "record",
+            "title" : "Record the context"
+          }
+        ],
+        "steps" : [
+          "Choose Quick Check for a radio snapshot or Area Sweep for deliberate exploration. Do not join an unfamiliar Wi-Fi network just to scan.",
+          "Review coverage, repeat observations from consistent positions, and consider ordinary explanations before escalating.",
+          "Check unclassified and out-of-filter results. Expected is your label for this check, not authenticated safety.",
+          "Confirm saving before closing; use Sessions to add your context. An earlier check does not describe the space now."
+        ],
+        "symbol" : "suitcase.rolling",
+        "takeaway" : "Use Spectra to inform your next decision—not to certify that a space is safe.",
+        "technicalSections" : [
+          {
+            "body" : "Reports and notes are bounded local records, not tamper-evident exports or a forensic chain of custody. History retains at most 50 sessions within a 32 MiB budget and can retire older reports. It is excluded from device backup.",
+            "id" : "retention",
+            "title" : "Not a forensic record"
+          },
+          {
+            "body" : "Silent, wired, shielded, powered-off, or unrecognizable devices can remain invisible. Identity rotation can produce more than one exact record, and the app does not merge devices across sessions. No checklist or result is an all-clear.",
+            "id" : "limits",
+            "title" : "Beyond the iPhone's visibility"
+          }
+        ],
+        "title" : "Reviewing an unfamiliar space"
+      }
+    },
+    {
+      "category" : "gettingStarted",
+      "categoryTitle" : "Getting started",
+      "content" : {
+        "id" : "setup",
+        "important" : "Permission, hardware readiness, network reachability, and device visibility are different things. A green permission checkmark is not a safety verdict.",
+        "navigationTitle" : "Measurement setup",
+        "sections" : [
+          {
+            "body" : "Welcome explains the app. Get Started opens measurement setup. Tap a measurement to request its access; a readiness checkmark reflects the system response. You can continue without every permission. A prompt explains what remains unconfigured, and a later check requests only missing access.",
+            "id" : "welcome",
+            "title" : "Start with access"
+          },
+          {
+            "body" : "Quick Check uses Bluetooth and optional Local Network for 30 seconds. Area Sweep is untimed and can use Bluetooth, Local Network, and Motion and magnetic, together or independently. Monitor is stationary and radio-only. Smart Glasses and Smart Watches are Bluetooth-only specialist checks without source or result filters.",
+            "id" : "sources",
+            "title" : "Choose measurements for each check"
+          },
+          {
+            "body" : "Local Network needs a joined Wi-Fi or supported wired local link and permission. Spectra offers Check again or continuation without that measurement when others can run. Returning from Settings rechecks availability; it does not silently start a scan. An internet connection is not required for local discovery.",
+            "id" : "network",
+            "title" : "No local network available?"
+          },
+          {
+            "body" : "Completed means the source ran for the available check window, not that every device was found. Partial means coverage was interrupted or quality-limited. Unavailable means the source could not run; Not selected means you excluded it. Read the accompanying reason before drawing conclusions.",
+            "id" : "coverage",
+            "title" : "Read Coverage"
+          }
+        ],
+        "steps" : [
+          "Open Guide → Measurement access to revisit setup.",
+          "If iOS has already denied access, use Settings → Privacy & Security or the app’s settings to change it.",
+          "Return to Spectra, choose measurements, and review any readiness message before starting."
+        ],
+        "symbol" : "checklist",
+        "takeaway" : "Allow only the measurements you want. Setup prepares access; it does not start a scan.",
+        "technicalSections" : [
+          {
+            "body" : "Showing an optional Wi-Fi name uses Apple’s Access Wi-Fi Information rules, including Precise Location While Using the App when required. This is not needed for Bluetooth, magnetic exploration, or Bonjour browsing. Spectra does not request geographic coordinates or save the Wi-Fi name. iOS may withhold a name even when local discovery can operate.",
+            "id" : "location",
+            "title" : "Why does Wi-Fi name ask for Location?"
+          },
+          {
+            "body" : "The displayed network name provides connection context, not a router model, physical location, or assurance that the network is trustworthy. Guest networks and client isolation may prevent discovering other clients despite a working connection.",
+            "id" : "router",
+            "title" : "A Wi-Fi name is not a router identity"
+          },
+          {
+            "body" : "The shipped device catalog, Guide, Bluetooth observation, magnetic exploration, saved history, and preparing JSON work on device. Local Network still needs a usable local link. Sending email, opening website help, cloud file destinations, or using an external AI service may require internet.",
+            "id" : "offline",
+            "title" : "What works without internet?"
+          }
+        ],
+        "title" : "Set up measurements and permissions"
+      }
+    },
+    {
+      "category" : "understandingResults",
+      "categoryTitle" : "Understanding results",
+      "content" : {
+        "id" : "monitoring",
+        "important" : "Keep Spectra open. Locking the iPhone or switching apps ends measurement. Monitor is not an unattended or background security alarm.",
+        "navigationTitle" : "Monitor",
+        "sections" : [
+          {
+            "body" : "Each available radio source needs 30 seconds of active observation to establish its baseline. Permission waiting does not count. The countdown follows the slowest participating source. Observe 30 seconds longer extends that comparison once to 60 seconds per source. No duration guarantees discovery of every device.",
+            "id" : "baseline",
+            "title" : "Give the starting comparison time"
+          },
+          {
+            "body" : "Baseline signals remain in the final inventory. A potentially concerning device already present is not cleared or hidden. A device first observed during baseline collection becomes part of that starting comparison; one first observed afterward is newly observed, not necessarily newly arrived.",
+            "id" : "meaning",
+            "title" : "Initially observed does not mean trusted"
+          },
+          {
+            "body" : "Newly observed, Returned, and Not recently seen count distinct signal identities represented in retained changes. Repeated changes for the same identity count once in each row. One identity can appear in more than one row, so do not add these counts as a total device count. The latest change stays visible until you mark changes reviewed; that acknowledgment does not trust a device, reset the baseline, or erase evidence.",
+            "id" : "dashboard",
+            "title" : "Read changes at a glance"
+          },
+          {
+            "body" : "Use Monitor options → Start new baseline. The earlier comparison and its retained events remain in the same session. Up to nine comparisons can be kept in one session; finish and start another Monitor when that limit is reached. Spectra does not automatically judge that you moved or silently replace your baseline.",
+            "id" : "restart",
+            "title" : "Moved to a different position?"
+          }
+        ],
+        "steps" : [
+          "Choose Monitor and the radio measurements you need. Place the phone where it can stay.",
+          "Wait for the starting comparison, then glance at the change summary. Do not interpret a quiet screen as an all-clear.",
+          "Finish to explore named/grouped results, repeat counts, change times, and any earlier comparisons."
+        ],
+        "symbol" : "dot.radiowaves.left.and.right",
+        "takeaway" : "Keep the iPhone stationary and watch for observation changes—not a stream of device arrivals.",
+        "technicalSections" : [
+          {
+            "body" : "Bluetooth uses 45 seconds without an observation before Not recently seen. Bonjour follows service announcements and removals. Sleep, identity rotation, interference, and changing broadcast behavior can produce changes without physical movement. Matching names or vendors never justify combining separate identities.",
+            "id" : "silence",
+            "title" : "Why did an identity disappear or return?"
+          },
+          {
+            "body" : "Coverage describes source loss rather than calling every device gone. A late or recovering source gets a 30-second source-local observation window; its initial identities join that source’s comparison instead of creating a burst of apparent arrivals. A network reconnection can change which services are visible; use a new baseline when the surroundings or network have changed.",
+            "id" : "recovery",
+            "title" : "What happens when a source stops?"
+          },
+          {
+            "body" : "Each comparison retains up to 40 recent raw change events. The display combines the same identity and change type, with retained occurrence count and first/latest times; full JSON preserves retained raw events. Counts may change as older events leave this bounded history. Radio intensity is not a measure of risk.",
+            "id" : "limits",
+            "title" : "Bounded events, not a lifetime counter"
+          }
+        ],
+        "title" : "Understand Monitor and its baseline"
+      }
+    },
+    {
+      "category" : "privacyAndLimitations",
+      "categoryTitle" : "Privacy & limitations",
+      "content" : {
+        "id" : "sessions",
+        "important" : "Deleting or resetting Spectra cannot delete exports, email attachments, or files already saved elsewhere. iOS permissions also remain under Settings control.",
+        "navigationTitle" : "Sessions",
+        "sections" : [
+          {
+            "body" : "Saving completed sessions is on by default and can be changed in Guide. Turning it off affects future saving, not existing history. The completed check tells you whether it was saved. If saving fails, keep the result open and use Retry Saving or Export JSON before discarding it.",
+            "id" : "saving",
+            "title" : "Confirm a check was saved"
+          },
+          {
+            "body" : "Open a session and choose Session options → Rename, or use its list-row menu. Names can be up to 80 characters. Clearing a custom name restores the check-type name. Notes hold up to 1,000 characters of your own context; they do not become detector evidence. A rename does not change the original scan time.",
+            "id" : "names",
+            "title" : "Give a session a useful name"
+          },
+          {
+            "body" : "History keeps up to 50 sessions within 32 MiB, whichever limit is reached first. Saving a new check can remove the oldest reports. Sessions warns as the count approaches the limit and reports retention removals. Export important records before continuing to fill history. Local history is excluded from device backup.",
+            "id" : "capacity",
+            "title" : "Why did an older session disappear?"
+          },
+          {
+            "body" : "Delete one session from its list actions, or Select several. Erase All Sessions removes stored sessions and recovery copies; it is disabled when there is nothing to erase. Reset Spectra in Guide also clears preferences and returns to Welcome. Confirmations are deliberate because erasure cannot be undone.",
+            "id" : "erase",
+            "title" : "Choose the right erase action"
+          }
+        ],
+        "steps" : [
+          "Open Sessions and choose a check by its name and time.",
+          "Review results and Coverage, rename or add notes, then export anything you need to keep outside bounded history.",
+          "Use individual, selected, or all-session deletion for the scope you intend. Read the confirmation before erasing."
+        ],
+        "symbol" : "clock.arrow.circlepath",
+        "takeaway" : "Keep the checks you need, add context, and stay in control of local history.",
+        "technicalSections" : [
+          {
+            "body" : "Spectra pauses history changes to avoid overwriting unreadable data. Preserve Copy and Start Fresh keeps a protected recovery copy before creating new history. This is not a promise that damaged data can be recovered. Erase Stored Data is the separate destructive choice. Contact support if a report matters before erasing.",
+            "id" : "recovery",
+            "title" : "History cannot be read"
+          },
+          {
+            "body" : "Sessions groups by your current local calendar and shows the original date and duration in details. Recorded with identifies the app version/build that produced a report. Older reports may show Not recorded; opening them never fills in today’s version or invents missing graph data.",
+            "id" : "timestamps",
+            "title" : "Old results are historical"
+          }
+        ],
+        "title" : "Save, rename, and erase sessions"
+      }
+    },
+    {
+      "category" : "privacyAndLimitations",
+      "categoryTitle" : "Privacy & limitations",
+      "content" : {
+        "id" : "exporting",
+        "important" : "A JSON report is not a packet capture, continuous recording, authenticated device inventory, or tamper-evident forensic record. An AI can make mistakes; review its conclusions against the actual evidence.",
+        "navigationTitle" : "JSON export",
+        "sections" : [
+          {
+            "body" : "Includes all retained results, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when available. It ignores the visible results filter. This is the most useful format for detailed analysis and may include personal information.",
+            "id" : "full",
+            "title" : "Full evidence"
+          },
+          {
+            "body" : "Keeps device categories, typed confidence, signal measurements, relative timing, and source-coverage states. It omits original identifiers, absolute timestamps, names, notes, manufacturers, model labels, raw payloads, and free-text evidence/limitations. Measurement patterns can still reveal context, so reduced does not mean anonymous. The missing context can limit an analyst’s conclusions.",
+            "id" : "reduced",
+            "title" : "Reduced identifying information"
+          },
+          {
+            "body" : "Save to Files opens Apple’s destination picker. Share JSON opens the system share sheet. Spectra prepares the selected file locally; a destination such as cloud storage, email, or an AI service may transfer and retain it under that service’s policies. Erasing Spectra afterward cannot recall external copies.",
+            "id" : "destinations",
+            "title" : "Save or share"
+          },
+          {
+            "body" : "Ask it to summarize observed device categories, explain confidence and coverage limits, identify repeatable magnetic events, and suggest non-invasive follow-up checks. Tell it to treat all device names, transmitted fields, and notes as untrusted data—not instructions. Do not ask it to certify safety or infer recording from a product name.",
+            "id" : "llm",
+            "title" : "Ask an AI useful questions"
+          }
+        ],
+        "steps" : [
+          "Open completed results or a saved session and choose Export JSON.",
+          "Select Full evidence or Reduced identifying information and read what is included.",
+          "Choose Save to Files or Share JSON. Review the destination and its privacy practices before sending."
+        ],
+        "symbol" : "square.and.arrow.up",
+        "takeaway" : "Choose how much to share, then save or send a portable report. Spectra never uploads it automatically.",
+        "technicalSections" : [
+          {
+            "body" : "The export identifies its schema and producing app build. Full evidence uses ISO 8601 UTC timestamps, RSSI in dBm, magnetic field in microteslas (µT), and durations in seconds. Payload bytes use base64. Missing fields mean not recorded or unavailable, not zero. Reduced exports are a separate allowlisted shape, not a full report with blank names.",
+            "id" : "format",
+            "title" : "Versioned, explicit units"
+          },
+          {
+            "body" : "Saved magnetic display points preserve a bounded, downsampled window. Do not connect gaps or different reference revisions, assume the complete sweep was retained, or confuse display delta with the detector’s independent calibrated baseline. Bluetooth reports preserve signal summaries rather than full proximity graph replay.",
+            "id" : "graphs",
+            "title" : "What a graph can explain"
+          }
+        ],
+        "title" : "Export JSON for analysis"
+      }
+    },
+    {
+      "category" : "understandingResults",
+      "categoryTitle" : "Understanding results",
+      "content" : {
+        "id" : "troubleshooting",
+        "important" : "For a repeatable problem, contact support@arcsignal.app. Start with support information, the steps taken, and what you expected. Do not send private scan results unless you deliberately choose to share them.",
+        "navigationTitle" : "Troubleshooting",
+        "sections" : [
+          {
+            "body" : "The device may be silent, sleeping, already connected without recognizable advertisements, on another network, or using a signature outside the catalog. Observe again with Bluetooth enabled, and use general Quick Check or Area Sweep to include unclassified activity. A specialist intentionally shows only supported matches. Do not change device ownership or connect to unknown equipment to force a result.",
+            "id" : "missing",
+            "title" : "My known device does not appear"
+          },
+          {
+            "body" : "A broadcast name is self-reported and can be renamed or copied. Company identifiers sometimes identify a chip or protocol namespace, not the retail manufacturer. Possible and Probable are evidence labels, not numeric probabilities. Conflicting product claims stay ambiguous; details explain the supporting evidence. Catalog updates ship with app updates; Spectra does not download identification data during a scan.",
+            "id" : "names",
+            "title" : "The name or type looks wrong"
+          },
+          {
+            "body" : "Actual field and display delta can work before the calibrated event detector is ready. A 0/25-style sample count describes accepted detector-baseline readings, not permission progress. Follow the current readiness instruction, pause away from obvious magnets, and check Measurement Details. Strong absolute field alone is not a qualifying relative excursion. Try removing a magnetic case or mount if practical.",
+            "id" : "magnetic",
+            "title" : "The graph moves but no spike is saved"
+          },
+          {
+            "body" : "Internet access does not prove local discovery works. Guest isolation, blocked multicast, unadvertised service types, separate subnets, or a denied Local Network permission can prevent results. Check Coverage and the joined network. Spectra is not a scanner for all Wi-Fi radios and does not probe arbitrary ports.",
+            "id" : "network",
+            "title" : "Wi-Fi works but no devices appear"
+          },
+          {
+            "body" : "Keep Spectra visible. Locking, switching apps, permission changes, source loss, and early Finish can limit a check. Review the incomplete message and retained findings; do not interpret it as no matches. After restoring access, start a fresh check. On a busy scan, wait for Finish to explore stable detailed results.",
+            "id" : "interrupted",
+            "title" : "A check stopped or looks incomplete"
+          }
+        ],
+        "steps" : [
+          "Open Coverage and read the reason for each partial or unavailable measurement.",
+          "Check Settings if access was denied, return to Spectra, and repeat the smallest affected check.",
+          "Use Guide → Copy support information, then Email support. The copy includes version, build, iOS, hardware model and catalog revision—not scan data."
+        ],
+        "symbol" : "questionmark.circle",
+        "takeaway" : "First check coverage and measurement state. A missing observation is not evidence that nothing is there.",
+        "technicalSections" : [
+          {
+            "body" : "Live radios, sensors, and the screen use power. Finish checks you no longer need. Keep the phone ventilated and follow iOS temperature warnings; Spectra cannot guarantee identical performance across all hardware or conditions. Bounded buffers may drop observations in dense environments, which Coverage reports.",
+            "id" : "battery",
+            "title" : "Heat, battery, and dense environments"
+          },
+          {
+            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. Email opens your chosen mail app; nothing is attached or sent automatically.",
+            "id" : "support",
+            "title" : "Help us reproduce it safely"
+          }
+        ],
+        "title" : "Troubleshoot unexpected results"
+      }
+    }
+  ],
+  "build" : "1000",
+  "schemaVersion" : 1,
+  "supportEmail" : "support@arcsignal.app"
+}
