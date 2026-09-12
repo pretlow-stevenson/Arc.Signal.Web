@@ -266,7 +266,7 @@
         "takeaway" : "No account. No advertising or analytics SDK. Your checks are processed and saved on this iPhone. Sharing is your choice.",
         "technicalSections" : [
           {
-            "body" : "Saved reports and notes use iOS file protection and are excluded from device backup. History retains up to 50 sessions within a 32 MiB budget; older sessions may be removed when either limit is reached. These are not tamper-evident forensic records or an unlimited archive.",
+            "body" : "Saved reports and notes use iOS file protection. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. History retains up to 50 sessions within a 32 MiB budget; older sessions may be removed when either limit is reached. These are not tamper-evident forensic records or an unlimited archive.",
             "id" : "storage",
             "title" : "Protected, bounded history"
           },
@@ -368,7 +368,7 @@
         "takeaway" : "Use Spectra to inform your next decision—not to certify that a space is safe.",
         "technicalSections" : [
           {
-            "body" : "Reports and notes are bounded local records, not tamper-evident exports or a forensic chain of custody. History retains at most 50 sessions within a 32 MiB budget and can retire older reports. It is excluded from device backup.",
+            "body" : "Reports and notes are bounded local records, not tamper-evident exports or a forensic chain of custody. History retains at most 50 sessions within a 32 MiB budget and can retire older reports. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
             "id" : "retention",
             "title" : "Not a forensic record"
           },
@@ -517,7 +517,7 @@
             "title" : "Give a session a useful name"
           },
           {
-            "body" : "History keeps up to 50 sessions within 32 MiB, whichever limit is reached first. Saving a new check can remove the oldest reports. Sessions warns as the count approaches the limit and reports retention removals. Export important records before continuing to fill history. Local history is excluded from device backup.",
+            "body" : "History keeps up to 50 sessions within 32 MiB, whichever limit is reached first. Saving a new check can remove the oldest reports. Sessions warns as the count approaches the limit and reports retention removals. Export important records before continuing to fill history. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
             "id" : "capacity",
             "title" : "Why did an older session disappear?"
           },

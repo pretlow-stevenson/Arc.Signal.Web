@@ -258,3 +258,16 @@ test('privacy policy is public, linked, readable without scripts, and explains d
   }
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /https:\/\/arcsignal.app\/spectra-privacy.html/);
 });
+
+test('backup disclosures distinguish the exclusion request from guarantees and exported copies', async () => {
+  for (const name of ['spectra.html', 'spectra-privacy.html', 'guide.html']) {
+    const page = pages.get(name);
+    assert.ok(page.includes('for exclusion from device backups'), name);
+    assert.ok(page.includes('iOS controls backup and restore behavior'), name);
+    assert.ok(page.includes('Files you export may be'), name);
+    assert.doesNotMatch(page, /\bexcluded from (?:device )?backups?\b/i, name);
+  }
+  const policy = pages.get('spectra-privacy.html');
+  assert.ok(policy.includes('including recovery copies'));
+  assert.ok(policy.includes('not a guarantee that sessions can never appear in a backup or on a restored device'));
+});
