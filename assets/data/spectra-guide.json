@@ -252,7 +252,7 @@
             "title" : "Read the full privacy policy"
           },
           {
-            "body" : "Export JSON on completed or saved results lets you choose Full evidence or Reduced identifying information, then save or share a file for analysis. Full evidence includes retained advertised data, session name and notes. Reduced omits identifying text and raw payloads but is not anonymous. Both ignore visible results filters. Nothing is uploaded automatically.",
+            "body" : "Export JSON on completed or saved results lets you choose Analysis JSON, Technical archive, or Reduced identifying information. Analysis JSON includes meaningful retained evidence and your notes; the technical archive also includes raw retained data and any saved AI analysis. Reduced omits identifying text and raw payloads but is not anonymous. All formats ignore visible results filters. Nothing is uploaded automatically.",
             "id" : "export",
             "title" : "Share only when you choose"
           }
@@ -266,7 +266,7 @@
         "takeaway" : "No account. No advertising or analytics SDK. Your checks are processed and saved on this iPhone. Sharing is your choice.",
         "technicalSections" : [
           {
-            "body" : "Saved reports and notes use iOS file protection. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. History retains up to 50 sessions within a 32 MiB budget; older sessions may be removed when either limit is reached. These are not tamper-evident forensic records or an unlimited archive.",
+            "body" : "Saved reports, notes, and AI analyses use iOS file protection. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. History retains up to 50 sessions within a 32 MiB budget; older sessions may be removed when either limit is reached. These are not tamper-evident forensic records or an unlimited archive.",
             "id" : "storage",
             "title" : "Protected, bounded history"
           },
@@ -390,9 +390,14 @@
         "navigationTitle" : "Measurement setup",
         "sections" : [
           {
-            "body" : "Spectra requires iOS 27 or later. The supported hardware range starts with iPhone 16, including iPhone 16e, and later iPhones. Measurement availability still depends on permissions, hardware, and the signals a device makes available.",
+            "body" : "Spectra requires an Apple Intelligence-capable device running iOS 27 or later. On Apple iPhone, this includes 15 Pro/Pro Max and the 16 family or later. Standard 15/15 Plus models are not supported. Apple Intelligence can be disabled or still downloading on supported hardware; that affects analysis readiness, not your scanning entitlement.",
             "id" : "compatibility",
             "title" : "Supported iPhones"
+          },
+          {
+            "body" : "The app is free to download. A one-time, non-consumable purchase unlocks all live scans before the first check; there is no free-scan allowance or subscription. Spectra checks hardware eligibility before offering the purchase. Guide → Purchase and Restore shows your unlock or restores a purchase with the same Apple Account. Internet access is needed to purchase or restore; verified purchases can remain available offline.",
+            "id" : "unlock",
+            "title" : "Unlock before scanning"
           },
           {
             "body" : "Welcome explains the app. Get Started opens measurement setup. Tap a measurement to request its access; a readiness checkmark reflects the system response. You can continue without every permission. A prompt explains what remains unconfigured, and a later check requests only missing access.",
@@ -434,7 +439,7 @@
             "title" : "A Wi-Fi name is not a router identity"
           },
           {
-            "body" : "The shipped device catalog, Guide, Bluetooth observation, magnetic exploration, saved history, and preparing JSON work on device. Local Network still needs a usable local link. Sending email, opening website help, cloud file destinations, or using an external AI service may require internet.",
+            "body" : "The shipped device catalog, Guide, Bluetooth observation, magnetic exploration, saved history, and preparing JSON work on device. Apple Intelligence analysis also works locally once its supported model is ready. Local Network still needs a usable local link. Sending email, opening website help, cloud file destinations, or using an external AI service may require internet.",
             "id" : "offline",
             "title" : "What works without internet?"
           }
@@ -563,9 +568,24 @@
         "navigationTitle" : "JSON export",
         "sections" : [
           {
-            "body" : "Includes all retained results, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when available. It ignores the visible results filter. This is the most useful format for detailed analysis and may include personal information.",
+            "body" : "On completed or saved results, choose Analyze on Device for an Apple Intelligence interpretation of the same evidence in Analysis JSON. Nothing is uploaded. Spectra saves the result with the scan, including when automatic saving is off. Generated text is separate from measurements, links to supporting evidence, and stays under 1,000 words across all sections. Simple scans produce shorter reports. You can cancel while analysis is running. Scan results and any earlier saved analysis remain available if generation fails.",
+            "id" : "analysis",
+            "title" : "Analyze on Device"
+          },
+          {
+            "body" : "Enable Apple Intelligence in Settings and allow its model to finish downloading. Availability also depends on supported language and region. Check Availability refreshes the status. Dense scans are processed in batches; a partial report identifies unprocessed evidence rather than treating it as absent. Reading a saved analysis does not generate it again. Changed notes or names mark older analysis as reflecting earlier context; Analyze Again replaces it only after a successful save.",
+            "id" : "readiness",
+            "title" : "When analysis is unavailable"
+          },
+          {
+            "body" : "The default export is a compact, model-friendly evidence document with scan-local citations, source coverage, identity hypotheses, interpreted evidence, radio summaries, magnetic detector events, Monitor changes, and user context. It omits raw packet bytes and display-only graphs. It includes all retained signal records regardless of filters and excludes earlier AI output. This exact evidence format powers on-device analysis.",
+            "id" : "compact",
+            "title" : "Analysis JSON"
+          },
+          {
+            "body" : "Includes all retained results, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when available. It ignores the visible results filter. Use this for detailed technical review. It may include personal information and any saved AI analysis, which is labeled separately.",
             "id" : "full",
-            "title" : "Full evidence"
+            "title" : "Technical archive"
           },
           {
             "body" : "Keeps device categories, typed confidence, signal measurements, relative timing, and source-coverage states. It omits original identifiers, absolute timestamps, names, notes, manufacturers, model labels, raw payloads, and free-text evidence/limitations. Measurement patterns can still reveal context, so reduced does not mean anonymous. The missing context can limit an analyst’s conclusions.",
@@ -585,14 +605,14 @@
         ],
         "steps" : [
           "Open completed results or a saved session and choose Export JSON.",
-          "Select Full evidence or Reduced identifying information and read what is included.",
+          "Choose Analysis JSON, Technical archive, or Reduced identifying information and read what is included.",
           "Choose Save to Files or Share JSON. Review the destination and its privacy practices before sending."
         ],
         "symbol" : "square.and.arrow.up",
         "takeaway" : "Choose how much to share, then save or send a portable report. Spectra never uploads it automatically.",
         "technicalSections" : [
           {
-            "body" : "The export identifies its schema and producing app build. Full evidence uses ISO 8601 UTC timestamps, RSSI in dBm, magnetic field in microteslas (µT), and durations in seconds. Payload bytes use base64. Missing fields mean not recorded or unavailable, not zero. Reduced exports are a separate allowlisted shape, not a full report with blank names.",
+            "body" : "The export identifies its schema and producing app build. The technical archive uses ISO 8601 UTC timestamps, RSSI in dBm, magnetic field in microteslas (µT), and durations in seconds. Payload bytes use base64. Missing fields mean not recorded or unavailable, not zero. Reduced exports are a separate allowlisted shape, not a full report with blank names.",
             "id" : "format",
             "title" : "Versioned, explicit units"
           },
@@ -668,5 +688,5 @@
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,
   "supportEmail" : "support@arcsignal.app",
-  "supportedHardware" : "iPhone 16 or later"
+  "supportedHardware" : "Apple Intelligence-capable device"
 }

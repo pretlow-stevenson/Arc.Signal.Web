@@ -64,7 +64,9 @@ test('no scripts, embedded third-party content, forms, trackers or remote fonts'
 test('unreleased download is a truthful status rather than a broken link', () => {
   const html = pages.get('spectra.html');
   assert.match(html, /<p id="app-store-download" class="status">App Store release coming soon<\/p>/);
-  assert.match(html, /id="compatibility"[^>]*>iPhone 16 or later · iOS 27 or later<\/p>/);
+  assert.match(html, /id="compatibility"[^>]*>Requires an Apple Intelligence-capable device with iOS 27 or later/);
+  assert.match(html, /Apple iPhone 15 Pro\/Pro Max and the 16 family or later/);
+  assert.match(html, /One-time purchase before your first live scan/);
   for (const page of [html, pages.get('index.html')]) {
     assert.doesNotMatch(page, /href="http:\/\/"|Available now|Now available|iPhone 16\/17/);
   }
@@ -230,7 +232,7 @@ test('website Guide is generated from all twelve native topics with release and 
   assert.equal(payload.build, '1000');
   assert.equal(payload.buildIdentifier, '1A1000');
   assert.equal(payload.minimumOS, 'iOS 27 or later');
-  assert.equal(payload.supportedHardware, 'iPhone 16 or later');
+  assert.equal(payload.supportedHardware, 'Apple Intelligence-capable device');
   assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
   assert.equal(payload.supportEmail, 'support@arcsignal.app');
   assert.equal(payload.articles.length, 12);

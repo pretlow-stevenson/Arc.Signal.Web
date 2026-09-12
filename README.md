@@ -84,16 +84,21 @@ update the homepage status, metadata, and download validation together.
 The official black [Download on the App Store badge](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)
 is stored locally for use at release. Preserve its proportions
 and surrounding clear space, following [Apple’s marketing guidelines](https://developer.apple.com/app-store/marketing/guidelines/).
-The footer credits Apple, the Apple logo, iPhone, and App Store, and includes the
+The footer credits Apple, Apple Intelligence, the Apple logo, iPhone, and App Store, and includes the
 IOS credit from [Apple’s trademark list](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html).
 
 Keep compatibility, customer-support details, and privacy disclosures aligned
 with the app. The complete policy is https://arcsignal.app/spectra-privacy.html.
 The owner should review its support-retention and provider statements before
 submission. App Store Connect privacy labels remain a separate declaration.
-iOS 27 is enforced in the app; iPhone 16+ is the supported hardware range, not a
-nonexistent exact-model App Store capability filter. Older compatible phones
-are not blocked by a fabricated hardware requirement.
+The app requires iOS 27 and Apple Intelligence-capable hardware. It checks
+eligibility before purchase and again before live scanning; importing Foundation
+Models does not create an App Store installation filter. Disabled or downloading
+Intelligence affects analysis readiness, not hardware eligibility. All live scans
+require a verified one-time unlock. Set the production non-consumable identifier
+and price in the app and App Store Connect before release; there is no free scan
+allowance or subscription. Analysis uses the exported evidence locally and saves
+the interpretation with the scan.
 
 ## Seamless release status
 
