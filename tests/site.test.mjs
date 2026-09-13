@@ -84,6 +84,16 @@ test('marketing retains the important measurement and identity limits', () => {
   assert.match(html, /<summary>Can Spectra tell me a room is safe\?<\/summary><p>No\./);
 });
 
+test('Bluetooth proximity copy describes numeric readings, not a retired chart', () => {
+  assert.match(pages.get('spectra.html'), /live signal-strength reading/);
+  const guide = pages.get('guide.html');
+  assert.match(guide, /No current reading/);
+  assert.match(guide, /Silence does not mean zero signal/);
+  for (const html of [guide, pages.get('spectra.html')]) {
+    assert.doesNotMatch(html, /live signal-strength graph|Compare the graph|full proximity graph replay/);
+  }
+});
+
 test('keyboard access, reduced motion, responsive layouts and image dimensions remain present', () => {
   for (const html of pages.values()) {
     assert.match(html, /class="skip-link" href="#main"/);

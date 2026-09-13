@@ -81,13 +81,13 @@
         "steps" : [
           "Choose Check Bluetooth Proximity in results, then select a found device. Its individual details can open it directly.",
           "Start Signal Check to see live dBm readings. A saved result may require confirming a possible match; a name does not verify identity.",
-          "Mark a stable reference, move a little, then pause in a similar phone orientation. Compare the graph and the change in dB from your reference."
+          "Mark a stable reference, move a little, then pause in a similar phone orientation. Compare the live reading and the change in dB from your reference."
         ],
         "symbol" : "dot.radiowaves.left.and.right",
         "takeaway" : "Use signal strength to compare observations—not to measure distance.",
         "technicalSections" : [
           {
-            "body" : "The live graph shows received signal strength (RSSI) in dBm. Less-negative values are stronger; gaps mean no readings. The reference comparison uses recent readings and shows their difference in dB, not metres or a bearing. Technical details retain the earlier check’s signal evidence.",
+            "body" : "The live number shows received signal strength (RSSI) in dBm. Less-negative values are stronger: −40 dBm is stronger than −80 dBm. After ten seconds without a reading, the current value is replaced by No current reading; the previous value remains time-labeled briefly. Silence does not mean zero signal or prove a device has left. The reference comparison uses the median of up to six recent readings and shows the change in dB, not metres or a bearing. Technical details retain the earlier check’s signal evidence.",
             "id" : "rssi",
             "title" : "The underlying measurement"
           },
@@ -410,6 +410,11 @@
             "title" : "Choose measurements for each check"
           },
           {
+            "body" : "Touch and hold Spectra’s app icon, then choose Quick Check, Smart Glasses, or Smart Watches. Quick Check opens measurement selection; the specialist shortcuts check Bluetooth access before starting. On first use, finish Welcome and measurement setup, unlock if needed, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
+            "id" : "shortcuts",
+            "title" : "Start from the Home Screen"
+          },
+          {
             "body" : "Local Network needs a joined Wi-Fi or supported wired local link and permission. Spectra offers Check again or continuation without that measurement when others can run. Returning from Settings rechecks availability; it does not silently start a scan. An internet connection is not required for local discovery.",
             "id" : "network",
             "title" : "No local network available?"
@@ -617,7 +622,7 @@
             "title" : "Versioned, explicit units"
           },
           {
-            "body" : "Saved magnetic display points preserve a bounded, downsampled window. Do not connect gaps or different reference revisions, assume the complete sweep was retained, or confuse display delta with the detector’s independent calibrated baseline. Bluetooth reports preserve signal summaries rather than full proximity graph replay.",
+            "body" : "Saved magnetic display points preserve a bounded, downsampled window. Do not connect gaps or different reference revisions, assume the complete sweep was retained, or confuse display delta with the detector’s independent calibrated baseline. Bluetooth reports preserve signal summaries. A Bluetooth Proximity check is a separate, unsaved live measurement.",
             "id" : "graphs",
             "title" : "What a graph can explain"
           }
