@@ -51,10 +51,14 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
   }
 });
 
-test('no scripts, embedded third-party content, forms, trackers or remote fonts', () => {
+test('only the local optional motion script is permitted; no third-party content or tracking', () => {
   for (const [name, html] of pages) {
-    assert.doesNotMatch(html, /<(?:script|iframe|object|embed|form)\b|\son[a-z]+\s*=/i, name);
-    assert.match(html, /default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self'/, name);
+    const motion = '<script src="assets/js/site-motion.js" defer></script>';
+    const marketing = ['index.html', 'spectra.html', 'seamless.html'].includes(name);
+    assert.equal(html.split(motion).length - 1, marketing ? 1 : 0, name);
+    assert.doesNotMatch(html.replace(motion, ''), /<(?:script|iframe|object|embed|form)\b|\son[a-z]+\s*=/i, name);
+    assert.match(html, /default-src 'none'; style-src 'self'; (?:script-src 'self'; )?font-src 'self'; img-src 'self'/, name);
+    if (marketing) assert.ok(html.includes("script-src 'self'"), name);
     assert.match(html, /base-uri 'none'; form-action 'none'; object-src 'none'/, name);
     assert.doesNotMatch(html, /googletagmanager|google-analytics|fonts\.google|kmeans|sigint communications/i, name);
   }
@@ -158,16 +162,16 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
 test('public bundle excludes development files and remains lightweight', async () => {
   assert.ok(files.every(name => !/(^|\/)(?:\.git|tests|scripts|node_modules|\.env)(\/|$)/.test(name)));
   const bytes = await Promise.all(files.map(async name => (await stat(join(root, name))).size));
-  assert.ok(bytes.reduce((sum, value) => sum + value, 0) < 3_000_000, 'Public assets exceed the 3 MB budget for two products');
+  assert.ok(bytes.reduce((sum, value) => sum + value, 0) < 3_000_000, 'Public assets exceed the 3 MB budget');
   assert.equal((await readFile(join(root, 'CNAME'), 'utf8')).trim(), 'arcsignal.app');
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/arcsignal\.app\/<\/loc>/);
 });
 
-test('product pages are reachable, independently indexed, and have active navigation', async () => {
+test('public Spectra pages are reachable, indexed, and have active navigation', async () => {
   const home = pages.get('index.html');
   const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
   const descriptions = new Set();
-  for (const name of ['index.html', 'spectra.html', 'seamless.html']) {
+  for (const name of ['index.html', 'spectra.html']) {
     const html = pages.get(name);
     const url = `https://arcsignal.app/${name === 'index.html' ? '' : name}`;
     assert.ok(html.includes(`<link rel="canonical" href="${url}">`), name);
@@ -179,13 +183,29 @@ test('product pages are reachable, independently indexed, and have active naviga
       assert.ok(html.includes(`href="${name}" aria-current="page"`), name);
     }
   }
-  assert.equal(descriptions.size, 3, 'Each page needs its own search description');
+  assert.equal(descriptions.size, 2, 'Each page needs its own search description');
   assert.ok(!descriptions.has(undefined));
-  assert.match(home, /Security tools &amp; everyday utilities/);
+  assert.match(home, /Arc Signal \/ Makers of Spectra™/);
   assert.match(pages.get('404.html'), /<meta name="robots" content="noindex">/);
   assert.doesNotMatch(sitemap, /404/);
   for (const [, value] of pages.get('404.html').matchAll(/(?:href|src)="([^"]+)"/g)) {
     assert.ok(value.startsWith('/') || value.startsWith('#') || value.startsWith('https://'), `404 resource must work at any depth: ${value}`);
+  }
+});
+
+test('Seamless stays directly accessible but is absent from public promotion and indexing', async () => {
+  assert.ok(files.includes('seamless.html'));
+  assert.match(pages.get('seamless.html'), /<meta name="robots" content="noindex, follow">/);
+  assert.match(pages.get('seamless.html'), /<link rel="canonical" href="https:\/\/arcsignal.app\/seamless.html">/);
+  for (const [name, html] of pages) {
+    if (name !== 'seamless.html') assert.doesNotMatch(html, /seamless|everyday utilities|both apps/i, name);
+  }
+  assert.doesNotMatch(await readFile(join(root, 'sitemap.xml'), 'utf8'), /seamless/i);
+  assert.doesNotMatch(await readFile(join(root, 'robots.txt'), 'utf8'), /Disallow:/i, 'Allow crawlers to see noindex');
+  for (const name of ['spectra.html', 'seamless.html']) {
+    const hero = pages.get(name).match(/<section class="hero shell"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(hero);
+    assert.doesNotMatch(hero, /See how it works|Explore the app/);
   }
 });
 

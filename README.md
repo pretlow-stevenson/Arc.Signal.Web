@@ -1,23 +1,26 @@
 # Arc Signal
 
-The company website for **Arc Signal LLC**, presenting security products and
-practical utilities through a company homepage and dedicated product pages:
+The company website for **Arc Signal LLC**, focused on Spectra and security awareness:
 
-- `index.html`: company introduction, product discovery, and privacy approach.
-- `spectra.html`: Spectra, preparing for release; **iPhone 16 or later · iOS 27 or later**.
-- `seamless.html`: Seamless screenshot stitching, coming soon for **Apple iPhone · iOS 18 or later**.
+- `index.html`: Spectra introduction, the Arc Signal approach, and privacy.
+- `spectra.html`: Spectra, preparing for release; **Apple Intelligence-capable device · iOS 27 or later**.
+- `seamless.html`: unlisted Seamless screenshot stitching page, coming soon for **Apple iPhone · iOS 18 or later**.
 - `guide.html`: the complete Spectra Guide and support contact, generated from native app content.
 - `spectra-privacy.html`: the public Spectra privacy policy, also linked in the app before setup and from Guide.
 - `404.html`: recovery links that work even when the requested URL is nested.
 
-Shared navigation connects every page. Each marketing page has its own title,
-description, canonical URL, and sitemap entry. Add future product pages to
-`scripts/site-files.mjs`, the navigation, sitemap, and validation together.
+Public navigation and promotional copy focus on Spectra. `seamless.html` and its
+assets remain published for direct links, with no incoming site links or sitemap
+entry. Its `noindex, follow` metadata asks search engines not to list the page;
+this is not access control. Keep it crawlable so search engines can read that directive.
 
 ## Development
 
-The site is static HTML and CSS with no client JavaScript, runtime dependencies,
-forms, analytics, or third-party resource requests. Inter and Bodoni Moda are
+The site is static HTML and CSS with one small, deferred local script for optional
+image and section reveals. There are no runtime dependencies, forms, analytics,
+or third-party resource requests. Content remains visible with JavaScript blocked
+or IntersectionObserver unavailable. Reduced motion disables reveals and hover
+movement; image reveals wait for loading, and each target animates only once. Inter and Bodoni Moda are
 self-hosted; their SIL Open Font Licenses are included with the fonts.
 
 With Node.js 22 or later:
@@ -109,8 +112,8 @@ or later; it does not inherit Spectra’s compatibility requirements.
 
 The source repository has not configured App Store distribution, so Seamless is
 presented as coming soon, without a download badge or invented release date.
-Update the homepage status, product copy, metadata, and release-status check when
-availability and a listing URL are confirmed. Privacy copy distinguishes local
+Keep its direct-link page current. Restore public navigation, promotional copy,
+and indexing only when Seamless is ready to feature again. Privacy copy distinguishes local
 stitching from iCloud retrieval and destination services chosen by the user.
 
 ## App screenshots
