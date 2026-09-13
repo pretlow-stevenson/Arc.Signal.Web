@@ -266,7 +266,7 @@
         "takeaway" : "No account. No advertising or analytics SDK. Your checks are processed and saved on this iPhone. Sharing is your choice.",
         "technicalSections" : [
           {
-            "body" : "Saved reports, notes, and AI analyses use iOS file protection. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. History retains up to 50 sessions within a 32 MiB budget; older sessions may be removed when either limit is reached. These are not tamper-evident forensic records or an unlimited archive.",
+            "body" : "Saved reports and notes use iOS file protection. New on-device AI explanations are temporary: they are not saved in sessions or included in exports. Older sessions may still contain explanations saved by an earlier app version; deleting those sessions removes that local history too. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. History retains up to 50 sessions within a 32 MiB budget; older sessions may be removed when either limit is reached. These are not tamper-evident forensic records or an unlimited archive.",
             "id" : "storage",
             "title" : "Protected, bounded history"
           },

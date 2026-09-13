@@ -328,4 +328,10 @@ test('public copy describes temporary single-finding AI, not saved generated rep
   assert.ok(policy.includes('not saved with sessions'));
   assert.ok(policy.includes('excluded from every JSON export'));
   assert.ok(policy.includes('does not enable history saving'));
+  for (const name of ['spectra-privacy.html', 'guide.html']) {
+    const page = pages.get(name);
+    assert.ok(page.includes('New on-device AI explanations are temporary'), name);
+    assert.ok(page.includes('Older sessions may still contain explanations'), name);
+    assert.doesNotMatch(page, /Saved reports, notes, and AI analyses use/);
+  }
 });
