@@ -252,7 +252,7 @@
             "title" : "Read the full privacy policy"
           },
           {
-            "body" : "Export JSON on completed or saved results lets you choose Analysis JSON, Technical archive, or Reduced identifying information. Analysis JSON includes meaningful retained evidence and your notes; the technical archive also includes raw retained data and any saved AI analysis. Reduced omits identifying text and raw payloads but is not anonymous. All formats ignore visible results filters. Nothing is uploaded automatically.",
+            "body" : "Export JSON on completed or saved results lets you choose Analysis JSON, Technical archive, or Reduced identifying information. Analysis JSON includes meaningful retained evidence and your notes; the technical archive also includes raw retained data and saved graphs. All formats exclude generated AI explanations. Reduced omits identifying text and raw payloads but is not anonymous. All formats ignore visible results filters. Nothing is uploaded automatically.",
             "id" : "export",
             "title" : "Share only when you choose"
           }
@@ -578,27 +578,32 @@
         "navigationTitle" : "JSON export",
         "sections" : [
           {
-            "body" : "On completed or saved results, choose Analyze on Device for an Apple Intelligence interpretation of the same evidence in Analysis JSON. Nothing is uploaded. Spectra saves a successful analysis with the scan, including when automatic saving is off. Generated text is separate from measurements, links to supporting evidence, and stays within 300 words across all sections. One request has a one-minute limit; you can cancel at any time. Leaving the results or backgrounding Spectra cancels generation. Failures leave measured results and any earlier saved analysis unchanged.",
+            "body" : "On completed or saved results, choose Analyze on Device, then select one recorded device or magnetic-event summary. Similar Bluetooth profiles may be different devices: expand the group and choose one identity. Apple Intelligence explains only that selected summary, suggests a practical next step, and states a key limitation. Open Summary used for analysis to compare the input with the explanation. Nothing is uploaded. Explanations are temporary: closing this view or choosing another finding clears them. They are not saved with sessions or included in any JSON export.",
             "id" : "analysis",
             "title" : "Analyze on Device"
           },
           {
-            "body" : "A check with no relevant device findings or retained events does not start Apple Intelligence. Review Coverage instead; no matches is not an all-clear. Otherwise, enable Apple Intelligence in Settings and allow its model to finish downloading in a supported language and region. Check Availability refreshes the status. If the complete scan evidence exceeds the local model’s context limit, Spectra explains this without repeated attempts or silently dropping evidence. Export Analysis JSON for review. Timeouts, declined requests, and responses that fail evidence validation have distinct explanations.",
+            "body" : "A check with no relevant findings does not start Apple Intelligence. Review Coverage instead; no matches is not an all-clear. Analysis requires Apple Intelligence enabled, its model ready, and a supported language and region. Analyze on Device is disabled while Apple Intelligence is unavailable. Returning to Spectra refreshes availability, for example after enabling it in Settings. Check Availability inside an open analysis also refreshes the status. Preparation and generation share a 45-second limit; Cancel stops the request. Backgrounding Spectra or closing analysis cancels generation. A failure leaves your scan unchanged. Choose another finding, retry, or use Export JSON for external review. Scanning and exporting do not require Apple Intelligence.",
             "id" : "readiness",
             "title" : "When analysis cannot run"
           },
           {
-            "body" : "Smart Glasses and Smart Watches exports and on-device analysis include only supported matches for that specialist check and their associated evidence, including clearly labeled possible or probable catalog matches. Unrelated activity is excluded. With no matches, the results array is empty; scan type, duration, and measurement coverage remain available. General Quick Check, Area Sweep, and Monitor exports include all retained data for that scan type, even when you have narrowed the results on screen. Acquisition counts describe observations, not matching device counts.",
+            "body" : "For a radio finding, Spectra supplies the identity hypothesis, confidence, representative observation, coverage, and available signal-strength summary—not every packet. Related network services may form one likely endpoint. For magnetic findings, it supplies the excursion count, maximum baseline deviation, and up to three strongest retained incident summaries with field, signed delta, threshold, excess, and duration. Earlier incidents may no longer be retained. Raw histories, display graphs, your notes, and other findings are excluded. A magnetic excursion does not identify a device or its purpose.",
+            "id" : "finding-summary",
+            "title" : "What goes into a finding explanation?"
+          },
+          {
+            "body" : "Scan type sets the export scope and available analysis choices—not the visible results filters. Smart Glasses and Smart Watches include only supported matches for that specialist check and their associated evidence, including labeled possible or probable catalog matches. Unrelated activity is excluded. With no matches, exported results are empty; scan type, duration, and coverage remain available. Quick Check, Area Sweep, and Monitor exports include all retained data for their scan type. On-device analysis explains only the single finding you select. Acquisition counts are observations, not device counts.",
             "id" : "scope",
             "title" : "Scan type sets the scope—not screen filters"
           },
           {
-            "body" : "The default export is a compact, model-friendly evidence document with scan-local citations, identity hypotheses, interpreted evidence, radio summaries, magnetic detector events, and Monitor changes in results. Coverage and user notes are separate context. It omits raw packet bytes, display-only graphs, and earlier AI output. This exact evidence format powers on-device analysis. Reading a saved analysis never generates it again. Changed notes or names mark earlier context as stale; Analyze Again replaces it only after a successful save. Older specialist analyses with a different scope must be regenerated before sharing them in a new export.",
+            "body" : "The default export is a compact, model-friendly evidence document with scan-local citations, identity hypotheses, interpreted evidence, radio summaries, magnetic detector events, and Monitor changes. Coverage and user notes are separate context. It omits raw packet bytes, display-only graphs, and all generated AI explanations. This file is for your own external analysis workflow; the on-device feature uses a smaller, separate summary of just one finding.",
             "id" : "compact",
             "title" : "Analysis JSON"
           },
           {
-            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review. It may include personal information and a saved AI analysis whose scope is still valid, labeled separately.",
+            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review. It may include personal information. Generated AI explanations are excluded, including any analysis retained by an earlier app version.",
             "id" : "full",
             "title" : "Technical archive"
           },
@@ -608,7 +613,7 @@
             "title" : "Reduced identifying information"
           },
           {
-            "body" : "Save to Files opens Apple’s destination picker. Share JSON opens the system share sheet. Spectra prepares the selected file locally; a destination such as cloud storage, email, or an AI service may transfer and retain it under that service’s policies. Erasing Spectra afterward cannot recall external copies.",
+            "body" : "The Export results section opens the export options. Under Information to include, choose one format—not multiple items to combine. Tap Export JSON to prepare that file locally. Preparing JSON and a spinner confirm that work is in progress; Cancel closes preparation without changing your session. Apple’s share sheet opens when the file is ready. Choose Save to Files or another destination. Cloud storage, email, or an AI service may transfer and retain the copy under that service’s policies. Erasing Spectra afterward cannot recall external copies.",
             "id" : "destinations",
             "title" : "Save or share"
           },
@@ -619,9 +624,9 @@
           }
         ],
         "steps" : [
-          "Open completed results or a saved session and choose Export JSON.",
-          "Choose Analysis JSON, Technical archive, or Reduced identifying information and read what is included.",
-          "Choose Save to Files or Share JSON. Review the destination and its privacy practices before sending."
+          "Open completed results or a saved session. In Export results, choose Export JSON.",
+          "Select one format: Analysis JSON, Technical archive, or Reduced identifying information. Read what is included.",
+          "Tap Export JSON and wait for preparation to finish. In the share sheet, choose Save to Files or a recipient you trust."
         ],
         "symbol" : "square.and.arrow.up",
         "takeaway" : "Choose how much to share, then save or send a portable report. Spectra never uploads it automatically.",

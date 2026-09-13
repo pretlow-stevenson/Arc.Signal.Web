@@ -277,7 +277,7 @@ test('website Guide is generated from all twelve native topics with release and 
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 12, 2026/);
+  assert.match(policy, /Effective September 13, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '32 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
@@ -307,9 +307,25 @@ test('Guide explains specialist export scope and bounded optional analysis', asy
   const page = await readFile(join(root, 'guide.html'), 'utf8');
   assert.ok(page.includes('Scan type sets the scope—not screen filters'));
   assert.ok(page.includes('Unrelated activity is excluded'));
-  assert.ok(page.includes('one-minute limit'));
-  assert.ok(page.includes('300 words'));
-  assert.ok(page.includes('no relevant device findings or retained events'));
+  assert.ok(page.includes('45-second limit'));
+  assert.ok(page.includes('select one recorded device or magnetic-event summary'));
+  assert.ok(page.includes('up to three strongest retained incident summaries'));
+  assert.ok(page.includes('no relevant findings'));
+  assert.ok(page.includes('not saved with sessions or included in any JSON export'));
+  assert.ok(page.includes('Information to include, choose one format'));
+  assert.ok(page.includes('share sheet opens when the file is ready'));
   assert.ok(page.includes('No findings') || page.includes('no matches is not an all-clear'));
   assert.ok(!page.includes('Dense scans are processed in batches'));
+});
+
+test('public copy describes temporary single-finding AI, not saved generated reports', () => {
+  for (const name of ['index.html', 'spectra.html', 'spectra-privacy.html']) {
+    const page = pages.get(name);
+    assert.doesNotMatch(page, /saves the analysis with your scan|revisit saved analyses|same evidence used in Analysis JSON/);
+    assert.ok(page.includes('one selected finding') || page.includes('one finding'), name);
+  }
+  const policy = pages.get('spectra-privacy.html');
+  assert.ok(policy.includes('not saved with sessions'));
+  assert.ok(policy.includes('excluded from every JSON export'));
+  assert.ok(policy.includes('does not enable history saving'));
 });
