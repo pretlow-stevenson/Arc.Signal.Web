@@ -390,14 +390,14 @@
         "navigationTitle" : "Measurement setup",
         "sections" : [
           {
-            "body" : "Spectra requires an Apple Intelligence-capable device running iOS 27 or later. On Apple iPhone, this includes 15 Pro/Pro Max and the 16 family or later. Standard 15/15 Plus models are not supported. Apple Intelligence can be disabled or still downloading on supported hardware; that affects analysis readiness, not your scanning entitlement.",
+            "body" : "Spectra requires an iPhone running iOS 27 or later. Scanning, Bluetooth Proximity, saved results, and JSON export do not require Apple Intelligence or an in-app purchase. Each measurement still needs its hardware and permission; Spectra checks selected measurements before a scan and explains anything unavailable.",
             "id" : "compatibility",
             "title" : "Supported iPhones"
           },
           {
-            "body" : "The app is free to download. A one-time, non-consumable purchase unlocks all live scans before the first check; there is no free-scan allowance or subscription. Spectra checks hardware eligibility before offering the purchase. Guide → Purchase and Restore shows your unlock or restores a purchase with the same Apple Account. Internet access is needed to purchase or restore; verified purchases can remain available offline.",
-            "id" : "unlock",
-            "title" : "Unlock before scanning"
+            "body" : "Only on-device analysis requires an Apple Intelligence-capable iPhone with Apple Intelligence enabled and ready in a supported language and region. If your iPhone does not support it, or the model is disabled or still downloading, you can still scan, review all measured evidence, and export JSON. No analysis runs automatically. Availability is checked separately when you use analysis.",
+            "id" : "analysis-availability",
+            "title" : "Apple Intelligence is optional"
           },
           {
             "body" : "Welcome explains the app. Get Started opens measurement setup. Tap a measurement to request its access; a readiness checkmark reflects the system response. You can continue without every permission. A prompt explains what remains unconfigured, and a later check requests only missing access.",
@@ -410,7 +410,7 @@
             "title" : "Choose measurements for each check"
           },
           {
-            "body" : "Touch and hold Spectra’s app icon, then choose Quick Check, Smart Glasses, or Smart Watches. Quick Check opens measurement selection; the specialist shortcuts check Bluetooth access before starting. On first use, finish Welcome and measurement setup, unlock if needed, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
+            "body" : "Touch and hold Spectra’s app icon, then choose Quick Check, Smart Glasses, or Smart Watches. Quick Check opens measurement selection; the specialist shortcuts check Bluetooth access before starting. On first use, finish Welcome and measurement setup, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
             "id" : "shortcuts",
             "title" : "Start from the Home Screen"
           },
@@ -442,6 +442,11 @@
             "body" : "The displayed network name provides connection context, not a router model, physical location, or assurance that the network is trustworthy. Guest networks and client isolation may prevent discovering other clients despite a working connection.",
             "id" : "router",
             "title" : "A Wi-Fi name is not a router identity"
+          },
+          {
+            "body" : "Spectra uses a fixed standard text size. Changing iOS Dynamic Type or Larger Text does not resize the app’s own interface. VoiceOver labels remain available, and contrast and reduced-motion preferences still apply. System-owned permission dialogs and sharing interfaces are controlled by iOS.",
+            "id" : "text-size",
+            "title" : "Text size and accessibility"
           },
           {
             "body" : "The shipped device catalog, Guide, Bluetooth observation, magnetic exploration, saved history, and preparing JSON work on device. Apple Intelligence analysis also works locally once its supported model is ready. Local Network still needs a usable local link. Sending email, opening website help, cloud file destinations, or using an external AI service may require internet.",
@@ -573,22 +578,27 @@
         "navigationTitle" : "JSON export",
         "sections" : [
           {
-            "body" : "On completed or saved results, choose Analyze on Device for an Apple Intelligence interpretation of the same evidence in Analysis JSON. Nothing is uploaded. Spectra saves the result with the scan, including when automatic saving is off. Generated text is separate from measurements, links to supporting evidence, and stays under 1,000 words across all sections. Simple scans produce shorter reports. You can cancel while analysis is running. Scan results and any earlier saved analysis remain available if generation fails.",
+            "body" : "On completed or saved results, choose Analyze on Device for an Apple Intelligence interpretation of the same evidence in Analysis JSON. Nothing is uploaded. Spectra saves a successful analysis with the scan, including when automatic saving is off. Generated text is separate from measurements, links to supporting evidence, and stays within 300 words across all sections. One request has a one-minute limit; you can cancel at any time. Leaving the results or backgrounding Spectra cancels generation. Failures leave measured results and any earlier saved analysis unchanged.",
             "id" : "analysis",
             "title" : "Analyze on Device"
           },
           {
-            "body" : "Enable Apple Intelligence in Settings and allow its model to finish downloading. Availability also depends on supported language and region. Check Availability refreshes the status. Dense scans are processed in batches; a partial report identifies unprocessed evidence rather than treating it as absent. Reading a saved analysis does not generate it again. Changed notes or names mark older analysis as reflecting earlier context; Analyze Again replaces it only after a successful save.",
+            "body" : "A check with no relevant device findings or retained events does not start Apple Intelligence. Review Coverage instead; no matches is not an all-clear. Otherwise, enable Apple Intelligence in Settings and allow its model to finish downloading in a supported language and region. Check Availability refreshes the status. If the complete scan evidence exceeds the local model’s context limit, Spectra explains this without repeated attempts or silently dropping evidence. Export Analysis JSON for review. Timeouts, declined requests, and responses that fail evidence validation have distinct explanations.",
             "id" : "readiness",
-            "title" : "When analysis is unavailable"
+            "title" : "When analysis cannot run"
           },
           {
-            "body" : "The default export is a compact, model-friendly evidence document with scan-local citations, source coverage, identity hypotheses, interpreted evidence, radio summaries, magnetic detector events, Monitor changes, and user context. It omits raw packet bytes and display-only graphs. It includes all retained signal records regardless of filters and excludes earlier AI output. This exact evidence format powers on-device analysis.",
+            "body" : "Smart Glasses and Smart Watches exports and on-device analysis include only supported matches for that specialist check and their associated evidence, including clearly labeled possible or probable catalog matches. Unrelated activity is excluded. With no matches, the results array is empty; scan type, duration, and measurement coverage remain available. General Quick Check, Area Sweep, and Monitor exports include all retained data for that scan type, even when you have narrowed the results on screen. Acquisition counts describe observations, not matching device counts.",
+            "id" : "scope",
+            "title" : "Scan type sets the scope—not screen filters"
+          },
+          {
+            "body" : "The default export is a compact, model-friendly evidence document with scan-local citations, identity hypotheses, interpreted evidence, radio summaries, magnetic detector events, and Monitor changes in results. Coverage and user notes are separate context. It omits raw packet bytes, display-only graphs, and earlier AI output. This exact evidence format powers on-device analysis. Reading a saved analysis never generates it again. Changed notes or names mark earlier context as stale; Analyze Again replaces it only after a successful save. Older specialist analyses with a different scope must be regenerated before sharing them in a new export.",
             "id" : "compact",
             "title" : "Analysis JSON"
           },
           {
-            "body" : "Includes all retained results, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when available. It ignores the visible results filter. Use this for detailed technical review. It may include personal information and any saved AI analysis, which is labeled separately.",
+            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review. It may include personal information and a saved AI analysis whose scope is still valid, labeled separately.",
             "id" : "full",
             "title" : "Technical archive"
           },
@@ -693,5 +703,5 @@
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,
   "supportEmail" : "support@arcsignal.app",
-  "supportedHardware" : "Apple Intelligence-capable device"
+  "supportedHardware" : "iPhone"
 }

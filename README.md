@@ -3,7 +3,7 @@
 The company website for **Arc Signal LLC**, focused on Spectra and security awareness:
 
 - `index.html`: Spectra introduction, the Arc Signal approach, and privacy.
-- `spectra.html`: Spectra, preparing for release; **Apple Intelligence-capable device · iOS 27 or later**.
+- `spectra.html`: Spectra, preparing for release; **iPhone · iOS 27 or later**.
 - `seamless.html`: unlisted Seamless screenshot stitching page, coming soon for **Apple iPhone · iOS 18 or later**.
 - `guide.html`: the complete Spectra Guide and support contact, generated from native app content.
 - `spectra-privacy.html`: the public Spectra privacy policy, also linked in the app before setup and from Guide.
@@ -94,14 +94,15 @@ Keep compatibility, customer-support details, and privacy disclosures aligned
 with the app. The complete policy is https://arcsignal.app/spectra-privacy.html.
 The owner should review its support-retention and provider statements before
 submission. App Store Connect privacy labels remain a separate declaration.
-The app requires iOS 27 and Apple Intelligence-capable hardware. It checks
-eligibility before purchase and again before live scanning; importing Foundation
-Models does not create an App Store installation filter. Disabled or downloading
-Intelligence affects analysis readiness, not hardware eligibility. All live scans
-require a verified one-time unlock. Set the production non-consumable identifier
-and price in the app and App Store Connect before release; there is no free scan
-allowance or subscription. Analysis uses the exported evidence locally and saves
-the interpretation with the scan.
+The app requires an iPhone running iOS 27 or later. Scanning, Bluetooth Proximity,
+history, and JSON export have no in-app purchase or Apple Intelligence gate.
+Only optional on-device analysis requires Apple Intelligence-capable hardware
+and an enabled, ready model in a supported language and region. Analysis uses
+the exported evidence locally and saves the interpretation with the scan.
+App Store download pricing is a separate owner-managed setting; the site does
+not promise a free download or advertise the retired scan-unlock product.
+App-owned text remains standard-sized under Larger Text by owner decision;
+do not advertise Larger Text support for the app. Website text resizing remains.
 
 ## Seamless release status
 
