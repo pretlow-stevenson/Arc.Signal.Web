@@ -16,14 +16,19 @@
             "title" : "Observe without connecting"
           },
           {
-            "body" : "Summary keeps related observations together and unclassified activity compact. Expand a result to see its measurements, likely identity, and the evidence behind it.",
+            "body" : "Summary surfaces named findings, including Possible matches, with their confidence or name-source label. Related observations stay together and unnamed activity stays compact. Expand a result for its measurements and supporting evidence.",
             "id" : "explore",
             "title" : "Start with the summary"
           },
           {
-            "body" : "Choose Smart Glasses or Smart Watches from Specialist checks for a 30-second Bluetooth observation. Only recognizable product-family indicators appear. Spectra cannot tell whether a microphone, camera, or conversation-summary feature is active.",
+            "body" : "Choose Smart Glasses or Watches & Wearables from Specialist checks for a 30-second Bluetooth observation. Watches & Wearables includes supported smartwatches, fitness bands and trackers, smart rings, and other wearables; glasses stay in their own check. Results include catalog matches and explicitly Possible indications from names such as Smart Watch, Smart Ring, Fitness Tracker, or Smart Frames. Names do not establish a manufacturer or model. Ambiguous names, accessories, generic services, and company codes alone do not qualify. Spectra cannot tell whether a microphone, camera, or conversation-summary feature is active.",
             "id" : "specialists",
-            "title" : "Check for glasses or watches"
+            "title" : "Check for glasses or wearables"
+          },
+          {
+            "body" : "During a wearable check, the overview counts findings by type. Repeated broadcasts from the same retained Bluetooth identity count once; rotating identities can still represent one physical device. After completion, Search names finds a particular supported match without changing the type counts. Device types are estimates, not selectable filters. View observed activity opens every other retained Bluetooth identity, including names whose type could not be determined. This separate context is not a specialist match and is excluded from specialist export, analysis, and proximity choices. Export, on-device analysis choices, and Bluetooth Proximity still include every eligible finding in the check, regardless of the display filters. Older sessions without a recorded wearable subtype appear under Other wearables without changing their saved product interpretation.",
+            "id" : "wearable-filters",
+            "title" : "Understand the wearable overview"
           },
           {
             "body" : "Monitor compares Bluetooth and local-network observations with a starting baseline while your iPhone stays in one place. The dashboard retains new, returned, and no-longer-recent observations. Finish to review details. Rotating or intermittent broadcasts can cause changes without a device arriving or leaving. Magnetic exploration belongs in Area Sweep.",
@@ -33,16 +38,21 @@
         ],
         "steps" : [
           "Choose a 30-second radio Quick Check, untimed Area Sweep for hands-on exploration, or Monitor to watch one area.",
-          "Choose measurements; Quick Check records every supported category. Filter completed results by measurement and device category, or use a Bluetooth-only specialist check. Keep Spectra visible while scanning.",
+          "Choose measurements; Quick Check records every supported category. Filter completed results by recorded measurement or search names, or use a Bluetooth-only specialist check. Keep Spectra visible while scanning.",
           "Review what stood out, then open Coverage to see what was—and was not—measured."
         ],
         "symbol" : "point.3.connected.trianglepath.dotted",
         "takeaway" : "Spectra helps you investigate nearby signals. A signal is a clue—not proof of a hidden device.",
         "technicalSections" : [
           {
-            "body" : "Product-family and manufacturer labels come from advertised metadata and a local signature catalog. Possible, Probable, and signature labels describe the supporting pattern; transmitted information can be changed or spoofed.",
+            "body" : "Product-family labels come from reviewed metadata and an offline catalog. Possible, Probable, and signature labels describe the evidence—not numeric probabilities. A System name comes from iOS and may be cached rather than transmitted in that observation. Names and payloads can be changed or spoofed.",
             "id" : "claims",
             "title" : "Names are claims, not authentication"
+          },
+          {
+            "body" : "Bluetooth company codes and member service numbers identify registered namespaces, sometimes belonging to a chip or protocol provider. A Registry model uses a public Matter vendor/product record matched to unverified broadcast identifiers. Neither proves the hardware is genuine. Technical details keep sources and registry versions. Saved catalog conclusions remain intact; current name-based type rules may surface an additional Possible match when an older session is opened.",
+            "id" : "registry",
+            "title" : "Registry context is not a verified maker"
           },
           {
             "body" : "Bluetooth and local-network identities are not merged into one physical device from a shared name, manufacturer, strength, or timing. Magnetic observations are area clues, not device identities.",
@@ -125,12 +135,12 @@
             "title" : "Similar is not the same"
           },
           {
-            "body" : "Summary folds low-evidence identities into a compact disclosure. All Signals lists every retained source identity and area clue, including those without a recognizable product name.",
+            "body" : "Named findings appear directly in Summary even when the match is only Possible or the device type is unknown. The same names and device-type icons appear when choosing a finding for on-device analysis or Bluetooth proximity. A manufacturer code alone is not a device name. Unnamed, low-evidence activity stays in a compact disclosure; All Signals retains every source identity and area clue. Visibility does not increase confidence or mark a finding as dangerous.",
             "id" : "unknown",
-            "title" : "Unclassified activity stays available"
+            "title" : "Names stay visible; uncertainty stays clear"
           },
           {
-            "body" : "Filters opens a checklist. Select several device categories and measurements, then Apply. A result can match any selected category but must also match a selected measurement. With nothing selected, all retained results are included. Cancel keeps the current filter; Clear restores all results. Filters never change collection, saved reports, or export scope.",
+            "body" : "Filters narrows results by the measurement that recorded them: Bluetooth, Local network, or Magnetic. Choose any combination and Apply; leave all unchecked to include everything. The button is hidden when only one measurement is represented. Search names looks for the displayed or broadcast name, including names whose device type is undetermined. It does not guess categories from your search. Cancel keeps the current measurement filter; Clear filters restores all results and clears name search. Device-type labels are helpful estimates, not exclusion rules. Filters and search never change collection, saved reports, or export scope.",
             "id" : "filters",
             "title" : "Filter what was found"
           }
@@ -266,7 +276,7 @@
         "takeaway" : "No account. No advertising or analytics SDK. Your checks are processed and saved on this iPhone. Sharing is your choice.",
         "technicalSections" : [
           {
-            "body" : "Saved reports and notes use iOS file protection. New on-device AI explanations are temporary: they are not saved in sessions or included in exports. Older sessions may still contain explanations saved by an earlier app version; deleting those sessions removes that local history too. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. History retains up to 50 sessions within a 32 MiB budget; older sessions may be removed when either limit is reached. These are not tamper-evident forensic records or an unlimited archive.",
+            "body" : "Saved reports and notes use iOS file protection. New on-device AI explanations are temporary: they are not saved in sessions or included in exports. Older sessions may still contain explanations saved by an earlier app version; deleting those sessions removes that local history too. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. The primary history file retains up to 50 sessions within 256 MiB; older sessions may be removed when either limit is reached. Safe file replacement and protected recovery copies can require additional disk space. These are not tamper-evident forensic records or an unlimited archive.",
             "id" : "storage",
             "title" : "Protected, bounded history"
           },
@@ -348,7 +358,7 @@
             "title" : "Check what was actually measured"
           },
           {
-            "body" : "A product name can be changed or spoofed. Strong Bluetooth readings are not distance, and magnetic spikes can come from ordinary magnets or wiring. Neither identifies recording activity. Clear filters to include unclassified results.",
+            "body" : "A product name can be changed or spoofed. Strong Bluetooth readings are not distance, and magnetic spikes can come from ordinary magnets or wiring. Neither identifies recording activity. Clear measurement filters and name search to include every retained result. In specialist checks, also open View observed activity; an unidentified device may not appear among supported matches.",
             "id" : "interpret",
             "title" : "Separate clues from conclusions"
           },
@@ -368,7 +378,7 @@
         "takeaway" : "Use Spectra to inform your next decision—not to certify that a space is safe.",
         "technicalSections" : [
           {
-            "body" : "Reports and notes are bounded local records, not tamper-evident exports or a forensic chain of custody. History retains at most 50 sessions within a 32 MiB budget and can retire older reports. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
+            "body" : "Reports and notes are bounded local records, not tamper-evident exports or a forensic chain of custody. The primary history file retains at most 50 sessions within 256 MiB and can retire older reports. Temporary replacement files and protected recovery copies may use additional disk space. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
             "id" : "retention",
             "title" : "Not a forensic record"
           },
@@ -405,12 +415,12 @@
             "title" : "Start with access"
           },
           {
-            "body" : "Quick Check uses Bluetooth and optional Local Network for 30 seconds. Area Sweep is untimed and can use Bluetooth, Local Network, and Motion and magnetic, together or independently. Monitor is stationary and radio-only. Smart Glasses and Smart Watches are Bluetooth-only specialist checks without source or result filters.",
+            "body" : "Quick Check uses Bluetooth and optional Local Network for 30 seconds. Area Sweep is untimed and can use Bluetooth, Local Network, and Motion and magnetic, together or independently. Monitor is stationary and radio-only. Smart Glasses and Watches & Wearables are Bluetooth-only specialist checks without scan-time choices. Completed results offer name search and a separate View observed activity route for Bluetooth identities that did not match. Device types are estimates, not selectable filters.",
             "id" : "sources",
             "title" : "Choose measurements for each check"
           },
           {
-            "body" : "Touch and hold Spectra’s app icon, then choose Quick Check, Smart Glasses, or Smart Watches. Quick Check opens measurement selection; the specialist shortcuts check Bluetooth access before starting. On first use, finish Welcome and measurement setup, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
+            "body" : "Touch and hold Spectra’s app icon, then choose Quick Check, Smart Glasses, or Watches & Wearables. Quick Check opens measurement selection; the specialist shortcuts check Bluetooth access before starting. On first use, finish Welcome and measurement setup, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
             "id" : "shortcuts",
             "title" : "Start from the Home Screen"
           },
@@ -532,7 +542,7 @@
             "title" : "Give a session a useful name"
           },
           {
-            "body" : "History keeps up to 50 sessions within 32 MiB, whichever limit is reached first. Saving a new check can remove the oldest reports. Sessions warns as the count approaches the limit and reports retention removals. Export important records before continuing to fill history. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
+            "body" : "The primary history file keeps up to 50 sessions within 256 MiB, whichever limit is reached first. Temporary replacement files and protected recovery copies may need additional disk space. Saving a new check can remove the oldest reports. Sessions warns as the count approaches the limit and reports retention removals. Export important records before continuing to fill history. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
             "id" : "capacity",
             "title" : "Why did an older session disappear?"
           },
@@ -578,6 +588,26 @@
         "navigationTitle" : "JSON export",
         "sections" : [
           {
+            "body" : "Completed checks and saved sessions put findings and measurements first. Below them, Bluetooth proximity lets you investigate an eligible recorded Bluetooth identity while nearby. Analyze a finding offers either on-device explanation or a copy for external AI analysis. Export results saves or shares the scan. These are independent options, not required steps. A device’s details can open proximity or analysis with that finding already selected.",
+            "id" : "result-tools",
+            "title" : "Explore first, then choose a tool"
+          },
+          {
+            "body" : "In Analyze a finding, choose Copy for AI analysis, then select one item. From a finding’s details, the item is already selected. Review the privacy notice and optionally open Preview prompt and data. Tap Copy prompt and finding, then paste into your preferred AI app. Apple Intelligence is not required. Nothing is uploaded or opened automatically. A general check can include unknown findings; specialist checks offer only findings within their scan type. Display filters do not change the choices.",
+            "id" : "copy-finding",
+            "title" : "Copy one finding for external AI"
+          },
+          {
+            "body" : "The default copy includes protocol identifiers, interpretation confidence, historical catalog context, and signal statistics. Recorded names, declared network text, and raw payloads are excluded. Include names and technical payloads is optional and resets for each finding or new presentation. Names and bytes may identify people or devices. Session names, notes, other findings, and AI explanations are never deliberately included. Magnetic copies contain a summary and up to three strongest retained incidents, with no technical-data switch when it has no effect. Grouped network services remain separate within the selected finding; omission counts describe bounded evidence.",
+            "id" : "copy-privacy",
+            "title" : "Choose whether to include technical data"
+          },
+          {
+            "body" : "The clipboard contains a fixed analysis prompt followed by JSON, not a standalone JSON file. It asks the AI to distinguish facts from hypotheses, verify public signatures when research tools are available, and admit insufficient evidence. A larger model cannot recover information that was never advertised. Original Bonjour service types are not separately retained in current reports; missing fields are stated, not guessed. Pasting shares the content under the other app’s privacy policies. The copy stays on this iPhone, does not use Universal Clipboard, and expires after ten minutes. Reset or clipboard expiry cannot recall pasted copies. External answers are not imported into Spectra’s findings or catalog.",
+            "id" : "copy-limits",
+            "title" : "An external answer is a research hypothesis"
+          },
+          {
             "body" : "On completed or saved results, choose Analyze on Device, then select one recorded device or magnetic-event summary. Similar Bluetooth profiles may be different devices: expand the group and choose one identity. Apple Intelligence explains only that selected summary, suggests a practical next step, and states a key limitation. Open Summary used for analysis to compare the input with the explanation. Nothing is uploaded. Explanations are temporary: closing this view or choosing another finding clears them. They are not saved with sessions or included in any JSON export.",
             "id" : "analysis",
             "title" : "Analyze on Device"
@@ -593,7 +623,7 @@
             "title" : "What goes into a finding explanation?"
           },
           {
-            "body" : "Scan type sets the export scope and available analysis choices—not the visible results filters. Smart Glasses and Smart Watches include only supported matches for that specialist check and their associated evidence, including labeled possible or probable catalog matches. Unrelated activity is excluded. With no matches, exported results are empty; scan type, duration, and coverage remain available. Quick Check, Area Sweep, and Monitor exports include all retained data for their scan type. On-device analysis explains only the single finding you select. Acquisition counts are observations, not device counts.",
+            "body" : "Scan type sets the export scope and available analysis choices—not the visible results filters. Smart Glasses and Watches & Wearables include supported catalog matches and explicitly Possible name-based device-type indications, with their associated evidence. The wearable check includes watches, fitness bands and trackers, smart rings, and other supported wearables; glasses remain separate. Unrelated activity is excluded. With no matches, exported results are empty; scan type, duration, and coverage remain available. Quick Check, Area Sweep, and Monitor exports include all retained data for their scan type. On-device analysis explains only the single finding you select. Acquisition counts are observations, not device counts.",
             "id" : "scope",
             "title" : "Scan type sets the scope—not screen filters"
           },
@@ -654,9 +684,14 @@
         "navigationTitle" : "Troubleshooting",
         "sections" : [
           {
-            "body" : "The device may be silent, sleeping, already connected without recognizable advertisements, on another network, or using a signature outside the catalog. Observe again with Bluetooth enabled, and use general Quick Check or Area Sweep to include unclassified activity. A specialist intentionally shows only supported matches. Do not change device ownership or connect to unknown equipment to force a result.",
+            "body" : "The device may be silent, sleeping, already connected without recognizable advertisements, on another network, or outside current recognition coverage. Some watches expose more information only in discovery or workout modes. Use general Quick Check or Area Sweep to include unclassified activity; specialist checks show only supported matches. Longer listening may help an intermittent signal but cannot reveal fields the device or iOS does not supply. Do not connect to unknown equipment to force a result.",
             "id" : "missing",
             "title" : "My known device does not appear"
+          },
+          {
+            "body" : "An Apple, Garmin, Samsung, or other company code alone does not identify a wearable. Generic heart-rate services can also come from chest straps. Distinctive names can support a possible product match; selected historical protocol patterns remain explicitly uncertain and may not appear on current firmware. Watches & Wearables includes supported watches, fitness bands, smart rings, and other wearables. A silent device or a generic service can remain unclassified; use a general check to inspect that activity. A wearable match cannot tell whether a microphone is active.",
+            "id" : "wearables",
+            "title" : "Why a nearby watch or ring can remain unknown"
           },
           {
             "body" : "A broadcast name is self-reported and can be renamed or copied. Company identifiers sometimes identify a chip or protocol namespace, not the retail manufacturer. Possible and Probable are evidence labels, not numeric probabilities. Conflicting product claims stay ambiguous; details explain the supporting evidence. Catalog updates ship with app updates; Spectra does not download identification data during a scan.",

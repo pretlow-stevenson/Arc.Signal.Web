@@ -70,7 +70,7 @@ test('unreleased download is a truthful status rather than a broken link', () =>
   assert.match(html, /<p id="app-store-download" class="status">App Store release coming soon<\/p>/);
   assert.match(html, /id="compatibility"[^>]*>Requires an iPhone running iOS 27 or later/);
   assert.match(html, /Scanning does not require Apple Intelligence/);
-  assert.match(html, /No in-app purchases or scan limits/);
+  assert.match(html, /No in-app purchases\./);
   for (const page of [html, pages.get('index.html')]) {
     assert.doesNotMatch(page, /href="http:\/\/"|Available now|Now available|iPhone 16\/17/);
   }
@@ -246,7 +246,7 @@ test('Spectra imagery and mode descriptions match current radio and magnetic wor
   assert.match(quickCheck, /No magnetic measurement or calibration/);
   assert.match(html, /02 \/ Area Sweep/);
   assert.match(html, /Magnetic measurement is available in Area Sweep/);
-  assert.match(html, /Focused glasses and watch checks/);
+  assert.match(html, /Focused glasses and wearable checks/);
   assert.match(html, /Available in Area Sweep\. See actual field readings/);
   assert.doesNotMatch(html, /Optional detector sound|Available in Area Sweep and Monitor/);
   assert.ok(!files.includes('assets/images/spectra-home.png'));
@@ -277,9 +277,9 @@ test('website Guide is generated from all twelve native topics with release and 
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 13, 2026/);
+  assert.match(policy, /Effective September 15, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
-  for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '32 MiB', 'recovery copies',
+  for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
       'do not sell', 'under 13', 'iOS file protection', 'camera images', 'geographic coordinates', 'privacy regulator']) {
     assert.ok(policy.includes(text), `Missing privacy explanation: ${text}`);
@@ -289,6 +289,16 @@ test('privacy policy is public, linked, readable without scripts, and explains d
     assert.ok(pages.get(name).includes('href="spectra-privacy.html"'), `Missing policy link: ${name}`);
   }
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /https:\/\/arcsignal.app\/spectra-privacy.html/);
+});
+
+test('Spectra result discovery does not imply complete device-category coverage', () => {
+  const product = pages.get('spectra.html');
+  assert.match(product, /narrow results by recorded measurement or search displayed and broadcast names/);
+  assert.match(product, /device type is undetermined/);
+  assert.doesNotMatch(product, /No in-app purchases or scan limits/);
+  const guide = pages.get('guide.html');
+  assert.match(guide, /256 MiB/);
+  assert.doesNotMatch(guide, /32 MiB|filter by device category|filter by device type/i);
 });
 
 test('backup disclosures distinguish the exclusion request from guarantees and exported copies', async () => {
