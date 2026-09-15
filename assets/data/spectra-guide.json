@@ -86,6 +86,11 @@
             "body" : "Briefly observed means only one or two usable Bluetooth signal readings were retained. Repeatedly observed means at least three were retained. These labels describe observation, not an authenticated device model or continuous presence. A weak or intermittent advertiser may produce only a brief sighting.",
             "id" : "persistence",
             "title" : "Briefly or repeatedly observed"
+          },
+          {
+            "body" : "Use Quick Check or Area Sweep with Bluetooth selected, or Monitor while stationary. Recognizable names for AirTag, Tile, Chipolo, Pebblebee, Galaxy SmartTag, and eufy SmartTrack can appear as Possible item-tracker matches. Finding-network accessory and Finding-network broadcast describe recognized formats, not a specific tracker; phones, computers and headphones may also participate. Open a finding for its evidence or select it for Bluetooth Proximity. These results describe nearby signal presence, not ownership or movement with you. Trackers may change identifiers or omit recognizable names, so Spectra cannot identify every tracker or rule one out when no match appears.",
+            "id" : "item-trackers",
+            "title" : "Recognize nearby item trackers"
           }
         ],
         "steps" : [
@@ -110,6 +115,11 @@
             "body" : "iOS 27 Channel Sounding requires a paired, connected accessory with compatible hardware. It cannot range arbitrary broadcasts. Spectra keeps discovery connection-free and compares received signal strength instead; it does not display invented meters or direction.",
             "id" : "channelSounding",
             "title" : "Why not precise Bluetooth ranging?"
+          },
+          {
+            "body" : "A complete Google Find Hub frame can support Finding-network accessory. The Apple offline-finding layout documented in published research can support Finding-network broadcast. These unauthenticated formats do not establish a manufacturer, model, lost-device state or reporting activity; programmable devices can imitate them. Spectra does not decode their identifiers, query an account, or connect to identify an AirTag. Raw fields and sources remain available in technical details.",
+            "id" : "finding-network-formats",
+            "title" : "What finding-network labels mean"
           }
         ],
         "title" : "What Bluetooth signal means"
