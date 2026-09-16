@@ -145,9 +145,9 @@
             "title" : "Similar is not the same"
           },
           {
-            "body" : "Named findings appear directly in Summary even when the match is only Possible or the device type is unknown. The same names and device-type icons appear when choosing a finding for on-device analysis or Bluetooth proximity. A manufacturer code alone is not a device name. Unnamed, low-evidence activity stays in a compact disclosure; All Signals retains every source identity and area clue. Visibility does not increase confidence or mark a finding as dangerous.",
+            "body" : "Summary puts named findings and related signal profiles in one list, even when a match is only Possible or its device type is unknown. Each card shows its confidence and whether it represents one identity, likely related network services, or similar broadcasts that may be separate devices. Higher-evidence findings come first; items you marked expected stay at the end. Monitor distinguishes Since baseline from Starting baseline, not trusted from untrusted devices. The same names and device-type icons appear in analysis and proximity choices. A manufacturer code alone is not a device name. Unnamed, low-evidence activity stays expandable; All Signals retains every source identity and area clue. Visibility does not increase confidence or mark a finding as dangerous.",
             "id" : "unknown",
-            "title" : "Names stay visible; uncertainty stays clear"
+            "title" : "One list, with context on each result"
           },
           {
             "body" : "Filters narrows results by the measurement that recorded them: Bluetooth, Local network, or Magnetic. Choose any combination and Apply; leave all unchecked to include everything. The button is hidden when only one measurement is represented. Search names looks for the displayed or broadcast name, including names whose device type is undetermined. It does not guess categories from your search. Cancel keeps the current measurement filter; Clear filters restores all results and clears name search. Device-type labels are helpful estimates, not exclusion rules. Filters and search never change collection, saved reports, or export scope.",
@@ -156,7 +156,7 @@
           }
         ],
         "steps" : [
-          "Expand a Summary result to inspect its members and grouping explanation.",
+          "Expand a Summary result to inspect its members and grouping explanation. Large groups offer Show all identities: a searchable list of that group’s exact records, also available in specialist checks. Choose a record to open its details. Matching results appear before related context; this list never merges similar identities into one device.",
           "Choose All Signals above Results for the exact retained inventory, or Show signals to expand unclassified activity. If Summary and All Signals look alike, the check may contain only separate identities without supported relationships."
         ],
         "symbol" : "square.stack.3d.up",
@@ -613,7 +613,7 @@
             "title" : "Choose whether to include technical data"
           },
           {
-            "body" : "The clipboard contains a fixed analysis prompt followed by JSON, not a standalone JSON file. It asks the AI to distinguish facts from hypotheses, verify public signatures when research tools are available, and admit insufficient evidence. A larger model cannot recover information that was never advertised. Original Bonjour service types are not separately retained in current reports; missing fields are stated, not guessed. Pasting shares the content under the other app’s privacy policies. The copy stays on this iPhone, does not use Universal Clipboard, and expires after ten minutes. Reset or clipboard expiry cannot recall pasted copies. External answers are not imported into Spectra’s findings or catalog.",
+            "body" : "The clipboard contains a fixed analysis prompt followed by JSON, not a standalone JSON file. It asks for a plain-language conclusion, supporting evidence and uncertainty, then safe next steps. Catalog guesses and the names they came from are not independent proof. Protocol, device-family and exact-model confidence stay separate; unknown is a valid conclusion. Research instructions exclude private names and payloads from searches, but Spectra cannot enforce another app’s behavior. Pasting shares the chosen content under that app’s privacy policies. A larger model cannot recover information that was never advertised. Original Bonjour service types are not separately retained; missing fields are stated, not guessed. The copy stays on this iPhone, does not use Universal Clipboard, and expires after ten minutes. Reset or clipboard expiry cannot recall pasted copies. External answers are not imported into Spectra’s findings or catalog.",
             "id" : "copy-limits",
             "title" : "An external answer is a research hypothesis"
           },
