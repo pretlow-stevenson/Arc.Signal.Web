@@ -80,6 +80,8 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 /* Keep paid recommendations in context, with disclosure attached to each action. */
 .vpn-recommendation, .connection-resource { display: grid; align-content: start; gap: 1.25rem; min-width: 0; }
 .vpn-recommendation .eyebrow, .connection-resource .eyebrow { color: var(--blue); margin: 0; }
+.affiliate-brand { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem; }
+.affiliate-brand img { width: 10rem; max-width: 100%; height: auto; flex: none; }
 #vpn-resource .vpn-recommendation h3 { margin: 0; font-size: 1.5rem; letter-spacing: -.02em; }
 .connection-resource { border-top: 1px solid var(--line); padding-top: 1.75rem; margin-top: .5rem; gap: 1rem; }
 .connection-resource h3 { color: var(--ink); }

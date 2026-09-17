@@ -348,12 +348,29 @@ test('NordVPN recommendations preserve the exact approved URL and disclose commi
     assert.doesNotMatch(action, /\shidden(?:\s|=|>)|aria-hidden="true"[^>]*>Arc Signal|<details\b|\btarget=/);
     assert.equal([...html.matchAll(/go\.nordvpn\.net/g)].length, 1, `${name}: one intentional affiliate action`);
     assert.match(html, /data-affiliate-status="active"/);
-    assert.match(html, /NordVPN \/ Affiliate partner/);
+    assert.match(html, /<p class="eyebrow">Affiliate partner<\/p>/);
     const url = new URL(href.replaceAll('&amp;', '&'));
     assert.equal(url.origin + url.pathname, 'https://go.nordvpn.net/aff_c');
     assert.deepEqual([...url.searchParams], [['offer_id', '15'], ['aff_id', '156788'], ['url_id', '902']]);
     assert.equal(url.hash + url.username + url.password, '');
   }
+});
+
+test('NordVPN logo preserves official artwork, local loading, dimensions and partner disclosure', async () => {
+  const path = 'assets/images/nordvpn-logo.svg';
+  const asset = await readFile(join(root, path));
+  assert.equal(createHash('sha256').update(asset).digest('hex'), '6a70962b6559849de9f38899abd70512cee8fc817eaf1396f368ba46d3502108');
+  const svg = asset.toString('utf8');
+  assert.match(svg, /width="142" height="32" viewBox="0 0 142 32"/);
+  assert.doesNotMatch(svg, /<(?:script|image|foreignObject|use|style|animate)\b|\b(?:href|on\w+)\s*=|<!DOCTYPE|<!ENTITY|url\(/i);
+  for (const name of ['index.html', 'spectra.html']) {
+    const html = pages.get(name);
+    assert.equal(html.split(`src="${path}"`).length - 1, 1, name);
+    assert.match(html, /<div class="affiliate-brand"><img src="assets\/images\/nordvpn-logo.svg" width="142" height="32" alt="NordVPN" loading="lazy" decoding="async"><p class="eyebrow">Affiliate partner<\/p><\/div>/);
+    assert.match(html, /NordVPN and the NordVPN logo are trademarks of Nord Security/);
+  }
+  assert.match(css, /\.affiliate-brand \{ display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1\.5rem; \}/);
+  assert.match(css, /\.affiliate-brand img \{ width: 10rem; max-width: 100%; height: auto; flex: none; \}/);
 });
 
 test('VPN recommendations remain optional, separate from Spectra, and honest about protection', () => {
@@ -397,7 +414,7 @@ test('privacy explains post-click referral attribution without weakening app pri
     assert.ok(policy.includes(phrase), phrase);
   }
   assert.ok(policy.includes(`href="${nordPrivacyURL}" rel="noreferrer"`));
-  assert.match(policy, /We do not load NordVPN content or affiliate-tracking scripts when you browse our pages/);
+  assert.match(policy, /We do not contact NordVPN or load affiliate-tracking scripts when you browse our pages/);
   assert.doesNotMatch(policy, /No affiliate links are active|If we later activate|current direct NordVPN link/);
 });
 

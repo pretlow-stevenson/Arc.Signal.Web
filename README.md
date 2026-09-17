@@ -148,8 +148,22 @@ plain commission disclosure immediately before it and connected using
 `aria-describedby`. The link uses `rel="sponsored noreferrer"` and
 `referrerpolicy="no-referrer"`. It navigates in the same tab so Back works normally.
 Spectra remains the primary product; there are no interrupting banners, popups,
-third-party assets, affiliate scripts, pixels, link prefetching, or click handlers.
+remotely loaded third-party assets, affiliate scripts, pixels, link prefetching, or click handlers.
 The app's offline Guide remains provider-neutral, with no sales route.
+
+The locally hosted `assets/images/nordvpn-logo.svg` is the original blue-and-black
+142 × 32 wordmark from the [official trademark page](https://nordsecurity.com/trademark-policy/),
+using its [published SVG](https://sb.nordcdn.com/asset/04e1f4fc-d74e-4d91-92b8-a8f0c834a224/nordvpn-default-svg.svg).
+Its SHA-256 is `6a70962b6559849de9f38899abd70512cee8fc817eaf1396f368ba46d3502108`.
+Preserve the artwork, colors, registered-trademark symbol, viewBox, and internal
+spacing. Display at 10rem wide with automatic height; the surrounding partner
+label wraps instead of squeezing or distorting the logo. Explicit image dimensions
+reserve space before loading. Both pages include trademark attribution and keep
+the paid relationship and commission disclosure visible. Do not recolor, crop,
+redraw, animate, or combine it with Arc Signal's mark. The owner's affiliate
+agreement and [Nord Security's logo-use guidance](https://sb.nordcdn.com/asset/30a7ca5e-f016-4967-8b4d-fbcd62daff33/Nord_Security-Trademark_Guidelines_.pdf)
+govern use; this is not a grant of trademark rights. No provider request is needed
+to render the logo.
 
 NordVPN is a separate paid service, not included with or required by Spectra. The
 copy discusses routed traffic on shared Wi-Fi, not detection or prevention of
