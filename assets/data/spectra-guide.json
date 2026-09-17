@@ -50,7 +50,7 @@
             "title" : "Names are claims, not authentication"
           },
           {
-            "body" : "Bluetooth company codes and member service numbers identify registered namespaces, sometimes belonging to a chip or protocol provider. A Registry model uses a public Matter vendor/product record matched to unverified broadcast identifiers. Neither proves the hardware is genuine. Technical details keep sources and registry versions. Saved catalog conclusions remain intact; current name-based type rules may surface an additional Possible match when an older session is opened.",
+            "body" : "Bluetooth company codes and member service numbers identify registered namespaces, sometimes belonging to a chip or protocol provider. A Registry model uses a public Matter vendor/product record matched to unverified broadcast identifiers. Neither proves the hardware is genuine. Technical details keep sources and registry versions. Saved catalog and name-based interpretations remain recorded history. An eligible session can be explicitly rechecked with newer recognition, creating a separate copy without changing the original.",
             "id" : "registry",
             "title" : "Registry context is not a verified maker"
           },
@@ -577,6 +577,26 @@
             "title" : "Give a session a useful name"
           },
           {
+            "body" : "A blue dot beside a session means newer recognition is available. Open it and choose Recheck session. Spectra reinterprets compatible saved radio evidence using the engine and catalog bundled with your app update. It does not start Bluetooth or network discovery, collect new measurements, or upload your capture. Opening a session alone does not clear the dot.",
+            "id" : "recheck",
+            "title" : "What does the blue dot mean?"
+          },
+          {
+            "body" : "A successful recheck saves a separate session named from the original naming base plus Recheck 1, Recheck 2, and so on. Rechecking a recheck does not stack suffixes. Each saved copy can be renamed independently, but its original naming base remains in recheck lineage and technical exports. Rename is not an erase action. The new result separates newly identified records, changed identifications, and previous matches no longer supported. These are interpretation changes—not newly discovered devices. No identification changes is also a valid outcome. Captured shows the original measurement date; Rechecked shows when the new interpretation was created.",
+            "id" : "recheck-results",
+            "title" : "Your original stays unchanged"
+          },
+          {
+            "body" : "Once a current recheck is saved, the blue dot clears for that capture family; earlier copies link to the latest interpretation. A later app update can make the newest usable copy eligible again. Deleting the current interpretation can restore eligibility on a surviving older copy. A missing revision or insufficient retained evidence can prevent rechecking; Scan breakdown explains why. Some older network records lack the original discovery fields. Unsupported records and saved magnetic readings are preserved, not reconstructed or treated as fresh measurements.",
+            "id" : "recheck-availability",
+            "title" : "When is another recheck useful?"
+          },
+          {
+            "body" : "A recheck keeps its own retained evidence, so it uses additional local storage and counts toward the session limit. It never removes an existing session to make room. If saving fails, free space or remove sessions you no longer need, then retry. Cancel or leave the screen to stop pending work; a copy already saved at the moment you cancel remains in Sessions. Erase All Sessions and Reset include rechecks.",
+            "id" : "recheck-storage",
+            "title" : "Rechecks need room to save"
+          },
+          {
             "body" : "The primary history file keeps up to 50 sessions within 256 MiB, whichever limit is reached first. Temporary replacement files and protected recovery copies may need additional disk space. Saving a new check can remove the oldest reports. Sessions warns as the count approaches the limit and reports retention removals. Export important records before continuing to fill history. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
             "id" : "capacity",
             "title" : "Why did an older session disappear?"
@@ -606,12 +626,12 @@
             "title" : "History cannot be read"
           },
           {
-            "body" : "Sessions groups by your current local calendar and shows the original date and duration in details. Recorded with identifies the app version/build that produced a report. Older reports may show Not recorded; opening them never fills in today’s version or invents missing graph data.",
+            "body" : "Sessions groups by your current local calendar, using the saved recheck time for a derived copy and the capture time otherwise. Details always preserve the original measurement date and duration. Captured with identifies the original app build; Recognition used or Rechecked with identifies the interpretation revisions. Older reports may show Not recorded. Opening them does not silently reinterpret their findings, fill in today’s version, or invent missing graph data.",
             "id" : "timestamps",
             "title" : "Old results are historical"
           }
         ],
-        "title" : "Save, rename, and erase sessions"
+        "title" : "Save, recheck, and manage sessions"
       }
     },
     {
