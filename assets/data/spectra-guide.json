@@ -567,6 +567,11 @@
         "navigationTitle" : "Sessions",
         "sections" : [
           {
+            "body" : "Sessions groups checks by day, newest first, with the newest times first inside each group. The most recent day starts open; tap any date heading to show or hide its sessions. Each heading shows the total for that day. You can keep several days open, and your choices stay in place while moving between tabs or opening and returning from a session. These choices are not saved across app launches. A new most-recent day starts open; deleting all history or changing time zone can reset the day groups. Each row keeps its check-type icon even after you rename it.",
+            "id" : "browsing",
+            "title" : "Find a check by day"
+          },
+          {
             "body" : "Saving completed sessions is on by default and can be changed in Guide. Turning it off affects future saving, not existing history. The completed check tells you whether it was saved. If saving fails, keep the result open and use Retry Saving or Export JSON before discarding it. A forced close, crash, or shutdown before saving can lose an unfinished check; there is no continuous autosaved draft. Finish and confirm important checks before closing the app.",
             "id" : "saving",
             "title" : "Confirm a check was saved"
@@ -607,13 +612,13 @@
             "title" : "Why did an older session disappear?"
           },
           {
-            "body" : "Delete one session from its list actions, or Select several. Erase All Sessions removes stored sessions and recovery copies; it is disabled when there is nothing to erase. Reset Spectra in Guide also clears preferences and returns to Welcome. Confirmations are deliberate because erasure cannot be undone.",
+            "body" : "Delete one session from its list actions, or Select several. Hiding a day does not deselect its sessions: the date heading keeps its selected count, and Delete Selected shows the total across days. Open that day to change its selection. Erase All Sessions includes closed days and recovery copies; it is disabled when there is nothing to erase. Reset Spectra in Guide also clears preferences and returns to Welcome. Confirmations are deliberate because erasure cannot be undone.",
             "id" : "erase",
             "title" : "Choose the right erase action"
           }
         ],
         "steps" : [
-          "Open Sessions and choose a check by its name and time. A blue dot marks an available recheck, not an unread session.",
+          "Open Sessions, tap a date heading if needed, and choose a check by its name and time. A blue dot marks an available recheck, not an unread session.",
           "If Recheck session is available, tap it and wait for a separately saved result. Review the original Captured date, the Rechecked date, and any identification changes.",
           "Review results and Coverage, rename or add notes, then export anything you need to keep outside bounded history.",
           "Use individual, selected, or all-session deletion for the scope you intend. Read the confirmation before erasing."

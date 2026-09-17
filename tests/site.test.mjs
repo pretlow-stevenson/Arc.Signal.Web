@@ -395,6 +395,11 @@ test('Guide explains specialist export scope and bounded optional analysis', asy
 });
 
 test('saved-session rechecks keep eligibility, originals, storage and privacy explicit', () => {
+  assert.match(pages.get('spectra.html'), /expandable day groups, newest first/);
+  for (const phrase of ['Find a check by day', 'most recent day starts open',
+    'does not deselect', 'total across days', 'includes closed days']) {
+    assert.ok(pages.get('guide.html').includes(phrase), phrase);
+  }
   const product = pages.get('spectra.html');
   for (const phrase of ['eligible saved radio evidence', 'blue dot in Sessions',
     'separate numbered interpretation', 'original unchanged', 'better matches are not guaranteed',

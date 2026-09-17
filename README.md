@@ -63,6 +63,12 @@ and need no Apple Intelligence. They do not guarantee improved identification or
 show what is at a past location now. The policy explains storage, independent
 deletion, and retained naming lineage; catalog updates still ship with app releases.
 
+Sessions uses independently expandable day groups, newest first. The latest day
+starts open; other days are one tap away. The shared Guide explains in-memory
+expansion choices, day counts, blue-dot availability, and selected deletion across
+closed days. Keep the product-page summary and generated help consistent with
+that behavior; do not imply opening a day or session clears recheck availability.
+
 After editing native help, compile its exporter with the two Guide sources,
 run the executable with this repository's JSON path, then run:
 
@@ -159,16 +165,19 @@ stitching from iCloud retrieval and destination services chosen by the user.
 
 ## App screenshots
 
-The September 16 refresh uses the same verified native captures as Spectra’s
+The September 17 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The source revision is `322b6da`: Home includes Watches & Wearables, and the
+The source revision is `cb55303`: Home includes Watches & Wearables, and the
 Smart Glasses frame shows a naturally completed check with the full finding,
 signal context, and Review details action. The current unified Results layout
 and name search are visible; there are no retired device-category filters.
+The companion App Store set also shows the updated Sessions date disclosure,
+count and check-type icons. This site's generated Guide explains that interaction;
+the existing four-image gallery remains focused on discovery and measurements.
 
 `assets/data/spectra-screenshots.json` records the exact app source commit,
 capture SHA-256 hashes, output hashes, dimensions, and decoded-pixel hashes.
