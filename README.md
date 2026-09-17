@@ -18,7 +18,8 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 The site is static HTML and CSS with one small, deferred local script for optional
 image and section reveals. There are no runtime dependencies, forms, analytics,
-or third-party resource requests. Content remains visible with JavaScript blocked
+or third-party resource requests on page load. Optional external links navigate
+only when followed; they are not prefetched or embedded. Content remains visible with JavaScript blocked
 or IntersectionObserver unavailable. Reduced motion disables reveals and hover
 movement; image reveals wait for loading, and each target animates only once. Inter and Bodoni Moda are
 self-hosted; their SIL Open Font Licenses are included with the fonts.
@@ -129,26 +130,58 @@ promise a free download or advertise the retired scan-unlock product.
 App-owned text remains standard-sized under Larger Text by owner decision;
 do not advertise Larger Text support for the app. Website text resizing remains.
 
-## Optional VPN resources and affiliate readiness
+## NordVPN affiliate recommendations
 
-The Spectra page separates everyday privacy guidance from an optional NordVPN
-resource. The current URL is the plain `https://nordvpn.com/` link: no affiliate
-parameters, no commission, no embedded content, and no partnership claim.
-Independent FTC, EFF, and CISA advice remains available alongside it. VPNs address
-routed network traffic, not nearby recording; HTTPS context and provider trust
-remain explicit. The app's offline Guide is provider-neutral, with no affiliate
-links or sales route.
+The owner approved activation on September 17, 2026 and supplied the program-issued
+NordVPN link. The approved public URL is:
 
-Before enabling an affiliate link, obtain the owner's approval and the verified
-program-issued URL. Replace the inactive state and adjacent no-commission text
-with plain disclosure such as “Arc Signal may earn a commission if you purchase
-through this link.” Keep it visible beside the recommendation and link, not hidden
-in a footer or disclosure. Add `rel="sponsored noreferrer"`, review the landing
-page and renewal terms, update the privacy policy and link allowlist/tests, and
-document approval. Do not invent discounts, use unapproved branding, add tracking
-scripts/pixels, or attach scan data. A referral destination may set attribution
-cookies after a click; disclose that before activation. There is no active
-affiliate relationship represented by this change.
+`https://go.nordvpn.net/aff_c?offer_id=15&aff_id=156788&url_id=902`
+
+Use HTML-escaped ampersands in anchors. Do not change the three parameters, add
+visitor identifiers, attach scan data, or copy private correspondence into the
+repository. NordPass and other products from the email are not included.
+
+The homepage introduces NordVPN in its everyday-awareness section. The Spectra
+page explains the complementary network-protection use case alongside independent
+FTC, EFF, and CISA guidance. Each page has one intentional NordVPN action, with the
+plain commission disclosure immediately before it and connected using
+`aria-describedby`. The link uses `rel="sponsored noreferrer"` and
+`referrerpolicy="no-referrer"`. It navigates in the same tab so Back works normally.
+Spectra remains the primary product; there are no interrupting banners, popups,
+third-party assets, affiliate scripts, pixels, link prefetching, or click handlers.
+The app's offline Guide remains provider-neutral, with no sales route.
+
+NordVPN is a separate paid service, not included with or required by Spectra. The
+copy discusses routed traffic on shared Wi-Fi, not detection or prevention of
+nearby recording. HTTPS context, VPN-provider trust, and required workplace
+protections remain explicit. Prices, discount percentages, renewal rates, audit
+counts, and platform-specific extras are deliberately not advertised: readers
+check current plans and terms at the provider. No performance or safety guarantee
+or exclusive offer is implied.
+
+The privacy policy explains that referral navigation can disclose connection
+information and lead to attribution cookies/reporting at the destination. A
+suppressed referrer does not hide the visitor's IP address or disable that
+provider's tracking. Our site does not contact the referral service on page load.
+Using the app never requires following the link. The site's affiliate disclosure
+does not change the app's local-data practices.
+
+Research and maintenance references (reviewed September 17, 2026):
+
+- [FTC endorsement guidance](https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking): explain commission eligibility clearly beside the recommendation, not only in a footer or the words “affiliate link.”
+- [NN/g advertising usability research](https://www.nngroup.com/articles/user-requirements-online-ads/): contextual relevance and non-disruptive placement informed the existing in-flow layout, without hiding its commercial nature.
+- [NordVPN features](https://nordvpn.com/features/) and [current plans](https://nordvpn.com/special/): keep feature claims modest and defer changing offers to the provider.
+- [Nord's privacy policy](https://my.nordaccount.com/legal/privacy-policy/): external processing and cookie choices belong to the provider. The policy interface requires JavaScript; this update does not attest to its full legal terms.
+
+A bounded link check followed the supplied URL to NordVPN's `/special/` landing
+page with `utm_source=aff156788` and `utm_campaign=off15`. The destination returned
+403 to the automated client. This verifies the referral route, not checkout,
+attribution credit, or current renewal pricing. Confirm those in an ordinary
+browser/affiliate dashboard before running a paid campaign; do not repeatedly
+follow referral links in automated tests. Tests instead enforce the exact URL,
+adjacent disclosure, separate-product wording, local-only resources, and privacy
+consistency. Any future link, tracking, or promotional claim needs fresh approval
+and a policy/test review. Keep legal and program compliance under owner review.
 
 ## Seamless release status
 

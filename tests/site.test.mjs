@@ -10,8 +10,11 @@ const files = await listPublicFiles();
 const pages = new Map(await Promise.all(documents.map(async name => [name, await readFile(join(root, name), 'utf8')])));
 const css = await readFile(join(root, 'assets/css/site.css'), 'utf8');
 const ids = html => [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+// Exact owner-approved program URL. Do not allow arbitrary tracking destinations
+// or add visitor/scan identifiers to these public, campaign-level parameters.
+const nordAffiliateHref = 'https://go.nordvpn.net/aff_c?offer_id=15&amp;aff_id=156788&amp;url_id=902';
+const nordPrivacyURL = 'https://my.nordaccount.com/legal/privacy-policy/';
 const editorialLinks = new Set([
-  'https://nordvpn.com/',
   'https://ssd.eff.org/module/vpn.html',
   'https://consumer.ftc.gov/articles/are-public-wi-fi-networks-safe-what-you-need-know',
   'https://www.cisa.gov/secure-our-world',
@@ -34,8 +37,9 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
     for (const [attribute, value] of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
       assert.notEqual(value, '', `${name}: empty link`);
       if (value === 'mailto:support@arcsignal.app' && ['guide.html', 'spectra-privacy.html'].includes(name)) continue;
-      if (name === 'spectra-privacy.html' && value === 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement') continue;
+      if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && [nordPrivacyURL, 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement'].includes(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && editorialLinks.has(value)) continue;
+      if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === nordAffiliateHref) continue;
       if (value.startsWith('https://')) {
         assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
         continue;
@@ -125,7 +129,7 @@ test('body and action colors have sufficient contrast on their intended surfaces
       .map(value => value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4);
     return rgb[0] * .2126 + rgb[1] * .7152 + rgb[2] * .0722;
   };
-  for (const [foreground, background] of [['535a65', 'f7f7f5'], ['535a65', 'e1ecf8'], ['075bb5', 'eef2f6'], ['b6c4d4', '111820'], ['ffffff', '075bb5'], ['295e4f', 'e8f0eb'], ['535a65', 'e4ece5'], ['ffffff', '295e4f']]) {
+  for (const [foreground, background] of [['535a65', 'f7f7f5'], ['535a65', 'e1ecf8'], ['075bb5', 'eef2f6'], ['b6c4d4', '111820'], ['ffffff', '075bb5'], ['295e4f', 'e8f0eb'], ['535a65', 'e4ece5'], ['ffffff', '295e4f'], ['161a21', 'f7f7f5'], ['075bb5', 'f7f7f5'], ['ffffff', '161a21']]) {
     const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
     assert.ok((values[0] + .05) / (values[1] + .05) >= 4.5, `${foreground} on ${background}`);
   }
@@ -328,26 +332,73 @@ test('launch pricing is explicit but not presented as a live purchase or promoti
   assert.match(pages.get('spectra.html'), /Prices in other regions may vary/);
 });
 
-test('optional VPN resource is untracked, inactive for affiliate purposes, and qualified nearby', () => {
-  const html = pages.get('spectra.html');
-  const resource = html.match(/<div class="feature-grid" id="vpn-resource"[\s\S]*?<\/section>/)?.[0];
+test('NordVPN recommendations preserve the exact approved URL and disclose commissions beside each action', () => {
+  for (const [name, disclosureID] of [['index.html', 'home-vpn-disclosure'], ['spectra.html', 'vpn-disclosure']]) {
+    const html = pages.get(name);
+    const action = html.match(new RegExp(`<div class="affiliate-action">\\s*<p id="${disclosureID}"[\\s\\S]*?</div>`))?.[0];
+    assert.ok(action, `${name}: disclosure and action must stay together`);
+    assert.match(action, /class="affiliate-disclosure">Arc Signal may earn a commission if you purchase through this link\.<\/p>\s*<a /);
+    const link = action.match(/<a\b[^>]+>/)?.[0];
+    const href = link?.match(/\shref="([^"]+)"/)?.[1];
+    assert.equal(href, nordAffiliateHref, name);
+    assert.match(link, /rel="sponsored noreferrer"/);
+    assert.match(link, /referrerpolicy="no-referrer"/);
+    assert.ok(link.includes(`aria-describedby="${disclosureID}"`), name);
+    assert.match(action, /Explore NordVPN plans/);
+    assert.doesNotMatch(action, /\shidden(?:\s|=|>)|aria-hidden="true"[^>]*>Arc Signal|<details\b|\btarget=/);
+    assert.equal([...html.matchAll(/go\.nordvpn\.net/g)].length, 1, `${name}: one intentional affiliate action`);
+    assert.match(html, /data-affiliate-status="active"/);
+    assert.match(html, /NordVPN \/ Affiliate partner/);
+    const url = new URL(href.replaceAll('&amp;', '&'));
+    assert.equal(url.origin + url.pathname, 'https://go.nordvpn.net/aff_c');
+    assert.deepEqual([...url.searchParams], [['offer_id', '15'], ['aff_id', '156788'], ['url_id', '902']]);
+    assert.equal(url.hash + url.username + url.password, '');
+  }
+});
+
+test('VPN recommendations remain optional, separate from Spectra, and honest about protection', () => {
+  const product = pages.get('spectra.html');
+  const resource = product.match(/<div class="feature-grid" id="vpn-resource"[\s\S]*?<\/section>/)?.[0];
   assert.ok(resource);
-  assert.match(resource, /data-affiliate-status="inactive"/);
-  assert.match(resource, /direct, non-affiliate link/);
-  assert.match(resource, /receives no commission/);
-  assert.match(resource, /not required to use it/);
-  assert.match(resource, /href="https:\/\/nordvpn.com\/" rel="noreferrer" aria-describedby="vpn-disclosure"/);
-  assert.match(resource, /No VPN can resolve a concern about a nearby camera/);
-  for (const [, url] of resource.matchAll(/href="([^"]+)"/g)) {
-    assert.ok(editorialLinks.has(url), url);
-    assert.equal(new URL(url).search, '');
+  assert.match(resource, /separate paid service, not included with Spectra and not required to use it/);
+  assert.match(resource, /pricing, and renewal terms/);
+  assert.match(resource, /cannot detect or prevent nearby recording/);
+  assert.match(resource, /routed through its VPN connection/);
+  for (const url of editorialLinks) assert.ok(resource.includes(`href="${url}" rel="noreferrer"`), url);
+  const home = pages.get('index.html');
+  assert.match(home, /optional, separate paid service—not included with Spectra/);
+  assert.match(home, /href="spectra.html#vpn-resource">Where a VPN helps/);
+  for (const html of [home, product]) {
+    assert.doesNotMatch(html, /direct, non-affiliate|receives no commission|data-affiliate-status="inactive"|exclusive discount|VPN included|free NordVPN/i);
   }
-  for (const [tag] of html.matchAll(/<(?:img|script|link|iframe)\b[^>]*>/g)) {
-    assert.ok(![...editorialLinks].some(url => tag.includes(url)), 'Editorial destinations must remain anchors, never loaded resources');
+  // The app's exported, offline Guide remains educational and provider-neutral.
+  assert.doesNotMatch(pages.get('guide.html'), /NordVPN|go\.nordvpn\.net|affiliate partner/i);
+});
+
+test('affiliate navigation adds no automatic third-party requests or visitor tracking to our pages', () => {
+  for (const [name, html] of pages) {
+    for (const [tag, kind] of html.matchAll(/<([a-z][\w-]*)\b[^>]*>/gi)) {
+      if (kind.toLowerCase() === 'a' || kind.toLowerCase() === 'meta') continue;
+      // Canonical metadata describes this page; it does not fetch a resource.
+      if (/^<link rel="canonical" href="https:\/\/arcsignal\.app\/[^"]*">$/.test(tag)) continue;
+      assert.doesNotMatch(tag, /\b(?:href|src|srcset|data|action)="(?:https?:)?\/\//i, `${name}: no remote loaded resources`);
+    }
+    assert.doesNotMatch(html, /\bping\s*=|\brel="[^"]*(?:preconnect|prefetch|dns-prefetch)|http-equiv="refresh"/i, name);
+    if (!['index.html', 'spectra.html'].includes(name)) assert.ok(!html.includes(nordAffiliateHref), name);
   }
+  assert.match(css, /\.affiliate-action \{ display: grid; justify-items: start; gap: \.75rem; \}/);
+  assert.match(css, /\.affiliate-action \.affiliate-disclosure \{ font-size: \.9375rem; line-height: 1\.6; color: var\(--ink\); \}/);
+  assert.match(css, /max-width: 100%; gap: \.75rem; overflow-wrap: anywhere/);
+});
+
+test('privacy explains post-click referral attribution without weakening app privacy', () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /No affiliate links are active/);
-  assert.match(policy, /No scan data is attached/);
+  for (const phrase of ['participates in the NordVPN affiliate program', 'We may earn a commission', 'not an identifier generated for you', 'No scan data is attached', 'After you follow the link', 'IP address and browser details', 'cookies or similar technologies', 'report referral activity for commissions', 'does not hide your IP address', 'without visiting NordVPN or buying a VPN']) {
+    assert.ok(policy.includes(phrase), phrase);
+  }
+  assert.ok(policy.includes(`href="${nordPrivacyURL}" rel="noreferrer"`));
+  assert.match(policy, /We do not load NordVPN content or affiliate-tracking scripts when you browse our pages/);
+  assert.doesNotMatch(policy, /No affiliate links are active|If we later activate|current direct NordVPN link/);
 });
 
 test('practical guidance keeps observation, HTTPS, VPNs, and physical safety distinct', () => {

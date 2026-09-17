@@ -74,9 +74,19 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 #everyday-awareness > .evidence-note { margin-top: 2rem; margin-bottom: .75rem; }
 #everyday-awareness > .text-link, #vpn-resource .text-link { gap: .5rem; }
 #vpn-resource { margin-top: 2.5rem; }
-#vpn-resource .caption, #vpn-resource ul { margin-top: 1rem; }
+#vpn-resource ul { margin-top: 1rem; }
 #vpn-resource ul { padding-left: 1.25rem; }
 #vpn-resource li + li { margin-top: .5rem; }
+/* Keep paid recommendations in context, with disclosure attached to each action. */
+.vpn-recommendation, .connection-resource { display: grid; align-content: start; gap: 1.25rem; min-width: 0; }
+.vpn-recommendation .eyebrow, .connection-resource .eyebrow { color: var(--blue); margin: 0; }
+#vpn-resource .vpn-recommendation h3 { margin: 0; font-size: 1.5rem; letter-spacing: -.02em; }
+.connection-resource { border-top: 1px solid var(--line); padding-top: 1.75rem; margin-top: .5rem; gap: 1rem; }
+.connection-resource h3 { color: var(--ink); }
+.affiliate-action { display: grid; justify-items: start; gap: .75rem; }
+.affiliate-action .affiliate-disclosure { font-size: .9375rem; line-height: 1.6; color: var(--ink); }
+.affiliate-action .button, .affiliate-action .text-link, .connection-resource > .text-link { max-width: 100%; gap: .75rem; overflow-wrap: anywhere; }
+.affiliate-action a > span { flex: none; }
 #spectra-price { margin-top: 1.25rem; font-size: 1.125rem; line-height: 1.6; }
 .privacy-section { background: #eaf0f7; }
 .privacy-list { padding: 0; margin: 0; list-style: none; }
