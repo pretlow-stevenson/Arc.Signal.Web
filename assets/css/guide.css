@@ -1,16 +1,19 @@
 .guide-page { padding-top: 5rem; padding-bottom: 5rem; }
 .guide-intro { max-width: 48rem; margin-bottom: 4rem; }
-.guide-intro h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
-.guide-intro .lead { margin-top: 1.25rem; margin-bottom: .75rem; }
+.guide-intro h1 { font-size: clamp(2.25rem, 4.5vw, 3.5rem); }
+.guide-intro .lead { font-size: clamp(1.125rem, 1.6vw, 1.25rem); margin-top: 1.25rem; margin-bottom: .75rem; }
 .guide-layout { display: grid; grid-template-columns: minmax(14rem, 1fr) minmax(0, 3fr); gap: 4rem; align-items: start; }
 .guide-contents { display: block; position: sticky; top: 6rem; max-height: calc(100dvh - 7rem); overflow-y: auto; padding-right: .5rem; }
-.guide-contents h2 { font-size: 1.25rem; }
-.guide-contents .eyebrow { margin: 1.5rem 0 .5rem; }
-.guide-contents ul { list-style: none; padding: 0; margin: .75rem 0 1.5rem; }
-.guide-contents li { margin: .6rem 0; }
-.guide-contents a { font-size: 1rem; display: inline-block; padding: .35rem 0; text-underline-offset: .2em; }
+.guide-contents h2 { font-size: 1.25rem; font-weight: 600; }
+.guide-group { margin-top: 1.75rem; }
+.guide-group h3 { font-size: 1.0625rem; font-weight: 600; line-height: 1.45; color: var(--ink); }
+.guide-contents ul { list-style: none; padding: 0; margin: .5rem 0 1.25rem; }
+.guide-group ul { padding-left: .75rem; margin-bottom: 0; }
+.guide-contents li { margin: .25rem 0; }
+.guide-contents a { font-size: 1rem; line-height: 1.5; display: flex; padding: .5rem 0; text-underline-offset: .2em; }
+.guide-contents > .text-link { margin-top: 1.5rem; }
 .guide-topic { max-width: 48rem; padding: 0 0 3rem; margin: 0 0 3rem; border-bottom: 1px solid #cdd3dc; scroll-margin-top: 6rem; }
-.guide-topic h2 { font-size: clamp(1.75rem, 2.75vw, 2.25rem); line-height: 1.15; }
+.guide-topic h2 { font-size: clamp(1.625rem, 2.75vw, 2.125rem); line-height: 1.2; }
 .guide-topic h3 { font-family: inherit; font-size: 1.125rem; margin: 1.75rem 0 .5rem; }
 .guide-topic p, .guide-topic li { font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
 .guide-topic h2 + p, .guide-topic p + p { margin-top: 1rem; }

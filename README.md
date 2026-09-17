@@ -23,6 +23,12 @@ or IntersectionObserver unavailable. Reduced motion disables reveals and hover
 movement; image reveals wait for loading, and each target animates only once. Inter and Bodoni Moda are
 self-hosted; their SIL Open Font Licenses are included with the fonts.
 
+Typography uses Bodoni Moda for opening headlines and marketing section headings,
+with Inter for body copy, navigation, and guide/policy topic headings. Marketing
+section headings scale from 32–44px; body text stays at 16px, with supporting labels
+at least 13px. Guide categories use 17px semibold sentence-case headings above
+16px topic links. Type sizes use rem, with bounded fluid scaling for larger headings.
+
 With Node.js 22 or later:
 
 ```sh

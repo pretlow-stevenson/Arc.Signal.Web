@@ -42,7 +42,7 @@ export async function renderGuide() {
       <h2>Find an answer</h2>
       ${[...new Set(articles.map(a => a.category))].map(category => {
         const matching = articles.filter(a => a.category === category);
-        return `<p class="eyebrow">${escape(matching[0].categoryTitle)}</p><ul>${matching.map(({ content: a }) => `<li><a href="#${escape(a.id)}">${escape(a.title)}</a></li>`).join('')}</ul>`;
+        return `<div class="guide-group"><h3>${escape(matching[0].categoryTitle)}</h3><ul>${matching.map(({ content: a }) => `<li><a href="#${escape(a.id)}">${escape(a.title)}</a></li>`).join('')}</ul></div>`;
       }).join('\n')}
       <a class="text-link" href="#support">Contact support</a>
     </nav><div class="guide-articles">
