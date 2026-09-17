@@ -10,6 +10,12 @@ const files = await listPublicFiles();
 const pages = new Map(await Promise.all(documents.map(async name => [name, await readFile(join(root, name), 'utf8')])));
 const css = await readFile(join(root, 'assets/css/site.css'), 'utf8');
 const ids = html => [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+const editorialLinks = new Set([
+  'https://nordvpn.com/',
+  'https://ssd.eff.org/module/vpn.html',
+  'https://consumer.ftc.gov/articles/are-public-wi-fi-networks-safe-what-you-need-know',
+  'https://www.cisa.gov/secure-our-world',
+]);
 
 test('documents have descriptive metadata, one main landmark and one h1', () => {
   for (const [name, html] of pages) {
@@ -25,17 +31,20 @@ test('documents have descriptive metadata, one main landmark and one h1', () => 
 
 test('all local links, fragments, images, styles and font preloads resolve', () => {
   for (const [name, html] of pages) {
-    for (const [, value] of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
+    for (const [attribute, value] of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
       assert.notEqual(value, '', `${name}: empty link`);
       if (value === 'mailto:support@arcsignal.app' && ['guide.html', 'spectra-privacy.html'].includes(name)) continue;
       if (name === 'spectra-privacy.html' && value === 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement') continue;
+      if (name === 'spectra.html' && attribute.startsWith('href=') && editorialLinks.has(value)) continue;
       if (value.startsWith('https://')) {
         assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
         continue;
       }
       assert.ok(!/^(?:[a-z]+:|\/\/)/i.test(value), `Unsupported URL: ${value}`);
       const [path, fragment] = value.split('#');
-      const target = path === '/' ? 'index.html' : path.replace(/^\//, '') || name;
+      if (path.includes('?')) assert.match(path, /^assets\/images\/spectra-[a-z-]+\.webp\?v=[a-f0-9]{12}$/);
+      const pathname = path.split('?')[0];
+      const target = pathname === '/' ? 'index.html' : pathname.replace(/^\//, '') || name;
       assert.ok(files.includes(target), `${name}: missing ${target}`);
       if (fragment !== undefined) {
         assert.ok(fragment && ids(pages.get(target) ?? '').includes(fragment), `${name}: missing #${fragment}`);
@@ -162,8 +171,15 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
     }
     assert.deepEqual(size, [1320, 2868]);
     assert.equal(item.width, 1320); assert.equal(item.height, 2868);
-    assert.ok(html.includes(`<img src="${item.output}" width="1320" height="2868"`));
-    assert.ok(html.includes(`href="${item.output}"`));
+    const versioned = `${item.output}?v=${item.outputSHA256.slice(0, 12)}`;
+    assert.ok(html.includes(`<img src="${versioned}" width="1320" height="2868"`));
+    assert.ok(html.includes(`href="${versioned}"`));
+    if (item.id === '01-quick-check') assert.ok(pages.get('index.html').includes(`<img src="${versioned}"`));
+    for (const page of pages.values()) {
+      for (const [, url] of page.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
+        if (url.split('?')[0] === item.output) assert.equal(url, versioned, 'Stale screenshot cache version');
+      }
+    }
   }
   assert.ok(!files.includes('assets/images/spectra-overview.png'));
   assert.ok(!files.includes('assets/images/spectra-area-sweep.png'));
@@ -277,7 +293,7 @@ test('website Guide is generated from all twelve native topics with release and 
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 15, 2026/);
+  assert.match(policy, /Effective September 16, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
@@ -299,6 +315,56 @@ test('Spectra result discovery does not imply complete device-category coverage'
   const guide = pages.get('guide.html');
   assert.match(guide, /256 MiB/);
   assert.doesNotMatch(guide, /32 MiB|filter by device category|filter by device type/i);
+});
+
+test('launch pricing is explicit but not presented as a live purchase or promotion', () => {
+  for (const name of ['index.html', 'spectra.html']) {
+    const html = pages.get(name);
+    assert.match(html, /Planned U\.S\. price:?\s+(?:<strong>)?\$3\.99/);
+    assert.match(html, /One-time purchase/);
+    assert.doesNotMatch(html, /\$2\.99|launch discount|introductory price|was \$3\.99/i);
+  }
+  assert.match(pages.get('spectra.html'), /No subscription/);
+  assert.match(pages.get('spectra.html'), /Prices in other regions may vary/);
+});
+
+test('optional VPN resource is untracked, inactive for affiliate purposes, and qualified nearby', () => {
+  const html = pages.get('spectra.html');
+  const resource = html.match(/<div class="feature-grid" id="vpn-resource"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(resource);
+  assert.match(resource, /data-affiliate-status="inactive"/);
+  assert.match(resource, /direct, non-affiliate link/);
+  assert.match(resource, /receives no commission/);
+  assert.match(resource, /not required to use it/);
+  assert.match(resource, /href="https:\/\/nordvpn.com\/" rel="noreferrer" aria-describedby="vpn-disclosure"/);
+  assert.match(resource, /No VPN can resolve a concern about a nearby camera/);
+  for (const [, url] of resource.matchAll(/href="([^"]+)"/g)) {
+    assert.ok(editorialLinks.has(url), url);
+    assert.equal(new URL(url).search, '');
+  }
+  for (const [tag] of html.matchAll(/<(?:img|script|link|iframe)\b[^>]*>/g)) {
+    assert.ok(![...editorialLinks].some(url => tag.includes(url)), 'Editorial destinations must remain anchors, never loaded resources');
+  }
+  const policy = pages.get('spectra-privacy.html');
+  assert.match(policy, /No affiliate links are active/);
+  assert.match(policy, /No scan data is attached/);
+});
+
+test('practical guidance keeps observation, HTTPS, VPNs, and physical safety distinct', () => {
+  const html = pages.get('spectra.html');
+  for (const phrase of ['Airbnb', 'student housing', 'gyms', 'changing rooms', 'rideshare', 'airport', 'HTTPS', 'trust shifts', 'does not stop nearby recording', 'do not disable a required VPN']) {
+    assert.ok(html.includes(phrase), phrase);
+  }
+  assert.match(html, /Do not confront someone based on a scan/);
+  assert.match(pages.get('guide.html'), /Where a VPN helps—and where it does not/);
+});
+
+test('policy distinguishes local preparation, explicit clipboard consent, and external copies', () => {
+  const policy = pages.get('spectra-privacy.html');
+  for (const phrase of ['Selecting one finding prepares', 'only tapping Copy prompt and finding', 'not anonymous either', 'on-device-only clipboard', 'ten-minute expiration', 'cannot recall', 'under that recipient’s policies']) {
+    assert.ok(policy.includes(phrase), phrase);
+  }
+  assert.doesNotMatch(policy, /Save to Files and Share JSON/);
 });
 
 test('backup disclosures distinguish the exclusion request from guarantees and exported copies', async () => {

@@ -30,7 +30,7 @@
       <p class="eyebrow">Spectra / Privacy policy</p>
       <h1>Your observations.<br><em>Your control.</em></h1>
       <p class="lead">Understand what Spectra processes, what stays on your iPhone, and what happens when you choose to share.</p>
-      <p class="caption">Effective September 15, 2026 · Arc Signal LLC</p>
+      <p class="caption">Effective September 16, 2026 · Arc Signal LLC</p>
     </div>
     <div class="guide-layout">
       <nav class="guide-contents" aria-label="Privacy policy topics">
@@ -50,7 +50,7 @@
           <p>Depending on the measurements you select, Spectra processes Bluetooth advertisements and signal strength; supported Bonjour service advertisements on your joined local network; and motion and magnetic-field measurements. These observations help explain possible device categories, related signals, changes, and measurement limitations.</p>
           <p>Retained evidence may include advertised names, service types, selected manufacturer or service payloads and product metadata, session-scoped identifiers, timestamps, confidence labels, coverage, and bounded measurement summaries or graphs. A saved session can also contain its name and notes you enter, plus the app build and catalog information used to interpret it. Advertised names and your notes can contain personal information about you or others.</p>
           <p>Spectra does not capture camera images, microphone recordings, conversations, or geographic coordinates. It does not pair with discovered devices or open application connections to their endpoints. Local-network browsing can send discovery queries visible to other network participants; it is not invisible network activity.</p>
-          <p>The recognition catalog is bundled with the app and updated through app releases. Spectra does not send observations to an identification server or an AI service.</p>
+          <p>The recognition catalog is bundled with the app and updated through app releases. Spectra does not automatically send observations to an identification server or an AI service. You can deliberately copy a finding or share an export with a service of your choice, as described below.</p>
         </section>
         <section id="permissions" class="guide-topic">
           <h2>Only the access you choose</h2>
@@ -76,7 +76,8 @@
         <section id="sharing" class="guide-topic">
           <h2>You decide when data leaves the app</h2>
           <p>Export JSON prepares a report locally. Analysis JSON contains meaningful retained observations, device claims, scan coverage, and user notes. The technical archive also includes retained raw data and graphs. All formats exclude generated AI explanations, including any legacy saved analysis. Reduced identifying information omits names, notes, original identifiers, manufacturers, model labels, raw payloads, and absolute timestamps, but it is not anonymous: patterns and relative timing can still reveal context. Results filters do not restrict any export.</p>
-          <p>Save to Files and Share JSON use Apple’s system interfaces. A destination such as iCloud Drive, email, another app, or an external AI provider may transfer or retain your file under its own terms and privacy policy. Spectra does not send it to us automatically. Review the file, recipient, and destination before sharing; do not share information you are not authorized to disclose.</p>
+          <p>Export JSON opens Apple’s share sheet, where you can choose Save to Files or another destination. A destination such as iCloud Drive, email, another app, or an external AI provider may transfer or retain your file under its own terms and privacy policy. Spectra does not send it to us automatically. Review the file, recipient, and destination before sharing; do not share information you are not authorized to disclose.</p>
+          <p>Copy for AI analysis is a separate, optional workflow. Selecting one finding prepares an analysis prompt and bounded finding data locally. Review the exact preview and privacy notice; only tapping Copy prompt and finding writes to the clipboard. Optional technical evidence can include identifying names or payloads; the default copy is not anonymous either. The copy excludes your session notes and other findings, and does not require Apple Intelligence. Spectra requests an on-device-only clipboard item with a ten-minute expiration; it does not open an AI service or upload the text. Pasting shares it with your chosen app or service under that recipient’s policies. Clipboard expiration, session deletion, or Reset Spectra cannot recall information already pasted, exported, or otherwise copied elsewhere.</p>
         </section>
         <section id="support" class="guide-topic">
           <h2>Support and diagnostics</h2>
@@ -88,6 +89,7 @@
         <section id="website" class="guide-topic">
           <h2>When you visit our website</h2>
           <p>The Arc Signal website uses no analytics scripts, ad trackers, contact forms, or embedded third-party content. Fonts and images are self-hosted. Visiting the privacy policy or Guide is a normal website request, not a scan-data upload.</p>
+          <p>Optional external resources, including the current direct NordVPN link, are ordinary links—not embedded services. No affiliate links are active. Following a link leaves our website; the destination may receive connection information and use its own cookies, analytics, and privacy practices. Our VPN resource links suppress the referring page. If we later activate an approved commission-bearing link, we will disclose that beside the link and update this policy before publication. No scan data is attached to these links.</p>
           <p>Our website is hosted through GitHub Pages. Its provider may process routine request information, such as IP address, requested page, browser details, and request time, to deliver and secure the site. Provider retention and processing follow the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>. Apple, your email provider, and export destinations have their own privacy practices. Provider processing may take place in countries other than yours.</p>
         </section>
         <section id="choices" class="guide-topic">

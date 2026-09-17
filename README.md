@@ -98,11 +98,37 @@ The app requires an iPhone running iOS 27 or later. Scanning, Bluetooth Proximit
 history, and JSON export have no in-app purchase or Apple Intelligence gate.
 Only optional on-device analysis requires Apple Intelligence-capable hardware
 and an enabled, ready model in a supported language and region. Analysis uses
-the exported evidence locally and saves the interpretation with the scan.
-App Store download pricing is a separate owner-managed setting; the site does
-not promise a free download or advertise the retired scan-unlock product.
+one selected finding summary locally; generated explanations are temporary,
+not saved or exported. Copy for AI is a separate user-initiated clipboard action,
+not an automatic upload; external recipients control data pasted into them.
+The approved U.S. launch price is **$3.99, one-time upfront**, without a discount,
+subscription, or in-app purchase. The site says planned price until release.
+App Store Connect pricing must be configured and checked separately; repository
+copy is not confirmation of the live price. Regional prices may vary. Do not
+promise a free download or advertise the retired scan-unlock product.
 App-owned text remains standard-sized under Larger Text by owner decision;
 do not advertise Larger Text support for the app. Website text resizing remains.
+
+## Optional VPN resources and affiliate readiness
+
+The Spectra page separates everyday privacy guidance from an optional NordVPN
+resource. The current URL is the plain `https://nordvpn.com/` link: no affiliate
+parameters, no commission, no embedded content, and no partnership claim.
+Independent FTC, EFF, and CISA advice remains available alongside it. VPNs address
+routed network traffic, not nearby recording; HTTPS context and provider trust
+remain explicit. The app's offline Guide is provider-neutral, with no affiliate
+links or sales route.
+
+Before enabling an affiliate link, obtain the owner's approval and the verified
+program-issued URL. Replace the inactive state and adjacent no-commission text
+with plain disclosure such as “Arc Signal may earn a commission if you purchase
+through this link.” Keep it visible beside the recommendation and link, not hidden
+in a footer or disclosure. Add `rel="sponsored noreferrer"`, review the landing
+page and renewal terms, update the privacy policy and link allowlist/tests, and
+document approval. Do not invent discounts, use unapproved branding, add tracking
+scripts/pixels, or attach scan data. A referral destination may set attribution
+cookies after a click; disclose that before activation. There is no active
+affiliate relationship represented by this change.
 
 ## Seamless release status
 
@@ -119,12 +145,16 @@ stitching from iCloud retrieval and destination services chosen by the user.
 
 ## App screenshots
 
-The September 12 refresh uses the same verified native captures as Spectra’s
+The September 16 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
+The source revision is `322b6da`: Home includes Watches & Wearables, and the
+Smart Glasses frame shows a naturally completed check with the full finding,
+signal context, and Review details action. The current unified Results layout
+and name search are visible; there are no retired device-category filters.
 
 `assets/data/spectra-screenshots.json` records the exact app source commit,
 capture SHA-256 hashes, output hashes, dimensions, and decoded-pixel hashes.
@@ -136,6 +166,14 @@ node scripts/import-spectra-captures.mjs /path/to/Spectra/repository
 
 Refresh tooling requires `cwebp` and ImageMagick. Lossless WebP preserves native
 1320 × 2868 dimensions and every decoded pixel while reducing transfer size.
+The importer uses maximum-effort lossless encoding (`-q 100 -m 6`), preserves the
+ICC profile, and checks decoded pixels after conversion. Its extra work happens
+only during asset preparation, not in a visitor's browser. The 3 MB total public
+bundle budget remains unchanged.
+The importer also versions homepage/gallery image URLs and full-size links with
+the output content hash, replacing prior versions idempotently. Updated HTML
+therefore requests updated screenshots without relying on image cache expiry;
+this does not purge HTML already held by a browser or CDN.
 Normal site tests/builds need only Node and verify the committed asset hashes.
 The retired PNGs are removed; their earlier versions remain recoverable in Git.
 

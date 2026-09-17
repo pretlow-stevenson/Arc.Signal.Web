@@ -37,7 +37,9 @@ for (const [id, name] of mappings) {
   if (width !== 1320 || height !== 2868) throw new Error(`Unexpected native size: ${id}`);
   const output = `assets/images/${name}.webp`;
   const destination = join(root, output);
-  run('cwebp', ['-quiet', '-lossless', '-exact', '-m', '6', '-metadata', 'icc', source, '-o', destination]);
+  // In lossless mode, q=100 spends more offline encoding effort, not image
+  // fidelity. Preserve every pixel and the color profile within the site budget.
+  run('cwebp', ['-quiet', '-lossless', '-exact', '-q', '100', '-m', '6', '-metadata', 'icc', source, '-o', destination]);
   const pixels = path => run('magick', [path, '-alpha', 'off', '-depth', '8', 'rgba:-']);
   const pixelSHA256 = hash(pixels(source));
   if (hash(pixels(destination)) !== pixelSHA256) throw new Error(`Compression changed pixels: ${id}`);
@@ -48,5 +50,27 @@ for (const [id, name] of mappings) {
 const provenance = { schemaVersion: 1, appSourceCommit: manifest.appSourceCommit,
   captureDevice: manifest.captureDevice, captureRuntime: manifest.captureRuntime,
   exampleData: true, transformation: 'Lossless WebP; original dimensions and decoded pixels preserved.', items };
+// Updated HTML must not reuse stale image responses. Keep filesystem paths in
+// provenance query-free and version both the preview and full-size link from
+// the final encoded bytes. This does not purge already-cached HTML documents.
+const pages = [];
+for (const page of ['index.html', 'spectra.html']) {
+  let html = await readFile(join(root, page), 'utf8');
+  for (const item of items) {
+    let references = 0;
+    html = html.replace(/\b(href|src)="([^"]+)"/g, (tag, attribute, value) => {
+      if (value.split('?')[0] !== item.output) return tag;
+      if (value !== item.output && !/^v=[a-f0-9]{12}$/.test(value.split('?').slice(1).join('?'))) {
+        throw new Error(`Unexpected screenshot URL in ${page}: ${value}`);
+      }
+      references += 1;
+      return `${attribute}="${item.output}?v=${item.outputSHA256.slice(0, 12)}"`;
+    });
+    const expected = page === 'spectra.html' ? 2 : item.id === '01-quick-check' ? 1 : 0;
+    if (references !== expected) throw new Error(`Unexpected screenshot reference count in ${page}: ${item.id}`);
+  }
+  pages.push([page, html]);
+}
+for (const [page, html] of pages) await writeFile(join(root, page), html);
 await writeFile(join(root, 'assets/data/spectra-screenshots.json'), JSON.stringify(provenance, null, 2) + '\n');
 console.log(`Imported ${items.length} pixel-verified native captures from ${manifest.appSourceCommit}.`);

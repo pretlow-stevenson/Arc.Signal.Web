@@ -252,9 +252,9 @@
         "navigationTitle" : "Privacy",
         "sections" : [
           {
-            "body" : "Spectra processes observations on device and does not automatically share your results. The app does not capture camera frames or microphone recordings.",
+            "body" : "Spectra processes observations and Apple Intelligence explanations on device. It does not automatically share your results or capture camera frames or microphone recordings. External sharing is a separate choice.",
             "id" : "local",
-            "title" : "Analysis stays on your phone"
+            "title" : "On-device processing, optional sharing"
           },
           {
             "body" : "Set up access here in Guide or when you start a check. Spectra checks selected sources again before scanning and explains when a source cannot run. Setup does not create a saved session. The camera and microphone are not accessed.",
@@ -275,6 +275,11 @@
             "body" : "Export JSON on completed or saved results lets you choose Analysis JSON, Technical archive, or Reduced identifying information. Analysis JSON includes meaningful retained evidence and your notes; the technical archive also includes raw retained data and saved graphs. All formats exclude generated AI explanations. Reduced omits identifying text and raw payloads but is not anonymous. All formats ignore visible results filters. Nothing is uploaded automatically.",
             "id" : "export",
             "title" : "Share only when you choose"
+          },
+          {
+            "body" : "Selecting one finding in Copy for AI analysis prepares its data and a prompt locally. Review the preview and privacy notice; only tapping Copy prompt and finding writes to the clipboard. Names and optional technical data may identify devices or people; the default copy is not anonymous either. Spectra requests an on-device-only clipboard item that expires after ten minutes. Pasting into another app shares it under its policies; expiration or Reset Spectra cannot recall copies already shared. No AI app opens and nothing uploads automatically.",
+            "id" : "external-copy",
+            "title" : "Copying a finding for another AI app"
           }
         ],
         "steps" : [
@@ -363,6 +368,16 @@
         "navigationTitle" : "Travel review",
         "sections" : [
           {
+            "body" : "At a hotel, Airbnb or other vacation rental, or in student housing, start with a Quick Check to get oriented. Use Area Sweep for a closer, unhurried look at accessible areas you are allowed to inspect. In gyms and changing rooms, respect other people's privacy and facility rules; move to a private place to review findings. An unfamiliar broadcast is not evidence of covert recording, and a signal may come from outside the room.",
+            "id" : "private-spaces",
+            "title" : "Hotels, rentals, and shared spaces"
+          },
+          {
+            "body" : "As a passenger, or while waiting in an airport, station, café, or other public space, a Quick Check can provide a snapshot of available signals. Specialist checks focus on recognizable glasses or wearables. Crowds contain many ordinary devices; names and signal strength cannot identify the person carrying one. Do not scan while driving or confront someone based on a result.",
+            "id" : "public-spaces",
+            "title" : "Rideshares and busy public places"
+          },
+          {
             "body" : "Review partial or unavailable sources before interpreting results. A 30-second snapshot can miss intermittent broadcasts. Local Network reaches only visible services on your joined network.",
             "id" : "coverage",
             "title" : "Check what was actually measured"
@@ -371,6 +386,16 @@
             "body" : "A product name can be changed or spoofed. Strong Bluetooth readings are not distance, and magnetic spikes can come from ordinary magnets or wiring. Neither identifies recording activity. Clear measurement filters and name search to include every retained result. In specialist checks, also open View observed activity; an unidentified device may not appear among supported matches.",
             "id" : "interpret",
             "title" : "Separate clues from conclusions"
+          },
+          {
+            "body" : "Confirm the intended Wi-Fi name with the venue using a trusted channel; a familiar name alone does not authenticate a network. Prefer cellular data when you do not trust the connection. Keep iOS and apps updated, protect accounts with multifactor authentication, and heed certificate warnings. HTTPS protects traffic to a site but does not prove that the site itself is trustworthy. Avoid exposing sensitive conversations or screens in shared spaces.",
+            "id" : "connections",
+            "title" : "Protect the connection, too"
+          },
+          {
+            "body" : "If you use shared Wi-Fi, consider a reputable VPN you trust and can use under your organization's policy. It encrypts traffic routed through its tunnel between your phone and the VPN service; trust shifts to that provider. It does not prevent nearby cameras or microphones from recording, authenticate a hotspot, make you anonymous, or make a malicious website safe. Spectra does not provide a VPN. VPN settings can affect local-network discovery; do not turn off required protection just to find more devices.",
+            "id" : "vpn",
+            "title" : "Where a VPN helps—and where it does not"
           },
           {
             "body" : "Rename a saved session and add notes about areas inspected, repeatable changes, alternative explanations, and unresolved questions. Notes are yours, not sensor evidence. Avoid sensitive itinerary or personal details.",
