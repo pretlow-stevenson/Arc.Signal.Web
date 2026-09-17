@@ -49,6 +49,14 @@ runtime. `npm test` checks exact HTML parity, twelve stable topic routes, the
 release lock (1.0.0 / 1A1000, numeric bundle build 1000), support address,
 compatibility, and the public policy link.
 
+Saved-session rechecks are described in the company overview, Spectra feature
+copy/FAQ, shared Sessions Guide, and privacy policy. Keep claims conditional on
+newer compatible bundled recognition and usable retained radio evidence. Rechecks
+create independent numbered copies, preserve originals, take no new measurements,
+and need no Apple Intelligence. They do not guarantee improved identification or
+show what is at a past location now. The policy explains storage, independent
+deletion, and retained naming lineage; catalog updates still ship with app releases.
+
 After editing native help, compile its exporter with the two Guide sources,
 run the executable with this repository's JSON path, then run:
 

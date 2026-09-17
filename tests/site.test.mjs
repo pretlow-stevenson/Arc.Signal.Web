@@ -293,7 +293,7 @@ test('website Guide is generated from all twelve native topics with release and 
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 16, 2026/);
+  assert.match(policy, /Effective September 17, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
@@ -392,6 +392,25 @@ test('Guide explains specialist export scope and bounded optional analysis', asy
   assert.ok(page.includes('share sheet opens when the file is ready'));
   assert.ok(page.includes('No findings') || page.includes('no matches is not an all-clear'));
   assert.ok(!page.includes('Dense scans are processed in batches'));
+});
+
+test('saved-session rechecks keep eligibility, originals, storage and privacy explicit', () => {
+  const product = pages.get('spectra.html');
+  for (const phrase of ['eligible saved radio evidence', 'blue dot in Sessions',
+    'separate numbered interpretation', 'original unchanged', 'better matches are not guaranteed',
+    'no Apple Intelligence', 'not separate downloads', 'guide.html#sessions']) {
+    assert.ok(product.includes(phrase), phrase);
+  }
+  assert.ok(pages.get('index.html').includes('Recheck eligible saved sessions'));
+  const policy = pages.get('spectra-privacy.html');
+  for (const phrase of ['independent saved copy', 'naming lineage', 'additional local storage',
+    'does not delete its independent rechecks', 'explicitly requested recheck',
+    'do not start new radio discovery']) assert.ok(policy.includes(phrase), phrase);
+  const guide = pages.get('guide.html');
+  for (const phrase of ['Can I recheck after leaving the location?', 'better matches are not guaranteed',
+    'automatic saving of completed scans is off', 'Deleting the original does not delete']) {
+    assert.ok(guide.includes(phrase), phrase);
+  }
 });
 
 test('public copy describes temporary single-finding AI, not saved generated reports', () => {
