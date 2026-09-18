@@ -223,7 +223,7 @@ test('Spectra product wordmark preserves approved pixels and accessible placemen
     assert.doesNotMatch(wordmark, /<(?:text|path|script|foreignObject)\b/, 'No retypesetting or tracing');
     assert.doesNotMatch(html.match(/<header[\s\S]*?<\/header>/)?.[0] ?? '', /spectra-wordmark/);
     assert.doesNotMatch(html.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? '', /spectra-wordmark/);
-    assert.match(html, /alt="Spectra’s white signal-wave icon on black"/);
+    if (name === 'spectra.html') assert.match(html, /alt="Spectra’s white signal-wave icon on black"/);
   }
   assert.match(pages.get('index.html'), /<h3><svg class="spectra-wordmark"/);
   assert.match(pages.get('spectra.html'), /class="hero-copy hero-copy--branded"/);
@@ -232,6 +232,22 @@ test('Spectra product wordmark preserves approved pixels and accessible placemen
   const motion = await readFile(join(root, 'assets/js/site-motion.js'), 'utf8');
   assert.ok(motion.includes('.hero-copy:not(.hero-copy--branded)'));
   assert.match(css, /\.hero-copy--branded\.is-revealing \{ animation: none; \}/);
+});
+
+test('company homepage leads with Arc Signal and keeps product identity in its card', () => {
+  const html = pages.get('index.html');
+  const hero = html.match(/<section class="hero company-hero shell"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(hero);
+  assert.match(hero, /Arc Signal LLC/);
+  assert.match(hero, /Security awareness\./);
+  assert.match(hero, /privacy-minded tools/);
+  assert.doesNotMatch(hero, /Spectra|<img\b|<figure\b|<a\b|hero-product|class="actions"/);
+  assert.doesNotMatch(html, /Discover Spectra/);
+  const products = html.match(/<section[^>]*id="products"[\s\S]*?<\/section>/)?.[0];
+  assert.match(products, /class="spectra-wordmark"/);
+  assert.match(products, /Explore Spectra/);
+  assert.match(products, /aria-label="Spectra principles"/);
+  assert.match(html, /<nav aria-label="Primary navigation">\s*<a href="spectra.html">Spectra<\/a>/);
 });
 
 test('public bundle excludes development files and remains lightweight', async () => {
@@ -266,7 +282,7 @@ test('public Spectra pages are reachable, indexed, and have active navigation', 
   }
   assert.equal(descriptions.size, 2, 'Each page needs its own search description');
   assert.ok(!descriptions.has(undefined));
-  assert.match(home, /Arc Signal \/ Makers of Spectra™/);
+  assert.match(home, /<p class="eyebrow">Arc Signal LLC<\/p>/);
   assert.match(pages.get('404.html'), /<meta name="robots" content="noindex">/);
   assert.doesNotMatch(sitemap, /404/);
   for (const [, value] of pages.get('404.html').matchAll(/(?:href|src)="([^"]+)"/g)) {

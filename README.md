@@ -2,7 +2,7 @@
 
 The company website for **Arc Signal LLC**, focused on Spectra and security awareness:
 
-- `index.html`: Spectra introduction, the Arc Signal approach, and privacy.
+- `index.html`: Arc Signal introduction, the Spectra product card, our approach, and privacy.
 - `spectra.html`: Spectra, preparing for release; **iPhone · iOS 27 or later**.
 - `seamless.html`: unlisted Seamless screenshot stitching page, coming soon for **Apple iPhone · iOS 18 or later**.
 - `guide.html`: the complete Spectra Guide and support contact, generated from native app content.
@@ -29,6 +29,16 @@ with Inter for body copy, navigation, and guide/policy topic headings. Marketing
 section headings scale from 32–44px; body text stays at 16px, with supporting labels
 at least 13px. Guide categories use 17px semibold sentence-case headings above
 16px topic links. Type sizes use rem, with bounded fluid scaling for larger headings.
+
+The homepage opens with a company-led, typography-only hero: Arc Signal's purpose
+and a brief introduction, without a large product icon or duplicate Spectra action.
+The product card and primary navigation own product discovery; product-specific
+privacy principles sit with that card. Preserve Spectra's approved artwork on its
+product page and card. This hierarchy follows [NN/g's company-information research](https://www.nngroup.com/articles/about-us-information-on-websites/)
+and [Apple's layout guidance](https://developer.apple.com/design/human-interface-guidelines/layout):
+make the organization clear first, then group related product information. The
+two-column desktop opening stacks naturally on narrow screens; the restrained
+blue rule supports the introduction without adding another competing visual.
 
 With Node.js 22 or later:
 
