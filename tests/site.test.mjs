@@ -9,6 +9,8 @@ import { renderGuide } from '../scripts/render-guide.mjs';
 const files = await listPublicFiles();
 const pages = new Map(await Promise.all(documents.map(async name => [name, await readFile(join(root, name), 'utf8')])));
 const css = await readFile(join(root, 'assets/css/site.css'), 'utf8');
+const motionSource = await readFile(join(root, 'assets/js/site-motion.js'), 'utf8');
+const revision = value => createHash('sha256').update(value).digest('hex').slice(0, 12);
 const ids = html => [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 // Exact owner-approved program URL. Do not allow arbitrary tracking destinations
 // or add visitor/scan identifiers to these public, campaign-level parameters.
@@ -46,7 +48,7 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
       }
       assert.ok(!/^(?:[a-z]+:|\/\/)/i.test(value), `Unsupported URL: ${value}`);
       const [path, fragment] = value.split('#');
-      if (path.includes('?')) assert.match(path, /^assets\/images\/spectra-[a-z-]+\.webp\?v=[a-f0-9]{12}$/);
+      if (path.includes('?')) assert.match(path, /^assets\/(?:images\/spectra-[a-z-]+\.webp|css\/site\.css|js\/site-motion\.js)\?v=[a-f0-9]{12}$/);
       const pathname = path.split('?')[0];
       const target = pathname === '/' ? 'index.html' : pathname.replace(/^\//, '') || name;
       assert.ok(files.includes(target), `${name}: missing ${target}`);
@@ -66,7 +68,8 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
 
 test('only the local optional motion script is permitted; no third-party content or tracking', () => {
   for (const [name, html] of pages) {
-    const motion = '<script src="assets/js/site-motion.js" defer></script>';
+    const branded = ['index.html', 'spectra.html'].includes(name);
+    const motion = `<script src="assets/js/site-motion.js${branded ? `?v=${revision(motionSource)}` : ''}" defer></script>`;
     const marketing = ['index.html', 'spectra.html', 'seamless.html'].includes(name);
     assert.equal(html.split(motion).length - 1, marketing ? 1 : 0, name);
     assert.doesNotMatch(html.replace(motion, ''), /<(?:script|iframe|object|embed|form)\b|\son[a-z]+\s*=/i, name);
@@ -76,6 +79,14 @@ test('only the local optional motion script is permitted; no third-party content
     assert.doesNotMatch(html, /googletagmanager|google-analytics|fonts\.google|kmeans|sigint communications/i, name);
   }
   assert.doesNotMatch(css, /@import|https?:|data:/i);
+});
+
+test('branded pages fetch the exact CSS and motion revisions needed by the wordmark', () => {
+  for (const name of ['index.html', 'spectra.html']) {
+    const html = pages.get(name);
+    assert.ok(html.includes(`href="assets/css/site.css?v=${revision(css)}"`), `${name}: stale stylesheet URL`);
+    assert.ok(html.includes(`src="assets/js/site-motion.js?v=${revision(motionSource)}"`), `${name}: stale motion URL`);
+  }
 });
 
 test('unreleased download is a truthful status rather than a broken link', () => {
@@ -189,10 +200,50 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   assert.ok(!files.includes('assets/images/spectra-area-sweep.png'));
 });
 
+test('Spectra product wordmark preserves approved pixels and accessible placement', async () => {
+  const brand = JSON.parse(await readFile(join(root, 'assets/data/spectra-brand.json'), 'utf8'));
+  assert.equal(brand.sourceSHA256, '8ffe7d1e3a7dc2209965e0ebd5089eb100e3f1e842e48a4ad70da4e337f14964');
+  assert.equal(brand.pixelSHA256, 'f7f6b0137e215e8ea6e3a828db3cbd63cad2d6c0024ac58949c2fe6552265103');
+  assert.equal(brand.output, 'assets/images/spectra-wordmark.webp');
+  assert.deepEqual([brand.width, brand.height], [1983, 793]);
+  assert.deepEqual(brand.displayViewBox, [466, 256, 1058, 280]);
+  const bytes = await readFile(join(root, brand.output));
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), brand.outputSHA256);
+  assert.equal(bytes.subarray(0, 4).toString(), 'RIFF');
+  assert.equal(bytes.subarray(8, 12).toString(), 'WEBP');
+  const reference = `href="${brand.output}?v=${brand.outputSHA256.slice(0, 12)}"`;
+  for (const name of ['index.html', 'spectra.html']) {
+    const html = pages.get(name);
+    assert.equal(html.split(reference).length - 1, 1, `${name}: one cached product logo`);
+    const wordmark = html.match(/<svg class="spectra-wordmark[^>]*>[\s\S]*?<\/svg>/)?.[0];
+    assert.ok(wordmark);
+    assert.match(wordmark, /viewBox="466 256 1058 280" width="1058" height="280"/);
+    assert.match(wordmark, /role="img" aria-label="Spectra by Arc Signal" focusable="false"/);
+    assert.match(wordmark, /<image href="[^"]+" width="1983" height="793"\/>/);
+    assert.doesNotMatch(wordmark, /<(?:text|path|script|foreignObject)\b/, 'No retypesetting or tracing');
+    assert.doesNotMatch(html.match(/<header[\s\S]*?<\/header>/)?.[0] ?? '', /spectra-wordmark/);
+    assert.doesNotMatch(html.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? '', /spectra-wordmark/);
+    assert.match(html, /alt="Spectra’s white signal-wave icon on black"/);
+  }
+  assert.match(pages.get('index.html'), /<h3><svg class="spectra-wordmark"/);
+  assert.match(pages.get('spectra.html'), /class="hero-copy hero-copy--branded"/);
+  assert.match(css, /\.spectra-wordmark \{[^}]*max-width: 100%;[^}]*height: auto;[^}]*mix-blend-mode: multiply/);
+  assert.doesNotMatch(css, /font-family:\s*['"]?Circular/i);
+  const motion = await readFile(join(root, 'assets/js/site-motion.js'), 'utf8');
+  assert.ok(motion.includes('.hero-copy:not(.hero-copy--branded)'));
+  assert.match(css, /\.hero-copy--branded\.is-revealing \{ animation: none; \}/);
+});
+
 test('public bundle excludes development files and remains lightweight', async () => {
   assert.ok(files.every(name => !/(^|\/)(?:\.git|tests|scripts|node_modules|\.env)(\/|$)/.test(name)));
   const bytes = await Promise.all(files.map(async name => (await stat(join(root, name))).size));
-  assert.ok(bytes.reduce((sum, value) => sum + value, 0) < 3_000_000, 'Public assets exceed the 3 MB budget');
+  // Retain the original content budget; only the newly approved exact-pixel
+  // wordmark has a separately bounded allowance (no lossy redraw to fit it).
+  const wordmarkIndex = files.indexOf('assets/images/spectra-wordmark.webp');
+  assert.ok(wordmarkIndex >= 0);
+  assert.ok(bytes[wordmarkIndex] <= 415_000, 'Wordmark exceeds its bounded allowance');
+  assert.ok(bytes.reduce((sum, value, index) => sum + (index === wordmarkIndex ? 0 : value), 0) < 3_000_000,
+    'Public content excluding the approved wordmark exceeds the original 3 MB budget');
   assert.equal((await readFile(join(root, 'CNAME'), 'utf8')).trim(), 'arcsignal.app');
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/arcsignal\.app\/<\/loc>/);
 });
@@ -447,6 +498,20 @@ test('backup disclosures distinguish the exclusion request from guarantees and e
   assert.ok(policy.includes('including recovery copies'));
   assert.ok(policy.includes('not a guarantee that sessions can never appear in a backup or on a restored device'));
 });
+test('Guide and policy distinguish Spectra Settings from iPhone permissions', () => {
+  const guide = pages.get('guide.html');
+  const policy = pages.get('spectra-privacy.html');
+  assert.match(guide, /Settings → App icon/);
+  assert.match(guide, /Classic, Spectra Blue, Light, or Blue on White/);
+  assert.match(guide, /iPhone Settings → Privacy/);
+  assert.match(guide, /Spectra Settings/);
+  assert.match(policy, /Settings → About/);
+  for (const html of [guide, policy]) {
+    assert.doesNotMatch(html, /Guide → (?:About|App icon|Measurement access|Copy support information)/);
+    assert.doesNotMatch(html, /(?:Reset Spectra|sessions) in Guide/);
+  }
+});
+
 test('Guide explains specialist export scope and bounded optional analysis', async () => {
   const page = await readFile(join(root, 'guide.html'), 'utf8');
   assert.ok(page.includes('Scan type sets the scope—not screen filters'));

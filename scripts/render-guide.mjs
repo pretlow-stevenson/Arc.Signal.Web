@@ -56,7 +56,7 @@ export async function renderGuide() {
       </article>`).join('\n')}
       <section id="support" class="guide-topic"><p class="eyebrow">A person can help</p><h2>Still have a question?</h2>
         <p>Email <a href="mailto:${escape(document.supportEmail)}">${escape(document.supportEmail)}</a>. Include the scan mode, selected measurements, what happened, and what you expected.</p>
-        <p>In Spectra, choose Guide → Copy support information for the version, build, iOS, hardware model, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
+        <p>In Spectra, choose Settings → Copy support information for the version, build, iOS, hardware model, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
         <p>Nothing is attached or sent automatically. For a credible security threat, use a trusted security contact rather than relying on a phone scan or waiting for product support.</p>
       </section>
     </div></div>

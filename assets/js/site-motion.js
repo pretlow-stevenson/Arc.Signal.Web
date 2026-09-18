@@ -5,7 +5,8 @@
   if (preference.matches) return;
 
   const targets = document.querySelectorAll(
-    '.hero-copy, .hero-product, .section-intro, .product-card-visual, ' +
+    // Fading this branded ancestor would isolate its raster matte blending.
+    '.hero-copy:not(.hero-copy--branded), .hero-product, .section-intro, .product-card-visual, ' +
     '.screenshot-grid > figure, .three-column > article, .feature-grid > article'
   );
   const observer = new IntersectionObserver(entries => {

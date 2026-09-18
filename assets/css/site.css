@@ -27,6 +27,13 @@ em { font-style: normal; color: var(--blue); }
 .site-header .brand-mark { gap: .625rem; }
 .brand-signal { display: block; width: 36px; height: 28px; flex: none; }
 .brand-period { color: var(--blue); }
+/* The actual owner-supplied Circular artwork, not retypeset website text.
+   Inline SVG crops whitespace; multiply integrates its white matte without
+   changing the raster. Keep product identity out of company navigation. */
+.spectra-wordmark { display: block; width: 14rem; max-width: 100%; height: auto; overflow: hidden; mix-blend-mode: multiply; }
+.spectra-wordmark--hero { width: clamp(14rem, 24vw, 18rem); margin-bottom: 1.5rem; }
+/* Also safe when a visitor has the previous motion script cached. */
+.hero-copy--branded.is-revealing { animation: none; }
 nav { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(1rem, 3vw, 2.5rem); }
 nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; text-decoration: none; color: var(--muted); }
 nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); }

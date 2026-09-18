@@ -210,15 +210,59 @@ Keep its direct-link page current. Restore public navigation, promotional copy,
 and indexing only when Seamless is ready to feature again. Privacy copy distinguishes local
 stitching from iCloud retrieval and destination services chosen by the user.
 
+## Spectra product wordmark
+
+The approved Circular logo appears once in the Spectra product hero and once in
+the company homepage's Spectra card. Arc Signal remains the navigation/footer
+brand. Inter/Bodoni typography, the original black waveform app icon, and the
+NordVPN partner treatment are unchanged. Never substitute a font or redraw the
+supplied lettering. The homepage retains a semantic product heading; each logo
+has one accessible image name, "Spectra by Arc Signal".
+
+`assets/data/spectra-brand.json` records the approved source PNG hash, lossless
+WebP hash, decoded-pixel hash, dimensions, and view crop. Every decoded pixel is
+preserved. Inline SVG crops only whitespace; an external SVG wrapper loaded as
+an img may block its external raster dependency and must not be substituted.
+Multiply blending integrates the white matte into the light-only site. The
+branded hero stays static so an opacity animation cannot isolate that blend and
+flash a white rectangle. No JavaScript is needed to render the logo.
+Both branded pages version their stylesheet and optional motion-script URLs with
+the current content hashes. A visitor with the older resources cached therefore
+receives the sizing/blending rules needed by the new wordmark. Tests reject stale
+revision strings; update these two URLs when changing the corresponding resources.
+
+The hero width is 14–18rem; the product-card logo is 14rem, constrained by available
+space. This balances brand visibility and byline legibility without competing
+with the headline or download action. These limited placements follow
+[Apple branding](https://developer.apple.com/design/human-interface-guidelines/branding)
+and [NN/g consistency](https://www.nngroup.com/articles/consistency-and-standards/),
+not a claim of measured engagement improvement.
+
+Reproduce using `cwebp` and ImageMagick:
+
+```sh
+node scripts/import-spectra-wordmark.mjs /path/to/Spectra/repository
+```
+
+The importer checks the approved source and decoded-pixel equality, validates
+both HTML placements, then updates content-hashed URLs. Normal site tests check
+committed hashes and placement without image tooling. The original 3 MB content
+budget stays in place, with a separate 415,000-byte allowance only for this
+lossless logo (currently 411,678 bytes). Images/fonts remain self-hosted.
+
 ## App screenshots
 
-The September 17 refresh uses the same verified native captures as Spectra’s
+The September 18 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The source revision is `cb55303`: Home includes Watches & Wearables, and the
+The source revision is `fc111c9`: Home uses the owner's exact Circular wordmark,
+and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
+contains searchable help; Settings owns global preferences, app-icon colors,
+privacy/storage controls, About, support, and reset. The generated Guide and
+privacy policy describe the current routes. Home includes Watches & Wearables, and the
 Smart Glasses frame shows a naturally completed check with the full finding,
 signal context, and Review details action. The current unified Results layout
 and name search are visible; there are no retired device-category filters.
@@ -238,8 +282,8 @@ Refresh tooling requires `cwebp` and ImageMagick. Lossless WebP preserves native
 1320 × 2868 dimensions and every decoded pixel while reducing transfer size.
 The importer uses maximum-effort lossless encoding (`-q 100 -m 6`), preserves the
 ICC profile, and checks decoded pixels after conversion. Its extra work happens
-only during asset preparation, not in a visitor's browser. The 3 MB total public
-bundle budget remains unchanged.
+only during asset preparation, not in a visitor's browser. The original 3 MB
+content budget excludes only the separately bounded wordmark described above.
 The importer also versions homepage/gallery image URLs and full-size links with
 the output content hash, replacing prior versions idempotently. Updated HTML
 therefore requests updated screenshots without relying on image cache expiry;
@@ -260,7 +304,8 @@ captures from the app’s built-in fictional sample flow, exported September 6,
 2026. They contain no customer images or private reproduction data. The Seamless
 icon is copied from the app’s current asset catalog. Homepage screenshot cards
 show cropped previews; full screenshots are available on the product pages.
-The combined public bundle stays under 3 MB, with full app screens loaded lazily.
+The public bundle stays within its 3 MB content budget plus the bounded wordmark
+allowance, with full app screens loaded lazily.
 
 The waveform icon comes from Spectra’s original app asset catalog. The header
 reuses that waveform through an SVG luminance mask, displaying only the black

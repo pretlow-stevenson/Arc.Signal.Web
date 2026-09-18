@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "source": "App/Spectra/Assets.xcassets/SpectraWordmark.imageset/spectra-wordmark-original.png",
+  "sourceSHA256": "8ffe7d1e3a7dc2209965e0ebd5089eb100e3f1e842e48a4ad70da4e337f14964",
+  "output": "assets/images/spectra-wordmark.webp",
+  "outputSHA256": "8a8abe3a9dbec28ba3f992d2359db764da7df049d9a170f9c22ba11366f46154",
+  "pixelSHA256": "f7f6b0137e215e8ea6e3a828db3cbd63cad2d6c0024ac58949c2fe6552265103",
+  "width": 1983,
+  "height": 793,
+  "displayViewBox": [
+    466,
+    256,
+    1058,
+    280
+  ],
+  "transformation": "Lossless WebP; all source dimensions and decoded pixels preserved. Whitespace cropped only in the view."
+}

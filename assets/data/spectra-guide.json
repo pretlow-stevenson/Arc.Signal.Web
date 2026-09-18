@@ -257,7 +257,7 @@
             "title" : "On-device processing, optional sharing"
           },
           {
-            "body" : "Set up access here in Guide or when you start a check. Spectra checks selected sources again before scanning and explains when a source cannot run. Setup does not create a saved session. The camera and microphone are not accessed.",
+            "body" : "Set up access in Spectra’s Settings tab or when you start a check. Spectra checks selected sources again before scanning and explains when a source cannot run. Setup does not create a saved session. The camera and microphone are not accessed.",
             "id" : "permissions",
             "title" : "You choose what gets measured"
           },
@@ -267,7 +267,7 @@
             "title" : "History is your choice"
           },
           {
-            "body" : "Open Privacy policy from Welcome or Guide → About for the public policy, including local observations, permissions, erasure, optional exports, support correspondence, and website hosting. Reading the website requires an internet connection; this practical Guide stays available offline.",
+            "body" : "Open Privacy policy from Welcome or Spectra Settings → About for the public policy, including local observations, permissions, erasure, optional exports, support correspondence, and website hosting. Reading the website requires an internet connection; this practical Guide stays available offline.",
             "id" : "policy",
             "title" : "Read the full privacy policy"
           },
@@ -283,9 +283,9 @@
           }
         ],
         "steps" : [
-          "Use Save completed sessions on the Guide screen to control future history saving.",
+          "Use Save completed sessions in Spectra Settings to control future history saving.",
           "Open Sessions to delete one report, use Select for several, or Erase All Sessions to also remove recovery copies.",
-          "Use Reset Spectra in Guide to erase local sessions and preferences and return to Welcome. iOS permissions are controlled in Settings; copies you saved or shared elsewhere remain."
+          "Use Reset Spectra in Spectra Settings to erase local sessions and preferences and return to Welcome. iOS permissions are controlled in iPhone Settings; copies you saved or shared elsewhere remain."
         ],
         "symbol" : "hand.raised",
         "takeaway" : "No account. No advertising or analytics SDK. Your checks are processed and saved on this iPhone. Sharing is your choice.",
@@ -460,6 +460,11 @@
             "title" : "Start from the Home Screen"
           },
           {
+            "body" : "In Spectra, open Settings → App icon to choose Classic, Spectra Blue, Light, or Blue on White. Each uses Spectra’s original waveform. A checkmark identifies the icon confirmed by iOS; a spinner shows a change in progress. This changes the app icon, not the colors inside Spectra. Your iPhone’s icon appearance settings may adjust the colors. Reset Spectra erases local data and returns to Welcome first, then asks iOS to restore Classic. If iOS takes longer than expected, Spectra reports the unconfirmed change; iOS may still finish an earlier request. Review the icon in Settings after setup.",
+            "id" : "app-icon",
+            "title" : "Choose an app icon"
+          },
+          {
             "body" : "Local Network needs a joined Wi-Fi or supported wired local link and permission. Spectra offers Check again or continuation without that measurement when others can run. Returning from Settings rechecks availability; it does not silently start a scan. An internet connection is not required for local discovery.",
             "id" : "network",
             "title" : "No local network available?"
@@ -471,8 +476,8 @@
           }
         ],
         "steps" : [
-          "Open Guide → Measurement access to revisit setup.",
-          "If iOS has already denied access, use Settings → Privacy & Security or the app’s settings to change it.",
+          "In Spectra, open Settings → Measurement access to revisit setup.",
+          "If iOS has already denied access, use iPhone Settings → Privacy & Security or the app’s settings to change it.",
           "Return to Spectra, choose measurements, and review any readiness message before starting."
         ],
         "symbol" : "checklist",
@@ -572,7 +577,7 @@
             "title" : "Find a check by day"
           },
           {
-            "body" : "Saving completed sessions is on by default and can be changed in Guide. Turning it off affects future saving, not existing history. The completed check tells you whether it was saved. If saving fails, keep the result open and use Retry Saving or Export JSON before discarding it. A forced close, crash, or shutdown before saving can lose an unfinished check; there is no continuous autosaved draft. Finish and confirm important checks before closing the app.",
+            "body" : "Saving completed sessions is on by default and can be changed in Spectra Settings. Turning it off affects future saving, not existing history. The completed check tells you whether it was saved. If saving fails, keep the result open and use Retry Saving or Export JSON before discarding it. A forced close, crash, or shutdown before saving can lose an unfinished check; there is no continuous autosaved draft. Finish and confirm important checks before closing the app.",
             "id" : "saving",
             "title" : "Confirm a check was saved"
           },
@@ -612,7 +617,7 @@
             "title" : "Why did an older session disappear?"
           },
           {
-            "body" : "Delete one session from its list actions, or Select several. Hiding a day does not deselect its sessions: the date heading keeps its selected count, and Delete Selected shows the total across days. Open that day to change its selection. Erase All Sessions includes closed days and recovery copies; it is disabled when there is nothing to erase. Reset Spectra in Guide also clears preferences and returns to Welcome. Confirmations are deliberate because erasure cannot be undone.",
+            "body" : "Delete one session from its list actions, or Select several. Hiding a day does not deselect its sessions: the date heading keeps its selected count, and Delete Selected shows the total across days. Open that day to change its selection. Erase All Sessions includes closed days and recovery copies; it is disabled when there is nothing to erase. Reset Spectra in Spectra Settings also clears preferences and returns to Welcome. Confirmations are deliberate because erasure cannot be undone.",
             "id" : "erase",
             "title" : "Choose the right erase action"
           }
@@ -782,8 +787,8 @@
         ],
         "steps" : [
           "Open Coverage and read the reason for each partial or unavailable measurement.",
-          "Check Settings if access was denied, return to Spectra, and repeat the smallest affected check.",
-          "Use Guide → Copy support information, then Email support. The copy includes version, build, iOS, hardware model and catalog revision—not scan data."
+          "Check iPhone Settings if access was denied, return to Spectra, and repeat the smallest affected check.",
+          "In Spectra Settings, use Copy support information, then Email support. The copy includes version, build, iOS, hardware model and catalog revision—not scan data."
         ],
         "symbol" : "questionmark.circle",
         "takeaway" : "First check coverage and measurement state. A missing observation is not evidence that nothing is there.",
