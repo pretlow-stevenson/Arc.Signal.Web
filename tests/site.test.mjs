@@ -239,9 +239,22 @@ test('company homepage leads with Arc Signal and keeps product identity in its c
   const hero = html.match(/<section class="hero company-hero shell"[\s\S]*?<\/section>/)?.[0];
   assert.ok(hero);
   assert.match(hero, /Arc Signal LLC/);
-  assert.match(hero, /Security awareness\./);
-  assert.match(hero, /privacy-minded tools/);
+  assert.match(hero, /Know more\./);
+  assert.match(hero, /Privacy-minded tools/);
+  assert.match(hero, /<h1[^>]*>[\s\S]*?<\/h1>\s*<p class="hero-summary company-intro">[\s\S]*?<\/p>\s*<\/div>/);
+  assert.match(css, /\.company-hero \{[^}]*grid-template-columns:/);
+  assert.match(css, /\.company-hero \.hero-copy\.is-revealing \{ animation: none; \}/);
   assert.doesNotMatch(hero, /Spectra|<img\b|<figure\b|<a\b|hero-product|class="actions"/);
+  const companyMark = hero.match(/<svg class="company-signal"[\s\S]*?<\/svg>/)?.[0];
+  const navigationMark = html.match(/<svg class="brand-signal"[\s\S]*?<\/svg>/)?.[0];
+  assert.ok(companyMark);
+  assert.ok(navigationMark);
+  assert.match(companyMark, /aria-hidden="true" focusable="false"/);
+  assert.match(companyMark, /id="hero-signal-mask"/);
+  // The hero uses the same actual waveform pixels and crop as the company header.
+  assert.equal(companyMark.match(/viewBox="([^"]+)"/)[1], navigationMark.match(/viewBox="([^"]+)"/)[1]);
+  assert.equal(companyMark.match(/<image[^>]+>/)[0], navigationMark.match(/<image[^>]+>/)[0]);
+  assert.doesNotMatch(companyMark, /<(?:text|path|script|foreignObject)\b/);
   assert.doesNotMatch(html, /Discover Spectra/);
   const products = html.match(/<section[^>]*id="products"[\s\S]*?<\/section>/)?.[0];
   assert.match(products, /class="spectra-wordmark"/);

@@ -125,9 +125,15 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 
 /* Company and product pages share type, navigation, and spacing. */
 .company-page { background: radial-gradient(ellipse at 90% 3%, #e1ecf8 0, transparent 40rem), var(--paper); }
-.company-hero { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: end; min-height: 0; padding-block: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 5vw, 4rem); }
-.company-hero h1 { font-size: clamp(2.5rem, 5.1vw, 4.5rem); }
-.company-hero .company-intro { max-width: 28rem; margin: 0 0 .3rem; padding-left: 1.5rem; border-left: 2px solid var(--blue); font-size: clamp(1.0625rem, 1.5vw, 1.1875rem); }
+.company-hero { grid-template-columns: minmax(0, 1.5fr) minmax(0, .8fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); min-height: min(660px, 80svh); padding-block: clamp(3.5rem, 7vw, 6rem); }
+.company-hero .hero-copy { max-width: 46rem; }
+.company-hero .eyebrow { margin-bottom: 1.75rem; }
+.company-hero h1 { font-size: clamp(3rem, 6.7vw, 6rem); line-height: 1.04; }
+.company-hero .company-intro { max-width: 34rem; margin: 1.75rem 0 0; font-size: clamp(1.0625rem, 1.7vw, 1.25rem); line-height: 1.7; }
+/* Reuse the navigation's original waveform mask, without an app-icon tile. */
+.company-signal { display: block; width: min(100%, 21rem); height: auto; justify-self: center; color: var(--ink); }
+/* The company opening is a stable statement, not an animated content row. */
+.company-hero .hero-copy.is-revealing { animation: none; }
 .principles-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding-block: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8125rem; }
 .principles-strip p { display: flex; align-items: center; gap: .7rem; }
 .principles-strip p::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex: none; }
@@ -171,11 +177,10 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .site-footer nav { gap: .5rem 1.75rem; justify-content: end; }
 .site-footer .copyright { flex-basis: 100%; margin-top: 1rem; }
 .site-footer .trademark-note { font-size: .8125rem; line-height: 1.7; max-width: 78rem; }
-@media (min-width: 761px) and (max-width: 1080px) { .company-hero { gap: 2rem; } }
 
 @media (max-width: 760px) { .hero { grid-template-columns: minmax(0, 1fr); min-height: auto; } .hero-product { width: 180px; margin-block: 1rem; } .product-section, .download-layout, .three-column, .feature-grid, .questions-section { grid-template-columns: minmax(0, 1fr); } .download-action { justify-self: start; } .site-header { position: static; align-items: start; flex-wrap: wrap; gap: 0 1.5rem; } nav { gap: 0 1.25rem; } .split-heading { display: grid; } .measurement-list article { grid-template-columns: 1.5rem minmax(0, 1fr); } .measurement-list article > div { grid-column: 2; } html { scroll-padding-top: 1rem; } }
 @media (max-width: 560px) { .screenshot-grid { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 760px) { .company-hero h1 { font-size: clamp(1.875rem, 8.6vw, 2.5rem); } }
+@media (max-width: 760px) { .company-hero h1 { font-size: clamp(2.25rem, 9.8vw, 3.5rem); } .company-hero .company-intro { margin-top: 1.5rem; } .company-signal { display: none; } }
 @media (max-width: 400px) { .hero { padding-block: 3rem; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
 

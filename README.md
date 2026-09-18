@@ -30,15 +30,20 @@ section headings scale from 32–44px; body text stays at 16px, with supporting 
 at least 13px. Guide categories use 17px semibold sentence-case headings above
 16px topic links. Type sizes use rem, with bounded fluid scaling for larger headings.
 
-The homepage opens with a company-led, typography-only hero: Arc Signal's purpose
-and a brief introduction, without a large product icon or duplicate Spectra action.
+The homepage opens with a company-led hero: a large headline and brief introduction
+on the left, balanced by the standalone Arc Signal waveform on the right, without
+an app-icon tile, product caption, or duplicate Spectra action.
 The product card and primary navigation own product discovery; product-specific
 privacy principles sit with that card. Preserve Spectra's approved artwork on its
 product page and card. This hierarchy follows [NN/g's company-information research](https://www.nngroup.com/articles/about-us-information-on-websites/)
 and [Apple's layout guidance](https://developer.apple.com/design/human-interface-guidelines/layout):
 make the organization clear first, then group related product information. The
-two-column desktop opening stacks naturally on narrow screens; the restrained
-blue rule supports the introduction without adding another competing visual.
+opening follows the owner's [K Means reference](https://kmeans.ai/), with the
+introduction directly below the headline instead of in a competing text column.
+The decorative hero mark reuses the navigation's exact raster mask and crop,
+with a distinct mask ID; no artwork is reconstructed or substituted. It is hidden
+on narrow screens, where the navigation already supplies the company mark. The
+headline stays visible without an entrance animation, and type wraps naturally.
 
 With Node.js 22 or later:
 
