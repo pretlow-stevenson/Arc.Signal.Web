@@ -375,8 +375,8 @@ test('magnetic guidance explains placement, practice, and inconclusive quiet rea
 test('website Guide is generated from all twelve native topics with release and support context', async () => {
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   assert.equal(payload.appVersion, '1.0.0');
-  assert.equal(payload.build, '1005');
-  assert.equal(payload.buildIdentifier, '1A1005');
+  assert.equal(payload.build, '1006');
+  assert.equal(payload.buildIdentifier, '1A1006');
   assert.equal(payload.minimumOS, 'iOS 27 or later');
   assert.equal(payload.supportedHardware, 'iPhone');
   assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
@@ -387,7 +387,7 @@ test('website Guide is generated from all twelve native topics with release and 
   assert.match(pages.get('guide.html'), /not anonymous/);
   assert.match(pages.get('guide.html'), /mailto:support@arcsignal.app/);
   assert.match(pages.get('guide.html'), /Nothing is attached or sent automatically/);
-  assert.match(pages.get('guide.html'), /Build 1A1005/);
+  assert.match(pages.get('guide.html'), /Build 1A1006/);
   assert.match(pages.get('guide.html'), /forced close, crash, or shutdown/);
 });
 

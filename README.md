@@ -68,7 +68,7 @@ The neighboring Spectra checkout's `scripts/ExportGuide.swift` exports them to
 `assets/data/spectra-guide.json`; `npm run guide` then produces `guide.html`.
 Both generated files are committed so GitHub Pages needs no Swift or JavaScript
 runtime. `npm test` checks exact HTML parity, twelve stable topic routes, the
-release identity (1.0.0 / 1A1005, numeric bundle build 1005), support address,
+release identity (1.0.0 / 1A1006, numeric bundle build 1006), support address,
 compatibility, and the public policy link.
 
 Saved-session rechecks are described in the company overview, Spectra feature
