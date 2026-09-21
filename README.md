@@ -68,7 +68,7 @@ The neighboring Spectra checkout's `scripts/ExportGuide.swift` exports them to
 `assets/data/spectra-guide.json`; `npm run guide` then produces `guide.html`.
 Both generated files are committed so GitHub Pages needs no Swift or JavaScript
 runtime. `npm test` checks exact HTML parity, twelve stable topic routes, the
-release lock (1.0.0 / 1A1000, numeric bundle build 1000), support address,
+release identity (1.0.0 / 1A1005, numeric bundle build 1005), support address,
 compatibility, and the public policy link.
 
 Saved-session rechecks are described in the company overview, Spectra feature
@@ -98,6 +98,15 @@ npm run build
 Do not edit generated HTML or JSON by hand. Native search is available offline;
 the website uses a topic index, in-page anchors, and browser Find without adding
 tracking, forms, or client scripts. Technical detail uses native disclosure.
+
+Magnetic help explains that sensor position varies by model and a quiet reading
+is inconclusive. The iPhone 17 Pro Max example follows Apple's dimensional drawing,
+sheet 4 / PDF page 5; never generalize that lower-back location to other models.
+The optional in-app practice view uses live magnetic readings and motion context,
+not radio scanning or session storage. It clears readings on Stop, Done, or
+backgrounding and requires an explicit restart. The shared Guide and product FAQ
+explain a safe familiar-speaker comparison, separate from calibration or a
+pass/fail test. Publish this feature copy with the app release that includes it.
 Email support opens the user's mail client with no scan data or attachments.
 
 ### Existing hosting

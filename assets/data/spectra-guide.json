@@ -16,12 +16,17 @@
             "title" : "Observe without connecting"
           },
           {
-            "body" : "Summary surfaces named findings, including Possible matches, with their confidence or name-source label. Related observations stay together and unnamed activity stays compact. Expand a result for its measurements and supporting evidence.",
+            "body" : "Summary surfaces named findings and supported possible device types, even when the manufacturer or model is unknown. Each result keeps its confidence or name-source label. Related observations stay together; other unnamed activity stays compact. Expand a result for its measurements and supporting evidence.",
             "id" : "explore",
             "title" : "Start with the summary"
           },
           {
-            "body" : "Choose Smart Glasses or Watches & Wearables from Specialist checks for a 30-second Bluetooth observation. Watches & Wearables includes supported smartwatches, fitness bands and trackers, smart rings, and other wearables; glasses stay in their own check. Results include catalog matches and explicitly Possible indications from names such as Smart Watch, Smart Ring, Fitness Tracker, or Smart Frames. Names do not establish a manufacturer or model. Ambiguous names, accessories, generic services, and company codes alone do not qualify. Spectra cannot tell whether a microphone, camera, or conversation-summary feature is active.",
+            "body" : "A Possible smartwatch or Possible audio output can appear without a product name when reviewed broadcast evidence supports that category. A result shows up to three retained possible interpretations; Technical details holds the remaining retained interpretations and their sources. These possibilities are not an exhaustive list of products. Conflicting identity claims means Spectra has not selected a product. Multiple interpretations do not create extra devices or increase review priority. The same eligible finding stays available for Bluetooth Proximity and analysis; neither verifies its identity.",
+            "id" : "possibilities",
+            "title" : "A useful clue without an exact model"
+          },
+          {
+            "body" : "Choose Smart Glasses or Watches & Wearables from Specialist checks for a 30-second Bluetooth observation. Watches & Wearables includes supported smartwatches, fitness bands and trackers, smart rings, and other wearables; glasses stay in their own check. Results include catalog matches, reviewed possible category evidence, and explicitly Possible indications from names such as Smart Watch, Smart Ring, Fitness Tracker, or Smart Frames. Names do not establish a manufacturer or model. Names without a supported type, accessories, generic services, and company codes alone do not qualify. Spectra cannot tell whether a microphone, camera, or conversation-summary feature is active.",
             "id" : "specialists",
             "title" : "Check for glasses or wearables"
           },
@@ -187,9 +192,29 @@
       "content" : {
         "example" : "magneticDelta",
         "id" : "magnetic",
-        "important" : "Speakers, magnets, metal, wiring, chargers, and phone cases can all change the field. A spike cannot identify a device or show its distance or intent.",
+        "important" : "Speakers, magnets, metal, wiring, chargers, and phone cases can all change the field. A spike cannot identify a device or show its distance or intent. No change does not rule out a device.",
         "navigationTitle" : "Magnetic meter",
         "sections" : [
+          {
+            "body" : "The magnetometer measures at one small sensor—not across the whole phone. Its location varies by iPhone model. Move slowly over the same spot, keeping the phone’s angle and gap consistent.",
+            "id" : "placement",
+            "title" : "Where to aim your iPhone"
+          },
+          {
+            "body" : "On iPhone 17 Pro Max, use the lower back near the USB-C end, not the camera area. Apple’s dimensional drawing marks the compass in this lower-back area. This is a model-specific location, not a universal iPhone scanning point. The camera and contactless-payment area are not a reliable guide to magnetometer placement.",
+            "id" : "iphone-17-pro-max",
+            "title" : "Example: iPhone 17 Pro Max"
+          },
+          {
+            "body" : "Try a practice sweep with an ordinary speaker you own before exploring an unfamiliar space. Keep a gap; do not press magnets against the phone. No change does not rule out a device. In the app, choose Practice with the magnetometer here or before beginning a magnetic Area Sweep, then tap Start Practice. Compare a familiar speaker with a spot away from electronics, repeat the same slow pass, and watch Actual Field and Δ Reference. Learn which phone positions produce a repeatable response without expecting a particular number. This is familiarization, not calibration or a pass/fail test of the phone. Practice uses live magnetic readings and motion context only: no Bluetooth, local-network discovery, device findings, exports, or saved session. Stop, Done, or leaving the app clears the practice readings. Returning does not resume measurement; tap Start Practice to try again. Begin a separate Area Sweep with a fresh reference before reviewing a space.",
+            "id" : "practice",
+            "title" : "Practice before an unfamiliar-space sweep"
+          },
+          {
+            "body" : "Some devices produce little detectable magnetic change. Sensor position, distance, shielding, and magnetic accessories can also affect the response. No change does not rule out a device. A speaker’s magnet may cause a local change, but not every speaker or microphone produces a change the phone can resolve at your position. Watch Actual Field or Δ Reference, not just the saved event count. Confirm that live readings are arriving in Measurement Details; an unavailable or stale reading is not a quiet field.",
+            "id" : "quiet-reading",
+            "title" : "Near a device, but no change?"
+          },
           {
             "body" : "Pause away from obvious magnets or electronics so a stable display reference can form. Use Rebuild Reference to choose a fresh display comparison point. Automatic event detection has its own calibrated baseline.",
             "id" : "reference",
@@ -212,7 +237,8 @@
           }
         ],
         "steps" : [
-          "Choose Motion and magnetic for an Area Sweep, establish the reference, then move slowly and pause to compare areas.",
+          "Choose Motion and magnetic for an Area Sweep. Remove magnetic cases, mounts, or attached accessories if practical, then establish a reference away from obvious magnetic sources.",
+          "To get familiar with the response, use an ordinary speaker you own. Without touching it, slowly pass different parts of the phone over the same spot, holding the angle and gap steady. Repeat the path; do not press a strong magnet against the phone or open equipment. A flat response is inconclusive, not proof the sensor failed.",
           "Switch between Actual Field and Δ Reference to make changes easier to see.",
           "Review the event timeline for meaningful spikes, then revisit the area to see whether the change repeats."
         ],
@@ -770,6 +796,11 @@
             "title" : "The name or type looks wrong"
           },
           {
+            "body" : "Some devices produce little detectable magnetic change. Sensor position, distance, shielding, and magnetic accessories can also affect the response. No change does not rule out a device. The sensor is a small point inside the phone, not its entire back. See Reading the magnetic meter for positioning and a safe comparison exercise. On iPhone 17 Pro Max, use the lower back near the USB-C end, not the camera area. Check that live readings are arriving before interpreting a flat graph.",
+            "id" : "magnetic-placement",
+            "title" : "The magnetic reading barely changes near a device"
+          },
+          {
             "body" : "Actual field and display delta can work before the calibrated event detector is ready. A 0/25-style sample count describes accepted detector-baseline readings, not permission progress. Follow the current readiness instruction, pause away from obvious magnets, and check Measurement Details. Strong absolute field alone is not a qualifying relative excursion. Try removing a magnetic case or mount if practical.",
             "id" : "magnetic",
             "title" : "The graph moves but no spike is saved"
@@ -808,8 +839,8 @@
       }
     }
   ],
-  "build" : "1000",
-  "buildIdentifier" : "1A1000",
+  "build" : "1005",
+  "buildIdentifier" : "1A1005",
   "minimumOS" : "iOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,

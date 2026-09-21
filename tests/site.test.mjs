@@ -41,6 +41,7 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
       if (value === 'mailto:support@arcsignal.app' && ['guide.html', 'spectra-privacy.html'].includes(name)) continue;
       if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && [nordPrivacyURL, 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement'].includes(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && editorialLinks.has(value)) continue;
+      if (name === 'spectra.html' && attribute.startsWith('href=') && value === 'https://developer.apple.com/download/files/accessories/dimensional-drawings/iphone-17-pro-max.pdf#page=5') continue;
       if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === nordAffiliateHref) continue;
       if (value.startsWith('https://')) {
         assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
@@ -356,11 +357,26 @@ test('Spectra imagery and mode descriptions match current radio and magnetic wor
   }
 });
 
+test('magnetic guidance explains placement, practice, and inconclusive quiet readings', () => {
+  for (const name of ['spectra.html', 'guide.html']) {
+    const html = pages.get(name);
+    for (const phrase of ['iPhone 17 Pro Max', 'USB-C end', 'No change does not rule out a device', 'speaker', 'pass/fail']) {
+      assert.ok(html.includes(phrase), `${name}: ${phrase}`);
+    }
+  }
+  assert.ok(pages.get('guide.html').includes('not a universal iPhone scanning point'));
+  assert.ok(pages.get('guide.html').includes('unavailable or stale reading is not a quiet field'));
+  assert.ok(pages.get('guide.html').includes('fresh reference'));
+  assert.ok(pages.get('guide.html').includes('Practice with the magnetometer'));
+  assert.ok(pages.get('guide.html').includes('does not resume measurement'));
+  assert.ok(pages.get('spectra.html').includes('iphone-17-pro-max.pdf#page=5'));
+});
+
 test('website Guide is generated from all twelve native topics with release and support context', async () => {
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   assert.equal(payload.appVersion, '1.0.0');
-  assert.equal(payload.build, '1000');
-  assert.equal(payload.buildIdentifier, '1A1000');
+  assert.equal(payload.build, '1005');
+  assert.equal(payload.buildIdentifier, '1A1005');
   assert.equal(payload.minimumOS, 'iOS 27 or later');
   assert.equal(payload.supportedHardware, 'iPhone');
   assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
@@ -371,7 +387,7 @@ test('website Guide is generated from all twelve native topics with release and 
   assert.match(pages.get('guide.html'), /not anonymous/);
   assert.match(pages.get('guide.html'), /mailto:support@arcsignal.app/);
   assert.match(pages.get('guide.html'), /Nothing is attached or sent automatically/);
-  assert.match(pages.get('guide.html'), /Build 1A1000/);
+  assert.match(pages.get('guide.html'), /Build 1A1005/);
   assert.match(pages.get('guide.html'), /forced close, crash, or shutdown/);
 });
 
