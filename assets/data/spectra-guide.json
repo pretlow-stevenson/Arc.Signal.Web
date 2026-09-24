@@ -21,7 +21,7 @@
             "title" : "Start with the summary"
           },
           {
-            "body" : "A Possible smartwatch or Possible audio output can appear without a product name when reviewed broadcast evidence supports that category. A result shows up to three retained possible interpretations; Technical details holds the remaining retained interpretations and their sources. These possibilities are not an exhaustive list of products. Conflicting identity claims means Spectra has not selected a product. Multiple interpretations do not create extra devices or increase review priority. The same eligible finding stays available for Bluetooth Proximity and analysis; neither verifies its identity.",
+            "body" : "A Possible smartwatch or Possible audio output can appear without a product name when reviewed broadcast evidence supports that category. A result shows up to three retained possible interpretations; Technical details holds the remaining retained interpretations and their sources. These possibilities are not an exhaustive list of products. The Conflicting identity claims label means Spectra has not selected a product. Multiple interpretations do not create extra devices or increase review priority. The same eligible finding stays available for Bluetooth Proximity and analysis; neither verifies its identity.",
             "id" : "possibilities",
             "title" : "A useful clue without an exact model"
           },
@@ -293,6 +293,11 @@
             "title" : "History is your choice"
           },
           {
+            "body" : "The Experimental Watch collector saves bounded Bluetooth evidence locally, including names and payloads that may identify people or devices. Send to iPhone is explicit; Add to Sessions then saves and interprets a received capture, even if automatic scan saving is off. Watch copies, the phone inbox, imported sessions, and timing diagnostics have separate erase controls. Reset on iPhone clears received Watch data and rejects previously queued deliveries, but does not erase the Watch or exported files. The Experimental Watch guide explains setup, storage limits, and deletion.",
+            "id" : "watch",
+            "title" : "Experimental Watch has separate copies"
+          },
+          {
             "body" : "Open Privacy policy from Welcome or Spectra Settings → About for the public policy, including local observations, permissions, erasure, optional exports, support correspondence, and website hosting. Reading the website requires an internet connection; this practical Guide stays available offline.",
             "id" : "policy",
             "title" : "Read the full privacy policy"
@@ -310,11 +315,11 @@
         ],
         "steps" : [
           "Use Save completed sessions in Spectra Settings to control future history saving.",
-          "Open Sessions to delete one report, use Select for several, or Erase All Sessions to also remove recovery copies.",
+          "Open Sessions to delete one report, use Select for several, or Erase All Sessions to also remove recovery copies and received Watch inbox captures. Watch copies remain.",
           "Use Reset Spectra in Spectra Settings to erase local sessions and preferences and return to Welcome. iOS permissions are controlled in iPhone Settings; copies you saved or shared elsewhere remain."
         ],
         "symbol" : "hand.raised",
-        "takeaway" : "No account. No advertising or analytics SDK. Your checks are processed and saved on this iPhone. Sharing is your choice.",
+        "takeaway" : "No account. No advertising or analytics SDK. Observations stay on your devices unless you choose to share them.",
         "technicalSections" : [
           {
             "body" : "Saved reports and notes use iOS file protection. New on-device AI explanations are temporary: they are not saved in sessions or included in exports. Older sessions may still contain explanations saved by an earlier app version; deleting those sessions removes that local history too. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. The primary history file retains up to 50 sessions within 256 MiB; older sessions may be removed when either limit is reached. Safe file replacement and protected recovery copies can require additional disk space. These are not tamper-evident forensic records or an unlimited archive.",
@@ -598,9 +603,14 @@
         "navigationTitle" : "Sessions",
         "sections" : [
           {
-            "body" : "Sessions groups checks by day, newest first, with the newest times first inside each group. The most recent day starts open; tap any date heading to show or hide its sessions. Each heading shows the total for that day. You can keep several days open, and your choices stay in place while moving between tabs or opening and returning from a session. These choices are not saved across app launches. A new most-recent day starts open; deleting all history or changing time zone can reset the day groups. Each row keeps its check-type icon even after you rename it.",
+            "body" : "Sessions groups checks by their original capture day, newest first, with the newest capture times first inside each day. The most recent day starts open; tap any date heading to show or hide its sessions. Each heading counts all saved versions for that day, including rechecks. You can keep several days open, and your choices stay in place while moving between tabs or opening and returning from a session. These choices are not saved across app launches. A new most-recent day starts open; deleting all history or changing time zone can reset the day groups. Each row keeps its check-type icon even after you rename it.",
             "id" : "browsing",
             "title" : "Find a check by day"
+          },
+          {
+            "body" : "Tap the recheck count beneath an original session to show its saved interpretations, newest recheck first. Original icons are blue; recheck icons are violet and include a Recheck number. Renaming does not separate related copies. Each version opens, exports, and deletes independently. If the original was removed, the latest surviving recheck stays visible and says Original removed; any earlier rechecks remain expandable. Rechecks show their evaluation date separately from the original capture day.",
+            "id" : "families",
+            "title" : "Keep rechecks with their capture"
           },
           {
             "body" : "Saving completed sessions is on by default and can be changed in Spectra Settings. Turning it off affects future saving, not existing history. The completed check tells you whether it was saved. If saving fails, keep the result open and use Retry Saving or Export JSON before discarding it. A forced close, crash, or shutdown before saving can lose an unfinished check; there is no continuous autosaved draft. Finish and confirm important checks before closing the app.",
@@ -613,7 +623,7 @@
             "title" : "Give a session a useful name"
           },
           {
-            "body" : "A blue dot beside a session means newer recognition is available. Open it and choose Recheck session. Spectra reinterprets compatible saved radio evidence using the engine and catalog bundled with your app update. It does not start Bluetooth or network discovery, collect new measurements, or upload your capture. Opening a session alone does not clear the dot.",
+            "body" : "A blue dot beside a session means newer recognition is available. Open it and choose Recheck session. A dot beside a collapsed recheck count means an eligible copy is inside; expand it to find that session. Spectra reinterprets compatible saved radio evidence using the engine and catalog bundled with your app update. It does not start Bluetooth or network discovery, collect new measurements, or upload your capture. Opening a session alone does not clear the dot.",
             "id" : "recheck",
             "title" : "What does the blue dot mean?"
           },
@@ -643,7 +653,7 @@
             "title" : "Why did an older session disappear?"
           },
           {
-            "body" : "Delete one session from its list actions, or Select several. Hiding a day does not deselect its sessions: the date heading keeps its selected count, and Delete Selected shows the total across days. Open that day to change its selection. Erase All Sessions includes closed days and recovery copies; it is disabled when there is nothing to erase. Reset Spectra in Spectra Settings also clears preferences and returns to Welcome. Confirmations are deliberate because erasure cannot be undone.",
+            "body" : "Delete one session from its list actions, or Select several. Hiding a day or collapsing rechecks does not deselect hidden sessions: the date heading and recheck disclosure keep their selected counts, and Delete Selected shows the total. Expand the relevant group to change its selection. Deleting an original does not select or delete its rechecks. Erase All Sessions includes closed groups, recovery copies, and received Watch inbox captures; it is disabled when there is nothing to erase. Watch copies remain. Use Settings → Experimental Watch → Erase Inbox Copies to clear that inbox separately without deleting imported sessions. Reset Spectra in Spectra Settings additionally clears received Watch diagnostics and preferences and returns to Welcome. Confirmations are deliberate because erasure cannot be undone.",
             "id" : "erase",
             "title" : "Choose the right erase action"
           }
@@ -668,7 +678,7 @@
             "title" : "History cannot be read"
           },
           {
-            "body" : "Sessions groups by your current local calendar, using the saved recheck time for a derived copy and the capture time otherwise. Details always preserve the original measurement date and duration. Captured with identifies the original app build; Recognition used or Rechecked with identifies the interpretation revisions. Older reports may show Not recorded. Opening them does not silently reinterpret their findings, fill in today’s version, or invent missing graph data.",
+            "body" : "Sessions groups each capture and its rechecks by the original capture time in your current local calendar. Rechecking does not move that capture to a newer day. Recheck rows show their separate evaluation date and time; details preserve the original measurement date and duration. Captured with identifies the original app build; Recognition used or Rechecked with identifies the interpretation revisions. Older reports may show Not recorded. Opening them does not silently reinterpret their findings, fill in today’s version, or invent missing graph data.",
             "id" : "timestamps",
             "title" : "Old results are historical"
           }
@@ -710,7 +720,7 @@
             "title" : "Analyze on Device"
           },
           {
-            "body" : "A check with no relevant findings does not start Apple Intelligence. Review Coverage instead; no matches is not an all-clear. Analysis requires Apple Intelligence enabled, its model ready, and a supported language and region. Analyze on Device is disabled while Apple Intelligence is unavailable. Returning to Spectra refreshes availability, for example after enabling it in Settings. Check Availability inside an open analysis also refreshes the status. Preparation and generation share a 45-second limit; Cancel stops the request. Backgrounding Spectra or closing analysis cancels generation. A failure leaves your scan unchanged. Choose another finding, retry, or use Export JSON for external review. Scanning and exporting do not require Apple Intelligence.",
+            "body" : "A check with no relevant findings does not start Apple Intelligence. Review Coverage instead; no matches is not an all-clear. Analysis requires Apple Intelligence enabled, its model ready, and a supported language and region. Analyze on Device is disabled while Apple Intelligence is unavailable. Returning to Spectra refreshes availability, for example after enabling it in iPhone Settings. Check Availability inside an open analysis also refreshes the status. Preparation and generation share a 45-second limit; Cancel stops the request. Backgrounding Spectra or closing analysis cancels generation. A failure leaves your scan unchanged. Choose another finding, retry, or use Export JSON for external review. Scanning and exporting do not require Apple Intelligence.",
             "id" : "readiness",
             "title" : "When analysis cannot run"
           },
@@ -740,7 +750,7 @@
             "title" : "Reduced identifying information"
           },
           {
-            "body" : "The Export results section opens the export options. Under Information to include, choose one format—not multiple items to combine. Tap Export JSON to prepare that file locally. Preparing JSON and a spinner confirm that work is in progress; Cancel closes preparation without changing your session. Apple’s share sheet opens when the file is ready. Choose Save to Files or another destination. Cloud storage, email, or an AI service may transfer and retain the copy under that service’s policies. Erasing Spectra afterward cannot recall external copies.",
+            "body" : "In a saved session, open the top Session options menu and choose Export JSON. The Export results section farther down opens the same options and is also available after a completed check. Under Information to include, choose one format—not multiple items to combine. Tap Export JSON to prepare that file locally. Preparing JSON and a spinner confirm that work is in progress; Cancel closes preparation without changing your session. Apple’s share sheet opens when the file is ready. Choose Save to Files or another destination. Cloud storage, email, or an AI service may transfer and retain the copy under that service’s policies. Erasing Spectra afterward cannot recall external copies.",
             "id" : "destinations",
             "title" : "Save or share"
           },
@@ -751,7 +761,7 @@
           }
         ],
         "steps" : [
-          "Open completed results or a saved session. In Export results, choose Export JSON.",
+          "In a saved session, choose Export JSON from the top Session options menu. After a completed check, use the Export results section.",
           "Select one format: Analysis JSON, Technical archive, or Reduced identifying information. Read what is included.",
           "Tap Export JSON and wait for preparation to finish. In the share sheet, choose Save to Files or a recipient you trust."
         ],
@@ -819,7 +829,7 @@
         "steps" : [
           "Open Coverage and read the reason for each partial or unavailable measurement.",
           "Check iPhone Settings if access was denied, return to Spectra, and repeat the smallest affected check.",
-          "In Spectra Settings, use Copy support information, then Email support. The copy includes version, build, iOS, hardware model and catalog revision—not scan data."
+          "In Spectra Settings, use Copy support information, then Email support. The copy includes version, build, iOS, hardware model, detection-engine revision and catalog revision—not scan data."
         ],
         "symbol" : "questionmark.circle",
         "takeaway" : "First check coverage and measurement state. A missing observation is not evidence that nothing is there.",
@@ -837,10 +847,82 @@
         ],
         "title" : "Troubleshoot unexpected results"
       }
+    },
+    {
+      "category" : "gettingStarted",
+      "categoryTitle" : "Getting started",
+      "content" : {
+        "id" : "watch",
+        "important" : "Experimental means behavior is still being validated across Watches and environments. Bluetooth identifiers are not a verified device count. An empty or partial capture is never an all-clear.",
+        "navigationTitle" : "Experimental Watch",
+        "sections" : [
+          {
+            "body" : "The Experimental Watch companion requires watchOS 27 and a paired iPhone with Spectra. It offers only a 30-second Bluetooth Area Sweep. It does not measure local-network services or magnetic fields, run specialist checks, or identify devices on the Watch. Recognition happens on iPhone after you explicitly add a received capture to Sessions.",
+            "id" : "scope",
+            "title" : "One check, a smaller screen"
+          },
+          {
+            "body" : "On Apple Watch, open Settings → Display & Brightness → Wake Duration and choose Wake for 70 Seconds. Tap to wake the display fully, start the sweep, and keep your wrist raised with Spectra active until it finishes. The first Start after launching Spectra shows a setup reminder: Start Sweep continues; Not Now starts nothing. Acknowledging it does not verify or change your setting. Always On can leave Spectra visible while inactive; visibility alone does not keep Bluetooth collection running. Return to Clock is a different setting. Spectra cannot change these system settings or guarantee active time on every Watch.",
+            "id" : "awake",
+            "title" : "Keep the display fully awake"
+          },
+          {
+            "body" : "If Spectra becomes inactive or you leave it during collection, the sweep ends and preserves the evidence already retained as partial. It does not resume when you return. An early stop, Bluetooth loss, or a retention limit can also reduce coverage. Review the reason, adjust your setup, and start a new sweep when ready. A timer finishing does not prove every nearby device was observed.",
+            "id" : "partial",
+            "title" : "An interruption keeps a partial capture"
+          },
+          {
+            "body" : "Open Spectra on your paired iPhone once to prepare transfer. On Watch, choose Send to iPhone for a retained capture. Queued means Apple is waiting to deliver it; Received on iPhone means the phone confirmed storage, not that recognition or session import is complete. On iPhone, open Settings → Experimental Watch, select the received capture, and choose Add to Sessions. Spectra interprets retained evidence with the iPhone’s installed catalog. The saved result remains marked as an Experimental Watch capture, with its original time and coverage.",
+            "id" : "handoff",
+            "title" : "Send first, then add to Sessions"
+          },
+          {
+            "body" : "The Watch keeps up to five captures, each within a 4 MiB limit. The iPhone inbox has the same limits. Full storage does not silently discard older captures. Send and verify the copies you need before using Erase Watch captures; add received captures to Sessions before using Erase Inbox Copies. Each of these erase actions removes all copies in that store. Sending is not deletion. Adding a received capture to Sessions does not erase the Watch copy.",
+            "id" : "capacity",
+            "title" : "Keep room for the next check"
+          },
+          {
+            "body" : "Captures can contain advertised names, manufacturer and service bytes, signal strength, timestamps, and session-scoped identity tokens. These fields can identify devices or people. Spectra uses protected local storage marked for exclusion from backups and Apple’s paired-device transfer; it does not upload captures to Arc Signal or an identification service. Operating-system backup behavior remains under Apple’s control.",
+            "id" : "privacy",
+            "title" : "Captured on Watch, reviewed on iPhone"
+          }
+        ],
+        "steps" : [
+          "Install the Watch companion and open Spectra on iPhone once. Set the Watch’s Wake Duration to 70 seconds.",
+          "Tap to wake the Watch fully, start a sweep, and keep Spectra active for the 30-second window.",
+          "Review completion or interruption status, then explicitly Send to iPhone. Retry later if delivery is pending or storage is full.",
+          "On iPhone, open Settings → Experimental Watch and choose Add to Sessions for the received capture. Review findings and Coverage before drawing conclusions."
+        ],
+        "symbol" : "applewatch",
+        "takeaway" : "Take an intentional 30-second Bluetooth snapshot on your Watch, then review it on iPhone. This companion is experimental—not a background scanner.",
+        "technicalSections" : [
+          {
+            "body" : "The Watch retains bounded advertisement evidence, not every radio packet. Callback timing is delivery timing, not proof of uninterrupted sampling. Repeated callbacks do not establish separate physical devices; a product can change identifiers. Names and protocol fields are unauthenticated claims. Recognition on iPhone cannot recover information the Watch did not retain. Recorded signal strength was measured by the Watch, not the iPhone; readings taken later with the phone can differ.",
+            "id" : "evidence",
+            "title" : "Observation is bounded"
+          },
+          {
+            "body" : "For an eligible saved Watch finding, Bluetooth Proximity searches for possible matching broadcasts near your iPhone and asks you to confirm a candidate. It cannot reuse a Watch identity as a verified iPhone target or turn recorded Watch strength into a live reading. Matching names or payloads can come from different devices. The new signal measurement is taken by the iPhone; it does not verify identity or measure distance from the Watch.",
+            "id" : "proximity",
+            "title" : "A new proximity check uses the iPhone"
+          },
+          {
+            "body" : "Watch captures, the iPhone inbox, imported Sessions, and timing diagnostics are separate stores. Erase Inbox Copies leaves imported sessions intact. Individual session deletion leaves inbox and Watch copies intact. Erase All Sessions also clears the received Watch inbox; Reset Spectra additionally clears received diagnostics and preferences. These phone-wide erase actions change the relevant transfer generation so previously queued copies cannot silently restore erased data. Watch copies remain; an explicit resend after reconnection is a new action. Canceling Watch transfers is best effort, so an already delivered or in-flight phone copy may remain. Exported files and system permissions are not erased.",
+            "id" : "deletion",
+            "title" : "Copies have separate erase controls"
+          },
+          {
+            "body" : "Watch diagnostics are separate from scan captures. They retain up to 20 recent timing and count reports per device, including Watch model, OS/build, completion status and lifecycle events, but no nearby-device names, identity values or advertisement payloads. Use Share Watch diagnostics on iPhone to deliberately share received reports for troubleshooting. Dates and hardware details can still reveal context. Nothing is sent to support automatically.",
+            "id" : "diagnostics",
+            "title" : "Share timing diagnostics only when needed"
+          }
+        ],
+        "title" : "Try the Experimental Watch collector"
+      }
     }
   ],
-  "build" : "1006",
-  "buildIdentifier" : "1A1006",
+  "build" : "1012",
+  "buildIdentifier" : "1A1012",
   "minimumOS" : "iOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,

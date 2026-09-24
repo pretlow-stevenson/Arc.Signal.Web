@@ -67,9 +67,20 @@ The app's `GuideArticle.swift` and `GuideReleaseArticles.swift` are canonical.
 The neighboring Spectra checkout's `scripts/ExportGuide.swift` exports them to
 `assets/data/spectra-guide.json`; `npm run guide` then produces `guide.html`.
 Both generated files are committed so GitHub Pages needs no Swift or JavaScript
-runtime. `npm test` checks exact HTML parity, twelve stable topic routes, the
-release identity (1.0.0 / 1A1006, numeric bundle build 1006), support address,
+runtime. Compile the exporter with both native Guide sources, then pass the
+output JSON path and the app's `Configurations/BuildNumber.xcconfig` path. The
+export reads the approved release identity from that configuration; it does not
+allocate a build or change the lock. Regenerate after an approved release change.
+`npm test` checks exact HTML parity, thirteen stable topic routes, the
+release identity shape and matching numeric/public build suffix, support address,
 compatibility, and the public policy link.
+
+Experimental Watch appears in the product FAQ, shared Guide, and privacy policy,
+not as a mature public-release feature promise. Keep its active-screen,
+30-second Bluetooth-only scope, 70-second wake setup, partial-on-interruption
+behavior, explicit transfer/import, and separate copy/erase boundaries clear.
+The Watch's ability to observe nearby watches is unrelated to this companion;
+do not confuse the existing Watches & Wearables iPhone specialist with it.
 
 Saved-session rechecks are described in the company overview, Spectra feature
 copy/FAQ, shared Sessions Guide, and privacy policy. Keep claims conditional on

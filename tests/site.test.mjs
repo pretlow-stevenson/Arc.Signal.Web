@@ -372,28 +372,47 @@ test('magnetic guidance explains placement, practice, and inconclusive quiet rea
   assert.ok(pages.get('spectra.html').includes('iphone-17-pro-max.pdf#page=5'));
 });
 
-test('website Guide is generated from all twelve native topics with release and support context', async () => {
+test('website Guide is generated from all native topics with release and support context', async () => {
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   assert.equal(payload.appVersion, '1.0.0');
-  assert.equal(payload.build, '1006');
-  assert.equal(payload.buildIdentifier, '1A1006');
+  assert.match(payload.build, /^\d{4,}$/);
+  assert.match(payload.buildIdentifier, /^\d+[A-Z]+\d{4,}$/);
+  assert.ok(payload.buildIdentifier.endsWith(payload.build));
   assert.equal(payload.minimumOS, 'iOS 27 or later');
   assert.equal(payload.supportedHardware, 'iPhone');
   assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
   assert.equal(payload.supportEmail, 'support@arcsignal.app');
-  assert.equal(payload.articles.length, 12);
+  assert.equal(payload.articles.length, 13);
   assert.equal(pages.get('guide.html'), await renderGuide(), 'Stale generated Guide');
   for (const {content} of payload.articles) assert.ok(ids(pages.get('guide.html')).includes(content.id));
   assert.match(pages.get('guide.html'), /not anonymous/);
   assert.match(pages.get('guide.html'), /mailto:support@arcsignal.app/);
   assert.match(pages.get('guide.html'), /Nothing is attached or sent automatically/);
-  assert.match(pages.get('guide.html'), /Build 1A1006/);
+  assert.ok(pages.get('guide.html').includes(`Build ${payload.buildIdentifier}`));
   assert.match(pages.get('guide.html'), /forced close, crash, or shutdown/);
+});
+
+test('Experimental Watch guidance distinguishes collection, transfer, import and privacy', async () => {
+  const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const watch = payload.articles.find(article => article.content.id === 'watch')?.content;
+  assert.ok(watch);
+  const text = JSON.stringify(watch);
+  for (const phrase of ['Experimental', '70 Seconds', 'Always On', 'partial', 'does not resume',
+      'Send to iPhone', 'Add to Sessions', 'five captures', '4 MiB', 'Watch copies remain', '20 recent']) {
+    assert.ok(text.includes(phrase), `Missing Watch guide: ${phrase}`);
+  }
+  const policy = pages.get('spectra-privacy.html');
+  for (const phrase of ['Experimental Watch', 'advertisement payloads', 'names', 'five captures',
+      '4 MiB', 'separate lifetimes', 'previously queued copies', '20 reports']) {
+    assert.ok(policy.includes(phrase), `Missing Watch privacy: ${phrase}`);
+  }
+  assert.ok(pages.get('spectra.html').includes('availability in the final public release is not promised'));
+  assert.ok(pages.get('spectra.html').includes('guide.html#watch'));
 });
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 17, 2026/);
+  assert.match(policy, /Effective September 24, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
@@ -575,7 +594,7 @@ test('Guide explains specialist export scope and bounded optional analysis', asy
 test('saved-session rechecks keep eligibility, originals, storage and privacy explicit', () => {
   assert.match(pages.get('spectra.html'), /expandable day groups, newest first/);
   for (const phrase of ['Find a check by day', 'most recent day starts open',
-    'does not deselect', 'total across days', 'includes closed days']) {
+    'does not deselect', 'Delete Selected shows the total', 'includes closed groups']) {
     assert.ok(pages.get('guide.html').includes(phrase), phrase);
   }
   const product = pages.get('spectra.html');
