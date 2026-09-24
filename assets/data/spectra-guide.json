@@ -572,7 +572,7 @@
           "Wait for the starting comparison, then glance at the change summary. Do not interpret a quiet screen as an all-clear.",
           "Finish to explore named/grouped results, repeat counts, change times, and any earlier comparisons."
         ],
-        "symbol" : "dot.radiowaves.left.and.right",
+        "symbol" : "waveform.path",
         "takeaway" : "Keep the iPhone stationary and watch for observation changes—not a stream of device arrivals.",
         "technicalSections" : [
           {
@@ -921,8 +921,8 @@
       }
     }
   ],
-  "build" : "1013",
-  "buildIdentifier" : "1A1013",
+  "build" : "1014",
+  "buildIdentifier" : "1A1014",
   "minimumOS" : "iOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,
