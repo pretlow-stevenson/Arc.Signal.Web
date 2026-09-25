@@ -603,9 +603,14 @@
         "navigationTitle" : "Sessions",
         "sections" : [
           {
-            "body" : "Sessions groups checks by their original capture day, newest first, with the newest capture times first inside each day. The most recent day starts open; tap any date heading to show or hide its sessions. Each heading counts all saved versions for that day, including rechecks. You can keep several days open, and your choices stay in place while moving between tabs or opening and returning from a session. These choices are not saved across app launches. A new most-recent day starts open; deleting all history or changing time zone can reset the day groups. Each row keeps its check-type icon even after you rename it.",
+            "body" : "Sessions groups checks by their original capture day, newest first, with the newest capture times first inside each day. The most recent day starts open; tap any date heading to show or hide its sessions. Each heading counts all saved versions for that day, including rechecks. You can keep several days open, and your choices stay in place while moving between tabs or opening and returning from a session. These choices are not saved across app launches. A new most-recent day starts open; deleting all history or changing time zone can reset the day groups. Each row keeps its check-type or Watch-origin icon even after you rename it.",
             "id" : "browsing",
             "title" : "Find a check by day"
+          },
+          {
+            "body" : "An antenna icon and Apple Watch · Bluetooth-only sweep label identify a session collected by the Experimental Watch companion. This is a general Bluetooth sweep from your Watch—not the Watches & Wearables specialist check on iPhone. The origin label stays visible after renaming and on rechecks. Experimental and any partial-capture status remain visible too. Original icons are blue; rechecks are violet and also say Recheck. Open Coverage to see collection limits before drawing conclusions.",
+            "id" : "watch-origin",
+            "title" : "Recognize a sweep collected on Watch"
           },
           {
             "body" : "Tap the recheck count beneath an original session to show its saved interpretations, newest recheck first. Original icons are blue; recheck icons are violet and include a Recheck number. Renaming does not separate related copies. Each version opens, exports, and deletes independently. If the original was removed, the latest surviving recheck stays visible and says Original removed; any earlier rechecks remain expandable. Rechecks show their evaluation date separately from the original capture day.",
@@ -872,9 +877,14 @@
             "title" : "An interruption keeps a partial capture"
           },
           {
-            "body" : "Open Spectra on your paired iPhone once to prepare transfer. After each new sweep, the Watch saves the capture before automatically queuing it for your paired iPhone. Queued means delivery is pending; Received on iPhone confirms local storage, not completed recognition. Open Spectra on iPhone to identify received signals and add them to Sessions automatically. No need to keep the Watch completion screen open. The saved result stays marked Experimental Watch, with its original time and coverage. Transfers may wait for connectivity or Apple’s scheduling. If a sweep needs attention, open Settings → Experimental Watch on iPhone or Saved sweeps on Watch to review its status and retry. Older captures sent before automatic handoff may still offer Add to Sessions.",
+            "body" : "Open Spectra on your paired iPhone once to prepare transfer. After each new sweep, the Watch saves the capture before automatically queuing it for your paired iPhone. Queued means delivery is pending; Received on iPhone confirms local storage, not completed recognition. Open Spectra on iPhone to identify received signals and add them to Sessions automatically. No need to keep the Watch completion screen open. Choose New Sweep to collect again, or open Saved sweeps from the tray button to review transfer status and retry when needed. Transfers may wait for connectivity or Apple’s scheduling. Settings → Experimental Watch on iPhone provides processing and transfer help. Older captures sent before automatic handoff may still offer Add to Sessions.",
             "id" : "handoff",
             "title" : "Finish on Watch, review on iPhone"
+          },
+          {
+            "body" : "Look for the antenna icon and Apple Watch · Bluetooth-only sweep label. They identify where the evidence was collected, not a search for nearby watches. Your custom name never replaces this origin label, and rechecks keep it along with the original capture time. Experimental and partial-capture status stay visible. Blue icons identify original captures; violet icons and a Recheck number identify later interpretations. Review Coverage: even a complete 30-second capture cannot confirm that every nearby device was observed.",
+            "id" : "sessions-origin",
+            "title" : "Find your Watch sweep in Sessions"
           },
           {
             "body" : "Each device retains up to five capture copies, bounded to 4 MiB each. When space is needed, the Watch retires only copies confirmed received on iPhone; the phone retires only inbox copies already processed into Sessions. Unsent or unprocessed evidence is not automatically discarded. Sessions remain until you delete them or normal session retention applies. A full store with no eligible copies stops accepting new captures; review the transfer or processing status before retrying. Watch sweeps save to Sessions independently of the Save completed sessions setting for iPhone checks.",
@@ -893,7 +903,7 @@
           "Review completion or interruption status. New captures are saved and queued for your paired iPhone automatically.",
           "Open Spectra on iPhone and review Sessions once processing finishes. Review findings and Coverage before drawing conclusions; use Settings → Experimental Watch if a transfer needs attention."
         ],
-        "symbol" : "applewatch",
+        "symbol" : "antenna.radiowaves.left.and.right",
         "takeaway" : "Take an intentional 30-second Bluetooth snapshot on your Watch, then review it on iPhone. This companion is experimental—not a background scanner.",
         "technicalSections" : [
           {
@@ -921,8 +931,8 @@
       }
     }
   ],
-  "build" : "1015",
-  "buildIdentifier" : "1A1015",
+  "build" : "1016",
+  "buildIdentifier" : "1A1016",
   "minimumOS" : "iOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,

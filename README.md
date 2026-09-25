@@ -78,7 +78,10 @@ compatibility, and the public policy link.
 Experimental Watch appears in the product FAQ, shared Guide, and privacy policy,
 not as a mature public-release feature promise. Keep its active-screen,
 30-second Bluetooth-only scope, 70-second wake setup, partial-on-interruption
-behavior, explicit transfer/import, and separate copy/erase boundaries clear.
+behavior, automatic queued transfer, active-iPhone recognition, and separate
+copy/erase boundaries clear. The Sessions antenna icon and persistent
+Apple Watch · Bluetooth-only sweep label identify collection origin through
+renaming and rechecks; Experimental and partial-capture status stay visible.
 The Watch's ability to observe nearby watches is unrelated to this companion;
 do not confuse the existing Watches & Wearables iPhone specialist with it.
 

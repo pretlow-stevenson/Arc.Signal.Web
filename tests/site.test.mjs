@@ -410,6 +410,25 @@ test('Experimental Watch guidance distinguishes collection, transfer, import and
   assert.ok(pages.get('spectra.html').includes('guide.html#watch'));
 });
 
+test('Watch collection origin stays distinct from wearable discovery in public guidance', async () => {
+  const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const watch = payload.articles.find(article => article.content.id === 'watch')?.content;
+  const sessions = payload.articles.find(article => article.content.id === 'sessions')?.content;
+  assert.ok(watch);
+  assert.ok(sessions);
+  assert.equal(watch.symbol, 'antenna.radiowaves.left.and.right');
+  for (const content of [watch, sessions]) {
+    const text = JSON.stringify(content);
+    for (const phrase of ['Apple Watch · Bluetooth-only sweep', 'antenna', 'Experimental', 'recheck', 'partial']) {
+      assert.ok(text.includes(phrase), `Missing Watch origin guidance: ${phrase}`);
+    }
+  }
+  const faq = pages.get('spectra.html');
+  assert.ok(faq.includes('Apple Watch · Bluetooth-only sweep'));
+  assert.ok(faq.includes('not a search specifically for nearby watches'));
+  assert.ok(faq.includes('Experimental and partial-capture status remain visible'));
+});
+
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
   assert.match(policy, /Effective September 24, 2026/);
