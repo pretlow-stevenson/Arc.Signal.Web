@@ -293,7 +293,7 @@
             "title" : "History is your choice"
           },
           {
-            "body" : "The Experimental Watch collector saves bounded Bluetooth evidence locally, including names and payloads that may identify people or devices. Send to iPhone is explicit; Add to Sessions then saves and interprets a received capture, even if automatic scan saving is off. Watch copies, the phone inbox, imported sessions, and timing diagnostics have separate erase controls. Reset on iPhone clears received Watch data and rejects previously queued deliveries, but does not erase the Watch or exported files. The Experimental Watch guide explains setup, storage limits, and deletion.",
+            "body" : "The Experimental Watch collector saves bounded Bluetooth evidence locally, including names and payloads that may identify people or devices. New sweeps automatically transfer to your paired iPhone and are identified and added to Sessions when Spectra is active, even if automatic iPhone scan saving is off. There is no cloud upload. Each device keeps up to five recent capture copies; only safely received Watch copies or processed phone inbox copies can make room automatically. Watch copies, the phone inbox, Sessions, and timing diagnostics have separate erase controls. Reset on iPhone clears received Watch data and rejects previously queued deliveries, but does not erase the Watch or exported files. The Experimental Watch guide explains setup, storage limits, and deletion.",
             "id" : "watch",
             "title" : "Experimental Watch has separate copies"
           },
@@ -857,7 +857,7 @@
         "navigationTitle" : "Experimental Watch",
         "sections" : [
           {
-            "body" : "The Experimental Watch companion requires watchOS 27 and a paired iPhone with Spectra. It offers only a 30-second Bluetooth Area Sweep. It does not measure local-network services or magnetic fields, run specialist checks, or identify devices on the Watch. Recognition happens on iPhone after you explicitly add a received capture to Sessions.",
+            "body" : "The Experimental Watch companion requires watchOS 27 and a paired iPhone with Spectra. It offers only a 30-second Bluetooth Area Sweep. It does not measure local-network services or magnetic fields, run specialist checks, or identify devices on the Watch. New captures transfer automatically to your paired iPhone, where Spectra identifies retained signals and saves the result in Sessions.",
             "id" : "scope",
             "title" : "One check, a smaller screen"
           },
@@ -872,14 +872,14 @@
             "title" : "An interruption keeps a partial capture"
           },
           {
-            "body" : "Open Spectra on your paired iPhone once to prepare transfer. On Watch, choose Send to iPhone for a retained capture. Queued means Apple is waiting to deliver it; Received on iPhone means the phone confirmed storage, not that recognition or session import is complete. On iPhone, open Settings → Experimental Watch, select the received capture, and choose Add to Sessions. Spectra interprets retained evidence with the iPhone’s installed catalog. The saved result remains marked as an Experimental Watch capture, with its original time and coverage.",
+            "body" : "Open Spectra on your paired iPhone once to prepare transfer. After each new sweep, the Watch saves the capture before automatically queuing it for your paired iPhone. Queued means delivery is pending; Received on iPhone confirms local storage, not completed recognition. Open Spectra on iPhone to identify received signals and add them to Sessions automatically. No need to keep the Watch completion screen open. The saved result stays marked Experimental Watch, with its original time and coverage. Transfers may wait for connectivity or Apple’s scheduling. If a sweep needs attention, open Settings → Experimental Watch on iPhone or Saved sweeps on Watch to review its status and retry. Older captures sent before automatic handoff may still offer Add to Sessions.",
             "id" : "handoff",
-            "title" : "Send first, then add to Sessions"
+            "title" : "Finish on Watch, review on iPhone"
           },
           {
-            "body" : "The Watch keeps up to five captures, each within a 4 MiB limit. The iPhone inbox has the same limits. Full storage does not silently discard older captures. Send and verify the copies you need before using Erase Watch captures; add received captures to Sessions before using Erase Inbox Copies. Each of these erase actions removes all copies in that store. Sending is not deletion. Adding a received capture to Sessions does not erase the Watch copy.",
+            "body" : "Each device retains up to five capture copies, bounded to 4 MiB each. When space is needed, the Watch retires only copies confirmed received on iPhone; the phone retires only inbox copies already processed into Sessions. Unsent or unprocessed evidence is not automatically discarded. Sessions remain until you delete them or normal session retention applies. A full store with no eligible copies stops accepting new captures; review the transfer or processing status before retrying. Watch sweeps save to Sessions independently of the Save completed sessions setting for iPhone checks.",
             "id" : "capacity",
-            "title" : "Keep room for the next check"
+            "title" : "Room for the next sweep"
           },
           {
             "body" : "Captures can contain advertised names, manufacturer and service bytes, signal strength, timestamps, and session-scoped identity tokens. These fields can identify devices or people. Spectra uses protected local storage marked for exclusion from backups and Apple’s paired-device transfer; it does not upload captures to Arc Signal or an identification service. Operating-system backup behavior remains under Apple’s control.",
@@ -890,8 +890,8 @@
         "steps" : [
           "Install the Watch companion and open Spectra on iPhone once. Set the Watch’s Wake Duration to 70 seconds.",
           "Tap to wake the Watch fully, start a sweep, and keep Spectra active for the 30-second window.",
-          "Review completion or interruption status, then explicitly Send to iPhone. Retry later if delivery is pending or storage is full.",
-          "On iPhone, open Settings → Experimental Watch and choose Add to Sessions for the received capture. Review findings and Coverage before drawing conclusions."
+          "Review completion or interruption status. New captures are saved and queued for your paired iPhone automatically.",
+          "Open Spectra on iPhone and review Sessions once processing finishes. Review findings and Coverage before drawing conclusions; use Settings → Experimental Watch if a transfer needs attention."
         ],
         "symbol" : "applewatch",
         "takeaway" : "Take an intentional 30-second Bluetooth snapshot on your Watch, then review it on iPhone. This companion is experimental—not a background scanner.",
@@ -921,8 +921,8 @@
       }
     }
   ],
-  "build" : "1014",
-  "buildIdentifier" : "1A1014",
+  "build" : "1015",
+  "buildIdentifier" : "1A1015",
   "minimumOS" : "iOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,

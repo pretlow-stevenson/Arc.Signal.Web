@@ -398,7 +398,7 @@ test('Experimental Watch guidance distinguishes collection, transfer, import and
   assert.ok(watch);
   const text = JSON.stringify(watch);
   for (const phrase of ['Experimental', '70 Seconds', 'Always On', 'partial', 'does not resume',
-      'Send to iPhone', 'Add to Sessions', 'five captures', '4 MiB', 'Watch copies remain', '20 recent']) {
+      'automatically', 'Add to Sessions', 'five capture', '4 MiB', 'Watch copies remain', '20 recent']) {
     assert.ok(text.includes(phrase), `Missing Watch guide: ${phrase}`);
   }
   const policy = pages.get('spectra-privacy.html');
