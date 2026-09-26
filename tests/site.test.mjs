@@ -5,6 +5,7 @@ import { join, posix } from 'node:path';
 import { createHash } from 'node:crypto';
 import { root, documents, listPublicFiles } from '../scripts/site-files.mjs';
 import { renderGuide } from '../scripts/render-guide.mjs';
+import { guideRuns, guidePlainText, renderGuideInline } from '../scripts/guide-inline.mjs';
 
 const files = await listPublicFiles();
 const pages = new Map(await Promise.all(documents.map(async name => [name, await readFile(join(root, name), 'utf8')])));
@@ -12,6 +13,12 @@ const css = await readFile(join(root, 'assets/css/site.css'), 'utf8');
 const motionSource = await readFile(join(root, 'assets/js/site-motion.js'), 'utf8');
 const revision = value => createHash('sha256').update(value).digest('hex').slice(0, 12);
 const ids = html => [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+// Content assertions ignore only our exact, noninteractive UI-label wrapper.
+// Structural, URL and security assertions continue to inspect original HTML.
+const prose = html => html.replace(/<b class="ui-label">([^<>]*)<\/b>/g, '$1');
+const articleProse = article => [article.title, article.takeaway, article.important,
+  ...article.steps, ...(article.sections.concat(article.technicalSections))
+    .flatMap(section => [section.title, section.body])].map(guidePlainText).join('\n');
 // Exact owner-approved program URL. Do not allow arbitrary tracking destinations
 // or add visitor/scan identifiers to these public, campaign-level parameters.
 const nordAffiliateHref = 'https://go.nordvpn.net/aff_c?offer_id=15&amp;aff_id=156788&amp;url_id=902';
@@ -392,16 +399,61 @@ test('website Guide is generated from all native topics with release and support
   assert.match(pages.get('guide.html'), /forced close, crash, or shutdown/);
 });
 
+test('authored Guide labels are complete, well formed and rendered without markup artifacts', async () => {
+  const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const html = pages.get('guide.html');
+  for (const { content } of payload.articles) {
+    const copy = [content.takeaway, content.important, ...content.steps,
+      ...content.sections.concat(content.technicalSections).map(section => section.body)];
+    const headings = [content.title, content.navigationTitle,
+      ...content.sections.concat(content.technicalSections).map(section => section.title)];
+    assert.ok(headings.every(value => !value.includes('**')), content.id + ': heading markup');
+    assert.ok(copy.some(value => value.includes('**')), content.id + ': expected explicit interface labels');
+    for (const source of copy) {
+      assert.ok(html.includes(renderGuideInline(source)), content.id + ': unrendered prose');
+      assert.ok(!guidePlainText(source).includes('**'), content.id + ': malformed label');
+      const runs = guideRuns(source);
+      for (const [index, run] of runs.entries()) {
+        if (!run.emphasized) continue;
+        assert.doesNotMatch(runs[index - 1]?.text ?? '', /[\p{L}\p{N}]$/u, 'partial-word label prefix');
+        assert.doesNotMatch(runs[index + 1]?.text ?? '', /^[\p{L}\p{N}]/u, 'partial-word label suffix');
+      }
+    }
+  }
+  assert.doesNotMatch(html, /\*\*/);
+});
+
+test('Guide labels distinguish status meaning, real actions and Watch support metadata', async () => {
+  const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const monitor = payload.articles.find(article => article.content.id === 'monitoring')?.content;
+  assert.ok(monitor);
+  const silence = monitor.technicalSections.find(section => section.id === 'silence')?.body;
+  assert.ok(silence);
+  assert.match(silence, /^The \*\*Not recently seen\*\* label means/);
+  const readable = guidePlainText(silence);
+  assert.match(readable, /For Bluetooth, Spectra waits 45 seconds without an observation/);
+  assert.match(readable, /For local-network services, it follows Bonjour announcements and removals/);
+  assert.match(readable, /without physical movement/);
+  assert.ok(monitor.steps.some(step => step.startsWith('Choose **Stop Monitor**')));
+  assert.match(pages.get('guide.html'), /The <b class="ui-label">Not recently seen<\/b> label means/);
+  const watch = payload.articles.find(article => article.content.id === 'watch')?.content;
+  const settings = watch?.sections.find(section => section.id === 'settings')?.body;
+  assert.ok(settings);
+  assert.match(settings, /\*\*About\*\* shows the version/);
+  assert.match(guidePlainText(settings), /numeric build and watchOS version installed on your Watch/);
+  assert.match(guidePlainText(settings), /not a separate Watch catalog/);
+});
+
 test('Experimental Watch guidance distinguishes collection, transfer, import and privacy', async () => {
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   const watch = payload.articles.find(article => article.content.id === 'watch')?.content;
   assert.ok(watch);
-  const text = JSON.stringify(watch);
+  const text = articleProse(watch);
   for (const phrase of ['Experimental', '70 Seconds', 'Always On', 'partial', 'does not resume',
       'automatically', 'Add to Sessions', 'five capture', '4 MiB', 'Watch copies remain', '20 recent']) {
     assert.ok(text.includes(phrase), `Missing Watch guide: ${phrase}`);
   }
-  const policy = pages.get('spectra-privacy.html');
+  const policy = prose(pages.get('spectra-privacy.html'));
   for (const phrase of ['Experimental Watch', 'advertisement payloads', 'names', 'five captures',
       '4 MiB', 'separate lifetimes', 'previously queued copies', '20 reports']) {
     assert.ok(policy.includes(phrase), `Missing Watch privacy: ${phrase}`);
@@ -418,17 +470,17 @@ test('Watch collection origin stays distinct from wearable discovery in public g
   assert.ok(sessions);
   assert.equal(watch.symbol, 'antenna.radiowaves.left.and.right');
   for (const content of [watch, sessions]) {
-    const text = JSON.stringify(content);
+    const text = articleProse(content);
     for (const phrase of ['Apple Watch · Bluetooth-only sweep', 'antenna', 'Experimental', 'recheck', 'partial']) {
       assert.ok(text.includes(phrase), `Missing Watch origin guidance: ${phrase}`);
     }
   }
-  const faq = pages.get('spectra.html');
+  const faq = prose(pages.get('spectra.html'));
   assert.ok(faq.includes('Apple Watch · Bluetooth-only sweep'));
   assert.ok(faq.includes('not a search specifically for nearby watches'));
   assert.ok(faq.includes('Experimental and partial-capture status remain visible'));
   assert.ok(faq.includes('On Watch, Settings holds sweep guidance'));
-  const watchText = JSON.stringify(watch);
+  const watchText = articleProse(watch);
   for (const phrase of ['Completion haptic', 'Diagnostic reports', 'About', 'installed on your Watch']) {
     assert.ok(watchText.includes(phrase), `Missing Watch Settings guidance: ${phrase}`);
   }
@@ -567,7 +619,7 @@ test('practical guidance keeps observation, HTTPS, VPNs, and physical safety dis
 });
 
 test('policy distinguishes local preparation, explicit clipboard consent, and external copies', () => {
-  const policy = pages.get('spectra-privacy.html');
+  const policy = prose(pages.get('spectra-privacy.html'));
   for (const phrase of ['Selecting one finding prepares', 'only tapping Copy prompt and finding', 'not anonymous either', 'on-device-only clipboard', 'ten-minute expiration', 'cannot recall', 'under that recipient’s policies']) {
     assert.ok(policy.includes(phrase), phrase);
   }
@@ -587,8 +639,8 @@ test('backup disclosures distinguish the exclusion request from guarantees and e
   assert.ok(policy.includes('not a guarantee that sessions can never appear in a backup or on a restored device'));
 });
 test('Guide and policy distinguish Spectra Settings from iPhone permissions', () => {
-  const guide = pages.get('guide.html');
-  const policy = pages.get('spectra-privacy.html');
+  const guide = prose(pages.get('guide.html'));
+  const policy = prose(pages.get('spectra-privacy.html'));
   assert.match(guide, /Settings → App icon/);
   assert.match(guide, /Classic, Spectra Blue, Light, or Blue on White/);
   assert.match(guide, /iPhone Settings → Privacy/);
@@ -601,7 +653,7 @@ test('Guide and policy distinguish Spectra Settings from iPhone permissions', ()
 });
 
 test('Guide explains specialist export scope and bounded optional analysis', async () => {
-  const page = await readFile(join(root, 'guide.html'), 'utf8');
+  const page = prose(await readFile(join(root, 'guide.html'), 'utf8'));
   assert.ok(page.includes('Scan type sets the scope—not screen filters'));
   assert.ok(page.includes('Unrelated activity is excluded'));
   assert.ok(page.includes('45-second limit'));
@@ -619,20 +671,20 @@ test('saved-session rechecks keep eligibility, originals, storage and privacy ex
   assert.match(pages.get('spectra.html'), /expandable day groups, newest first/);
   for (const phrase of ['Find a check by day', 'most recent day starts open',
     'does not deselect', 'Delete Selected shows the total', 'includes closed groups']) {
-    assert.ok(pages.get('guide.html').includes(phrase), phrase);
+    assert.ok(prose(pages.get('guide.html')).includes(phrase), phrase);
   }
-  const product = pages.get('spectra.html');
+  const product = prose(pages.get('spectra.html'));
   for (const phrase of ['eligible saved radio evidence', 'blue dot in Sessions',
     'separate numbered interpretation', 'original unchanged', 'better matches are not guaranteed',
     'no Apple Intelligence', 'not separate downloads', 'guide.html#sessions']) {
     assert.ok(product.includes(phrase), phrase);
   }
   assert.ok(pages.get('index.html').includes('Recheck eligible saved sessions'));
-  const policy = pages.get('spectra-privacy.html');
+  const policy = prose(pages.get('spectra-privacy.html'));
   for (const phrase of ['independent saved copy', 'naming lineage', 'additional local storage',
     'does not delete its independent rechecks', 'explicitly requested recheck',
     'do not start new radio discovery']) assert.ok(policy.includes(phrase), phrase);
-  const guide = pages.get('guide.html');
+  const guide = prose(pages.get('guide.html'));
   for (const phrase of ['Can I recheck after leaving the location?', 'better matches are not guaranteed',
     'automatic saving of completed scans is off', 'Deleting the original does not delete']) {
     assert.ok(guide.includes(phrase), phrase);

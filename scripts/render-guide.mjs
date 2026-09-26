@@ -1,10 +1,10 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { root } from './site-files.mjs';
+import { escapeHTML as escape, renderGuideInline as inline } from './guide-inline.mjs';
 
 // Input is generated from Spectra's native Guide, never visitor-supplied HTML.
 // Escape every value anyway: native help and public HTML have different contexts.
-const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 export async function renderGuide() {
   const document = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   const product = await readFile(join(root, 'spectra.html'), 'utf8');
@@ -17,7 +17,7 @@ export async function renderGuide() {
     if (!/^[a-z]+$/.test(article.id) || seen.has(article.id)) throw new Error('Invalid or duplicate topic');
     seen.add(article.id);
   }
-  const sections = items => items.map(item => `<section><h3>${escape(item.title)}</h3><p>${escape(item.body)}</p></section>`).join('\n');
+  const sections = items => items.map(item => `<section><h3>${escape(item.title)}</h3><p>${inline(item.body)}</p></section>`).join('\n');
   const html = `<!doctype html>
 <html lang="en"><head>
   <meta charset="utf-8">
@@ -47,16 +47,16 @@ export async function renderGuide() {
       <a class="text-link" href="#support">Contact support</a>
     </nav><div class="guide-articles">
       ${articles.map(({ content: article }) => `<article id="${escape(article.id)}" class="guide-topic">
-        <h2>${escape(article.title)}</h2><p class="guide-takeaway">${escape(article.takeaway)}</p>
+        <h2>${escape(article.title)}</h2><p class="guide-takeaway">${inline(article.takeaway)}</p>
         ${sections(article.sections)}
-        <aside class="guide-important"><strong>Keep in mind</strong><p>${escape(article.important)}</p></aside>
-        <section><h3>How to use it</h3><ol>${article.steps.map(step => `<li>${escape(step)}</li>`).join('')}</ol></section>
+        <aside class="guide-important"><strong>Keep in mind</strong><p>${inline(article.important)}</p></aside>
+        <section><h3>How to use it</h3><ol>${article.steps.map(step => `<li>${inline(step)}</li>`).join('')}</ol></section>
         <details><summary>More detail</summary>${sections(article.technicalSections)}</details>
         <a class="text-link" href="#main">Back to topics ↑</a>
       </article>`).join('\n')}
       <section id="support" class="guide-topic"><p class="eyebrow">A person can help</p><h2>Still have a question?</h2>
         <p>Email <a href="mailto:${escape(document.supportEmail)}">${escape(document.supportEmail)}</a>. Include the scan mode, selected measurements, what happened, and what you expected.</p>
-        <p>In Spectra, choose Settings → Copy support information for the version, build, iOS, hardware model, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
+        <p>In Spectra, choose <b class="ui-label">Settings</b> → <b class="ui-label">Copy support information</b> for the version, build, iOS, hardware model, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
         <p>Nothing is attached or sent automatically. For a credible security threat, use a trusted security contact rather than relying on a phone scan or waiting for product support.</p>
       </section>
     </div></div>

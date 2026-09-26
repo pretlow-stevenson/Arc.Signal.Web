@@ -16,6 +16,7 @@
 .guide-topic h2 { font-size: clamp(1.625rem, 2.75vw, 2.125rem); line-height: 1.2; }
 .guide-topic h3 { font-family: inherit; font-size: 1.125rem; margin: 1.75rem 0 .5rem; }
 .guide-topic p, .guide-topic li { font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
+.guide-topic .ui-label { font-weight: 600; }
 .guide-topic h2 + p, .guide-topic p + p { margin-top: 1rem; }
 .guide-topic li { padding-left: .3rem; margin: .8rem 0; }
 .guide-takeaway { font-size: 1.125rem !important; color: #075bb5; }
