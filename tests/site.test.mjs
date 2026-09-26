@@ -427,6 +427,11 @@ test('Watch collection origin stays distinct from wearable discovery in public g
   assert.ok(faq.includes('Apple Watch · Bluetooth-only sweep'));
   assert.ok(faq.includes('not a search specifically for nearby watches'));
   assert.ok(faq.includes('Experimental and partial-capture status remain visible'));
+  assert.ok(faq.includes('On Watch, Settings holds sweep guidance'));
+  const watchText = JSON.stringify(watch);
+  for (const phrase of ['Completion haptic', 'Diagnostic reports', 'About', 'installed on your Watch']) {
+    assert.ok(watchText.includes(phrase), `Missing Watch Settings guidance: ${phrase}`);
+  }
 });
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {

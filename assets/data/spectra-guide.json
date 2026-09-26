@@ -867,6 +867,16 @@
             "title" : "One check, a smaller screen"
           },
           {
+            "body" : "The Watch start screen keeps Start Sweep as the main action. The tray button opens Saved sweeps for captures and transfer status. Open Settings below Start Sweep for Sweep guidance, Storage & transfer, Diagnostic reports, and About. About shows the version, release identifier, numeric build and watchOS version installed on your Watch; check these separately from iPhone when troubleshooting an update. Recognition uses the engine and catalog installed on iPhone, not a separate Watch catalog.",
+            "id" : "settings",
+            "title" : "A focused start, help when you need it"
+          },
+          {
+            "body" : "Completion haptic in Spectra’s Watch Settings is on by default. Turn it off if you prefer visual feedback only. The system feedback follows your Watch sound and haptic settings; it is not a guarantee of silent operation. Read the completion or partial-capture status: feedback alone does not mean that every nearby device was observed or that transfer finished.",
+            "id" : "feedback",
+            "title" : "Choose completion feedback"
+          },
+          {
             "body" : "On Apple Watch, open Settings → Display & Brightness → Wake Duration and choose Wake for 70 Seconds. Tap to wake the display fully, start the sweep, and keep your wrist raised with Spectra active until it finishes. The first Start after launching Spectra shows a setup reminder: Start Sweep continues; Not Now starts nothing. Acknowledging it does not verify or change your setting. Always On can leave Spectra visible while inactive; visibility alone does not keep Bluetooth collection running. Return to Clock is a different setting. Spectra cannot change these system settings or guarantee active time on every Watch.",
             "id" : "awake",
             "title" : "Keep the display fully awake"
@@ -931,8 +941,8 @@
       }
     }
   ],
-  "build" : "1016",
-  "buildIdentifier" : "1A1016",
+  "build" : "1017",
+  "buildIdentifier" : "1A1017",
   "minimumOS" : "iOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,
