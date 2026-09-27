@@ -389,6 +389,7 @@ test('website Guide is generated from all native topics with release and support
   assert.match(payload.buildIdentifier, /^\d+[A-Z]+\d{4,}$/);
   assert.ok(payload.buildIdentifier.endsWith(payload.build));
   assert.equal(payload.minimumOS, 'iOS 27 or later');
+  assert.equal(payload.minimumWatchOS, 'watchOS 27 or later');
   assert.equal(payload.supportedHardware, 'iPhone');
   assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
   assert.equal(payload.supportEmail, 'support@arcsignal.app');
@@ -400,6 +401,14 @@ test('website Guide is generated from all native topics with release and support
   assert.match(pages.get('guide.html'), /Nothing is attached or sent automatically/);
   assert.ok(pages.get('guide.html').includes(`Build ${payload.buildIdentifier}`));
   assert.match(pages.get('guide.html'), /forced close, crash, or shutdown/);
+  for (const page of ['guide.html', 'spectra.html']) {
+    const text = prose(pages.get(page));
+    assert.ok(text.includes('watchOS 27 or later'));
+    assert.ok(text.includes('iPhone app works without an Apple Watch'));
+  }
+  for (const page of ['guide.html', 'spectra-privacy.html']) {
+    assert.ok(prose(pages.get(page)).includes('detection-engine revision, and catalog revision'));
+  }
 });
 
 test('authored Guide labels are complete, well formed and rendered without markup artifacts', async () => {

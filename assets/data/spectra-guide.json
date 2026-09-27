@@ -862,7 +862,7 @@
         "navigationTitle" : "Experimental Watch",
         "sections" : [
           {
-            "body" : "The Experimental Watch companion requires watchOS 27 and a paired iPhone with Spectra. It offers only a 30-second Bluetooth **Area Sweep**. It does not measure local-network services or magnetic fields, run specialist checks, or identify devices on the Watch. New captures transfer automatically to your paired iPhone, where Spectra identifies retained signals and saves the result in **Sessions**.",
+            "body" : "The optional Experimental Watch companion requires watchOS 27 or later and a paired iPhone running iOS 27 or later with Spectra. The iPhone app works without an Apple Watch. The companion offers only a 30-second Bluetooth **Area Sweep**. It does not measure local-network services or magnetic fields, run specialist checks, or identify devices on the Watch. New captures transfer automatically to your paired iPhone, where Spectra identifies retained signals and saves the result in **Sessions**.",
             "id" : "scope",
             "title" : "One check, a smaller screen"
           },
@@ -956,9 +956,10 @@
       }
     }
   ],
-  "build" : "1019",
-  "buildIdentifier" : "1A1019",
+  "build" : "1020",
+  "buildIdentifier" : "1A1020",
   "minimumOS" : "iOS 27 or later",
+  "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,
   "supportEmail" : "support@arcsignal.app",

@@ -6,7 +6,7 @@ The company website for **Arc Signal LLC**, focused on Spectra and security awar
 - `spectra.html`: Spectra, preparing for release; **iPhone · iOS 27 or later**.
 - `seamless.html`: unlisted Seamless screenshot stitching page, coming soon for **Apple iPhone · iOS 18 or later**.
 - `guide.html`: the complete Spectra Guide and support contact, generated from native app content.
-- `spectra-privacy.html`: the public Spectra privacy policy, also linked in the app before setup and from Guide.
+- `spectra-privacy.html`: the public Spectra privacy policy, also linked in the app before setup and from Settings → About.
 - `404.html`: recovery links that work even when the requested URL is nested.
 
 Public navigation and promotional copy focus on Spectra. `seamless.html` and its
@@ -15,6 +15,19 @@ entry. Its `noindex, follow` metadata asks search engines not to list the page;
 this is not access control. Keep it crawlable so search engines can read that directive.
 
 ## Development
+
+The optional Experimental Watch companion requires watchOS 27 or later and a
+paired iPhone running iOS 27 or later. The iPhone app works without a Watch;
+Apple Intelligence is required only for optional on-device analysis.
+
+`scripts/site-files.mjs` defines the reviewed public asset manifest. Adding a new
+asset requires adding its exact path after reviewing its contents; the build
+rejects unknown files or directories under `assets`, including ordinary JSON or
+image files that could otherwise expose private captures. Do not add private
+evidence, credentials, or temporary capture files to this tree. Approved files
+must also exist and cannot be symlinks. This prevents accidental publication,
+not malicious replacement of approved content; content and provenance tests
+remain separate release gates.
 
 The site is static HTML and CSS with one small, deferred local script for optional
 image and section reveals. There are no runtime dependencies, forms, analytics,

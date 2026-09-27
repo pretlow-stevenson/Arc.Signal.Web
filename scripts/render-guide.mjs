@@ -37,7 +37,8 @@ export async function renderGuide() {
     <div class="guide-intro"><p class="eyebrow">Spectra / Guide &amp; support</p><h1>Understand what<br>you’re <em>seeing.</em></h1>
     <p class="lead">Choose a topic for practical steps, clear explanations, and the limits that matter.</p>
     <p class="caption">Release ${escape(document.appVersion)} · Build ${escape(document.buildIdentifier)} · Also available offline in the app.</p>
-    <p class="caption">${escape(document.supportedHardware)} · ${escape(document.minimumOS)}</p></div>
+    <p class="caption">${escape(document.supportedHardware)} · ${escape(document.minimumOS)}</p>
+    <p class="caption">Optional Experimental Watch companion · ${escape(document.minimumWatchOS)} · Paired iPhone required</p></div>
     <div class="guide-layout"><nav class="guide-contents" aria-label="Guide topics">
       <h2>Find an answer</h2>
       ${[...new Set(articles.map(a => a.category))].map(category => {
@@ -56,7 +57,7 @@ export async function renderGuide() {
       </article>`).join('\n')}
       <section id="support" class="guide-topic"><p class="eyebrow">A person can help</p><h2>Still have a question?</h2>
         <p>Email <a href="mailto:${escape(document.supportEmail)}">${escape(document.supportEmail)}</a>. Include the scan mode, selected measurements, what happened, and what you expected.</p>
-        <p>In Spectra, choose <b class="ui-label">Settings</b> → <b class="ui-label">Copy support information</b> for the version, build, iOS, hardware model, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
+        <p>In Spectra, choose <b class="ui-label">Settings</b> → <b class="ui-label">Copy support information</b> for the version, build, iOS, hardware model, detection-engine revision, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
         <p>Nothing is attached or sent automatically. For a credible security threat, use a trusted security contact rather than relying on a phone scan or waiting for product support.</p>
       </section>
     </div></div>
