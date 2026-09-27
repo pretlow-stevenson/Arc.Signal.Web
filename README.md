@@ -309,7 +309,7 @@ Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1020 / 1020, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1021 / 1021, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -319,6 +319,10 @@ privacy policy describe the current routes. Home includes Watches & Wearables, a
 Smart Glasses frame shows a naturally completed check with the full finding,
 signal context, and Review details action. The current unified Results layout
 and name search are visible; there are no retired device-category filters.
+Result and magnetic-meter symbols use the same regular line weight as the
+rest of the app, without decorative icon tiles. Status and confidence badges
+remain. The unchanged Watch interface is separately recaptured from 1A1021;
+its manifest records the actual Watch binary and native pixels independently.
 The companion App Store set also shows the updated Sessions date disclosure,
 count and check-type icons. This site's generated Guide explains that interaction;
 the existing four-image gallery remains focused on discovery and measurements.
