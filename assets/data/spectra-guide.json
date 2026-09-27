@@ -293,7 +293,7 @@
             "title" : "History is your choice"
           },
           {
-            "body" : "The Experimental Watch collector saves bounded Bluetooth evidence locally, including names and payloads that may identify people or devices. New sweeps automatically transfer to your paired iPhone and are identified and added to **Sessions** when Spectra is active, even if automatic iPhone scan saving is off. There is no cloud upload. Each device keeps up to five recent capture copies; only safely received Watch copies or processed phone inbox copies can make room automatically. Watch copies, the phone inbox, **Sessions**, and timing diagnostics have separate erase controls. **Reset Spectra** on iPhone clears received Watch data and rejects previously queued deliveries, but does not erase the Watch or exported files. The Experimental Watch guide explains setup, storage limits, and deletion.",
+            "body" : "The Experimental Watch collector saves bounded Bluetooth evidence locally, including names and payloads that may identify people or devices. New sweeps automatically transfer to your paired iPhone and are identified and added to **Sessions** when Spectra is active, even if automatic iPhone scan saving is off. There is no cloud upload. Each device keeps up to five recent capture copies; only safely received Watch copies or processed phone inbox copies can make room automatically. Watch copies, the phone inbox, **Sessions**, and timing diagnostics have separate erase controls. **Reset Spectra** on iPhone clears received Watch data, rejects previously queued deliveries, and requests a reset of the known paired Watch app. An offline Watch may still hold data until it confirms erasure. The Experimental Watch guide explains pending resets, storage limits, and deletion. Exported or shared files remain.",
             "id" : "watch",
             "title" : "Experimental Watch has separate copies"
           },
@@ -316,7 +316,7 @@
         "steps" : [
           "Use **Save completed sessions** in Spectra **Settings** to control future history saving.",
           "Open **Sessions** to delete one report, use **Select** for several, or **Erase All Sessions** to also remove recovery copies and received Watch inbox captures. Watch copies remain.",
-          "Use **Reset Spectra** in Spectra **Settings** to erase local sessions and preferences and return to **Welcome**. iOS permissions are controlled in iPhone **Settings**; copies you saved or shared elsewhere remain."
+          "Use **Reset Spectra** in Spectra **Settings** to erase local sessions and preferences, return to **Welcome**, and request a paired Watch reset. Check the Watch reset status separately; a pending request is not confirmed erasure. System permissions and copies you saved or shared elsewhere remain."
         ],
         "symbol" : "hand.raised",
         "takeaway" : "No account. No advertising or analytics SDK. Observations stay on your devices unless you choose to share them.",
@@ -658,7 +658,7 @@
             "title" : "Why did an older session disappear?"
           },
           {
-            "body" : "Delete one session from its list actions, or **Select** several. Hiding a day or collapsing rechecks does not deselect hidden sessions: the date heading and recheck disclosure keep their selected counts, and **Delete Selected** shows the total. Expand the relevant group to change its selection. Deleting an original does not select or delete its rechecks. **Erase All Sessions** includes closed groups, recovery copies, and received Watch inbox captures; it is disabled when there is nothing to erase. Watch copies remain. Use **Settings** → **Experimental Watch** → **Erase Inbox Copies** to clear that inbox separately without deleting imported sessions. **Reset Spectra** in Spectra **Settings** additionally clears received Watch diagnostics and preferences and returns to **Welcome**. Confirmations are deliberate because erasure cannot be undone.",
+            "body" : "Delete one session from its list actions, or **Select** several. Hiding a day or collapsing rechecks does not deselect hidden sessions: the date heading and recheck disclosure keep their selected counts, and **Delete Selected** shows the total. Expand the relevant group to change its selection. Deleting an original does not select or delete its rechecks. **Erase All Sessions** includes closed groups, recovery copies, and received Watch inbox captures; it is disabled when there is nothing to erase. Watch copies remain; this action does not request a Watch reset. Use **Settings** → **Experimental Watch** → **Erase Inbox Copies** to clear that inbox separately without deleting imported sessions. **Reset Spectra** additionally clears received Watch diagnostics and preferences, returns to **Welcome**, and requests a reset of the known paired Watch app. Check its separate pending or confirmed status. Confirmations are deliberate because erasure cannot be undone.",
             "id" : "erase",
             "title" : "Choose the right erase action"
           }
@@ -902,6 +902,16 @@
             "title" : "Room for the next sweep"
           },
           {
+            "body" : "**Reset Spectra** on iPhone erases its sessions, received Watch data, and preferences, then requests erasure of captures, diagnostics, and preferences in the known paired Watch app. **Watch reset pending** means the Watch has not confirmed erasure; an offline Watch may still hold data. Keep the devices paired and open Spectra on Watch to finish. **Watch reset confirmed** appears only after the Watch reports completion. When the Watch receives a reset, it stops collection and discards any unfinished sweep. System permissions and files exported or shared elsewhere remain.",
+            "id" : "reset",
+            "title" : "Confirm a reset on both devices"
+          },
+          {
+            "body" : "In Spectra on iPhone, open **Settings** and review the **Apple Watch** section. **Watch reset not ready** can mean the paired Watch app has not introduced itself or needs an update. Open or update Spectra on both devices, then explicitly choose **Reset Watch** and confirm. A newly paired or reinstalled Watch is not automatically erased by an earlier request. If **Watch reset needs attention** appears, follow the recovery guidance; do not assume erasure succeeded. No paired Watch means there is no Watch reset to request.",
+            "id" : "reset-recovery",
+            "title" : "If the Watch reset is not ready"
+          },
+          {
             "body" : "Captures can contain advertised names, manufacturer and service bytes, signal strength, timestamps, and session-scoped identity tokens. These fields can identify devices or people. Spectra uses protected local storage marked for exclusion from backups and Apple’s paired-device transfer; it does not upload captures to Arc Signal or an identification service. Operating-system backup behavior remains under Apple’s control.",
             "id" : "privacy",
             "title" : "Captured on Watch, reviewed on iPhone"
@@ -927,9 +937,14 @@
             "title" : "A new proximity check uses the iPhone"
           },
           {
-            "body" : "Watch captures, the iPhone inbox, imported Sessions, and timing diagnostics are separate stores. **Erase Inbox Copies** leaves imported sessions intact. Individual session deletion leaves inbox and Watch copies intact. **Erase All Sessions** also clears the received Watch inbox; **Reset Spectra** additionally clears received diagnostics and preferences. These phone-wide erase actions change the relevant transfer generation so previously queued copies cannot silently restore erased data. Watch copies remain; an explicit resend after reconnection is a new action. Canceling Watch transfers is best effort, so an already delivered or in-flight phone copy may remain. Exported files and system permissions are not erased.",
+            "body" : "Watch captures, the iPhone inbox, imported **Sessions**, and timing diagnostics are separate stores. **Erase Inbox Copies** leaves imported sessions intact. Individual session deletion leaves inbox and Watch copies intact. **Erase All Sessions** also clears the received Watch inbox, but does not request a Watch reset. Watch copies remain after those actions. **Reset Spectra** additionally clears received diagnostics and preferences and requests a paired Watch reset. Previously queued copies cannot silently restore erased iPhone data. Erasing captures directly on Watch cancels queued transfers where possible, but already delivered or in-flight phone copies may remain. Exported files and system permissions are not erased.",
             "id" : "deletion",
             "title" : "Copies have separate erase controls"
+          },
+          {
+            "body" : "A protected local reset-status record survives a reset so Spectra can finish an offline Watch request and reject stale commands or transfers. It contains random coordination identifiers and request status, not captured signals. A reset request applies only to the Watch app installation it names. Repeated delivery of an already completed request does not erase a new sweep. Confirmation describes completion of that request, not a promise that the Watch can never collect new data.",
+            "id" : "reset-control",
+            "title" : "Why a small reset record remains"
           },
           {
             "body" : "Watch diagnostics are separate from scan captures. They retain up to 20 recent timing and count reports per device, including Watch model, OS/build, completion status and lifecycle events, but no nearby-device names, identity values or advertisement payloads. Use **Share Watch diagnostics** on iPhone to deliberately share received reports for troubleshooting. Dates and hardware details can still reveal context. Nothing is sent to support automatically.",
@@ -941,8 +956,8 @@
       }
     }
   ],
-  "build" : "1018",
-  "buildIdentifier" : "1A1018",
+  "build" : "1019",
+  "buildIdentifier" : "1A1019",
   "minimumOS" : "iOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,

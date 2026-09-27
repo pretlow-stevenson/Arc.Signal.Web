@@ -316,7 +316,10 @@ test('Seamless stays directly accessible but is absent from public promotion and
   assert.match(pages.get('seamless.html'), /<meta name="robots" content="noindex, follow">/);
   assert.match(pages.get('seamless.html'), /<link rel="canonical" href="https:\/\/arcsignal.app\/seamless.html">/);
   for (const [name, html] of pages) {
-    if (name !== 'seamless.html') assert.doesNotMatch(html, /seamless|everyday utilities|both apps/i, name);
+    if (name !== 'seamless.html') assert.doesNotMatch(html, /seamless|everyday utilities/i, name);
+    // Product guidance may refer to the iPhone and Watch as both apps; the
+    // corporate landing page must not market two publicly available products.
+    if (name === 'index.html') assert.doesNotMatch(html, /both apps/i, name);
   }
   assert.doesNotMatch(await readFile(join(root, 'sitemap.xml'), 'utf8'), /seamless/i);
   assert.doesNotMatch(await readFile(join(root, 'robots.txt'), 'utf8'), /Disallow:/i, 'Allow crawlers to see noindex');
@@ -486,9 +489,31 @@ test('Watch collection origin stays distinct from wearable discovery in public g
   }
 });
 
+test('Watch reset guidance distinguishes a request from confirmed remote erasure', async () => {
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const watch = guide.articles.find(item => item.content.id === 'watch').content;
+  const text = articleProse(watch);
+  for (const phrase of ['Watch reset pending', 'Watch reset confirmed', 'Watch reset not ready',
+    'Watch reset needs attention', 'Reset Watch', 'Apple Watch', 'not captured signals',
+    'newly paired or reinstalled Watch is not automatically erased', 'does not request a Watch reset']) {
+    assert.ok(text.includes(phrase), `Missing reset distinction: ${phrase}`);
+  }
+  const recovery = watch.sections.find(section => section.id === 'reset-recovery');
+  assert.doesNotMatch(recovery.body, /Experimental Watch/);
+  for (const page of ['spectra.html', 'spectra-privacy.html']) {
+    const visible = prose(pages.get(page));
+    assert.ok(visible.includes('Watch reset pending'));
+    assert.ok(visible.includes('Watch reset confirmed'));
+    assert.doesNotMatch(visible, /It does not erase the Watch/);
+  }
+  const policy = prose(pages.get('spectra-privacy.html'));
+  assert.ok(policy.includes('not captured signals'));
+  assert.ok(policy.includes('A newly paired or reinstalled Watch is not automatically erased'));
+});
+
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 24, 2026/);
+  assert.match(policy, /Effective September 27, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
