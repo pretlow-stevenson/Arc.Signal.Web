@@ -283,6 +283,11 @@
             "title" : "On-device processing, optional sharing"
           },
           {
+            "body" : "New captures save the collector platform, hardware model, OS version, and app version and build locally. This helps distinguish Watch and iPhone evidence without using personal device names, serial numbers, or persistent device identifiers. Rechecks preserve the original collection context rather than replacing it with the current phone’s information. Exporting or sharing can disclose this context.",
+            "id" : "collector",
+            "title" : "Collection context stays with the report"
+          },
+          {
             "body" : "Set up access in Spectra’s **Settings** tab or when you start a check. Spectra checks selected sources again before scanning and explains when a source cannot run. Setup does not create a saved session. The camera and microphone are not accessed.",
             "id" : "permissions",
             "title" : "You choose what gets measured"
@@ -750,7 +755,7 @@
             "title" : "Technical archive"
           },
           {
-            "body" : "Keeps device categories, typed confidence, signal measurements, relative timing, and source-coverage states. It omits original identifiers, absolute timestamps, names, notes, manufacturers, model labels, raw payloads, and free-text evidence/limitations. Measurement patterns can still reveal context, so reduced does not mean anonymous. The missing context can limit an analyst’s conclusions.",
+            "body" : "Keeps device categories, typed confidence, signal measurements, relative timing, source-coverage states, and the collector platform when recorded. It omits collector hardware and OS version, original identifiers, absolute timestamps, names, notes, manufacturers, model labels, raw payloads, and free-text evidence/limitations. App and recognition versions remain, including the original capture build for rechecks. Measurement patterns can still reveal context, so reduced does not mean anonymous. The missing context can limit an analyst’s conclusions.",
             "id" : "reduced",
             "title" : "Reduced identifying information"
           },
@@ -779,6 +784,16 @@
             "title" : "Versioned, explicit units"
           },
           {
+            "body" : "New captures record the collector platform, hardware model, OS version, and collector app version and build. **Analysis JSON** and **Technical archive** preserve those facts separately from the app that interprets or exports the report. A Watch capture remains a Watch capture after transfer or recheck. Older evidence can lack these fields; Spectra does not fill them with the current phone’s information. Personal device names, serial numbers, and persistent device identifiers are not collected for this metadata.",
+            "id" : "collection-source",
+            "title" : "Which device collected the evidence?"
+          },
+          {
+            "body" : "An observation count describes received broadcasts, not physical devices. Bluetooth signal statistics summarize a bounded recent window of accepted RSSI samples; that window is not the full observation history. Comparing two captures requires considering duration, collection time, receiver position, and people moving nearby. A stronger reading or larger count alone does not establish better coverage.",
+            "id" : "signal-window",
+            "title" : "Observations and signal samples differ"
+          },
+          {
             "body" : "Saved magnetic display points preserve a bounded, downsampled window. Do not connect gaps or different reference revisions, assume the complete sweep was retained, or confuse display delta with the detector’s independent calibrated baseline. Bluetooth reports preserve signal summaries. A **Bluetooth Proximity** check is a separate, unsaved live measurement.",
             "id" : "graphs",
             "title" : "What a graph can explain"
@@ -792,7 +807,7 @@
       "categoryTitle" : "Understanding results",
       "content" : {
         "id" : "troubleshooting",
-        "important" : "For a repeatable problem, contact support@arcsignal.app. Start with support information, the steps taken, and what you expected. Do not send private scan results unless you deliberately choose to share them.",
+        "important" : "For a repeatable problem, contact support@arcsignal.zendesk.com or open **Support site** in Spectra **Settings**. Start with support information, the steps taken, and what you expected. Do not send private scan results unless you deliberately choose to share them.",
         "navigationTitle" : "Troubleshooting",
         "sections" : [
           {
@@ -834,7 +849,7 @@
         "steps" : [
           "Open **Coverage** and read the reason for each partial or unavailable measurement.",
           "Check iPhone **Settings** if access was denied, return to Spectra, and repeat the smallest affected check.",
-          "In Spectra **Settings**, use **Copy support information**, then **Email support**. The copy includes version, build, iOS, hardware model, detection-engine revision and catalog revision—not scan data."
+          "In Spectra **Settings**, use **Copy support information**, then **Support site** or **Email support**. The copy includes version, build, iOS, hardware model, detection-engine revision and catalog revision—not scan data."
         ],
         "symbol" : "questionmark.circle",
         "takeaway" : "First check coverage and measurement state. A missing observation is not evidence that nothing is there.",
@@ -845,7 +860,7 @@
             "title" : "Heat, battery, and dense environments"
           },
           {
-            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. Email opens your chosen mail app; nothing is attached or sent automatically.",
+            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens arcsignal.zendesk.com; **Email support** opens your mail app. Zendesk handles information you submit. Nothing is attached or sent automatically. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
             "id" : "support",
             "title" : "Help us reproduce it safely"
           }
@@ -956,12 +971,13 @@
       }
     }
   ],
-  "build" : "1021",
-  "buildIdentifier" : "1A1021",
+  "build" : "1022",
+  "buildIdentifier" : "1A1022",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,
-  "supportEmail" : "support@arcsignal.app",
+  "supportEmail" : "support@arcsignal.zendesk.com",
+  "supportURL" : "https://arcsignal.zendesk.com",
   "supportedHardware" : "iPhone"
 }

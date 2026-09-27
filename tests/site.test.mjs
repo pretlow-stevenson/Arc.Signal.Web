@@ -45,7 +45,10 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
   for (const [name, html] of pages) {
     for (const [attribute, value] of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
       assert.notEqual(value, '', `${name}: empty link`);
-      if (value === 'mailto:support@arcsignal.app' && ['guide.html', 'spectra-privacy.html'].includes(name)) continue;
+      if (attribute.startsWith('href=') && ['guide.html', 'spectra-privacy.html'].includes(name)
+        && ['mailto:support@arcsignal.zendesk.com', 'https://arcsignal.zendesk.com'].includes(value)) continue;
+      if (name === 'spectra-privacy.html' && attribute.startsWith('href=')
+        && value === 'https://www.zendesk.com/company/agreements-and-terms/privacy-notice/') continue;
       if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && [nordPrivacyURL, 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement'].includes(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && editorialLinks.has(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && value === 'https://developer.apple.com/download/files/accessories/dimensional-drawings/iphone-17-pro-max.pdf#page=5') continue;
@@ -447,12 +450,14 @@ test('website Guide is generated from all native topics with release and support
   assert.equal(payload.minimumWatchOS, 'watchOS 27 or later');
   assert.equal(payload.supportedHardware, 'iPhone');
   assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
-  assert.equal(payload.supportEmail, 'support@arcsignal.app');
+  assert.equal(payload.supportEmail, 'support@arcsignal.zendesk.com');
+  assert.equal(payload.supportURL, 'https://arcsignal.zendesk.com');
   assert.equal(payload.articles.length, 13);
   assert.equal(pages.get('guide.html'), await renderGuide(), 'Stale generated Guide');
   for (const {content} of payload.articles) assert.ok(ids(pages.get('guide.html')).includes(content.id));
   assert.match(pages.get('guide.html'), /not anonymous/);
-  assert.match(pages.get('guide.html'), /mailto:support@arcsignal.app/);
+  assert.match(pages.get('guide.html'), /mailto:support@arcsignal.zendesk.com/);
+  assert.ok(pages.get('guide.html').includes('href="https://arcsignal.zendesk.com" rel="noreferrer"'));
   assert.match(pages.get('guide.html'), /Nothing is attached or sent automatically/);
   assert.ok(pages.get('guide.html').includes(`Build ${payload.buildIdentifier}`));
   assert.match(pages.get('guide.html'), /forced close, crash, or shutdown/);
@@ -463,6 +468,27 @@ test('website Guide is generated from all native topics with release and support
   }
   for (const page of ['guide.html', 'spectra-privacy.html']) {
     assert.ok(prose(pages.get(page)).includes('detection-engine revision, and catalog revision'));
+  }
+});
+
+test('support migration preserves privacy boundaries and product documentation', async () => {
+  for (const [name, html] of pages) assert.ok(!html.includes('support@arcsignal.app'), name);
+  const guide = pages.get('guide.html');
+  const policy = pages.get('spectra-privacy.html');
+  assert.ok(guide.includes('href="https://arcsignal.zendesk.com" rel="noreferrer"'));
+  assert.ok(policy.includes('href="https://arcsignal.zendesk.com" rel="noreferrer"'));
+  assert.ok(policy.includes('Zendesk processes support correspondence for us'));
+  assert.ok(policy.includes('We do not embed a Zendesk widget or SDK'));
+  assert.ok(policy.includes('collecting device’s platform, hardware model'));
+  assert.ok(policy.includes('Older missing details remain unknown'));
+  assert.ok(guide.includes('A Watch capture remains a Watch capture after transfer or recheck'));
+  assert.ok(guide.includes('bounded recent window of accepted RSSI samples'));
+  assert.match(guide, /https:\/\/arcsignal\.app\/guide\.html/);
+  for (const html of [guide, policy]) {
+    assert.ok(html.includes('App and recognition versions remain, including the original capture build for rechecks.'));
+    assert.doesNotMatch(html, /omits collector hardware, OS version and app build/);
+    assert.doesNotMatch(html, /(?:href|src)="https:\/\/arcsignal\.zendesk\.com[^"\s]*[?#]/);
+    assert.doesNotMatch(html, /<(?:script|iframe)[^>]*zendesk/i);
   }
 });
 
@@ -579,7 +605,7 @@ test('privacy policy is public, linked, readable without scripts, and explains d
   const policy = pages.get('spectra-privacy.html');
   assert.match(policy, /Effective September 27, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
-  for (const text of ['Arc Signal LLC', 'support@arcsignal.app', '50 sessions', '256 MiB', 'recovery copies',
+  for (const text of ['Arc Signal LLC', 'support@arcsignal.zendesk.com', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
       'do not sell', 'under 13', 'iOS file protection', 'camera images', 'geographic coordinates', 'privacy regulator']) {
     assert.ok(policy.includes(text), `Missing privacy explanation: ${text}`);
@@ -694,7 +720,7 @@ test('privacy explains post-click referral attribution without weakening app pri
     assert.ok(policy.includes(phrase), phrase);
   }
   assert.ok(policy.includes(`href="${nordPrivacyURL}" rel="noreferrer"`));
-  assert.match(policy, /We do not contact NordVPN or load affiliate-tracking scripts when you browse our pages/);
+  assert.match(policy, /We do not contact NordVPN or Zendesk or load their scripts when you browse our pages/);
   assert.doesNotMatch(policy, /No affiliate links are active|If we later activate|current direct NordVPN link/);
 });
 
