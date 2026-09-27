@@ -10,7 +10,14 @@ const appRoot = process.argv[2];
 if (!appRoot || process.argv.length !== 3) throw new Error('Pass the Spectra repository path.');
 const sourceRoot = join(resolve(appRoot), 'docs/release/app-store-assets/en-US');
 const manifest = JSON.parse(await readFile(join(sourceRoot, 'manifest.json'), 'utf8'));
+const build = JSON.parse(await readFile(join(sourceRoot, 'capture-build.json'), 'utf8'));
 if (!/^[a-f0-9]{40}$/.test(manifest.appSourceCommit) || manifest.exampleData !== true) throw new Error('Invalid capture provenance');
+if (build.appSourceCommit !== manifest.appSourceCommit || !/^\d+\.\d+\.\d+$/.test(build.appVersion)
+    || !/^\d{4,}$/.test(build.bundleBuild) || !/^\d+[A-Z]+\d{4,}$/.test(build.buildIdentifier)
+    || !build.buildIdentifier.endsWith(build.bundleBuild) || build.bundleIdentifier !== 'com.arcsignal.Spectra'
+    || build.minimumOSVersion !== '27.0' || !/^[a-f0-9]{64}$/.test(build.bundleInfoPlistSHA256)) {
+  throw new Error('Invalid captured build provenance');
+}
 const run = (command, args) => {
   const result = spawnSync(command, args, { maxBuffer: 32 * 1024 * 1024 });
   if (result.error || result.status !== 0) throw new Error(`${command} failed: ${result.error?.message ?? result.stderr.toString()}`);
@@ -47,7 +54,9 @@ for (const [id, name] of mappings) {
     output, outputSHA256: hash(await readFile(destination)), pixelSHA256,
     width, height, appearance: record.appearance });
 }
-const provenance = { schemaVersion: 1, appSourceCommit: manifest.appSourceCommit,
+const provenance = { schemaVersion: 1, platform: 'iOS', appSourceCommit: manifest.appSourceCommit,
+  appVersion: build.appVersion, bundleBuild: build.bundleBuild, buildIdentifier: build.buildIdentifier,
+  minimumOSVersion: build.minimumOSVersion, bundleInfoPlistSHA256: build.bundleInfoPlistSHA256,
   captureDevice: manifest.captureDevice, captureRuntime: manifest.captureRuntime,
   exampleData: true, transformation: 'Lossless WebP; original dimensions and decoded pixels preserved.', items };
 // Updated HTML must not reuse stale image responses. Keep filesystem paths in

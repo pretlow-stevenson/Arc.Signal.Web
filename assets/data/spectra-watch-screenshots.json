@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "platform": "watchOS",
+  "appSourceCommit": "382929383d078fe3c8c2657322efe9b59963dff6",
+  "appVersion": "1.0.0",
+  "bundleBuild": "1020",
+  "buildIdentifier": "1A1020",
+  "captureDevice": "Apple Watch SE 3 (44mm)",
+  "captureRuntime": "watchOS 27.0 (24R5355a)",
+  "exampleData": true,
+  "transformation": "Lossless WebP; original dimensions and every RGBA pixel preserved.",
+  "items": [
+    {
+      "id": "watch-start",
+      "source": "captures/watch-start.png",
+      "sourceSHA256": "92e42685f14ace8bbe8236eac662dc6946925b2f78effa70f002ea620e1153e2",
+      "output": "assets/images/spectra-watch-start.webp",
+      "outputSHA256": "223359eb48e6c9838deee23a8ee9d7e1ea5ac101373215a7eae3ac621fbf297d",
+      "pixelSHA256": "cf26562b5b8f10ae866258846459b8194b37b47544945675a347e3216c8c99db",
+      "width": 368,
+      "height": 448,
+      "appearance": "dark"
+    },
+    {
+      "id": "watch-complete",
+      "source": "captures/watch-complete.png",
+      "sourceSHA256": "ede48ea6f1bd6d641e1ab21573962461e062c21a4ff3e24f0e9a53459540edd2",
+      "output": "assets/images/spectra-watch-complete.webp",
+      "outputSHA256": "d8d16b43b4853564419a7f7a8b1eaaca42b00cce630f958c3f6ebcd12d66db20",
+      "pixelSHA256": "a382bcd25317e98ee3e93f024900c614cef46d33be4ae50e42133a5cabc65e54",
+      "width": 368,
+      "height": 448,
+      "appearance": "dark"
+    }
+  ]
+}

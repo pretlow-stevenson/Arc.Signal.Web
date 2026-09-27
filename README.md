@@ -303,13 +303,15 @@ lossless logo (currently 411,678 bytes). Images/fonts remain self-hosted.
 
 ## App screenshots
 
-The September 18 refresh uses the same verified native captures as Spectra’s
+The September 27 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The source revision is `fc111c9`: Home uses the owner's exact Circular wordmark,
+The iPhone capture identity is version 1.0.0 / 1A1020 / 1020, with its exact
+source revision recorded in the provenance manifest, captured on iOS 27.0 with
+Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
 contains searchable help; Settings owns global preferences, app-icon colors,
 privacy/storage controls, About, support, and reset. The generated Guide and
@@ -322,7 +324,10 @@ count and check-type icons. This site's generated Guide explains that interactio
 the existing four-image gallery remains focused on discovery and measurements.
 
 `assets/data/spectra-screenshots.json` records the exact app source commit,
-capture SHA-256 hashes, output hashes, dimensions, and decoded-pixel hashes.
+verified built-bundle identity, capture SHA-256 hashes, output hashes, dimensions,
+and decoded-pixel hashes. The app repository's `capture-build.json` records the
+actual capture executable's Info.plist hash; version claims are not inferred from
+the repository's current configuration.
 After the app capture suite, manifest verification, and OCR audit pass, run:
 
 ```sh
@@ -341,6 +346,31 @@ therefore requests updated screenshots without relying on image cache expiry;
 this does not purge HTML already held by a browser or CDN.
 Normal site tests/builds need only Node and verify the committed asset hashes.
 The retired PNGs are removed; their earlier versions remain recoverable in Git.
+
+Two separate native Watch screens show starting a sweep and a saved completion
+beside the Experimental Watch explanation. They describe the current TestFlight
+companion, not promised public availability. Captures preserve the full native
+screen, with no redrawn UI, crop, fake hardware frame, or overlaid claims. The
+section makes active-screen operation, Bluetooth-only scope, paired-iPhone review,
+and the optional watchOS 27 / iOS 27 requirements explicit. Example readings are
+disclosed beside the images. Small screens stack the images vertically.
+
+`assets/data/spectra-watch-screenshots.json` records separate Watch source and
+pixel provenance, including its actual build identity. A Watch-only copy correction
+can make the platform commits differ; neither manifest is relabeled to conceal it.
+The native originals remain in `docs/release/watch-assets/en-US` in the app repo.
+Import using:
+
+```sh
+node scripts/import-spectra-watch-captures.mjs /path/to/Spectra/repository
+```
+
+This narrow placement follows [Apple's actual-screen marketing guidance](https://developer.apple.com/app-store/marketing/guidelines/)
+and [NN/g's relevant-imagery guidance](https://www.nngroup.com/articles/7-tips-memorable-imagery/):
+show a small number of useful screens next to the explanation they support, not a
+second decorative hero or an implied background-scanning feature. The native
+368 × 448 Watch originals also match an [Apple-supported screenshot size](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/).
+Preparing them does not submit App Store metadata or declare physical-device acceptance.
 
 Quick Check supports Bluetooth and optional local-network observations. Magnetic
 measurement is shown in Area Sweep, which supersedes the old Room Sweep name.

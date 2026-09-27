@@ -10,6 +10,7 @@ const publicFiles = [...documents, 'CNAME', 'robots.txt', 'sitemap.xml'];
 export const publicAssets = Object.freeze([
   'assets/css/guide.css', 'assets/css/site.css',
   'assets/data/spectra-brand.json', 'assets/data/spectra-guide.json', 'assets/data/spectra-screenshots.json',
+  'assets/data/spectra-watch-screenshots.json',
   'assets/fonts/Bodoni-Moda-OFL.txt', 'assets/fonts/Inter-OFL.txt',
   'assets/fonts/bodoni-moda-latin.woff2', 'assets/fonts/inter-latin.woff2',
   'assets/images/download-on-the-app-store.svg', 'assets/images/nordvpn-logo.svg',
@@ -17,6 +18,7 @@ export const publicAssets = Object.freeze([
   'assets/images/spectra-area-sweep.webp', 'assets/images/spectra-icon.png', 'assets/images/spectra-monitor.webp',
   'assets/images/spectra-overview.webp', 'assets/images/spectra-smart-glasses.webp',
   'assets/images/spectra-touch-icon.png', 'assets/images/spectra-wordmark.webp',
+  'assets/images/spectra-watch-start.webp', 'assets/images/spectra-watch-complete.webp',
   'assets/js/site-motion.js',
 ]);
 const approvedAssets = new Set(publicAssets);

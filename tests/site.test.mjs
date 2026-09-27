@@ -168,6 +168,13 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   assert.match(html, /Readings are simulated examples, not evidence of nearby devices/);
   const provenance = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
   assert.equal(provenance.exampleData, true);
+  assert.equal(provenance.platform, 'iOS');
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  assert.equal(provenance.appVersion, guide.appVersion);
+  assert.equal(provenance.bundleBuild, guide.build);
+  assert.equal(provenance.buildIdentifier, guide.buildIdentifier);
+  assert.equal(provenance.minimumOSVersion, '27.0');
+  assert.match(provenance.bundleInfoPlistSHA256, /^[a-f0-9]{64}$/);
   assert.match(provenance.appSourceCommit, /^[a-f0-9]{40}$/);
   assert.match(provenance.transformation, /Lossless WebP/);
   assert.deepEqual(provenance.items.map(item => item.id), ['01-quick-check', '02-smart-glasses', '03-magnetic-sweep', '05-monitor']);
@@ -206,6 +213,54 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   }
   assert.ok(!files.includes('assets/images/spectra-overview.png'));
   assert.ok(!files.includes('assets/images/spectra-area-sweep.png'));
+});
+
+test('Watch screenshots preserve current native dimensions and identify experimental scope', async () => {
+  const html = pages.get('spectra.html');
+  const section = html.match(/<section[^>]*id="watch-preview"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(section);
+  for (const phrase of ['Experimental Watch', 'Current TestFlight companion', '30-second Bluetooth',
+    'not background scanning', 'watchOS 27 or later', 'iOS 27 or later', 'Public-release availability is not yet promised',
+    'Example data, not nearby-device evidence', 'guide.html#watch']) assert.ok(section.includes(phrase), phrase);
+  const provenance = JSON.parse(await readFile(join(root, 'assets/data/spectra-watch-screenshots.json'), 'utf8'));
+  const phone = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
+  assert.equal(provenance.platform, 'watchOS');
+  assert.equal(provenance.exampleData, true);
+  // Platforms can be captured separately after a platform-specific copy fix.
+  // Keep their true commits; matching build identity prevents stale release art.
+  assert.match(provenance.appSourceCommit, /^[a-f0-9]{40}$/);
+  for (const key of ['appVersion', 'bundleBuild', 'buildIdentifier']) assert.equal(provenance[key], phone[key]);
+  assert.match(provenance.captureRuntime, /watchOS 27/);
+  assert.match(provenance.transformation, /every RGBA pixel preserved/);
+  assert.deepEqual(provenance.items.map(item => item.id), ['watch-start', 'watch-complete']);
+  for (const item of provenance.items) {
+    assert.match(item.output, /^assets\/images\/spectra-watch-(?:start|complete)\.webp$/);
+    const image = await readFile(join(root, item.output));
+    assert.equal(createHash('sha256').update(image).digest('hex'), item.outputSHA256);
+    assert.match(item.sourceSHA256, /^[a-f0-9]{64}$/);
+    assert.match(item.pixelSHA256, /^[a-f0-9]{64}$/);
+    assert.equal(image.subarray(0, 4).toString(), 'RIFF');
+    assert.equal(image.subarray(8, 12).toString(), 'WEBP');
+    let size;
+    for (let offset = 12; offset + 8 <= image.length;) {
+      const type = image.subarray(offset, offset + 4).toString();
+      const length = image.readUInt32LE(offset + 4), start = offset + 8;
+      assert.ok(start + length <= image.length);
+      if (type === 'VP8X') size = [image.readUIntLE(start + 4, 3) + 1, image.readUIntLE(start + 7, 3) + 1];
+      if (type === 'VP8L' && !size) {
+        assert.equal(image[start], 0x2f);
+        const bits = image.readUInt32LE(start + 1);
+        size = [(bits & 0x3fff) + 1, ((bits >>> 14) & 0x3fff) + 1];
+      }
+      offset = start + length + (length % 2);
+    }
+    assert.deepEqual(size, [item.width, item.height]);
+    const versioned = `${item.output}?v=${item.outputSHA256.slice(0, 12)}`;
+    assert.ok(section.includes(`<img src="${versioned}" width="${item.width}" height="${item.height}"`));
+    assert.ok(section.includes(`href="${versioned}"`));
+  }
+  assert.match(css, /\.watch-screen-grid img \{ width: 100%; height: auto; \}/);
+  assert.match(css, /@media \(max-width: 560px\) \{ \.watch-screen-grid \{ grid-template-columns: minmax\(0, 1fr\); \} \}/);
 });
 
 test('Spectra product wordmark preserves approved pixels and accessible placement', async () => {
