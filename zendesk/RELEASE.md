@@ -14,7 +14,9 @@ Zendesk's Themes page confirmed **Arc Signal Support — Live**. After leaving
 preview mode, the public homepage rendered the new heading, native search, and
 copyright. Community links remained absent. Searching for `magnetic` returned
 six articles, led by the magnetic practice article. Desktop rendering showed no
-horizontal overflow. The messaging launcher remained available. No messages or
+horizontal overflow. Opening that result loaded the practice article correctly,
+and the contact article retained its email, company, Guide, and privacy links.
+The messaging launcher remained available. No messages or
 support tickets were submitted, and routing/billing were not changed.
 
 Deployment used a native copy of the existing theme, preserving its hosted
@@ -28,6 +30,14 @@ navigation, responsive CSS safeguards, unchanged generated JS/CSS, resolved
 module assets, package allowlisting, and corporate publication exclusions.
 The package contains 86 runtime/license files. The complete upstream source and
 license remain in Git, but build tools and Git metadata stay out of the ZIP.
+
+Final validation passed **7 theme tests and 53 website tests**, Guide freshness,
+and the static build of **34 public files**, using a clean archive of the reviewed
+Git revision. An unrelated untracked `assets/images/spectra-icon-inverted.png`
+was left untouched and excluded from the commit. The working-copy publication
+guard correctly rejects that unreviewed file; it was not weakened. Two Finder
+metadata files were moved recoverably to `/private/tmp/arcsignal-assets-metadata-20260928`
+and `/private/tmp/arcsignal-images-metadata-20260928`.
 
 Desktop checks used the signed-in administrator on public Help Center routes.
 Narrow/mobile hardware, enlarged text, screen-reader behavior, and signed-out
