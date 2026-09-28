@@ -7,3 +7,5 @@ exclude:
   - package.json
   - package-lock.json
   - README.md
+  - docs
+  - zendesk
