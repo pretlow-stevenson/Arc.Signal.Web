@@ -16,6 +16,18 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 ## Development
 
+### Zendesk support content
+
+The independently hosted [Arc Signal Help Center](https://arcsignal.zendesk.com/hc/en-us)
+uses the standard Copenhagen theme. See [its configuration and article inventory](docs/zendesk-help-center.md)
+for the published support topics, content boundaries, and verification limits.
+[Hero assets and provenance](docs/zendesk-hero.md) and the four supplemental
+article sources in `docs/zendesk-articles.json` are kept in this repository.
+Zendesk-only artwork stays under `docs/support-assets`, outside the corporate
+website's public bundle. A Git push does not publish Zendesk changes.
+
+### Website development
+
 The optional Experimental Watch companion requires watchOS 27 or later and a
 paired iPhone running iOS 27 or later. The iPhone app works without a Watch;
 Apple Intelligence is required only for optional on-device analysis.
