@@ -317,8 +317,10 @@ node scripts/import-spectra-wordmark.mjs /path/to/Spectra/repository
 The importer checks the approved source and decoded-pixel equality, validates
 both HTML placements, then updates content-hashed URLs. Normal site tests check
 committed hashes and placement without image tooling. The original 3 MB content
-budget stays in place, with a separate 415,000-byte allowance only for this
-lossless logo (currently 411,678 bytes). Images/fonts remain self-hosted.
+budget stays in place, with separate allowances of 415,000 bytes for this
+lossless logo (currently 411,678 bytes) and 50,000 bytes for the owner-supplied
+`assets/images/spectra-icon-inverted.png` (48,187 bytes, retained unchanged).
+Images/fonts remain self-hosted.
 
 ## App screenshots
 
@@ -362,7 +364,7 @@ Refresh tooling requires `cwebp` and ImageMagick. Lossless WebP preserves native
 The importer uses maximum-effort lossless encoding (`-q 100 -m 6`), preserves the
 ICC profile, and checks decoded pixels after conversion. Its extra work happens
 only during asset preparation, not in a visitor's browser. The original 3 MB
-content budget excludes only the separately bounded wordmark described above.
+content budget excludes only the separately bounded brand images described above.
 The importer also versions homepage/gallery image URLs and full-size links with
 the output content hash, replacing prior versions idempotently. Updated HTML
 therefore requests updated screenshots without relying on image cache expiry;
@@ -408,8 +410,8 @@ captures from the app’s built-in fictional sample flow, exported September 6,
 2026. They contain no customer images or private reproduction data. The Seamless
 icon is copied from the app’s current asset catalog. Homepage screenshot cards
 show cropped previews; full screenshots are available on the product pages.
-The public bundle stays within its 3 MB content budget plus the bounded wordmark
-allowance, with full app screens loaded lazily.
+The public bundle stays within its 3 MB content budget plus the bounded brand-image
+allowances, with full app screens loaded lazily.
 
 The waveform icon comes from Spectra’s original app asset catalog. The header
 reuses that waveform through an SVG luminance mask, displaying only the black
