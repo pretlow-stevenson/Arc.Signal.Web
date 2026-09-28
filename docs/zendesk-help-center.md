@@ -6,13 +6,13 @@ Reviewed September 27, 2026 against `assets/data/spectra-guide.json` (Spectra 1.
 
 ## Design configuration
 
-- Keep the standard Copenhagen theme (4.51.1 at review) linked to Zendesk updates.
-- Keep the owner-uploaded signal logo and hero. See `zendesk-hero.md` for the upload file and source artwork.
+- September 28: the owner approved a small custom Copenhagen theme for a real hero heading and copyright footer. See `../zendesk/README.md` for source, deployment status, upstream updates, and rollback. Custom themes do not receive automatic Copenhagen feature updates.
+- Keep the owner-uploaded signal logo and hero. See `zendesk-hero-v2.md` for the current upload file and source artwork; the original is preserved.
 - Brand and link color: `#075bb5` (6.62:1 against white). Hover link color: `#06478d`. Preserve distinct visited-link styling.
 - Hide home-page Recent activity.
 - Hide article author/avatar, comments, follow controls, and social sharing. Retain in-section navigation, related/recently viewed help, and helpfulness voting.
 - Keep the unused community disabled. Archived starter drafts remain recoverable; do not republish them because they describe an unrelated company.
-- Do not modify the theme source simply to add footer links: Zendesk explicitly warns that accessing the code unlinks automatic feature updates. Instead, promote Contact Arc Signal support on the homepage, with contact, website, Guide, and privacy links inside it. A custom footer remains a separate maintenance decision.
+- Keep the custom patch narrow: a semantic hero heading, copyright beside the existing footer name, and scoped layout rules. Native search, navigation, language selection, and generated runtime bundles remain unchanged. Keep Contact Arc Signal support promoted for website, Guide, privacy, and contact links.
 - The messaging widget is a separate Zendesk product; its styling and routing were not changed in this pass. No support request or email was sent during validation.
 
 ## Section order and descriptions
@@ -60,7 +60,7 @@ Verification used an authenticated administrator viewing the public help-center 
 
 Repository validation passed all 53 tests, canonical Guide freshness checking, and the static build (34 reviewed public files). The Zendesk image source and upload JPEG are deliberately outside that public bundle, preserving the existing site-size budget. A local Finder metadata file under `assets` was moved recoverably to `/private/tmp/arc-signal-assets-DS_Store-20260927`; the strict publication guard was not weakened.
 
-For future releases: compare relevant canonical Guide sections, update the editorial JSON and Zendesk copy together, verify article placement/public visibility/search, then record any changed IDs or configuration here. Use native settings where possible and retain the automatic theme-update relationship.
+For future releases: compare relevant canonical Guide sections, update the editorial JSON and Zendesk copy together, verify article placement/public visibility/search, then record any changed IDs or configuration here. Use native settings where possible and follow `../zendesk/UPSTREAM.md` for manually reviewed theme updates.
 
 References:
 

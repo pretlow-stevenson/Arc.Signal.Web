@@ -19,7 +19,8 @@ this is not access control. Keep it crawlable so search engines can read that di
 ### Zendesk support content
 
 The independently hosted [Arc Signal Help Center](https://arcsignal.zendesk.com/hc/en-us)
-uses the standard Copenhagen theme. See [its configuration and article inventory](docs/zendesk-help-center.md)
+uses our small [Copenhagen-based custom theme](zendesk/README.md), maintained as a
+Git subtree with documented update and rollback procedures. See [its configuration and article inventory](docs/zendesk-help-center.md)
 for the published support topics, content boundaries, and verification limits.
 [Hero assets and provenance](docs/zendesk-hero.md) and the four supplemental
 article sources in `docs/zendesk-articles.json` are kept in this repository.

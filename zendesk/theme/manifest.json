@@ -1,6 +1,6 @@
 {
-  "name": "Copenhagen",
-  "author": "Zendesk",
+  "name": "Arc Signal Support",
+  "author": "Arc Signal LLC (based on Zendesk Copenhagen)",
   "version": "4.51.1",
   "api_version": 4,
   "default_locale": "en-us",
@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#17494D"
+          "value": "#075bb5"
         },
         {
           "identifier": "brand_text_color",
@@ -34,14 +34,14 @@
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#1F73B7"
+          "value": "#075bb5"
         },
         {
           "identifier": "hover_link_color",
           "type": "color",
           "description": "hover_link_color_description",
           "label": "hover_link_color_label",
-          "value": "#0F3554"
+          "value": "#06478d"
         },
         {
           "identifier": "visited_link_color",
@@ -297,7 +297,7 @@
           "type": "checkbox",
           "description": "recent_activity_description",
           "label": "recent_activity_label",
-          "value": true
+          "value": false
         }
       ]
     },
@@ -316,21 +316,21 @@
           "type": "checkbox",
           "description": "article_author_description",
           "label": "article_author_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_article_comments",
           "type": "checkbox",
           "description": "article_comments_description",
           "label": "article_comments_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_follow_article",
           "type": "checkbox",
           "description": "follow_article_description",
           "label": "follow_article_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_recently_viewed_articles",
@@ -351,7 +351,7 @@
           "type": "checkbox",
           "description": "article_sharing_description",
           "label": "article_sharing_label",
-          "value": true
+          "value": false
         }
       ]
     },

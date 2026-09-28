@@ -1,6 +1,6 @@
 # Zendesk hero revision 2
 
-Created September 28, 2026. Image-only refinement of the existing approved blue signal-wave background; no theme code, logo, typography, or interface changes.
+Created September 28, 2026. Image-only refinement of the existing approved blue signal-wave background. The owner uploaded this background; the subsequent custom theme adds real HTML hero text above native search. See `../zendesk/README.md`. Text is not baked into the image.
 
 ## Files
 
