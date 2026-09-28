@@ -39,6 +39,12 @@ guard correctly rejects that unreviewed file; it was not weakened. Two Finder
 metadata files were moved recoverably to `/private/tmp/arcsignal-assets-metadata-20260928`
 and `/private/tmp/arcsignal-images-metadata-20260928`.
 
+Before the final push, concurrent remote commit `a7c1c82` published that inverted
+icon and explicitly added it to the public allowlist. Its image blob matched the
+local file exactly. Both histories were merged without replacing either change;
+the local duplicate was backed up before merging. Post-merge validation again
+passed all **60 tests**, Guide freshness, and the now **35-file** public build.
+
 Desktop checks used the signed-in administrator on public Help Center routes.
 Narrow/mobile hardware, enlarged text, screen-reader behavior, and signed-out
 visitor checks remain owner validation items; CSS/static checks are not a full
