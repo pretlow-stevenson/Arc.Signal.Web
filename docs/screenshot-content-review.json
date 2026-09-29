@@ -1,8 +1,8 @@
 {
   "appVersion": "1.0.0",
-  "sourceBundleBuild": "1022",
-  "reviewedGuideBuild": "1025",
-  "reviewedGuideBuildIdentifier": "1A1025",
+  "sourceBundleBuild": "1026",
+  "reviewedGuideBuild": "1026",
+  "reviewedGuideBuildIdentifier": "1A1026",
   "reviewedOn": "2026-09-29",
-  "reason": "Builds 1023–1025 changed destructive-action styling and Watch help copy, not the Quick Check, glasses, magnetic sweep, Monitor, or Watch start/completion screens pictured on the product page. Screenshot provenance remains the original 1022 capture. This review applies only to Guide build 1025; future changes require another review or recapture."
+  "reason": "Fresh native iPhone and Watch screenshots were captured from build 1026 and imported without changing their decoded pixels. The Guide and product copy describe the same build. This is not an exception allowing older screenshots to stand in for a newer build; future changes require a new review or recapture."
 }

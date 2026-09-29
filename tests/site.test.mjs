@@ -617,11 +617,11 @@ test('Watch reset guidance distinguishes a request from confirmed remote erasure
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 27, 2026/);
+  assert.match(policy, /Effective September 29, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.zendesk.com', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
-      'do not sell', 'under 13', 'iOS file protection', 'camera images', 'geographic coordinates', 'privacy regulator']) {
+      'do not sell', 'under 13', 'iOS file protection', 'camera images', 'Geographic coordinates', 'privacy regulator']) {
     assert.ok(policy.includes(text), `Missing privacy explanation: ${text}`);
   }
   assert.doesNotMatch(policy, /<details\b/, 'Policy provisions remain readable without opening disclosures');
@@ -629,6 +629,58 @@ test('privacy policy is public, linked, readable without scripts, and explains d
     assert.ok(pages.get(name).includes('href="spectra-privacy.html"'), `Missing policy link: ${name}`);
   }
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /https:\/\/arcsignal.app\/spectra-privacy.html/);
+});
+
+test('final-release guidance explains the sweep deadline without overriding saving preferences', async () => {
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const sections = guide.articles.flatMap(({ content }) => content.sections.concat(content.technicalSections));
+  const limit = guidePlainText(sections.find(section => section.id === 'sweep-limit').body);
+  for (const phrase of ['when collection begins', 'At 25 minutes', 'Extend 30 Minutes',
+    'five minutes before', 'Save completed sessions', 'does not override your saving preference',
+    'Monitor', 'Watch’s 30-second sweep are unchanged']) assert.ok(limit.includes(phrase), phrase);
+  const product = prose(pages.get('spectra.html'));
+  assert.match(product, /notice after 25 minutes/);
+  assert.match(product, /30-minute limit/);
+  assert.doesNotMatch(product, /untimed Area Sweep|Area Sweep has no timer/i);
+});
+
+test('location tagging remains per-check, optional, source-specific and separately shared', async () => {
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const sections = guide.articles.flatMap(({ content }) => content.sections.concat(content.technicalSections));
+  const section = id => guidePlainText(sections.find(item => item.id === id).body);
+  for (const phrase of ['off for each new check', 'permission is denied', 'single position',
+    'Watch captures do not receive the phone’s location', 'Location is not required']) {
+    assert.ok(section('tag-location').includes(phrase), phrase);
+  }
+  for (const phrase of ['ten seconds old', 'twelve seconds', '5 km or better',
+    'not a guarantee of accuracy', 'No automatic address lookup', 'without a tag']) {
+    assert.ok(section('location-quality').includes(phrase), phrase);
+  }
+  for (const phrase of ['every format by default', 'Technical archive', 'Include scan location',
+    'fix timestamp', 'starts off when you reopen export', 'Reduced identifying information',
+    'does not add the tag to Copy for AI analysis']) assert.ok(section('export-location').includes(phrase), phrase);
+  const product = prose(pages.get('spectra.html'));
+  for (const phrase of ['Remember where you started', 'starts off every time', 'Watch captures stay untagged',
+    'All JSON formats omit it by default', 'AI copies never include the tag']) assert.ok(product.includes(phrase), phrase);
+  const policy = prose(pages.get('spectra-privacy.html'));
+  for (const phrase of ['off by default for every new iPhone scan', 'bounded to 12 seconds',
+    'Denied access or an unavailable fix never prevents scanning', 'separate, explicit action',
+    'All JSON formats omit location by default', 'fix timestamp', 'Location tags are excluded from on-device AI evidence',
+    'removes it from that saved copy', 'Protected recovery copies']) assert.ok(policy.includes(phrase), phrase);
+});
+
+test('external finding prompts explain four useful questions without implying model certainty', async () => {
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const sections = guide.articles.flatMap(({ content }) => content.sections.concat(content.technicalSections));
+  const copy = guidePlainText(sections.find(section => section.id === 'copy-limits').body);
+  for (const phrase of ['what the finding may be', 'what that means', 'how confident', 'practical next checks',
+    'Bluetooth, network, or magnetic evidence', 'Unknown remains a valid conclusion', 'not independent proof']) {
+    assert.ok(copy.includes(phrase), phrase);
+  }
+  const product = prose(pages.get('spectra.html'));
+  assert.match(product, /what a finding may be, what it means, how confident to be, and what to check next/);
+  assert.match(product, /Nothing uploads automatically/);
+  assert.match(product, /AI can make mistakes/);
 });
 
 test('Spectra result discovery does not imply complete device-category coverage', () => {

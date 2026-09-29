@@ -131,6 +131,16 @@ expansion choices, day counts, blue-dot availability, and selected deletion acro
 closed days. Keep the product-page summary and generated help consistent with
 that behavior; do not imply opening a day or session clears recheck availability.
 
+Final-release guidance also covers the iPhone Area Sweep's extendable 30-minute
+deadline, quiet 25-minute notice, and normal saving preference at completion.
+Optional per-check Tag location records one scan-start position, accuracy, and fix
+time—not a route or detected-device location. It starts off every time, accepts
+eligible approximate fixes, never blocks scanning, and is not added to Watch
+imports. All JSON formats omit it unless Include scan location is explicitly
+enabled; finding analysis and AI copies always omit the tag. Rechecks retain the
+original tag, while Remove location affects only the selected copy. Keep these
+sharing and removal boundaries consistent in the product FAQ, Guide, and policy.
+
 After editing native help, compile its exporter with the two Guide sources,
 run the executable with this repository's JSON path, then run:
 

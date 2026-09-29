@@ -42,7 +42,7 @@
           }
         ],
         "steps" : [
-          "Choose a 30-second radio **Quick Check**, untimed **Area Sweep** for hands-on exploration, or **Monitor** to watch one area.",
+          "Choose a 30-second radio **Quick Check**, a self-paced **Area Sweep** with an extendable 30-minute limit, or **Monitor** to watch one area.",
           "Choose measurements; Quick Check records every supported category. Filter completed results by recorded measurement or search names, or use a Bluetooth-only specialist check. Keep Spectra visible while scanning.",
           "Review what stood out, then open **Coverage** to see what was—and was not—measured."
         ],
@@ -342,9 +342,19 @@
             "title" : "What local-network access does"
           },
           {
-            "body" : "**Show Wi-Fi name** asks for location access set to **While Using the App**, with **Precise Location** enabled, because iOS requires it for this information. Scanning does not need Location access. Spectra does not request your coordinates or save your network name; the name is cleared when the app backgrounds. A network name does not identify your router or establish that it is safe.",
+            "body" : "**Show Wi-Fi name** asks for location access set to **While Using the App**, with **Precise Location** enabled, because iOS requires it for this information. This Wi-Fi-name action does not request coordinates or save your network name; the name is cleared when the app backgrounds. Sensor scanning does not need Location access. The separate **Tag location** option requests a scan-start position only when you choose it. A network name does not identify your router or establish that it is safe.",
             "id" : "wifiName",
             "title" : "The optional Wi-Fi name"
+          },
+          {
+            "body" : "**Tag location** is off for each new iPhone check. Turn it on before starting to request one nearby-in-time position, not a route or background tracking. A saved tag includes coordinates, estimated accuracy, and the fix time. It describes the collecting iPhone, not a detected device, room, or verified venue. No address lookup or map loads automatically. **Open in Maps** deliberately shares the saved coordinates with Apple Maps. Watch captures remain untagged.",
+            "id" : "location",
+            "title" : "An optional place in your own history"
+          },
+          {
+            "body" : "Every JSON format omits the tag by default, including **Technical archive**. **Include scan location** explicitly adds coordinates, accuracy, and the location timestamp—even to **Reduced identifying information**. This can reveal where you were. On-device finding summaries and **Copy for AI analysis** always omit the tag. **Remove location** changes only this session copy; other rechecks, protected recovery copies, or files already shared may still retain it. **Erase All Sessions** or **Reset Spectra** clears local session and recovery history, not external copies.",
+            "id" : "location-sharing",
+            "title" : "Location has its own sharing choice"
           }
         ],
         "title" : "Privacy and storage"
@@ -486,14 +496,24 @@
             "title" : "Start with access"
           },
           {
-            "body" : "**Quick Check** uses Bluetooth and optional **Local network** for 30 seconds. **Area Sweep** is untimed and can use Bluetooth, **Local network**, and **Motion and magnetic**, together or independently. **Monitor** is stationary and radio-only. **Smart Glasses** and **Watches & Wearables** are Bluetooth-only specialist checks without scan-time choices. Completed results offer name search and a separate **View observed activity** route for Bluetooth identities that did not match. Device types are estimates, not selectable filters.",
+            "body" : "**Quick Check** uses Bluetooth and optional **Local network** for 30 seconds. **Area Sweep** can use Bluetooth, **Local network**, and **Motion and magnetic**, together or independently, with an extendable 30-minute limit. **Monitor** is stationary and radio-only. **Smart Glasses** and **Watches & Wearables** keep Bluetooth fixed; their short preparation screen offers the same optional **Tag location** choice as other iPhone checks. Completed results offer name search and a separate **View observed activity** route for Bluetooth identities that did not match. Device types are estimates, not selectable filters.",
             "id" : "sources",
             "title" : "Choose measurements for each check"
           },
           {
-            "body" : "Touch and hold Spectra’s app icon, then choose **Quick Check**, **Smart Glasses**, or **Watches & Wearables**. **Quick Check** opens measurement selection; the specialist shortcuts check Bluetooth access before starting. On first use, finish **Welcome** and measurement setup, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
+            "body" : "Touch and hold Spectra’s app icon, then choose **Quick Check**, **Smart Glasses**, or **Watches & Wearables**. **Quick Check** opens measurement selection; the specialist shortcuts open their Bluetooth-only preparation screen. Location tagging stays optional and off until you choose it. On first use, finish **Welcome** and measurement setup, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
             "id" : "shortcuts",
             "title" : "Start from the Home Screen"
+          },
+          {
+            "body" : "The iPhone **Area Sweep** limit starts when collection begins, not while permissions or instructions are open. At 25 minutes, a quiet notice offers **Extend 30 Minutes** or **Finish Area Sweep**. Each extension adds 30 minutes to the deadline, with another notice five minutes before it. Elapsed time stays visible. At the deadline, Spectra finishes through its normal results flow and follows **Save completed sessions**; it does not override your saving preference. Confirm the saved status or use **Retry Saving** or **Export JSON** if needed. **Monitor** and the Watch’s 30-second sweep are unchanged. Longer listening does not guarantee complete discovery or unlimited retained evidence.",
+            "id" : "sweep-limit",
+            "title" : "Take your time, with a clear stopping point"
+          },
+          {
+            "body" : "Before any iPhone check, optionally turn on **Tag location**. It is off for each new check and asks for Location access only when chosen. Approximate access is supported; scanning still works if permission is denied or a usable fix is unavailable. Spectra requests a single position near collection start and stops requesting it after a short window. **Scan start location** shows coordinates and estimated accuracy, not an address, route, room, or detected-device position. Watch captures do not receive the phone’s location when imported. Location is not required for Bluetooth, local-network, or magnetic measurements.",
+            "id" : "tag-location",
+            "title" : "Remember where a check began"
           },
           {
             "body" : "In Spectra, open **Settings** → **App icon** to choose **Classic**, **Spectra Blue**, **Light**, or **Blue on White**. Each uses Spectra’s original waveform. A checkmark identifies the icon confirmed by iOS; a spinner shows a change in progress. This changes the app icon, not the colors inside Spectra. Your iPhone’s icon appearance settings may adjust the colors. **Reset Spectra** erases local data and returns to **Welcome** first, then asks iOS to restore **Classic**. If iOS takes longer than expected, Spectra reports the unconfirmed change; iOS may still finish an earlier request. Review the icon in **Settings** after setup.",
@@ -520,9 +540,14 @@
         "takeaway" : "Allow only the measurements you want. Setup prepares access; it does not start a scan.",
         "technicalSections" : [
           {
-            "body" : "Showing an optional Wi-Fi name uses Apple’s Access Wi-Fi Information rules, including Precise Location While Using the App when required. This is not needed for Bluetooth, magnetic exploration, or Bonjour browsing. Spectra does not request geographic coordinates or save the Wi-Fi name. iOS may withhold a name even when local discovery can operate.",
+            "body" : "Showing an optional Wi-Fi name uses Apple’s Access Wi-Fi Information rules, including Precise Location While Using the App when required. This is not needed for Bluetooth, magnetic exploration, or Bonjour browsing. The Wi-Fi-name action does not request geographic coordinates or save the name. **Tag location** is a separate, per-check request for coordinates; granting permission alone does not enable it. iOS may withhold a Wi-Fi name even when local discovery can operate.",
             "id" : "location",
             "title" : "Why does Wi-Fi name ask for Location?"
+          },
+          {
+            "body" : "Spectra accepts a fix at most ten seconds old and waits up to twelve seconds from collection start. A fix must report estimated horizontal accuracy of 5 km or better. Approximate permission can produce a broad region, and indoor reception may yield no usable fix. These are freshness and quality bounds, not a guarantee of accuracy. No automatic address lookup is performed. If no fix qualifies, the check continues without a tag. Starting another check never reuses a prior session’s position as its own.",
+            "id" : "location-quality",
+            "title" : "When can a location tag be saved?"
           },
           {
             "body" : "The displayed network name provides connection context, not a router model, physical location, or assurance that the network is trustworthy. Guest networks and client isolation may prevent discovering other clients despite a working connection.",
@@ -633,6 +658,16 @@
             "title" : "Give a session a useful name"
           },
           {
+            "body" : "If you enabled **Tag location** and a usable fix arrived, **Scan start location** shows the iPhone’s recorded coordinates and estimated accuracy. **Open in Maps** shares those coordinates with Apple Maps only when tapped. No venue or street address is looked up automatically. Rechecks inherit the selected copy’s original capture location, never your current position. A session without a tag cannot be assigned today’s location as though it were captured there. Watch sweeps remain untagged.",
+            "id" : "location",
+            "title" : "Review or remove a saved location"
+          },
+          {
+            "body" : "Choose **Session options** → **Remove location** and confirm to remove the tag from this copy without deleting its findings. Other sessions, rechecks, and exported files stay unchanged; remove their tags separately if needed. Protected recovery history can still contain an earlier copy. Use **Erase All Sessions** or **Reset Spectra** to clear local session and recovery history. Neither action recalls files already shared.",
+            "id" : "remove-location",
+            "title" : "A tag belongs to each saved copy"
+          },
+          {
             "body" : "A blue dot beside a session means newer recognition is available. Open it and choose **Recheck session**. A dot beside a collapsed recheck count means an eligible copy is inside; expand it to find that session. Spectra reinterprets compatible saved radio evidence using the engine and catalog bundled with your app update. It does not start Bluetooth or network discovery, collect new measurements, or upload your capture. Opening a session alone does not clear the dot.",
             "id" : "recheck",
             "title" : "What does the blue dot mean?"
@@ -715,14 +750,19 @@
             "title" : "Copy one finding for external AI"
           },
           {
-            "body" : "The default copy includes protocol identifiers, interpretation confidence, historical catalog context, and signal statistics. Recorded names, declared network text, and raw payloads are excluded. **Include names and technical payloads** is optional and resets for each finding or new presentation. Names and bytes may identify people or devices. Session names, notes, other findings, and AI explanations are never deliberately included. Magnetic copies contain a summary and up to three strongest retained incidents, with no technical-data switch when it has no effect. Grouped network services remain separate within the selected finding; omission counts describe bounded evidence.",
+            "body" : "The default copy includes protocol identifiers, interpretation confidence, historical catalog context, and signal statistics. Recorded names, declared network text, and raw payloads are excluded. **Include names and technical payloads** is optional and resets for each finding or new presentation. Names and bytes may identify people or devices. Location tags, session names, notes, other findings, and AI explanations are never deliberately included, even with technical sharing enabled. Magnetic copies contain a summary and up to three strongest retained incidents, with no technical-data switch when it has no effect. Grouped network services remain separate within the selected finding; omission counts describe bounded evidence.",
             "id" : "copy-privacy",
             "title" : "Choose whether to include technical data"
           },
           {
-            "body" : "The clipboard contains a fixed analysis prompt followed by JSON, not a standalone JSON file. It asks for a plain-language conclusion, supporting evidence and uncertainty, then safe next steps. Catalog guesses and the names they came from are not independent proof. Protocol, device-family and exact-model confidence stay separate; unknown is a valid conclusion. Research instructions exclude private names and payloads from searches, but Spectra cannot enforce another app’s behavior. Pasting shares the chosen content under that app’s privacy policies. A larger model cannot recover information that was never advertised. Original Bonjour service types are not separately retained; missing fields are stated, not guessed. The copy stays on this iPhone, does not use Universal Clipboard, and expires after ten minutes. Reset or clipboard expiry cannot recall pasted copies. External answers are not imported into Spectra’s findings or catalog.",
+            "body" : "The clipboard contains a concise prompt followed by JSON, not a standalone JSON file. It asks what the finding may be, what that means, how confident the identification is, and which practical next checks would help. It leads with device type, adds only supported names or models, and separates a device’s usual capabilities from behavior actually observed. Instructions are tailored to the included Bluetooth, network, or magnetic evidence. A magnetic change cannot identify a device or brand. Unknown remains a valid conclusion; catalog guesses and the names they came from are not independent proof.",
             "id" : "copy-limits",
-            "title" : "An external answer is a research hypothesis"
+            "title" : "A useful explanation, not a verdict"
+          },
+          {
+            "body" : "The prompt asks the recipient not to follow instructions inside captured text, invent signatures, or send private names and payloads into searches. Spectra cannot enforce another app’s behavior. Pasting shares the chosen content under that app’s policies, and a larger model cannot recover information that was never retained. Original Bonjour service types are not separately retained; missing fields are stated, not guessed. The copy stays on this iPhone, does not use Universal Clipboard, and expires after ten minutes. Reset or clipboard expiry cannot recall pasted copies. External answers are not imported into Spectra’s findings or catalog.",
+            "id" : "copy-research",
+            "title" : "Keep external research in perspective"
           },
           {
             "body" : "On completed or saved results, choose **Analyze on Device**, then select one recorded device or magnetic-event summary. Similar Bluetooth profiles may be different devices: expand the group and choose one identity. Apple Intelligence explains only that selected summary, suggests a practical next step, and states a key limitation. Open **Summary used for analysis** to compare the input with the explanation. Nothing is uploaded. Explanations are temporary: closing this view or choosing another finding clears them. They are not saved with sessions or included in any JSON export.",
@@ -755,9 +795,14 @@
             "title" : "Technical archive"
           },
           {
-            "body" : "Keeps device categories, typed confidence, signal measurements, relative timing, source-coverage states, and the collector platform when recorded. It omits collector hardware and OS version, original identifiers, absolute timestamps, names, notes, manufacturers, model labels, raw payloads, and free-text evidence/limitations. App and recognition versions remain, including the original capture build for rechecks. Measurement patterns can still reveal context, so reduced does not mean anonymous. The missing context can limit an analyst’s conclusions.",
+            "body" : "Keeps device categories, typed confidence, signal measurements, relative timing, source-coverage states, and the collector platform when recorded. By default it omits location, collector hardware and OS version, original identifiers, absolute timestamps, names, notes, manufacturers, model labels, raw payloads, and free-text evidence/limitations. App and recognition versions remain, including the original capture build for rechecks. Choosing **Include scan location** adds the saved coordinates, accuracy, and absolute location timestamp to this otherwise reduced file. Measurement patterns can still reveal context, so reduced does not mean anonymous. The missing context can limit an analyst’s conclusions.",
             "id" : "reduced",
             "title" : "Reduced identifying information"
+          },
+          {
+            "body" : "Location tags are excluded from every format by default—even **Technical archive**. If the session has a tag, **Include scan location** lets you explicitly add its coordinates, estimated accuracy, and fix timestamp to this export. The choice starts off when you reopen export and is separate from the format selection. It can reveal where you were, including in **Reduced identifying information**. This setting does not add the tag to **Copy for AI analysis** or on-device finding summaries.",
+            "id" : "export-location",
+            "title" : "Choose whether to share the location"
           },
           {
             "body" : "In a saved session, open the top **Session options** menu and choose **Export JSON**. The **Export results** section farther down opens the same options and is also available after a completed check. Under **Information to include**, choose one format—not multiple items to combine. Tap **Export JSON** to prepare that file locally. **Preparing JSON** and a spinner confirm that work is in progress; **Cancel** closes preparation without changing your session. Apple’s share sheet opens when the file is ready. Choose **Save to Files** or another destination. Cloud storage, email, or an AI service may transfer and retain the copy under that service’s policies. Erasing Spectra afterward cannot recall external copies.",
@@ -841,7 +886,7 @@
             "title" : "Wi-Fi works but no devices appear"
           },
           {
-            "body" : "Keep Spectra visible. Locking, switching apps, permission changes, source loss, and early Finish can limit a check. Review the incomplete message and retained findings; do not interpret it as no matches. After restoring access, start a fresh check. On a busy scan, wait for Finish to explore stable detailed results.",
+            "body" : "Keep Spectra visible. Locking, switching apps, permission changes, source loss, and ending early can limit a check. Review the incomplete message and retained findings; do not interpret it as no matches. After restoring access, start a fresh check. On a busy scan, wait until collection finishes to explore stable detailed results.",
             "id" : "interrupted",
             "title" : "A check stopped or looks incomplete"
           }
@@ -877,7 +922,7 @@
         "navigationTitle" : "Experimental Watch",
         "sections" : [
           {
-            "body" : "The optional Experimental Watch companion requires watchOS 27 or later and a paired iPhone running iOS 27 or later with Spectra. The iPhone app works without an Apple Watch. The companion offers only a 30-second Bluetooth **Area Sweep**. It does not measure local-network services or magnetic fields, run specialist checks, or identify devices on the Watch. New captures transfer automatically to your paired iPhone, where Spectra identifies retained signals and saves the result in **Sessions**.",
+            "body" : "The optional Experimental Watch companion requires watchOS 27 or later and a paired iPhone running iOS 27 or later with Spectra. The iPhone app works without an Apple Watch. The companion offers only a 30-second Bluetooth **Area Sweep**. It does not measure local-network services or magnetic fields, run specialist checks, tag locations, or identify devices on the Watch. New captures transfer automatically to your paired iPhone, where Spectra identifies retained signals and saves the result in **Sessions**. Importing does not attach the phone’s current location.",
             "id" : "scope",
             "title" : "One check, a smaller screen"
           },
@@ -976,8 +1021,8 @@
       }
     }
   ],
-  "build" : "1025",
-  "buildIdentifier" : "1A1025",
+  "build" : "1026",
+  "buildIdentifier" : "1A1026",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

@@ -2,7 +2,7 @@
 
 Live: https://arcsignal.zendesk.com/hc/en-us
 
-Watch guidance reviewed September 29, 2026 against `assets/data/spectra-guide.json` (Spectra 1.0.0 / 1A1025). The remaining article inventory was reviewed September 27. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
+All ten published articles reviewed September 29, 2026 against `assets/data/spectra-guide.json` (Spectra 1.0.0 / 1A1026). Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
 ## Design configuration
 
@@ -55,13 +55,37 @@ All ten articles are published and configured for everyone. Article URLs use `ht
 
 ## Verification and maintenance
 
+September 29, build 1026: updated and read back the public routes for Get started,
+Manage sessions, Troubleshooting, Contact support and Experimental Watch. The
+first two full submitted bodies are mirrored in `zendesk-getting-started-article.html`
+and `zendesk-session-article.html`; Contact and Watch mirrors are also updated.
+Troubleshooting now explains planned 30-minute completion and missing location
+tags (per-check consent, 12-second acquisition and 5 km maximum reported uncertainty).
+All ten live articles were checked for conflicting scope or privacy claims.
+Unchanged travel, findings, practice, Monitor and company articles remain accurate;
+no unrelated visual, messaging, billing or category settings were changed.
+
+The updated company site passes all 57 tests, canonical Guide parity and the
+35-file public build. Fresh native iPhone and Watch screenshots identify build
+1026; both website importers verified unchanged decoded pixels. Product and Guide
+layouts were inspected locally, and the five updated Zendesk articles were read
+back from their public routes after saving.
+
+Key contracts: extensions add 30 minutes to the deadline; automatic completion
+respects saving preference. Location is per-check iPhone-only, off by default,
+and never blocks scanning. Rechecks retain source context; Watch stays untagged.
+Exports exclude tags unless explicitly included; AI copies and support diagnostics
+exclude them. Removal affects this copy, not independent rechecks or external
+files. The external prompt asks four practical questions without promising an
+identity, safety verdict or accurate AI answer.
+
 September 29: published article 56434359907227 with the phone-free collection
 section and verified its public-route text, semantic headings, capacity wording,
 paired-phone review requirement, and Everyone audience setting. Reviewed the
 rendered article; no theme, messaging, billing, or category settings were changed.
-The company site's Guide is regenerated from app build 1025. Existing marketing
-screens show unaffected views; `screenshot-content-review.json` records this
-release-specific review without altering original capture provenance. A new
+For that earlier build 1025 update, the company Guide was regenerated and
+unchanged marketing screens received a release-specific content review. Build
+1026 supersedes that review with fresh native iPhone and Watch captures. A new
 Finder `.DS_Store` under `assets/images` was moved recoverably to
 `/private/tmp/arc-signal-images-DS_Store-20260929-phonefree` rather than published.
 
