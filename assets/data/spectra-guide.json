@@ -882,6 +882,11 @@
             "title" : "One check, a smaller screen"
           },
           {
+            "body" : "After installing the companion and opening Spectra on your paired iPhone once to prepare transfer, you can collect without your iPhone nearby. The Watch uses its own Bluetooth radio and saves captures locally; collection does not need an internet connection or cellular plan. Keep Bluetooth available, allow access, and keep Spectra active with the display fully awake for each 30-second sweep. Check **Saved sweeps** before heading out: the Watch holds up to five captures in total, including earlier copies. When you reconnect, open Spectra on your paired iPhone to identify signals and review findings in **Sessions**. The Watch shows capture and transfer status, not identified results.",
+            "id" : "phone-free",
+            "title" : "Leave your iPhone behind, review later"
+          },
+          {
             "body" : "The Watch start screen keeps **Start Sweep** as the main action. The tray button opens **Saved sweeps** for captures and transfer status. Open **Settings** below **Start Sweep** for **Sweep guidance**, **Storage & transfer**, **Diagnostic reports**, and **About**. **About** shows the version, release identifier, numeric build and watchOS version installed on your Watch; check these separately from iPhone when troubleshooting an update. Recognition uses the engine and catalog installed on iPhone, not a separate Watch catalog.",
             "id" : "settings",
             "title" : "A focused start, help when you need it"
@@ -939,7 +944,7 @@
           "Open Spectra on iPhone and review **Sessions** once processing finishes. Review findings and **Coverage** before drawing conclusions; use **Settings** → **Experimental Watch** if a transfer needs attention."
         ],
         "symbol" : "antenna.radiowaves.left.and.right",
-        "takeaway" : "Take an intentional 30-second Bluetooth snapshot on your Watch, then review it on iPhone. This companion is experimental—not a background scanner.",
+        "takeaway" : "Capture without your iPhone nearby. Save up to five Bluetooth sweeps on your Watch, then review findings on your paired iPhone. This companion is experimental—not a background scanner.",
         "technicalSections" : [
           {
             "body" : "The Watch retains bounded advertisement evidence, not every radio packet. Callback timing is delivery timing, not proof of uninterrupted sampling. Repeated callbacks do not establish separate physical devices; a product can change identifiers. Names and protocol fields are unauthenticated claims. Recognition on iPhone cannot recover information the Watch did not retain. Recorded signal strength was measured by the Watch, not the iPhone; readings taken later with the phone can differ.",
@@ -971,8 +976,8 @@
       }
     }
   ],
-  "build" : "1022",
-  "buildIdentifier" : "1A1022",
+  "build" : "1025",
+  "buildIdentifier" : "1A1025",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

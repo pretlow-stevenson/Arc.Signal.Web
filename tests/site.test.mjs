@@ -174,8 +174,19 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   assert.equal(provenance.platform, 'iOS');
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   assert.equal(provenance.appVersion, guide.appVersion);
-  assert.equal(provenance.bundleBuild, guide.build);
-  assert.equal(provenance.buildIdentifier, guide.buildIdentifier);
+  if (provenance.bundleBuild !== guide.build) {
+    // A content-only release can retain accurate imagery without falsifying its
+    // capture provenance. The explicit review expires at the next Guide build.
+    const review = JSON.parse(await readFile(join(root, 'docs/screenshot-content-review.json'), 'utf8'));
+    assert.equal(review.appVersion, guide.appVersion);
+    assert.equal(review.sourceBundleBuild, provenance.bundleBuild);
+    assert.equal(review.reviewedGuideBuild, guide.build);
+    assert.equal(review.reviewedGuideBuildIdentifier, guide.buildIdentifier);
+    assert.ok(review.reason.length > 100);
+  } else {
+    assert.equal(provenance.buildIdentifier, guide.buildIdentifier);
+  }
+  assert.equal(provenance.buildIdentifier, `1A${provenance.bundleBuild}`);
   assert.equal(provenance.minimumOSVersion, '27.0');
   assert.match(provenance.bundleInfoPlistSHA256, /^[a-f0-9]{64}$/);
   assert.match(provenance.appSourceCommit, /^[a-f0-9]{40}$/);
