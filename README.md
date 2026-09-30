@@ -140,6 +140,11 @@ imports. All JSON formats omit it unless Include scan location is explicitly
 enabled; finding analysis and AI copies always omit the tag. Rechecks retain the
 original tag, while Remove location affects only the selected copy. Keep these
 sharing and removal boundaries consistent in the product FAQ, Guide, and policy.
+Show map preview is another deliberate choice: it requests the saved area from
+Apple Maps, never a fresh collector position. The static image is temporary,
+excluded from sessions and exports, and unavailable states do not block findings.
+Open in Maps remains separate. Do not imply that clearing Spectra's preview or
+resetting the app erases Apple's service records or system map caches.
 
 After editing native help, compile its exporter with the two Guide sources,
 run the executable with this repository's JSON path, then run:

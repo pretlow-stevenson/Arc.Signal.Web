@@ -49,6 +49,8 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
         && ['mailto:support@arcsignal.zendesk.com', 'https://arcsignal.zendesk.com'].includes(value)) continue;
       if (name === 'spectra-privacy.html' && attribute.startsWith('href=')
         && value === 'https://www.zendesk.com/company/agreements-and-terms/privacy-notice/') continue;
+      if (name === 'spectra-privacy.html' && attribute.startsWith('href=')
+        && value === 'https://www.apple.com/legal/privacy/data/en/apple-maps/') continue;
       if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && [nordPrivacyURL, 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement'].includes(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && editorialLinks.has(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && value === 'https://developer.apple.com/download/files/accessories/dimensional-drawings/iphone-17-pro-max.pdf#page=5') continue;
@@ -196,7 +198,7 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   assert.equal(provenance.appVersion, guide.appVersion);
   if (provenance.bundleBuild !== guide.build) {
-    // A content-only release can retain accurate imagery without falsifying its
+    // A release not changing pictured screens can retain accurate imagery without falsifying its
     // capture provenance. The explicit review expires at the next Guide build.
     const review = JSON.parse(await readFile(join(root, 'docs/screenshot-content-review.json'), 'utf8'));
     assert.equal(review.appVersion, guide.appVersion);
@@ -638,7 +640,7 @@ test('Watch reset guidance distinguishes a request from confirmed remote erasure
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 29, 2026/);
+  assert.match(policy, /Effective September 30, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.zendesk.com', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
@@ -685,9 +687,22 @@ test('location tagging remains per-check, optional, source-specific and separate
     'All JSON formats omit it by default', 'AI copies never include the tag']) assert.ok(product.includes(phrase), phrase);
   const policy = prose(pages.get('spectra-privacy.html'));
   for (const phrase of ['off by default for every new iPhone scan', 'bounded to 12 seconds',
-    'Denied access or an unavailable fix never prevents scanning', 'separate, explicit action',
+    'Denied access or an unavailable fix never prevents scanning', 'deliberately requests a map',
     'All JSON formats omit location by default', 'fix timestamp', 'Location tags are excluded from on-device AI evidence',
     'removes it from that saved copy', 'Protected recovery copies']) assert.ok(policy.includes(phrase), phrase);
+});
+
+test('saved maps require explicit opt-in and keep location meaning and privacy clear', async () => {
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const sessions = guide.articles.find(({ content }) => content.id === 'sessions').content;
+  const location = guidePlainText(sessions.sections.find(section => section.id === 'location').body);
+  for (const phrase of ['Show map preview', 'not where detected devices are',
+    'does not request your current location', 'Neither action runs automatically']) assert.ok(location.includes(phrase), phrase);
+  const fallback = guidePlainText(sessions.sections.find(section => section.id === 'map-preview').body);
+  for (const phrase of ['Retry map preview', 'another tap', 'caches held by Apple Maps']) assert.ok(fallback.includes(phrase), phrase);
+  const policy = prose(pages.get('spectra-privacy.html'));
+  for (const phrase of ['Show map preview', 'estimated accuracy', 'Apple’s map data practices',
+    'not detected devices', 'Open in Maps']) assert.ok(policy.includes(phrase), phrase);
 });
 
 test('external finding prompts explain four useful questions without implying model certainty', async () => {

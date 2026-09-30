@@ -1,8 +1,8 @@
 {
   "appVersion": "1.0.0",
   "sourceBundleBuild": "1028",
-  "reviewedGuideBuild": "1029",
-  "reviewedGuideBuildIdentifier": "1A1029",
+  "reviewedGuideBuild": "1030",
+  "reviewedGuideBuildIdentifier": "1A1030",
   "reviewedOn": "2026-09-30",
-  "reason": "Build 1029 adds included-recognition-update guidance in a Guide section not shown in marketing images. Scanning, results, settings and Watch screens are unchanged. Existing native build-1028 captures remain representative; their source identity and pixels are preserved. Website and App Store copy explain the included updates. This review does not authorize stale assets for future interface changes."
+  "reason": "Build 1030 adds an optional map preview only to tagged iPhone results and updates related Guide text. Existing marketing images show untagged flows and unchanged Watch screens, not the new location card. Native build-1028 captures remain representative for those pictured flows; source identity and pixels are preserved. Website and App Store copy explain the new optional map. This review does not authorize stale assets for future interface changes."
 }
