@@ -1021,8 +1021,8 @@
       }
     }
   ],
-  "build" : "1026",
-  "buildIdentifier" : "1A1026",
+  "build" : "1027",
+  "buildIdentifier" : "1A1027",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

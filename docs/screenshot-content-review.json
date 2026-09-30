@@ -1,8 +1,8 @@
 {
   "appVersion": "1.0.0",
   "sourceBundleBuild": "1026",
-  "reviewedGuideBuild": "1026",
-  "reviewedGuideBuildIdentifier": "1A1026",
+  "reviewedGuideBuild": "1027",
+  "reviewedGuideBuildIdentifier": "1A1027",
   "reviewedOn": "2026-09-29",
-  "reason": "Fresh native iPhone and Watch screenshots were captured from build 1026 and imported without changing their decoded pixels. The Guide and product copy describe the same build. This is not an exception allowing older screenshots to stand in for a newer build; future changes require a new review or recapture."
+  "reason": "Build 1027 changes the recognition catalog, model/family arbitration and defensive lookup limits, not interface layout or the synthetic Acme, magnetic, monitor and session scenarios shown here. The six App Store panels and website capture provenance were reviewed against that scope. Native iPhone and Watch images remain the actual build-1026 captures; no pixels or capture metadata were relabeled. Guide content is unchanged and its generated release identity is 1027. This review expires at the next Guide build or an affected visual/fixture change."
 }
