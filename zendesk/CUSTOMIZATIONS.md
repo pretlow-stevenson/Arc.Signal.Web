@@ -13,6 +13,7 @@ available in Zendesk for rollback and upstream comparison.
 - `theme/templates/footer.hbs`: retains the home link and language selector;
   adds **© 2026 Arc Signal LLC. All rights reserved.** as ordinary text.
 - `theme/templates/document_head.hbs`: one scoped CSS block. Fluid heading,
+  inheriting the page's body font with regular weight to match its card text,
   expandable hero, wrapping legal text and forced-colors heading treatment.
   Native module imports and scripts remain unchanged. No JavaScript, font,
   external request, tracker, animation or dependency is added by this patch.

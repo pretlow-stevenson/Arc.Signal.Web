@@ -169,6 +169,10 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .inline-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
 .company-cta { background: #e9eef4; text-align: center; }
 .company-cta .actions { justify-content: center; }
+/* Voluntary appreciation stays secondary to the product and separate from help. */
+.development-support .section-copy { align-content: start; }
+.development-action { display: grid; justify-items: start; gap: .75rem; margin-top: .25rem; }
+.support-contribution:disabled { color: var(--muted); background: transparent; border-color: var(--line); opacity: 1; cursor: not-allowed; transform: none; box-shadow: none; }
 .seamless-page { --blue: var(--green); background: radial-gradient(ellipse at 90% 5%, #e4ece5 0, transparent 35rem), var(--paper); }
 .seamless-page .privacy-section { background: #e8efe9; }
 .seamless-page .modes-section { background: #eef2ed; }

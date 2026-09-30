@@ -111,6 +111,27 @@ test('unreleased download is a truthful status rather than a broken link', () =>
   }
 });
 
+test('voluntary development support is consistent, secondary and safely stubbed', () => {
+  const sections = [];
+  for (const name of ['index.html', 'spectra.html']) {
+    const html = pages.get(name);
+    const section = html.match(/<section\b[^>]*id="support-development"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(section, `${name}: missing development support`);
+    sections.push(section);
+    assert.match(section, /data-payment-provider="stripe" data-payment-status="placeholder"/);
+    assert.match(section, /<button class="button support-contribution" type="button" disabled aria-describedby="development-payment-note">Support our work<\/button>/);
+    assert.match(section, /Optional one-time contributions via Stripe · Coming soon/);
+    assert.match(section, /App updates are included—no additional payment is required/);
+    assert.match(section, /An optional contribution is a way to show your appreciation for Spectra/);
+    assert.doesNotMatch(section, /\bhref=|\bsrc=|<form\b|<input\b|\bonclick=|\btips?\b|donat|tax.deduct|unlock|subscriber/i);
+    assert.ok(html.indexOf('id="support-development"') > html.indexOf(name === 'index.html' ? 'id="cta-title"' : 'id="download"'));
+    assert.doesNotMatch(html, /(?:src|href)="https:\/\/(?:buy|js|checkout)\.stripe\.com/);
+  }
+  assert.equal(sections[0], sections[1], 'Company and product contribution copy must agree');
+  assert.doesNotMatch(pages.get('guide.html'), /id="support-development"/, 'Help stays focused on help');
+  assert.match(css, /\.support-contribution:disabled\s*\{[^}]*transform: none;[^}]*box-shadow: none;/);
+});
+
 test('marketing retains the important measurement and identity limits', () => {
   const html = pages.get('spectra.html');
   for (const text of ['Arc Signal LLC', 'joined Wi-Fi network', 'not an exact distance or direction', 'cannot guarantee', 'Foreground', 'possible or probable', 'without pairing with or connecting']) {

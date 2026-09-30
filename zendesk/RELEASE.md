@@ -1,5 +1,13 @@
 # Theme release record
 
+## September 28, 2026 — heading typography refinement
+
+Published to the same live theme at the owner's request. The hero heading now
+inherits the body font and uses weight 400, matching the category-card text.
+Its responsive size, white color, spacing, and native search remain unchanged.
+Verified computed font family and weight on the live homepage, inspected the
+desktop render, and passed all seven theme regressions plus `git diff --check`.
+
 ## September 28, 2026 — initial custom theme
 
 - Published theme: **Arc Signal Support**

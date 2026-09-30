@@ -36,6 +36,9 @@ test('presentation allows reflow and adds no scripting or remote assets', async 
   assert.match(css, /height: auto/);
   assert.match(css, /flex-wrap: wrap/);
   assert.match(css, /forced-colors: active/);
+  const heading = css.match(/\.arc-support-heading\s*\{([^}]+)\}/)?.[1];
+  assert.match(heading, /font-family: inherit/);
+  assert.match(heading, /font-weight: 400/);
   assert.doesNotMatch(css, /url\(|@import|animation|!important|overflow:\s*hidden/);
   // Four script elements plus the upstream polyfill's document.write string.
   assert.equal((head.match(/<script\b/g) || []).length, 5);
