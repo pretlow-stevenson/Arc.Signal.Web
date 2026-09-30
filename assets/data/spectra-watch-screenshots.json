@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "platform": "watchOS",
-  "appSourceCommit": "650de6d906d7006f5bc9c7d086058b080fd82360",
+  "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d",
   "appVersion": "1.0.0",
-  "bundleBuild": "1026",
-  "buildIdentifier": "1A1026",
+  "bundleBuild": "1028",
+  "buildIdentifier": "1A1028",
   "captureDevice": "Apple Watch SE 3 (44mm)",
   "captureRuntime": "watchOS 27.0 (24R5355a)",
   "exampleData": true,
@@ -13,10 +13,10 @@
     {
       "id": "watch-start",
       "source": "captures/watch-start.png",
-      "sourceSHA256": "52e7fcc9c0938c76ae8d0f0a1b2801acff4c034610d0ee2684be41ab40f7127e",
+      "sourceSHA256": "4900131c63acaa4e0a21f2f3aaae890b3bcabc918e880076529e44349e32fdd3",
       "output": "assets/images/spectra-watch-start.webp",
-      "outputSHA256": "2f27f765d66e15c391e3f54e6d3b8126183dd1a707a28f8fb44604ef458c0cfd",
-      "pixelSHA256": "2b2d23d3a28ec7cca3c44e644f160d0c057980715e692cc741d9223cc0431f65",
+      "outputSHA256": "ce3220b43125e704131aa449698728330ad80532df9a28b0a0016c1856fd6ae9",
+      "pixelSHA256": "3b33b24663c725dbe0907b0737b4073ae6485fb660323bcb6c4825b11eeb8407",
       "width": 368,
       "height": 448,
       "appearance": "dark"
@@ -24,10 +24,10 @@
     {
       "id": "watch-complete",
       "source": "captures/watch-complete.png",
-      "sourceSHA256": "5c08be7cdf744611750cce67e8154f3a6fe10d35f251d01e23a33d912318a8f9",
+      "sourceSHA256": "6e02053da39d3c89da56370275c2e4959fb901aebd50e0a2df289e07a3251847",
       "output": "assets/images/spectra-watch-complete.webp",
-      "outputSHA256": "885dfff599f796cf97f02dbd763d0a1844cabf036d8d06057b96d32566e1c8c6",
-      "pixelSHA256": "2d1cf422b92239a251864c66b7384f5c726ed49aae3691dc8da478229b1c6cc8",
+      "outputSHA256": "922636736ceb318cc5fd29db37d4df97c46f338caef3ab6c896cdafe5bc44e88",
+      "pixelSHA256": "e835c3a4daab318ad3a5dd43af996f1e587ab174e0b94bec56864679c021da9e",
       "width": 368,
       "height": 448,
       "appearance": "dark"
