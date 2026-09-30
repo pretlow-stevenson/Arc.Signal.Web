@@ -1,8 +1,8 @@
 {
   "appVersion": "1.0.0",
   "sourceBundleBuild": "1028",
-  "reviewedGuideBuild": "1031",
-  "reviewedGuideBuildIdentifier": "1A1031",
+  "reviewedGuideBuild": "1032",
+  "reviewedGuideBuildIdentifier": "1A1032",
   "reviewedOn": "2026-09-30",
-  "reason": "Build 1031 adds a remembered consent choice for automatic maps in tagged iPhone results and a Settings toggle. Existing marketing images show untagged flows and unchanged Watch screens, not the location card or updated Settings area. Native build-1028 captures remain representative for those pictured flows; source identity and pixels are preserved. Website and App Store copy explain the revised map preference. This review does not authorize stale assets for future interface changes."
+  "reason": "Build 1032 adds full-swipe Rename/Delete and temporary Undo after an individual session deletion. Existing marketing images show the normal Sessions list, not open swipe actions or deletion feedback; the Watch screens are unchanged. They also remain untagged and do not show the map preference introduced in 1031. Native build-1028 captures remain representative for those pictured flows; source identity and pixels are preserved. The Guide, privacy policy, support article and App Store reviewer notes explain the new session actions. This review does not authorize stale assets for future interface changes."
 }

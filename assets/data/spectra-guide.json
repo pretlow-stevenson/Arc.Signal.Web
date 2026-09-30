@@ -298,7 +298,7 @@
             "title" : "You choose what gets measured"
           },
           {
-            "body" : "Completed checks are saved locally by default. Turning saving off keeps future checks out of history; it does not delete reports you already saved.",
+            "body" : "Completed checks are saved locally by default. Turning saving off keeps future checks out of history; it does not delete reports you already saved. Individual deletion offers a brief **Undo** using one temporary in-memory copy after removing the saved copy. Leaving **Sessions** or switching away from Spectra ends Undo; bulk erasure and reset also clear it. No Recently Deleted folder is kept. The Sessions guide explains the time window and separate copies.",
             "id" : "history",
             "title" : "History is your choice"
           },
@@ -708,7 +708,12 @@
             "title" : "Why did an older session disappear?"
           },
           {
-            "body" : "Delete one session from its list actions, or **Select** several. Hiding a day or collapsing rechecks does not deselect hidden sessions: the date heading and recheck disclosure keep their selected counts, and **Delete Selected** shows the total. Expand the relevant group to change its selection. Deleting an original does not select or delete its rechecks. **Erase All Sessions** includes closed groups, recovery copies, and received Watch inbox captures; it is disabled when there is nothing to erase. Watch copies remain; this action does not request a Watch reset. Use **Settings** → **Experimental Watch** → **Erase Inbox Copies** to clear that inbox separately without deleting imported sessions. **Reset Spectra** additionally clears received Watch diagnostics and preferences, returns to **Welcome**, and requests a reset of the known paired Watch app. Check its separate pending or confirmed status. Confirmations are deliberate because erasure cannot be undone.",
+            "body" : "Swipe right on a session to reveal **Rename**, or swipe fully to open the name editor. Nothing changes until you save. Swipe left to reveal **Delete**, or swipe fully to delete that session. **Undo** briefly restores the most recently deleted session, including its name, notes, location tag, and retained evidence. It is available for 10 seconds, or 30 seconds when VoiceOver is running at deletion. Another deletion replaces the previous Undo opportunity. Leaving **Sessions**, switching away from Spectra, or starting confirmed bulk erasure or reset ends Undo. Spectra removes the saved copy first and keeps only one temporary in-memory recovery copy; there is no Recently Deleted folder.",
+            "id" : "swipe-actions",
+            "title" : "Swipe to rename or delete"
+          },
+          {
+            "body" : "Use **Select** to delete several sessions with confirmation. Hiding a day or collapsing rechecks does not deselect hidden sessions: the date heading and recheck disclosure keep their selected counts, and **Delete Selected** shows the total. Expand the relevant group to change its selection. Deleting an original does not select or delete its rechecks. **Erase All Sessions** includes closed groups, recovery copies, and received Watch inbox captures; it is disabled when there is nothing to erase. Watch copies remain; this action does not request a Watch reset. Use **Settings** → **Experimental Watch** → **Erase Inbox Copies** to clear that inbox separately without deleting imported sessions. **Reset Spectra** additionally clears received Watch diagnostics and preferences, returns to **Welcome**, and requests a reset of the known paired Watch app. Check its separate pending or confirmed status. **Delete Selected**, **Erase All Sessions**, and **Reset Spectra** clear pending Undo and cannot be undone.",
             "id" : "erase",
             "title" : "Choose the right erase action"
           }
@@ -1031,8 +1036,8 @@
       }
     }
   ],
-  "build" : "1031",
-  "buildIdentifier" : "1A1031",
+  "build" : "1032",
+  "buildIdentifier" : "1A1032",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

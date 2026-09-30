@@ -4,6 +4,20 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 All ten published articles reviewed September 29, 2026 against `assets/data/spectra-guide.json` (Spectra 1.0.0 / 1A1026). Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## Build 1A1032 session-action content alignment
+
+The canonical Sessions article (`zendesk-session-article.html`, article
+56434367436187) now explains full-swipe Rename/Delete and temporary single-session
+Undo: 10 seconds, or 30 seconds with VoiceOver running at deletion; only the latest
+deletion is recoverable. Leaving Sessions, app inactivity, expiry, or confirmed
+bulk erasure/reset clears the in-memory recovery copy. Bulk actions remain
+confirmed and nonundoable. The website privacy policy and generated Guide share
+that contract. The article was separately saved in Zendesk and its public URL
+was read back on September 30, 2026, confirming the new swipe and Undo guidance.
+Existing normal-session
+marketing captures remain accurate; no temporary Undo banner is fabricated into
+them and their original capture provenance is preserved.
+
 ## Design configuration
 
 - September 28: the owner approved a small custom Copenhagen theme for a real hero heading and copyright footer. See `../zendesk/README.md` for source, deployment status, upstream updates, and rollback. Custom themes do not receive automatic Copenhagen feature updates.
