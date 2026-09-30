@@ -55,6 +55,21 @@ All ten articles are published and configured for everyone. Article URLs use `ht
 
 ## Verification and maintenance
 
+September 30, included-update copy: published and read back Get started
+(56434299423899), About us (56413781880091), and Manage sessions
+(56434367436187). Each now explains that regular device-catalog and
+detection-engine improvements arrive through App Store updates at no additional
+charge, without a separate catalog purchase or subscription. Preserve eligibility,
+unchanged originals, and the absence of guaranteed matches. Editorial mirrors are
+`zendesk-getting-started-article.html`, `zendesk-about-article.html`, and
+`zendesk-session-article.html`. No theme or messaging settings were changed.
+
+The native Guide, both paste-ready App Store descriptions, company/product pages,
+and generated web Guide carry the same commitment. The Guide is prepared for
+build 1A1029. This is a content change, not a new detection-engine revision or a
+promise of a release schedule. GitHub Pages and TestFlight delivery are separate
+from Zendesk article publication. App Store Connect public metadata was not submitted.
+
 September 29, build 1026: updated and read back the public routes for Get started,
 Manage sessions, Troubleshooting, Contact support and Experimental Watch. The
 first two full submitted bodies are mirrored in `zendesk-getting-started-article.html`

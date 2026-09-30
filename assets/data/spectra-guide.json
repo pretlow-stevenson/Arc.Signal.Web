@@ -16,6 +16,11 @@
             "title" : "Observe without connecting"
           },
           {
+            "body" : "We regularly improve Spectra’s device catalog and detection engine to help you make better sense of nearby signals. These improvements are included in app updates at no additional charge. Install updates through the App Store; there is no separate catalog download or subscription. Newer recognition can also help you revisit eligible saved sessions with **Recheck session**, without changing the original. An update does not guarantee a match or make every device detectable.",
+            "id" : "recognition-updates",
+            "title" : "Built to keep getting better"
+          },
+          {
             "body" : "**Summary** surfaces named findings and supported possible device types, even when the manufacturer or model is unknown. Each result keeps its confidence or name-source label. Related observations stay together; other unnamed activity stays compact. Expand a result for its measurements and supporting evidence.",
             "id" : "explore",
             "title" : "Start with the summary"
@@ -1021,8 +1026,8 @@
       }
     }
   ],
-  "build" : "1028",
-  "buildIdentifier" : "1A1028",
+  "build" : "1029",
+  "buildIdentifier" : "1A1029",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
