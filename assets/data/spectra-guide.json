@@ -352,7 +352,7 @@
             "title" : "The optional Wi-Fi name"
           },
           {
-            "body" : "**Tag location** is off for each new iPhone check. Turn it on before starting to request one nearby-in-time position, not a route or background tracking. A saved tag includes coordinates, estimated accuracy, and the fix time. It describes the collecting iPhone, not a detected device, room, or verified venue. No address lookup or map loads automatically. **Show map preview** loads the saved area through Apple Maps only when tapped; **Open in Maps** separately shares the saved coordinates to explore there. Neither action requests your current location through Spectra. Apple handles map requests under its own data practices. Spectra keeps the preview only temporarily, not in your session or exports. Watch captures remain untagged.",
+            "body" : "**Tag location** is off for each new iPhone check. Turn it on before starting to request one nearby-in-time position, not a route or background tracking. A saved tag includes coordinates, estimated accuracy, and the fix time. It describes the collecting iPhone, not a detected device, room, or verified venue. No address lookup runs. The first tagged result offers **Enable map previews** or **Not now**. Enabling allows Apple Maps to load saved areas automatically when you view tagged results; declining is remembered without repeated prompts. Change **Automatic map previews** under **Settings** → **Session maps** at any time. **Open in Maps** separately shares the saved coordinates to explore there. Neither feature requests your current location through Spectra. Apple handles map requests under its own data practices. Spectra keeps the preview only temporarily, not in your session or exports. **Reset Spectra** clears the map preference; deleting sessions does not. Watch captures remain untagged.",
             "id" : "location",
             "title" : "An optional place in your own history"
           },
@@ -516,7 +516,7 @@
             "title" : "Take your time, with a clear stopping point"
           },
           {
-            "body" : "Before any iPhone check, optionally turn on **Tag location**. It is off for each new check and asks for Location access only when chosen. Approximate access is supported; scanning still works if permission is denied or a usable fix is unavailable. Spectra requests a single position near collection start and stops requesting it after a short window. **Scan start location** shows coordinates and estimated accuracy, not an address, route, room, or detected-device position. **Show map preview** optionally loads the saved area through Apple Maps; it does not request your current location. Watch captures do not receive the phone’s location when imported. Location is not required for Bluetooth, local-network, or magnetic measurements.",
+            "body" : "Before any iPhone check, optionally turn on **Tag location**. It is off for each new check and asks for Location access only when chosen. Approximate access is supported; scanning still works if permission is denied or a usable fix is unavailable. Spectra requests a single position near collection start and stops requesting it after a short window. **Scan start location** shows coordinates and estimated accuracy, not an address, route, room, or detected-device position. You can separately enable automatic map previews of saved areas through Apple Maps; this does not request your current location. Watch captures do not receive the phone’s location when imported. Location is not required for Bluetooth, local-network, or magnetic measurements.",
             "id" : "tag-location",
             "title" : "Remember where a check began"
           },
@@ -663,12 +663,12 @@
             "title" : "Give a session a useful name"
           },
           {
-            "body" : "If you enabled **Tag location** and a usable fix arrived, **Scan start location** shows the iPhone’s recorded coordinates and estimated accuracy. Choose **Show map preview** to load a compact map of that saved area through Apple Maps. The marker describes the collecting iPhone; the shaded area represents its estimated accuracy, not where detected devices are. The preview does not request your current location or confirm a venue or room. **Open in Maps** is a separate choice for exploring the saved position in Maps. Neither action runs automatically. Rechecks inherit the selected copy’s original capture location, never your current position. A session without a tag cannot be assigned today’s location as though it were captured there. Watch sweeps remain untagged.",
+            "body" : "If you enabled **Tag location** and a usable fix arrived, **Scan start location** shows the iPhone’s recorded coordinates and estimated accuracy. On your first tagged result, choose **Enable map previews** to show saved areas automatically through Apple Maps, or **Not now** to keep coordinates only. Your choice is remembered. Change **Automatic map previews** under **Settings** → **Session maps** whenever you like. The marker describes the collecting iPhone; the shaded area represents its estimated accuracy, not where detected devices are. The preview does not request your current location or confirm a venue or room. **Open in Maps** is a separate choice for exploring the saved position in Maps. Maps opens only when you choose; previews load automatically only after you enable them. Rechecks inherit the selected copy’s original capture location, never your current position. A session without a tag cannot be assigned today’s location as though it were captured there. Watch sweeps remain untagged.",
             "id" : "location",
             "title" : "Review or remove a saved location"
           },
           {
-            "body" : "Saved coordinates and findings remain available if the optional preview fails or a connection is unavailable. Choose **Retry map preview** when offered, or **Open in Maps** to use Maps. Some regions near the poles cannot be represented by this preview; retry is not offered for an unsupported location. Spectra clears its temporary preview when you leave the results or switch away from the app; showing it again requires another tap. Map requests are handled under Apple’s data practices. Clearing Spectra’s preview does not erase information or caches held by Apple Maps.",
+            "body" : "Saved coordinates and findings remain available if the optional preview fails or a connection is unavailable. Choose **Retry map preview** when offered, or **Open in Maps** to use Maps. Some regions near the poles cannot be represented by this preview; retry is not offered for an unsupported location. Spectra clears its temporary preview when you leave the results or switch away from the app; when you return, it can load again if **Automatic map previews** remains enabled. A failed preview does not continuously retry. Map requests are handled under Apple’s data practices. Clearing Spectra’s preview does not erase information or caches held by Apple Maps.",
             "id" : "map-preview",
             "title" : "When a map cannot load"
           },
@@ -1031,8 +1031,8 @@
       }
     }
   ],
-  "build" : "1030",
-  "buildIdentifier" : "1A1030",
+  "build" : "1031",
+  "buildIdentifier" : "1A1031",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

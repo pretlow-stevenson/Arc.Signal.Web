@@ -55,13 +55,13 @@ All ten articles are published and configured for everyone. Article URLs use `ht
 
 ## Verification and maintenance
 
-September 30, optional map preview: the local editorial mirror
-`zendesk-session-article.html` now explains Show map preview, separate Open in Maps,
-saved-position/estimated-accuracy meaning, no new location request, explicit retry,
-temporary preview lifetime, and Apple Maps data handling. Published to Manage
+September 30, remembered map choice (build 1A1031): the local editorial mirror
+`zendesk-session-article.html` explains Enable map previews / Not now, remembered
+consent, automatic previews after enabling, Settings → Session maps, revocation,
+reset, separate Open in Maps, saved-position/estimated-accuracy meaning, explicit
+retry, temporary preview lifetime and Apple Maps data handling. Published to Manage
 sessions, export results, and erase your data (56434367436187) and read back the
-public article on September 30, 2026, including explicit Show map preview and
-unsupported-region fallback wording. No separate privacy article
+public article on September 30, 2026. No separate privacy article
 exists in the published inventory; the session article links to the updated
 `spectra-privacy.html` policy. Other articles remain accurate: Watch stays untagged,
 location remains optional, and map previews are not required for scanning.

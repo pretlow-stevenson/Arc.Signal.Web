@@ -687,7 +687,7 @@ test('location tagging remains per-check, optional, source-specific and separate
     'All JSON formats omit it by default', 'AI copies never include the tag']) assert.ok(product.includes(phrase), phrase);
   const policy = prose(pages.get('spectra-privacy.html'));
   for (const phrase of ['off by default for every new iPhone scan', 'bounded to 12 seconds',
-    'Denied access or an unavailable fix never prevents scanning', 'deliberately requests a map',
+    'Denied access or an unavailable fix never prevents scanning', 'authorizes automatic requests',
     'All JSON formats omit location by default', 'fix timestamp', 'Location tags are excluded from on-device AI evidence',
     'removes it from that saved copy', 'Protected recovery copies']) assert.ok(policy.includes(phrase), phrase);
 });
@@ -696,12 +696,12 @@ test('saved maps require explicit opt-in and keep location meaning and privacy c
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   const sessions = guide.articles.find(({ content }) => content.id === 'sessions').content;
   const location = guidePlainText(sessions.sections.find(section => section.id === 'location').body);
-  for (const phrase of ['Show map preview', 'not where detected devices are',
-    'does not request your current location', 'Neither action runs automatically']) assert.ok(location.includes(phrase), phrase);
+  for (const phrase of ['Enable map previews', 'Not now', 'Automatic map previews', 'not where detected devices are',
+    'does not request your current location', 'only after you enable them']) assert.ok(location.includes(phrase), phrase);
   const fallback = guidePlainText(sessions.sections.find(section => section.id === 'map-preview').body);
-  for (const phrase of ['Retry map preview', 'another tap', 'caches held by Apple Maps']) assert.ok(fallback.includes(phrase), phrase);
+  for (const phrase of ['Retry map preview', 'remains enabled', 'caches held by Apple Maps']) assert.ok(fallback.includes(phrase), phrase);
   const policy = prose(pages.get('spectra-privacy.html'));
-  for (const phrase of ['Show map preview', 'estimated accuracy', 'Apple’s map data practices',
+  for (const phrase of ['Enable map previews', 'Not now', 'Automatic map previews', 'estimated accuracy', 'Apple’s map data practices',
     'not detected devices', 'Open in Maps']) assert.ok(policy.includes(phrase), phrase);
 });
 
