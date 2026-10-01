@@ -5,10 +5,18 @@ product/download call to action. Existing Bodoni/Inter typography, neutral
 surfaces and responsive two-column layout are reused. No new artwork, payment
 SDK, tracking, cookie, form, or runtime dependency is introduced.
 
-The native disabled button previews “Support our work” and is paired with a
-visible “Optional one-time contributions via Stripe · Coming soon” description. It has no
-URL and performs no action, even without JavaScript. It must not send visitors
-to a fabricated checkout, collect money, or claim payments are active.
+The native disabled button previews “Support our work” with the visible note
+“Optional one-time contributions via Stripe. Available once business verification
+is complete.” It performs no action, even without JavaScript, and does not claim
+payments are active.
+
+On October 1, 2026, the owner supplied this Payment Link and stated it is inactive
+while the business is being verified:
+`https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00`.
+Both sections retain that exact public URL in `data-payment-url`, with
+`data-payment-status="pending-verification"`. This attribute is configuration,
+not a navigable link, and does not contact Stripe. No script automatically enables
+it. Activation remains a separate change after verification.
 
 Contributions express appreciation for Spectra already provided. They do not buy extra
 features, recognition coverage, or preferential customer support. Updates remain
@@ -35,14 +43,16 @@ conversion improvement. No popups, urgency, fundraising targets, or tier upsells
 
 ## Activate only when the actual business checkout is ready
 
-1. Verify Arc Signal's Stripe account eligibility and business identity. Create
-   a one-time, customer-chosen-amount tip link for appreciation of Spectra.
+1. Confirm Stripe has completed verification of Arc Signal's business and that
+   the approved Payment Link is active with the intended one-time,
+   customer-chosen-amount configuration for appreciation of Spectra.
 2. Verify the actual Stripe-hosted destination and test the payment flow using
    Stripe's test environment; never invent a live URL or perform a real charge
    as an automated UI test.
-3. Replace both disabled buttons with descriptive links to the verified HTTPS
-   checkout. Add `rel="noreferrer"` and `referrerpolicy="no-referrer"`, change
-   the payment status to active, and replace the coming-soon caption.
+3. Replace both disabled buttons with descriptive links to the approved URL
+   retained in `data-payment-url`. Add `rel="noreferrer"` and
+   `referrerpolicy="no-referrer"`, change the payment status to active, and
+   replace the pending-verification caption.
 4. Update website privacy details for the external payment processor before
    activation. Do not add Stripe scripts or an embedded checkout to these pages.
 5. Update the exact destination allowlist and placeholder assertions in the

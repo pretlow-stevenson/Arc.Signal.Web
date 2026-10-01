@@ -113,16 +113,17 @@ test('unreleased download is a truthful status rather than a broken link', () =>
   }
 });
 
-test('voluntary development support is consistent, secondary and safely stubbed', () => {
+test('voluntary development support preserves the approved URL without enabling unverified payments', () => {
   const sections = [];
   for (const name of ['index.html', 'spectra.html']) {
     const html = pages.get(name);
     const section = html.match(/<section\b[^>]*id="support-development"[\s\S]*?<\/section>/)?.[0];
     assert.ok(section, `${name}: missing development support`);
     sections.push(section);
-    assert.match(section, /data-payment-provider="stripe" data-payment-status="placeholder"/);
+    assert.match(section, /data-payment-provider="stripe" data-payment-status="pending-verification"/);
+    assert.equal(section.match(/data-payment-url="([^"]+)"/)?.[1], 'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00');
     assert.match(section, /<button class="button support-contribution" type="button" disabled aria-describedby="development-payment-note">Support our work<\/button>/);
-    assert.match(section, /Optional one-time contributions via Stripe · Coming soon/);
+    assert.match(section, /Optional one-time contributions via Stripe\. Available once business verification is complete\./);
     assert.match(section, /App updates are included—no additional payment is required/);
     assert.match(section, /An optional contribution is a way to show your appreciation for Spectra/);
     assert.doesNotMatch(section, /\bhref=|\bsrc=|<form\b|<input\b|\bonclick=|\btips?\b|donat|tax.deduct|unlock|subscriber/i);
