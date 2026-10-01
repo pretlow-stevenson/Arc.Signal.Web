@@ -5,18 +5,19 @@ product/download call to action. Existing Bodoni/Inter typography, neutral
 surfaces and responsive two-column layout are reused. No new artwork, payment
 SDK, tracking, cookie, form, or runtime dependency is introduced.
 
-The native disabled button previews “Support our work” with the visible note
-“Optional one-time contributions via Stripe. Available once business verification
-is complete.” It performs no action, even without JavaScript, and does not claim
-payments are active.
-
-On October 1, 2026, the owner supplied this Payment Link and stated it is inactive
-while the business is being verified:
+On October 1, 2026, the owner confirmed activation of this Payment Link:
 `https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00`.
-Both sections retain that exact public URL in `data-payment-url`, with
-`data-payment-status="pending-verification"`. This attribute is configuration,
-not a navigable link, and does not contact Stripe. No script automatically enables
-it. Activation remains a separate change after verification.
+Both sections use that exact URL in the “Support our work” link, with
+`data-payment-status="active"`. The visible caption reads “Optional one-time
+contribution · Checkout hosted by Stripe.” The link suppresses the referring
+page and works without JavaScript. Browsing our pages does not contact Stripe;
+only following the link opens its hosted checkout.
+
+A read-only checkout review showed Arc Signal LLC, “Support independent
+development,” and $5.00. No amount-selection control was observed, so the site
+does not promise a customer-chosen amount. No payment was submitted. The website
+privacy policy explains payment processing and contribution records separately
+from local scan history; see [Stripe’s privacy policy](https://stripe.com/privacy).
 
 Contributions express appreciation for Spectra already provided. They do not buy extra
 features, recognition coverage, or preferential customer support. Updates remain
@@ -41,28 +42,35 @@ to the underlying payment purpose or an exemption from Stripe's tip requirements
 The placement and restrained outline are design choices, not claims of measured
 conversion improvement. No popups, urgency, fundraising targets, or tier upsells.
 
-## Activate only when the actual business checkout is ready
+## Checkout maintenance
 
-1. Confirm Stripe has completed verification of Arc Signal's business and that
-   the approved Payment Link is active with the intended one-time,
-   customer-chosen-amount configuration for appreciation of Spectra.
+1. Keep the destination restricted to the owner-approved Payment Link. Check
+   the merchant identity, contribution description, amount, and one-time payment
+   configuration when changing checkout settings; do not promise unverified options.
 2. Verify the actual Stripe-hosted destination and test the payment flow using
    Stripe's test environment; never invent a live URL or perform a real charge
    as an automated UI test.
-3. Replace both disabled buttons with descriptive links to the approved URL
-   retained in `data-payment-url`. Add `rel="noreferrer"` and
-   `referrerpolicy="no-referrer"`, change the payment status to active, and
-   replace the pending-verification caption.
-4. Update website privacy details for the external payment processor before
-   activation. Do not add Stripe scripts or an embedded checkout to these pages.
-5. Update the exact destination allowlist and placeholder assertions in the
+3. Keep both contribution sections identical, including `rel="noreferrer"`,
+   `referrerpolicy="no-referrer"`, and a visible external-checkout caption.
+4. Keep website privacy details aligned with the external payment processor.
+   Do not add Stripe scripts or an embedded checkout to these pages.
+5. Maintain the exact destination allowlist and active-link assertions in the
    website tests. Recheck keyboard focus, mobile wrapping, enlarged text,
    visible disclosure, cancellation/return behavior and genuine checkout brand.
 
 Run `npm test` and `npm run build`. Keep production screenshots labeled with
 their actual app build; this website-only section does not change those assets.
 
-## Preview verification
+## Activation verification (October 1, 2026)
+
+`npm test`, `npm run guide:check`, `npm run build`, and `git diff --check` pass.
+The production build validates 35 public files. A separate hardening review
+confirmed identical sections, exact destination allowlisting, referrer suppression,
+and no embedded payment resources. The local browser render showed the enabled
+link and its caption without horizontal overflow. Checkout was reviewed read-only;
+payment completion and assistive-technology acceptance remain manual checks.
+
+## Historical preview verification
 
 September 30: all 59 site tests and the 35-file production build passed. A
 separate diff review confirmed isolated CSS selectors, identical section copy,

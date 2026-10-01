@@ -55,6 +55,8 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
       if (name === 'spectra.html' && attribute.startsWith('href=') && editorialLinks.has(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && value === 'https://developer.apple.com/download/files/accessories/dimensional-drawings/iphone-17-pro-max.pdf#page=5') continue;
       if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === nordAffiliateHref) continue;
+      if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === 'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00') continue;
+      if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && value === 'https://stripe.com/privacy') continue;
       if (value.startsWith('https://')) {
         assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
         continue;
@@ -113,26 +115,34 @@ test('unreleased download is a truthful status rather than a broken link', () =>
   }
 });
 
-test('voluntary development support preserves the approved URL without enabling unverified payments', () => {
+test('voluntary development support uses only the approved checkout with clear privacy boundaries', () => {
   const sections = [];
   for (const name of ['index.html', 'spectra.html']) {
     const html = pages.get(name);
     const section = html.match(/<section\b[^>]*id="support-development"[\s\S]*?<\/section>/)?.[0];
     assert.ok(section, `${name}: missing development support`);
     sections.push(section);
-    assert.match(section, /data-payment-provider="stripe" data-payment-status="pending-verification"/);
-    assert.equal(section.match(/data-payment-url="([^"]+)"/)?.[1], 'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00');
-    assert.match(section, /<button class="button support-contribution" type="button" disabled aria-describedby="development-payment-note">Support our work<\/button>/);
-    assert.match(section, /Optional one-time contributions via Stripe\. Available once business verification is complete\./);
+    assert.match(section, /data-payment-provider="stripe" data-payment-status="active"/);
+    const links = [...section.matchAll(/<a\b[^>]*>/g)].map(match => match[0]);
+    assert.equal(links.length, 1);
+    assert.equal(links[0].match(/href="([^"]+)"/)?.[1], 'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00');
+    assert.match(links[0], /rel="noreferrer" referrerpolicy="no-referrer" aria-describedby="development-payment-note"/);
+    assert.match(section, /Support our work <span aria-hidden="true">↗<\/span><\/a>/);
+    assert.match(section, /Optional one-time contribution · Checkout hosted by Stripe\./);
     assert.match(section, /App updates are included—no additional payment is required/);
     assert.match(section, /An optional contribution is a way to show your appreciation for Spectra/);
-    assert.doesNotMatch(section, /\bhref=|\bsrc=|<form\b|<input\b|\bonclick=|\btips?\b|donat|tax.deduct|unlock|subscriber/i);
+    assert.doesNotMatch(section, /\bsrc=|<form\b|<input\b|\bonclick=|\btips?\b|donat|tax.deduct|unlock|subscriber|disabled|pending-verification|Coming soon/i);
     assert.ok(html.indexOf('id="support-development"') > html.indexOf(name === 'index.html' ? 'id="cta-title"' : 'id="download"'));
-    assert.doesNotMatch(html, /(?:src|href)="https:\/\/(?:buy|js|checkout)\.stripe\.com/);
+    assert.doesNotMatch(html, /(?:src|href)="https:\/\/(?:js|checkout)\.stripe\.com/);
+    assert.equal([...html.matchAll(/href="https:\/\/buy\.stripe\.com\/([^"]+)"/g)].length, 1);
   }
   assert.equal(sections[0], sections[1], 'Company and product contribution copy must agree');
   assert.doesNotMatch(pages.get('guide.html'), /id="support-development"/, 'Help stays focused on help');
-  assert.match(css, /\.support-contribution:disabled\s*\{[^}]*transform: none;[^}]*box-shadow: none;/);
+  const privacy = pages.get('spectra-privacy.html');
+  assert.match(privacy, /separate Stripe-hosted checkout/);
+  assert.match(privacy, /Our website does not receive your full card number/);
+  assert.match(privacy, /separately from on-device scan history/);
+  assert.match(privacy, /href="https:\/\/stripe\.com\/privacy" rel="noreferrer" referrerpolicy="no-referrer"/);
 });
 
 test('marketing retains the important measurement and identity limits', () => {
@@ -641,7 +651,7 @@ test('Watch reset guidance distinguishes a request from confirmed remote erasure
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective September 30, 2026/);
+  assert.match(policy, /Effective October 1, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.zendesk.com', '50 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
@@ -823,7 +833,7 @@ test('privacy explains post-click referral attribution without weakening app pri
     assert.ok(policy.includes(phrase), phrase);
   }
   assert.ok(policy.includes(`href="${nordPrivacyURL}" rel="noreferrer"`));
-  assert.match(policy, /We do not contact NordVPN or Zendesk or load their scripts when you browse our pages/);
+  assert.match(policy, /We do not contact NordVPN, Zendesk, or Stripe or load their scripts when you browse our pages/);
   assert.doesNotMatch(policy, /No affiliate links are active|If we later activate|current direct NordVPN link/);
 });
 
