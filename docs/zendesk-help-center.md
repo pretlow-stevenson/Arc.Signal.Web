@@ -2,7 +2,7 @@
 
 Live: https://arcsignal.zendesk.com/hc/en-us
 
-All ten published articles reviewed September 29, 2026 against `assets/data/spectra-guide.json` (Spectra 1.0.0 / 1A1026). Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
+All ten published articles read back and reviewed October 2, 2026 against the canonical Guide and release-hardening candidate (Spectra 1.0.0 / 1A1033). Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate; this pass required no article or theme publication. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
 ## Build 1A1032 session-action content alignment
 

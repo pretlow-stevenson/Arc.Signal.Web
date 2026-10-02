@@ -19,6 +19,32 @@ const prose = html => html.replace(/<b class="ui-label">([^<>]*)<\/b>/g, '$1');
 const articleProse = article => [article.title, article.takeaway, article.important,
   ...article.steps, ...(article.sections.concat(article.technicalSections))
     .flatMap(section => [section.title, section.body])].map(guidePlainText).join('\n');
+// Accurate, unchanged platform-specific screens may retain their actual older
+// capture identity only with a review pinned to this exact Guide release.
+function assertCaptureIdentity(value) {
+  assert.match(value.bundleBuild, /^[1-9][0-9]{3}$/);
+  assert.match(value.buildIdentifier, /^[1-9][0-9]{0,3}[A-Z]{1,3}[1-9][0-9]{3}$/);
+  assert.ok(value.buildIdentifier.endsWith(value.bundleBuild));
+  assert.match(value.appSourceCommit, /^[a-f0-9]{40}$/);
+}
+function assertCaptureReview(review, provenance, guide) {
+  assert.equal(review.schemaVersion, 2);
+  assert.equal(review.appVersion, guide.appVersion);
+  assert.equal(provenance.appVersion, guide.appVersion);
+  assert.equal(review.reviewedGuideBuild, guide.build);
+  assert.equal(review.reviewedGuideBuildIdentifier, guide.buildIdentifier);
+  assert.match(review.reviewedOn, /^\d{4}-\d{2}-\d{2}$/);
+  assert.ok(review.reason.length > 100);
+  assert.ok(['iOS', 'watchOS'].includes(provenance.platform));
+  const source = review.sources[provenance.platform];
+  assertCaptureIdentity(provenance);
+  assertCaptureIdentity(source);
+  const train = guide.buildIdentifier.slice(0, -guide.build.length);
+  assert.equal(provenance.buildIdentifier, train + provenance.bundleBuild);
+  for (const key of ['bundleBuild', 'buildIdentifier', 'appSourceCommit']) {
+    assert.equal(source[key], provenance[key], `${provenance.platform}: reviewed ${key}`);
+  }
+}
 // Exact owner-approved program URL. Do not allow arbitrary tracking destinations
 // or add visitor/scan identifiers to these public, campaign-level parameters.
 const nordAffiliateHref = 'https://go.nordvpn.net/aff_c?offer_id=15&amp;aff_id=156788&amp;url_id=902';
@@ -212,11 +238,7 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
     // A release not changing pictured screens can retain accurate imagery without falsifying its
     // capture provenance. The explicit review expires at the next Guide build.
     const review = JSON.parse(await readFile(join(root, 'docs/screenshot-content-review.json'), 'utf8'));
-    assert.equal(review.appVersion, guide.appVersion);
-    assert.equal(review.sourceBundleBuild, provenance.bundleBuild);
-    assert.equal(review.reviewedGuideBuild, guide.build);
-    assert.equal(review.reviewedGuideBuildIdentifier, guide.buildIdentifier);
-    assert.ok(review.reason.length > 100);
+    assertCaptureReview(review, provenance, guide);
   } else {
     assert.equal(provenance.buildIdentifier, guide.buildIdentifier);
   }
@@ -271,13 +293,20 @@ test('Watch screenshots preserve current native dimensions and identify experime
     'not background scanning', 'watchOS 27 or later', 'iOS 27 or later', 'Public-release availability is not yet promised',
     'Example data, not nearby-device evidence', 'guide.html#watch']) assert.ok(section.includes(phrase), phrase);
   const provenance = JSON.parse(await readFile(join(root, 'assets/data/spectra-watch-screenshots.json'), 'utf8'));
-  const phone = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   assert.equal(provenance.platform, 'watchOS');
   assert.equal(provenance.exampleData, true);
-  // Platforms can be captured separately after a platform-specific copy fix.
-  // Keep their true commits; matching build identity prevents stale release art.
+  // Independent platform capture provenance is never relabeled to match phone.
+  // An older unchanged screen requires an explicit, expiring platform review.
   assert.match(provenance.appSourceCommit, /^[a-f0-9]{40}$/);
-  for (const key of ['appVersion', 'bundleBuild', 'buildIdentifier']) assert.equal(provenance[key], phone[key]);
+  assertCaptureIdentity(provenance);
+  assert.equal(provenance.appVersion, guide.appVersion);
+  if (provenance.bundleBuild !== guide.build) {
+    const review = JSON.parse(await readFile(join(root, 'docs/screenshot-content-review.json'), 'utf8'));
+    assertCaptureReview(review, provenance, guide);
+  } else {
+    assert.equal(provenance.buildIdentifier, guide.buildIdentifier);
+  }
   assert.match(provenance.captureRuntime, /watchOS 27/);
   assert.match(provenance.transformation, /every RGBA pixel preserved/);
   assert.deepEqual(provenance.items.map(item => item.id), ['watch-start', 'watch-complete']);
@@ -309,6 +338,43 @@ test('Watch screenshots preserve current native dimensions and identify experime
   }
   assert.match(css, /\.watch-screen-grid img \{ width: 100%; height: auto; \}/);
   assert.match(css, /@media \(max-width: 560px\) \{ \.watch-screen-grid \{ grid-template-columns: minmax\(0, 1fr\); \} \}/);
+});
+
+test('platform capture reviews reject stale releases and altered provenance', async () => {
+  const review = JSON.parse(await readFile(join(root, 'docs/screenshot-content-review.json'), 'utf8'));
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  for (const file of ['spectra-screenshots.json', 'spectra-watch-screenshots.json']) {
+    const provenance = JSON.parse(await readFile(join(root, `assets/data/${file}`), 'utf8'));
+    assertCaptureReview(review, provenance, guide);
+    for (const key of ['bundleBuild', 'buildIdentifier', 'appSourceCommit']) {
+      const altered = structuredClone(review);
+      altered.sources[provenance.platform][key] = 'altered';
+      assert.throws(() => assertCaptureReview(altered, provenance, guide), key);
+      // Equal malformed/missing values on both sides must not authorize art.
+      for (const value of [undefined, 'invalid']) {
+        const invalidReview = structuredClone(review);
+        const invalidProvenance = structuredClone(provenance);
+        if (value === undefined) {
+          delete invalidReview.sources[provenance.platform][key];
+          delete invalidProvenance[key];
+        } else {
+          invalidReview.sources[provenance.platform][key] = value;
+          invalidProvenance[key] = value;
+        }
+        assert.throws(() => assertCaptureReview(invalidReview, invalidProvenance, guide), `${key}: joint ${value}`);
+      }
+    }
+    for (const key of ['appVersion', 'reviewedGuideBuild', 'reviewedGuideBuildIdentifier']) {
+      assert.throws(() => assertCaptureReview({ ...review, [key]: 'stale' }, provenance, guide), key);
+    }
+    assert.throws(() => assertCaptureReview(review, { ...provenance, platform: 'unknown' }, guide));
+    assert.throws(() => assertCaptureReview({ ...review, reason: '' }, provenance, guide));
+    for (const value of ['1A1999', '2A' + provenance.bundleBuild]) {
+      const inconsistentReview = structuredClone(review);
+      inconsistentReview.sources[provenance.platform].buildIdentifier = value;
+      assert.throws(() => assertCaptureReview(inconsistentReview, { ...provenance, buildIdentifier: value }, guide));
+    }
+  }
 });
 
 test('Spectra product wordmark preserves approved pixels and accessible placement', async () => {

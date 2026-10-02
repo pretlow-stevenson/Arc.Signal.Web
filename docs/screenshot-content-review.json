@@ -1,8 +1,20 @@
 {
+  "schemaVersion": 2,
   "appVersion": "1.0.0",
-  "sourceBundleBuild": "1028",
-  "reviewedGuideBuild": "1032",
-  "reviewedGuideBuildIdentifier": "1A1032",
-  "reviewedOn": "2026-09-30",
-  "reason": "Build 1032 adds full-swipe Rename/Delete and temporary Undo after an individual session deletion. Existing marketing images show the normal Sessions list, not open swipe actions or deletion feedback; the Watch screens are unchanged. They also remain untagged and do not show the map preference introduced in 1031. Native build-1028 captures remain representative for those pictured flows; source identity and pixels are preserved. The Guide, privacy policy, support article and App Store reviewer notes explain the new session actions. This review does not authorize stale assets for future interface changes."
+  "sources": {
+    "iOS": {
+      "bundleBuild": "1033",
+      "buildIdentifier": "1A1033",
+      "appSourceCommit": "50ee7707b4428340a39ca4623e942a9c44b5e3c3"
+    },
+    "watchOS": {
+      "bundleBuild": "1028",
+      "buildIdentifier": "1A1028",
+      "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
+    }
+  },
+  "reviewedGuideBuild": "1033",
+  "reviewedGuideBuildIdentifier": "1A1033",
+  "reviewedOn": "2026-10-02",
+  "reason": "The iPhone images are fresh native captures of build 1033, source 50ee770, including the hardened result disclosures. All six App Store exports and four separate QA captures were visually reviewed; four website imports preserve every decoded pixel. Approved Circular branding, story composition and fictional-data disclosures are unchanged. The separately reviewed Watch start/completion screens still accurately depict the unchanged experimental workflow and retain their actual build-1028 source identity and pixels; the anomalous-packet warning is not pictured. The canonical Guide, privacy policy and ten published Zendesk articles were checked against current behavior. This platform-specific review expires with the next Guide build and does not authorize stale imagery after a pictured workflow changes."
 }
