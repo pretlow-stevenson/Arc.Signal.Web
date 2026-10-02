@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1033",
-  "reviewedGuideBuildIdentifier": "1A1033",
+  "reviewedGuideBuild": "1034",
+  "reviewedGuideBuildIdentifier": "1A1034",
   "reviewedOn": "2026-10-02",
-  "reason": "The iPhone images are fresh native captures of build 1033, source 50ee770, including the hardened result disclosures. All six App Store exports and four separate QA captures were visually reviewed; four website imports preserve every decoded pixel. Approved Circular branding, story composition and fictional-data disclosures are unchanged. The separately reviewed Watch start/completion screens still accurately depict the unchanged experimental workflow and retain their actual build-1028 source identity and pixels; the anomalous-packet warning is not pictured. The canonical Guide, privacy policy and ten published Zendesk articles were checked against current behavior. This platform-specific review expires with the next Guide build and does not authorize stale imagery after a pictured workflow changes."
+  "reason": "Build 1034 adds Arc Signal website only to Settings → About and documents that route in the canonical Guide. No marketing frame or website screenshot depicts Settings/About. The genuine build-1033 iPhone images, source 50ee770, and separately recorded unchanged build-1028 Watch images remain accurate for every pictured workflow. Their source identities, exact native pixels, approved Circular branding, composition and fictional-data disclosures remain untouched. Support destinations, privacy behavior, recognition and experimental Watch collection are unchanged. This explicit platform-specific review expires with the next Guide build and does not authorize stale imagery after a pictured workflow changes."
 }

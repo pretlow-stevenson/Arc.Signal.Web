@@ -920,7 +920,7 @@
             "title" : "Heat, battery, and dense environments"
           },
           {
-            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens arcsignal.zendesk.com; **Email support** opens your mail app. Zendesk handles information you submit. Nothing is attached or sent automatically. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
+            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens arcsignal.zendesk.com; **Email support** opens your mail app. Zendesk handles information you submit. Nothing is attached or sent automatically. For company and product information, **Arc Signal website** in **Settings** → **About** opens arcsignal.app. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
             "id" : "support",
             "title" : "Help us reproduce it safely"
           }
@@ -1036,8 +1036,8 @@
       }
     }
   ],
-  "build" : "1033",
-  "buildIdentifier" : "1A1033",
+  "build" : "1034",
+  "buildIdentifier" : "1A1034",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

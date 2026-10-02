@@ -101,6 +101,11 @@ allocate a build or change the lock. Regenerate after an approved release change
 release identity shape and matching numeric/public build suffix, support address,
 compatibility, and the public policy link.
 
+Build 1A1034 adds **Arc Signal website** in the app's Settings → About, separate
+from hosted support. The canonical troubleshooting Guide names that route.
+No marketing image depicts this section; the explicit content review retains
+actual iPhone-1033 and Watch-1028 capture provenance for their unchanged screens.
+
 Phone-free collection is explained on the product page, in its FAQ, in the
 canonical Guide, and in the published Zendesk Watch article. Up to five captures
 fit on Watch in total; unsent captures are protected and full storage can block
