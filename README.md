@@ -106,6 +106,11 @@ from hosted support. The canonical troubleshooting Guide names that route.
 No marketing image depicts this section; the explicit content review retains
 actual iPhone-1033 and Watch-1028 capture provenance for their unchanged screens.
 
+Build 1A1035 matches Sessions' multi-select circles to Area Sweep's established
+size and weight. No marketing image shows selection mode; normal session rows
+and all pictured workflows remain unchanged. The explicit image review is
+renewed against the current Guide identity without relabeling earlier captures.
+
 Phone-free collection is explained on the product page, in its FAQ, in the
 canonical Guide, and in the published Zendesk Watch article. Up to five captures
 fit on Watch in total; unsent captures are protected and full storage can block
