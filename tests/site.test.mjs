@@ -769,6 +769,19 @@ test('location tagging remains per-check, optional, source-specific and separate
     'removes it from that saved copy', 'Protected recovery copies']) assert.ok(policy.includes(phrase), phrase);
 });
 
+test('Guide setup order and access review match the current application', async () => {
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  assert.deepEqual(guide.articles.filter(a => a.category === 'gettingStarted').map(a => a.content.id),
+    ['setup', 'detection', 'travel', 'watch']);
+  const setup = guide.articles.find(a => a.content.id === 'setup').content;
+  assert.match(setup.steps[0], /\*\*Privacy & storage\*\*/);
+  assert.match(setup.steps[0], /\*\*Done\*\*/);
+  assert.match(setup.steps[0], /unused measurements do not need to be configured/);
+  const support = await readFile(join(root, 'docs/zendesk-getting-started-article.html'), 'utf8');
+  assert.match(support, /Settings → Privacy &amp; storage → Measurement access/);
+  assert.match(support, /Tap <strong>Done<\/strong> to return/);
+});
+
 test('saved maps require explicit opt-in and keep location meaning and privacy clear', async () => {
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   const sessions = guide.articles.find(({ content }) => content.id === 'sessions').content;

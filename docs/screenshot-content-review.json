@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1038",
-  "reviewedGuideBuildIdentifier": "1A1038",
+  "reviewedGuideBuild": "1039",
+  "reviewedGuideBuildIdentifier": "1A1039",
   "reviewedOn": "2026-10-03",
-  "reason": "Build 1038 uses approved native sunglasses and filled Watch styling on the main Scan screen, plus a Watch-with-radio-waves icon for Watch-collected sessions and related iPhone surfaces. Explicit source, measurement scope, Experimental status and recheck context remain. All six iPhone App Store panels and QA captures refresh from the reviewed frozen 1038 source; the four website views import exact native pixels losslessly. The generated Guide, website FAQ and published Sessions/Watch support articles explain collector origin without implying a live connection or specialist purpose. No watchOS screen or collector behavior changes; separately recorded build 1028 Watch imagery remains accurate with its actual provenance. Exact Circular branding, composition, example disclosures and unchanged feature claims remain intact. This scoped Watch content review expires at the next Guide build and cannot excuse stale imagery after a pictured workflow changes."
+  "reason": "Build 1039 changes Settings section/action ordering, separates Measurement access review from onboarding, and puts setup first in the Guide. None of the published iPhone marketing panels or website gallery images pictures these affected screens. Scan, specialist preparation, magnetic exploration, completed evidence, Monitor, Sessions, and the watchOS Start/completion screens are unchanged. Retain the actual reviewed native 1038 iPhone and 1028 Watch image provenance; do not relabel them as 1039 captures. The generated 1039 Guide mirrors the updated app order and access-review instructions, and the Getting started support article is updated separately. New Settings/access/Guide QA is recorded with the 1039 release evidence. Exact Circular branding, synthetic example disclosures, OS requirements, and feature/privacy claims remain accurate. This scoped review expires at the next Guide build and cannot excuse stale imagery after a pictured workflow changes."
 }

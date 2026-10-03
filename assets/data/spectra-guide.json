@@ -5,6 +5,102 @@
       "category" : "gettingStarted",
       "categoryTitle" : "Getting started",
       "content" : {
+        "id" : "setup",
+        "important" : "Permission, hardware readiness, network reachability, and device visibility are different things. A readiness checkmark is not a safety verdict.",
+        "navigationTitle" : "Measurement setup",
+        "sections" : [
+          {
+            "body" : "Spectra requires an iPhone running iOS 27 or later. Scanning, Bluetooth Proximity, saved results, and JSON export do not require Apple Intelligence or an in-app purchase. Each measurement still needs its hardware and permission; Spectra checks selected measurements before a scan and explains anything unavailable.",
+            "id" : "compatibility",
+            "title" : "Supported iPhones"
+          },
+          {
+            "body" : "Only on-device analysis requires an Apple Intelligence-capable iPhone with Apple Intelligence enabled and ready in a supported language and region. If your iPhone does not support it, or the model is disabled or still downloading, you can still scan, review all measured evidence, and export JSON. No analysis runs automatically. Availability is checked separately when you use analysis.",
+            "id" : "analysis-availability",
+            "title" : "Apple Intelligence is optional"
+          },
+          {
+            "body" : "Welcome explains the app. **Get Started** opens measurement setup. Tap a measurement to request its access; a readiness checkmark reflects the system response. You can continue without every permission. A prompt explains what remains unconfigured, and a later check requests only missing access.",
+            "id" : "welcome",
+            "title" : "Start with access"
+          },
+          {
+            "body" : "**Quick Check** uses Bluetooth and optional **Local network** for 30 seconds. **Area Sweep** can use Bluetooth, **Local network**, and **Motion and magnetic**, together or independently, with an extendable 30-minute limit. **Monitor** is stationary and radio-only. **Smart Glasses** and **Watches & Wearables** keep Bluetooth fixed; their short preparation screen offers the same optional **Tag location** choice as other iPhone checks. Completed results offer name search and a separate **View observed activity** route for Bluetooth identities that did not match. Device types are estimates, not selectable filters.",
+            "id" : "sources",
+            "title" : "Choose measurements for each check"
+          },
+          {
+            "body" : "Touch and hold Spectra’s app icon, then choose **Quick Check**, **Smart Glasses**, or **Watches & Wearables**. **Quick Check** opens measurement selection; the specialist shortcuts open their Bluetooth-only preparation screen. Location tagging stays optional and off until you choose it. On first use, finish **Welcome** and measurement setup, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
+            "id" : "shortcuts",
+            "title" : "Start from the Home Screen"
+          },
+          {
+            "body" : "The iPhone **Area Sweep** limit starts when collection begins, not while permissions or instructions are open. At 25 minutes, a quiet notice offers **Extend 30 Minutes** or **Finish Area Sweep**. Each extension adds 30 minutes to the deadline, with another notice five minutes before it. Elapsed time stays visible. At the deadline, Spectra finishes through its normal results flow and follows **Save completed sessions**; it does not override your saving preference. Confirm the saved status or use **Retry Saving** or **Export JSON** if needed. **Monitor** and the Watch’s 30-second sweep are unchanged. Longer listening does not guarantee complete discovery or unlimited retained evidence.",
+            "id" : "sweep-limit",
+            "title" : "Take your time, with a clear stopping point"
+          },
+          {
+            "body" : "Before any iPhone check, optionally turn on **Tag location**. It is off for each new check and asks for Location access only when chosen. Approximate access is supported; scanning still works if permission is denied or a usable fix is unavailable. Spectra requests a single position near collection start and stops requesting it after a short window. **Scan start location** shows coordinates and estimated accuracy, not an address, route, room, or detected-device position. You can separately enable automatic map previews of saved areas through Apple Maps; this does not request your current location. Watch captures do not receive the phone’s location when imported. Location is not required for Bluetooth, local-network, or magnetic measurements.",
+            "id" : "tag-location",
+            "title" : "Remember where a check began"
+          },
+          {
+            "body" : "In Spectra, open **Settings** → **App icon** to choose **Classic**, **Spectra Blue**, **Light**, or **Blue on White**. Each uses Spectra’s original waveform. A checkmark identifies the icon confirmed by iOS; a spinner shows a change in progress. This changes the app icon, not the colors inside Spectra. Your iPhone’s icon appearance settings may adjust the colors. **Reset Spectra** erases local data and returns to **Welcome** first, then asks iOS to restore **Classic**. If iOS takes longer than expected, Spectra reports the unconfirmed change; iOS may still finish an earlier request. Review the icon in **Settings** after setup.",
+            "id" : "app-icon",
+            "title" : "Choose an app icon"
+          },
+          {
+            "body" : "Local Network needs a joined Wi-Fi or supported wired local link and permission. Spectra offers **Check again** or continuation without that measurement when others can run. Returning from **Settings** rechecks availability; it does not silently start a scan. An internet connection is not required for local discovery.",
+            "id" : "network",
+            "title" : "No local network available?"
+          },
+          {
+            "body" : "A completed source ran for the available check window, not that every device was found. **Partial** means coverage was interrupted or quality-limited. **Unavailable** means the source could not run; **Not selected** means you excluded it. Read the accompanying reason before drawing conclusions.",
+            "id" : "coverage",
+            "title" : "Read Coverage"
+          }
+        ],
+        "steps" : [
+          "In Spectra, open **Settings** → **Privacy & storage** → **Measurement access** to review permissions and sensor readiness. Tap **Done** to return; unused measurements do not need to be configured.",
+          "If iOS has already denied access, use iPhone **Settings** → **Privacy & Security** or the app’s settings to change it.",
+          "Return to Spectra, choose measurements, and review any readiness message before starting."
+        ],
+        "symbol" : "checklist",
+        "takeaway" : "Allow only the measurements you want. Setup prepares access; it does not start a scan.",
+        "technicalSections" : [
+          {
+            "body" : "Showing an optional Wi-Fi name uses Apple’s Access Wi-Fi Information rules, including Precise Location While Using the App when required. This is not needed for Bluetooth, magnetic exploration, or Bonjour browsing. The Wi-Fi-name action does not request geographic coordinates or save the name. **Tag location** is a separate, per-check request for coordinates; granting permission alone does not enable it. iOS may withhold a Wi-Fi name even when local discovery can operate.",
+            "id" : "location",
+            "title" : "Why does Wi-Fi name ask for Location?"
+          },
+          {
+            "body" : "Spectra accepts a fix at most ten seconds old and waits up to twelve seconds from collection start. A fix must report estimated horizontal accuracy of 5 km or better. Approximate permission can produce a broad region, and indoor reception may yield no usable fix. These are freshness and quality bounds, not a guarantee of accuracy. No automatic address lookup is performed. If no fix qualifies, the check continues without a tag. Starting another check never reuses a prior session’s position as its own.",
+            "id" : "location-quality",
+            "title" : "When can a location tag be saved?"
+          },
+          {
+            "body" : "The displayed network name provides connection context, not a router model, physical location, or assurance that the network is trustworthy. Guest networks and client isolation may prevent discovering other clients despite a working connection.",
+            "id" : "router",
+            "title" : "A Wi-Fi name is not a router identity"
+          },
+          {
+            "body" : "Spectra uses a fixed standard text size. Changing iOS Dynamic Type or Larger Text does not resize the app’s own interface. VoiceOver labels remain available, and contrast and reduced-motion preferences still apply. System-owned permission dialogs and sharing interfaces are controlled by iOS.",
+            "id" : "text-size",
+            "title" : "Text size and accessibility"
+          },
+          {
+            "body" : "The shipped device catalog, Guide, Bluetooth observation, magnetic exploration, saved history, and preparing JSON work on device. Apple Intelligence analysis also works locally once its supported model is ready. Local Network still needs a usable local link. Loading a map preview, sending email, opening website help, cloud file destinations, or using an external AI service may require internet. An unavailable map does not prevent reviewing saved coordinates or findings.",
+            "id" : "offline",
+            "title" : "What works without internet?"
+          }
+        ],
+        "title" : "Set up measurements and permissions"
+      }
+    },
+    {
+      "category" : "gettingStarted",
+      "categoryTitle" : "Getting started",
+      "content" : {
         "example" : "sources",
         "id" : "detection",
         "important" : "An observation does not prove that a device is recording or malicious. A quiet check cannot prove that a space is clear.",
@@ -71,6 +167,180 @@
           }
         ],
         "title" : "How detection works"
+      }
+    },
+    {
+      "category" : "gettingStarted",
+      "categoryTitle" : "Getting started",
+      "content" : {
+        "id" : "travel",
+        "important" : "For a credible threat or highly sensitive activity, do not rely on a phone scan. Move sensitive conversations to a more appropriate location and consult a trusted security contact. Do not tamper with equipment or confront people based on an app result.",
+        "navigationTitle" : "Travel review",
+        "sections" : [
+          {
+            "body" : "At a hotel, Airbnb or other vacation rental, or in student housing, start with a **Quick Check** to get oriented. Use **Area Sweep** for a closer, unhurried look at accessible areas you are allowed to inspect. In gyms and changing rooms, respect other people's privacy and facility rules; move to a private place to review findings. An unfamiliar broadcast is not evidence of covert recording, and a signal may come from outside the room.",
+            "id" : "private-spaces",
+            "title" : "Hotels, rentals, and shared spaces"
+          },
+          {
+            "body" : "As a passenger, or while waiting in an airport, station, café, or other public space, a **Quick Check** can provide a snapshot of available signals. Specialist checks focus on recognizable glasses or wearables. Crowds contain many ordinary devices; names and signal strength cannot identify the person carrying one. Do not scan while driving or confront someone based on a result.",
+            "id" : "public-spaces",
+            "title" : "Rideshares and busy public places"
+          },
+          {
+            "body" : "Review partial or unavailable sources before interpreting results. A 30-second snapshot can miss intermittent broadcasts. Local Network reaches only visible services on your joined network.",
+            "id" : "coverage",
+            "title" : "Check what was actually measured"
+          },
+          {
+            "body" : "A product name can be changed or spoofed. Strong Bluetooth readings are not distance, and magnetic spikes can come from ordinary magnets or wiring. Neither identifies recording activity. Clear measurement filters and name search to include every retained result. In specialist checks, also open **View observed activity**; an unidentified device may not appear among supported matches.",
+            "id" : "interpret",
+            "title" : "Separate clues from conclusions"
+          },
+          {
+            "body" : "Confirm the intended Wi-Fi name with the venue using a trusted channel; a familiar name alone does not authenticate a network. Prefer cellular data when you do not trust the connection. Keep iOS and apps updated, protect accounts with multifactor authentication, and heed certificate warnings. HTTPS protects traffic to a site but does not prove that the site itself is trustworthy. Avoid exposing sensitive conversations or screens in shared spaces.",
+            "id" : "connections",
+            "title" : "Protect the connection, too"
+          },
+          {
+            "body" : "If you use shared Wi-Fi, consider a reputable VPN you trust and can use under your organization's policy. It encrypts traffic routed through its tunnel between your phone and the VPN service; trust shifts to that provider. It does not prevent nearby cameras or microphones from recording, authenticate a hotspot, make you anonymous, or make a malicious website safe. Spectra does not provide a VPN. VPN settings can affect local-network discovery; do not turn off required protection just to find more devices.",
+            "id" : "vpn",
+            "title" : "Where a VPN helps—and where it does not"
+          },
+          {
+            "body" : "Rename a saved session and add notes about areas inspected, repeatable changes, alternative explanations, and unresolved questions. Notes are yours, not sensor evidence. Avoid sensitive itinerary or personal details.",
+            "id" : "record",
+            "title" : "Record the context"
+          }
+        ],
+        "steps" : [
+          "Choose **Quick Check** for a radio snapshot or **Area Sweep** for deliberate exploration. Do not join an unfamiliar Wi-Fi network just to scan.",
+          "Review coverage, repeat observations from consistent positions, and consider ordinary explanations before escalating.",
+          "Check unclassified and out-of-filter results. **Expected** is your label for this check, not authenticated safety.",
+          "Confirm saving before closing; use **Sessions** to add your context. An earlier check does not describe the space now."
+        ],
+        "symbol" : "suitcase.rolling",
+        "takeaway" : "Use Spectra to inform your next decision—not to certify that a space is safe.",
+        "technicalSections" : [
+          {
+            "body" : "Reports and notes are bounded local records, not tamper-evident exports or a forensic chain of custody. The primary history file retains at most 50 sessions within 256 MiB and can retire older reports. Temporary replacement files and protected recovery copies may use additional disk space. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
+            "id" : "retention",
+            "title" : "Not a forensic record"
+          },
+          {
+            "body" : "Silent, wired, shielded, powered-off, or unrecognizable devices can remain invisible. Identity rotation can produce more than one exact record, and the app does not merge devices across sessions. No checklist or result is an all-clear.",
+            "id" : "limits",
+            "title" : "Beyond the iPhone's visibility"
+          }
+        ],
+        "title" : "Reviewing an unfamiliar space"
+      }
+    },
+    {
+      "category" : "gettingStarted",
+      "categoryTitle" : "Getting started",
+      "content" : {
+        "id" : "watch",
+        "important" : "**Experimental** means behavior is still being validated across Watches and environments. Bluetooth identifiers are not a verified device count. An empty or partial capture is never an all-clear.",
+        "navigationTitle" : "Experimental Watch",
+        "sections" : [
+          {
+            "body" : "The optional Experimental Watch companion requires watchOS 27 or later and a paired iPhone running iOS 27 or later with Spectra. The iPhone app works without an Apple Watch. The companion offers only a 30-second Bluetooth **Area Sweep**. It does not measure local-network services or magnetic fields, run specialist checks, tag locations, or identify devices on the Watch. New captures transfer automatically to your paired iPhone, where Spectra identifies retained signals and saves the result in **Sessions**. Importing does not attach the phone’s current location.",
+            "id" : "scope",
+            "title" : "One check, a smaller screen"
+          },
+          {
+            "body" : "After installing the companion and opening Spectra on your paired iPhone once to prepare transfer, you can collect without your iPhone nearby. The Watch uses its own Bluetooth radio and saves captures locally; collection does not need an internet connection or cellular plan. Keep Bluetooth available, allow access, and keep Spectra active with the display fully awake for each 30-second sweep. Check **Saved sweeps** before heading out: the Watch holds up to five captures in total, including earlier copies. When you reconnect, open Spectra on your paired iPhone to identify signals and review findings in **Sessions**. The Watch shows capture and transfer status, not identified results.",
+            "id" : "phone-free",
+            "title" : "Leave your iPhone behind, review later"
+          },
+          {
+            "body" : "The Watch start screen keeps **Start Sweep** as the main action. The tray button opens **Saved sweeps** for captures and transfer status. Open **Settings** below **Start Sweep** for **Sweep guidance**, **Storage & transfer**, **Diagnostic reports**, and **About**. **About** shows the version, release identifier, numeric build and watchOS version installed on your Watch; check these separately from iPhone when troubleshooting an update. Recognition uses the engine and catalog installed on iPhone, not a separate Watch catalog.",
+            "id" : "settings",
+            "title" : "A focused start, help when you need it"
+          },
+          {
+            "body" : "**Completion haptic** in Spectra’s Watch **Settings** is on by default. Turn it off if you prefer visual feedback only. The system feedback follows your Watch sound and haptic settings; it is not a guarantee of silent operation. Read the completion or partial-capture status: feedback alone does not mean that every nearby device was observed or that transfer finished.",
+            "id" : "feedback",
+            "title" : "Choose completion feedback"
+          },
+          {
+            "body" : "On Apple Watch, open **Settings** → **Display & Brightness** → **Wake Duration** and choose **Wake for 70 Seconds**. Tap to wake the display fully, start the sweep, and keep your wrist raised with Spectra active until it finishes. The first Start after launching Spectra shows a setup reminder: **Start Sweep** continues; **Not Now** starts nothing. Acknowledging it does not verify or change your setting. **Always On** can leave Spectra visible while inactive; visibility alone does not keep Bluetooth collection running. **Return to Clock** is a different setting. Spectra cannot change these system settings or guarantee active time on every Watch.",
+            "id" : "awake",
+            "title" : "Keep the display fully awake"
+          },
+          {
+            "body" : "If Spectra becomes inactive or you leave it during collection, the sweep ends and preserves the evidence already retained as partial. It does not resume when you return. An early stop, Bluetooth loss, or a retention limit can also reduce coverage. Review the reason, adjust your setup, and start a new sweep when ready. A timer finishing does not prove every nearby device was observed.",
+            "id" : "partial",
+            "title" : "An interruption keeps a partial capture"
+          },
+          {
+            "body" : "Open Spectra on your paired iPhone once to prepare transfer. After each new sweep, the Watch saves the capture before automatically queuing it for your paired iPhone. **Queued** means delivery is pending; **Received on iPhone** confirms local storage, not completed recognition. Open Spectra on iPhone to identify received signals and add them to **Sessions** automatically. No need to keep the Watch completion screen open. Choose **New Sweep** to collect again, or open **Saved sweeps** from the tray button to review transfer status and retry when needed. Transfers may wait for connectivity or Apple’s scheduling. **Settings** → **Experimental Watch** on iPhone provides processing and transfer help. Older captures sent before automatic handoff may still offer **Add to Sessions**.",
+            "id" : "handoff",
+            "title" : "Finish on Watch, review on iPhone"
+          },
+          {
+            "body" : "Look for the Watch-with-radio-waves icon and **Apple Watch · Bluetooth-only sweep** label. They identify where the evidence was collected, not a search for nearby watches. Your custom name never replaces this origin label, and rechecks keep it along with the original capture time. **Experimental** and partial-capture status stay visible. Blue icons identify original captures; violet icons and a **Recheck** number identify later interpretations. Review **Coverage**: even a complete 30-second capture cannot confirm that every nearby device was observed.",
+            "id" : "sessions-origin",
+            "title" : "Find your Watch sweep in Sessions"
+          },
+          {
+            "body" : "Each device retains up to five capture copies, bounded to 4 MiB each. When space is needed, the Watch retires only copies confirmed received on iPhone; the phone retires only inbox copies already processed into **Sessions**. Unsent or unprocessed evidence is not automatically discarded. **Sessions** remain until you delete them or normal session retention applies. A full store with no eligible copies stops accepting new captures; review the transfer or processing status before retrying. Watch sweeps save to **Sessions** independently of the **Save completed sessions** setting for iPhone checks.",
+            "id" : "capacity",
+            "title" : "Room for the next sweep"
+          },
+          {
+            "body" : "**Reset Spectra** on iPhone erases its sessions, received Watch data, and preferences, then requests erasure of captures, diagnostics, and preferences in the known paired Watch app. **Watch reset pending** means the Watch has not confirmed erasure; an offline Watch may still hold data. Keep the devices paired and open Spectra on Watch to finish. **Watch reset confirmed** appears only after the Watch reports completion. When the Watch receives a reset, it stops collection and discards any unfinished sweep. System permissions and files exported or shared elsewhere remain.",
+            "id" : "reset",
+            "title" : "Confirm a reset on both devices"
+          },
+          {
+            "body" : "In Spectra on iPhone, open **Settings** and review the **Apple Watch** section. **Watch reset not ready** can mean the paired Watch app has not introduced itself or needs an update. Open or update Spectra on both devices, then explicitly choose **Reset Watch** and confirm. A newly paired or reinstalled Watch is not automatically erased by an earlier request. If **Watch reset needs attention** appears, follow the recovery guidance; do not assume erasure succeeded. No paired Watch means there is no Watch reset to request.",
+            "id" : "reset-recovery",
+            "title" : "If the Watch reset is not ready"
+          },
+          {
+            "body" : "Captures can contain advertised names, manufacturer and service bytes, signal strength, timestamps, and session-scoped identity tokens. These fields can identify devices or people. Spectra uses protected local storage marked for exclusion from backups and Apple’s paired-device transfer; it does not upload captures to Arc Signal or an identification service. Operating-system backup behavior remains under Apple’s control.",
+            "id" : "privacy",
+            "title" : "Captured on Watch, reviewed on iPhone"
+          }
+        ],
+        "steps" : [
+          "Install the Watch companion and open Spectra on iPhone once. Set the Watch’s **Wake Duration** to 70 seconds.",
+          "Tap to wake the Watch fully, start a sweep, and keep Spectra active for the 30-second window.",
+          "Review completion or interruption status. New captures are saved and queued for your paired iPhone automatically.",
+          "Open Spectra on iPhone and review **Sessions** once processing finishes. Review findings and **Coverage** before drawing conclusions; use **Settings** → **Experimental Watch** if a transfer needs attention."
+        ],
+        "symbol" : "applewatch.radiowaves.left.and.right",
+        "takeaway" : "Capture without your iPhone nearby. Save up to five Bluetooth sweeps on your Watch, then review findings on your paired iPhone. This companion is experimental—not a background scanner.",
+        "technicalSections" : [
+          {
+            "body" : "The Watch retains bounded advertisement evidence, not every radio packet. Callback timing is delivery timing, not proof of uninterrupted sampling. Repeated callbacks do not establish separate physical devices; a product can change identifiers. Names and protocol fields are unauthenticated claims. Recognition on iPhone cannot recover information the Watch did not retain. Recorded signal strength was measured by the Watch, not the iPhone; readings taken later with the phone can differ.",
+            "id" : "evidence",
+            "title" : "Observation is bounded"
+          },
+          {
+            "body" : "For an eligible saved Watch finding, **Bluetooth Proximity** searches for possible matching broadcasts near your iPhone and asks you to confirm a candidate. It cannot reuse a Watch identity as a verified iPhone target or turn recorded Watch strength into a live reading. Matching names or payloads can come from different devices. The new signal measurement is taken by the iPhone; it does not verify identity or measure distance from the Watch.",
+            "id" : "proximity",
+            "title" : "A new proximity check uses the iPhone"
+          },
+          {
+            "body" : "Watch captures, the iPhone inbox, imported **Sessions**, and timing diagnostics are separate stores. **Erase Inbox Copies** leaves imported sessions intact. Individual session deletion leaves inbox and Watch copies intact. **Erase All Sessions** also clears the received Watch inbox, but does not request a Watch reset. Watch copies remain after those actions. **Reset Spectra** additionally clears received diagnostics and preferences and requests a paired Watch reset. Previously queued copies cannot silently restore erased iPhone data. Erasing captures directly on Watch cancels queued transfers where possible, but already delivered or in-flight phone copies may remain. Exported files and system permissions are not erased.",
+            "id" : "deletion",
+            "title" : "Copies have separate erase controls"
+          },
+          {
+            "body" : "A protected local reset-status record survives a reset so Spectra can finish an offline Watch request and reject stale commands or transfers. It contains random coordination identifiers and request status, not captured signals. A reset request applies only to the Watch app installation it names. Repeated delivery of an already completed request does not erase a new sweep. Confirmation describes completion of that request, not a promise that the Watch can never collect new data.",
+            "id" : "reset-control",
+            "title" : "Why a small reset record remains"
+          },
+          {
+            "body" : "Watch diagnostics are separate from scan captures. They retain up to 20 recent timing and count reports per device, including Watch model, OS/build, completion status and lifecycle events, but no nearby-device names, identity values or advertisement payloads. Use **Share Watch diagnostics** on iPhone to deliberately share received reports for troubleshooting. Dates and hardware details can still reveal context. Nothing is sent to support automatically.",
+            "id" : "diagnostics",
+            "title" : "Share timing diagnostics only when needed"
+          }
+        ],
+        "title" : "Try the Experimental Watch collector"
       }
     },
     {
@@ -275,6 +545,128 @@
       }
     },
     {
+      "category" : "understandingResults",
+      "categoryTitle" : "Understanding results",
+      "content" : {
+        "id" : "monitoring",
+        "important" : "Keep Spectra open. Locking the iPhone or switching apps ends measurement. Monitor is not an unattended or background security alarm.",
+        "navigationTitle" : "Monitor",
+        "sections" : [
+          {
+            "body" : "Each available radio source needs 30 seconds of active observation to establish its baseline. Permission waiting does not count. The countdown follows the slowest participating source. **Observe 30 seconds longer** extends that comparison once to 60 seconds per source. No duration guarantees discovery of every device.",
+            "id" : "baseline",
+            "title" : "Give the starting comparison time"
+          },
+          {
+            "body" : "Baseline signals remain in the final inventory. A potentially concerning device already present is not cleared or hidden. A device first observed during baseline collection becomes part of that starting comparison; one first observed afterward is newly observed, not necessarily newly arrived.",
+            "id" : "meaning",
+            "title" : "Initially observed does not mean trusted"
+          },
+          {
+            "body" : "The **Newly observed**, **Returned**, and **Not recently seen** rows count distinct signal identities represented in retained changes. Repeated changes for the same identity count once in each row. One identity can appear in more than one row, so do not add these counts as a total device count. The latest change stays visible until you choose **Mark changes reviewed**; that acknowledgment does not trust a device, reset the baseline, or erase evidence.",
+            "id" : "dashboard",
+            "title" : "Read changes at a glance"
+          },
+          {
+            "body" : "Use **Monitor options** → **Start new baseline**. The earlier comparison and its retained events remain in the same session. Up to nine comparisons can be kept in one session; finish and start another **Monitor** when that limit is reached. Spectra does not automatically judge that you moved or silently replace your baseline.",
+            "id" : "restart",
+            "title" : "Moved to a different position?"
+          }
+        ],
+        "steps" : [
+          "Choose **Monitor** and the radio measurements you need. Place the phone where it can stay.",
+          "Wait for the starting comparison, then glance at the change summary. Do not interpret a quiet screen as an all-clear.",
+          "Choose **Stop Monitor** to explore named/grouped results, repeat counts, change times, and any earlier comparisons."
+        ],
+        "symbol" : "waveform.path",
+        "takeaway" : "Keep the iPhone stationary and watch for observation changes—not a stream of device arrivals.",
+        "technicalSections" : [
+          {
+            "body" : "The **Not recently seen** label means that a previously observed identity has stopped being observed. For Bluetooth, Spectra waits 45 seconds without an observation before showing it. For local-network services, it follows Bonjour announcements and removals. Sleep, identity rotation, interference, and changing broadcast behavior can produce changes without physical movement. Matching names or vendors never justify combining separate identities.",
+            "id" : "silence",
+            "title" : "Why did an identity disappear or return?"
+          },
+          {
+            "body" : "**Coverage** describes source loss rather than calling every device gone. A late or recovering source gets a 30-second source-local observation window; its initial identities join that source’s comparison instead of creating a burst of apparent arrivals. A network reconnection can change which services are visible; use a new baseline when the surroundings or network have changed.",
+            "id" : "recovery",
+            "title" : "What happens when a source stops?"
+          },
+          {
+            "body" : "Each comparison retains up to 40 recent raw change events. The display combines the same identity and change type, with retained occurrence count and first/latest times; full JSON preserves retained raw events. Counts may change as older events leave this bounded history. Radio intensity is not a measure of risk.",
+            "id" : "limits",
+            "title" : "Bounded events, not a lifetime counter"
+          }
+        ],
+        "title" : "Understand Monitor and its baseline"
+      }
+    },
+    {
+      "category" : "understandingResults",
+      "categoryTitle" : "Understanding results",
+      "content" : {
+        "id" : "troubleshooting",
+        "important" : "For a repeatable problem, contact support@arcsignal.zendesk.com or open **Support site** in Spectra **Settings**. Start with support information, the steps taken, and what you expected. Do not send private scan results unless you deliberately choose to share them.",
+        "navigationTitle" : "Troubleshooting",
+        "sections" : [
+          {
+            "body" : "The device may be silent, sleeping, already connected without recognizable advertisements, on another network, or outside current recognition coverage. Some watches expose more information only in discovery or workout modes. Use general **Quick Check** or **Area Sweep** to include unclassified activity; specialist checks show only supported matches. Longer listening may help an intermittent signal but cannot reveal fields the device or iOS does not supply. Do not connect to unknown equipment to force a result.",
+            "id" : "missing",
+            "title" : "My known device does not appear"
+          },
+          {
+            "body" : "An Apple, Garmin, Samsung, or other company code alone does not identify a wearable. Generic heart-rate services can also come from chest straps. Distinctive names can support a possible product match; selected historical protocol patterns remain explicitly uncertain and may not appear on current firmware. **Watches & Wearables** includes supported watches, fitness bands, smart rings, and other wearables. A silent device or a generic service can remain unclassified; use a general check to inspect that activity. A wearable match cannot tell whether a microphone is active.",
+            "id" : "wearables",
+            "title" : "Why a nearby watch or ring can remain unknown"
+          },
+          {
+            "body" : "A broadcast name is self-reported and can be renamed or copied. Company identifiers sometimes identify a chip or protocol namespace, not the retail manufacturer. **Possible** and **Probable** are evidence labels, not numeric probabilities. Conflicting product claims stay ambiguous; details explain the supporting evidence. Catalog updates ship with app updates; Spectra does not download identification data during a scan.",
+            "id" : "names",
+            "title" : "The name or type looks wrong"
+          },
+          {
+            "body" : "Some devices produce little detectable magnetic change. Sensor position, distance, shielding, and magnetic accessories can also affect the response. No change does not rule out a device. The sensor is a small point inside the phone, not its entire back. See **Reading the magnetic meter** for positioning and a safe comparison exercise. On iPhone 17 Pro Max, use the lower back near the USB-C end, not the camera area. Check that live readings are arriving before interpreting a flat graph.",
+            "id" : "magnetic-placement",
+            "title" : "The magnetic reading barely changes near a device"
+          },
+          {
+            "body" : "Actual field and display delta can work before the calibrated event detector is ready. A 0/25-style sample count describes accepted detector-baseline readings, not permission progress. Follow the current readiness instruction, pause away from obvious magnets, and check **Measurement Details**. Strong absolute field alone is not a qualifying relative excursion. Try removing a magnetic case or mount if practical.",
+            "id" : "magnetic",
+            "title" : "The graph moves but no spike is saved"
+          },
+          {
+            "body" : "Internet access does not prove local discovery works. Guest isolation, blocked multicast, unadvertised service types, separate subnets, or a denied Local Network permission can prevent results. Check **Coverage** and the joined network. Spectra is not a scanner for all Wi-Fi radios and does not probe arbitrary ports.",
+            "id" : "network",
+            "title" : "Wi-Fi works but no devices appear"
+          },
+          {
+            "body" : "Keep Spectra visible. Locking, switching apps, permission changes, source loss, and ending early can limit a check. Review the incomplete message and retained findings; do not interpret it as no matches. After restoring access, start a fresh check. On a busy scan, wait until collection finishes to explore stable detailed results.",
+            "id" : "interrupted",
+            "title" : "A check stopped or looks incomplete"
+          }
+        ],
+        "steps" : [
+          "Open **Coverage** and read the reason for each partial or unavailable measurement.",
+          "Check iPhone **Settings** if access was denied, return to Spectra, and repeat the smallest affected check.",
+          "In Spectra **Settings**, use **Copy support information**, then **Support site** or **Email support**. The copy includes version, build, iOS, hardware model, detection-engine revision and catalog revision—not scan data."
+        ],
+        "symbol" : "questionmark.circle",
+        "takeaway" : "First check coverage and measurement state. A missing observation is not evidence that nothing is there.",
+        "technicalSections" : [
+          {
+            "body" : "Live radios, sensors, and the screen use power. Finish checks you no longer need. Keep the phone ventilated and follow iOS temperature warnings; Spectra cannot guarantee identical performance across all hardware or conditions. Bounded buffers may drop observations in dense environments, which **Coverage** reports.",
+            "id" : "battery",
+            "title" : "Heat, battery, and dense environments"
+          },
+          {
+            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens arcsignal.zendesk.com; **Email support** opens your mail app. Zendesk handles information you submit. Nothing is attached or sent automatically. For company and product information, **Arc Signal website** in **Settings** → **About** opens arcsignal.app. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
+            "id" : "support",
+            "title" : "Help us reproduce it safely"
+          }
+        ],
+        "title" : "Troubleshoot unexpected results"
+      }
+    },
+    {
       "category" : "privacyAndLimitations",
       "categoryTitle" : "Privacy & limitations",
       "content" : {
@@ -408,225 +800,6 @@
           }
         ],
         "title" : "Capabilities and blind spots"
-      }
-    },
-    {
-      "category" : "gettingStarted",
-      "categoryTitle" : "Getting started",
-      "content" : {
-        "id" : "travel",
-        "important" : "For a credible threat or highly sensitive activity, do not rely on a phone scan. Move sensitive conversations to a more appropriate location and consult a trusted security contact. Do not tamper with equipment or confront people based on an app result.",
-        "navigationTitle" : "Travel review",
-        "sections" : [
-          {
-            "body" : "At a hotel, Airbnb or other vacation rental, or in student housing, start with a **Quick Check** to get oriented. Use **Area Sweep** for a closer, unhurried look at accessible areas you are allowed to inspect. In gyms and changing rooms, respect other people's privacy and facility rules; move to a private place to review findings. An unfamiliar broadcast is not evidence of covert recording, and a signal may come from outside the room.",
-            "id" : "private-spaces",
-            "title" : "Hotels, rentals, and shared spaces"
-          },
-          {
-            "body" : "As a passenger, or while waiting in an airport, station, café, or other public space, a **Quick Check** can provide a snapshot of available signals. Specialist checks focus on recognizable glasses or wearables. Crowds contain many ordinary devices; names and signal strength cannot identify the person carrying one. Do not scan while driving or confront someone based on a result.",
-            "id" : "public-spaces",
-            "title" : "Rideshares and busy public places"
-          },
-          {
-            "body" : "Review partial or unavailable sources before interpreting results. A 30-second snapshot can miss intermittent broadcasts. Local Network reaches only visible services on your joined network.",
-            "id" : "coverage",
-            "title" : "Check what was actually measured"
-          },
-          {
-            "body" : "A product name can be changed or spoofed. Strong Bluetooth readings are not distance, and magnetic spikes can come from ordinary magnets or wiring. Neither identifies recording activity. Clear measurement filters and name search to include every retained result. In specialist checks, also open **View observed activity**; an unidentified device may not appear among supported matches.",
-            "id" : "interpret",
-            "title" : "Separate clues from conclusions"
-          },
-          {
-            "body" : "Confirm the intended Wi-Fi name with the venue using a trusted channel; a familiar name alone does not authenticate a network. Prefer cellular data when you do not trust the connection. Keep iOS and apps updated, protect accounts with multifactor authentication, and heed certificate warnings. HTTPS protects traffic to a site but does not prove that the site itself is trustworthy. Avoid exposing sensitive conversations or screens in shared spaces.",
-            "id" : "connections",
-            "title" : "Protect the connection, too"
-          },
-          {
-            "body" : "If you use shared Wi-Fi, consider a reputable VPN you trust and can use under your organization's policy. It encrypts traffic routed through its tunnel between your phone and the VPN service; trust shifts to that provider. It does not prevent nearby cameras or microphones from recording, authenticate a hotspot, make you anonymous, or make a malicious website safe. Spectra does not provide a VPN. VPN settings can affect local-network discovery; do not turn off required protection just to find more devices.",
-            "id" : "vpn",
-            "title" : "Where a VPN helps—and where it does not"
-          },
-          {
-            "body" : "Rename a saved session and add notes about areas inspected, repeatable changes, alternative explanations, and unresolved questions. Notes are yours, not sensor evidence. Avoid sensitive itinerary or personal details.",
-            "id" : "record",
-            "title" : "Record the context"
-          }
-        ],
-        "steps" : [
-          "Choose **Quick Check** for a radio snapshot or **Area Sweep** for deliberate exploration. Do not join an unfamiliar Wi-Fi network just to scan.",
-          "Review coverage, repeat observations from consistent positions, and consider ordinary explanations before escalating.",
-          "Check unclassified and out-of-filter results. **Expected** is your label for this check, not authenticated safety.",
-          "Confirm saving before closing; use **Sessions** to add your context. An earlier check does not describe the space now."
-        ],
-        "symbol" : "suitcase.rolling",
-        "takeaway" : "Use Spectra to inform your next decision—not to certify that a space is safe.",
-        "technicalSections" : [
-          {
-            "body" : "Reports and notes are bounded local records, not tamper-evident exports or a forensic chain of custody. The primary history file retains at most 50 sessions within 256 MiB and can retire older reports. Temporary replacement files and protected recovery copies may use additional disk space. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
-            "id" : "retention",
-            "title" : "Not a forensic record"
-          },
-          {
-            "body" : "Silent, wired, shielded, powered-off, or unrecognizable devices can remain invisible. Identity rotation can produce more than one exact record, and the app does not merge devices across sessions. No checklist or result is an all-clear.",
-            "id" : "limits",
-            "title" : "Beyond the iPhone's visibility"
-          }
-        ],
-        "title" : "Reviewing an unfamiliar space"
-      }
-    },
-    {
-      "category" : "gettingStarted",
-      "categoryTitle" : "Getting started",
-      "content" : {
-        "id" : "setup",
-        "important" : "Permission, hardware readiness, network reachability, and device visibility are different things. A green permission checkmark is not a safety verdict.",
-        "navigationTitle" : "Measurement setup",
-        "sections" : [
-          {
-            "body" : "Spectra requires an iPhone running iOS 27 or later. Scanning, Bluetooth Proximity, saved results, and JSON export do not require Apple Intelligence or an in-app purchase. Each measurement still needs its hardware and permission; Spectra checks selected measurements before a scan and explains anything unavailable.",
-            "id" : "compatibility",
-            "title" : "Supported iPhones"
-          },
-          {
-            "body" : "Only on-device analysis requires an Apple Intelligence-capable iPhone with Apple Intelligence enabled and ready in a supported language and region. If your iPhone does not support it, or the model is disabled or still downloading, you can still scan, review all measured evidence, and export JSON. No analysis runs automatically. Availability is checked separately when you use analysis.",
-            "id" : "analysis-availability",
-            "title" : "Apple Intelligence is optional"
-          },
-          {
-            "body" : "Welcome explains the app. **Get Started** opens measurement setup. Tap a measurement to request its access; a readiness checkmark reflects the system response. You can continue without every permission. A prompt explains what remains unconfigured, and a later check requests only missing access.",
-            "id" : "welcome",
-            "title" : "Start with access"
-          },
-          {
-            "body" : "**Quick Check** uses Bluetooth and optional **Local network** for 30 seconds. **Area Sweep** can use Bluetooth, **Local network**, and **Motion and magnetic**, together or independently, with an extendable 30-minute limit. **Monitor** is stationary and radio-only. **Smart Glasses** and **Watches & Wearables** keep Bluetooth fixed; their short preparation screen offers the same optional **Tag location** choice as other iPhone checks. Completed results offer name search and a separate **View observed activity** route for Bluetooth identities that did not match. Device types are estimates, not selectable filters.",
-            "id" : "sources",
-            "title" : "Choose measurements for each check"
-          },
-          {
-            "body" : "Touch and hold Spectra’s app icon, then choose **Quick Check**, **Smart Glasses**, or **Watches & Wearables**. **Quick Check** opens measurement selection; the specialist shortcuts open their Bluetooth-only preparation screen. Location tagging stays optional and off until you choose it. On first use, finish **Welcome** and measurement setup, then explicitly start your requested check. Canceling clears that request. If a check is still open, including its completed results, or another task is presented over the app, Spectra preserves it instead of starting another scan; close it and choose the shortcut again. Shortcuts do not enable background scanning or completion sounds.",
-            "id" : "shortcuts",
-            "title" : "Start from the Home Screen"
-          },
-          {
-            "body" : "The iPhone **Area Sweep** limit starts when collection begins, not while permissions or instructions are open. At 25 minutes, a quiet notice offers **Extend 30 Minutes** or **Finish Area Sweep**. Each extension adds 30 minutes to the deadline, with another notice five minutes before it. Elapsed time stays visible. At the deadline, Spectra finishes through its normal results flow and follows **Save completed sessions**; it does not override your saving preference. Confirm the saved status or use **Retry Saving** or **Export JSON** if needed. **Monitor** and the Watch’s 30-second sweep are unchanged. Longer listening does not guarantee complete discovery or unlimited retained evidence.",
-            "id" : "sweep-limit",
-            "title" : "Take your time, with a clear stopping point"
-          },
-          {
-            "body" : "Before any iPhone check, optionally turn on **Tag location**. It is off for each new check and asks for Location access only when chosen. Approximate access is supported; scanning still works if permission is denied or a usable fix is unavailable. Spectra requests a single position near collection start and stops requesting it after a short window. **Scan start location** shows coordinates and estimated accuracy, not an address, route, room, or detected-device position. You can separately enable automatic map previews of saved areas through Apple Maps; this does not request your current location. Watch captures do not receive the phone’s location when imported. Location is not required for Bluetooth, local-network, or magnetic measurements.",
-            "id" : "tag-location",
-            "title" : "Remember where a check began"
-          },
-          {
-            "body" : "In Spectra, open **Settings** → **App icon** to choose **Classic**, **Spectra Blue**, **Light**, or **Blue on White**. Each uses Spectra’s original waveform. A checkmark identifies the icon confirmed by iOS; a spinner shows a change in progress. This changes the app icon, not the colors inside Spectra. Your iPhone’s icon appearance settings may adjust the colors. **Reset Spectra** erases local data and returns to **Welcome** first, then asks iOS to restore **Classic**. If iOS takes longer than expected, Spectra reports the unconfirmed change; iOS may still finish an earlier request. Review the icon in **Settings** after setup.",
-            "id" : "app-icon",
-            "title" : "Choose an app icon"
-          },
-          {
-            "body" : "Local Network needs a joined Wi-Fi or supported wired local link and permission. Spectra offers **Check again** or continuation without that measurement when others can run. Returning from **Settings** rechecks availability; it does not silently start a scan. An internet connection is not required for local discovery.",
-            "id" : "network",
-            "title" : "No local network available?"
-          },
-          {
-            "body" : "A completed source ran for the available check window, not that every device was found. **Partial** means coverage was interrupted or quality-limited. **Unavailable** means the source could not run; **Not selected** means you excluded it. Read the accompanying reason before drawing conclusions.",
-            "id" : "coverage",
-            "title" : "Read Coverage"
-          }
-        ],
-        "steps" : [
-          "In Spectra, open **Settings** → **Measurement access** to revisit setup.",
-          "If iOS has already denied access, use iPhone **Settings** → **Privacy & Security** or the app’s settings to change it.",
-          "Return to Spectra, choose measurements, and review any readiness message before starting."
-        ],
-        "symbol" : "checklist",
-        "takeaway" : "Allow only the measurements you want. Setup prepares access; it does not start a scan.",
-        "technicalSections" : [
-          {
-            "body" : "Showing an optional Wi-Fi name uses Apple’s Access Wi-Fi Information rules, including Precise Location While Using the App when required. This is not needed for Bluetooth, magnetic exploration, or Bonjour browsing. The Wi-Fi-name action does not request geographic coordinates or save the name. **Tag location** is a separate, per-check request for coordinates; granting permission alone does not enable it. iOS may withhold a Wi-Fi name even when local discovery can operate.",
-            "id" : "location",
-            "title" : "Why does Wi-Fi name ask for Location?"
-          },
-          {
-            "body" : "Spectra accepts a fix at most ten seconds old and waits up to twelve seconds from collection start. A fix must report estimated horizontal accuracy of 5 km or better. Approximate permission can produce a broad region, and indoor reception may yield no usable fix. These are freshness and quality bounds, not a guarantee of accuracy. No automatic address lookup is performed. If no fix qualifies, the check continues without a tag. Starting another check never reuses a prior session’s position as its own.",
-            "id" : "location-quality",
-            "title" : "When can a location tag be saved?"
-          },
-          {
-            "body" : "The displayed network name provides connection context, not a router model, physical location, or assurance that the network is trustworthy. Guest networks and client isolation may prevent discovering other clients despite a working connection.",
-            "id" : "router",
-            "title" : "A Wi-Fi name is not a router identity"
-          },
-          {
-            "body" : "Spectra uses a fixed standard text size. Changing iOS Dynamic Type or Larger Text does not resize the app’s own interface. VoiceOver labels remain available, and contrast and reduced-motion preferences still apply. System-owned permission dialogs and sharing interfaces are controlled by iOS.",
-            "id" : "text-size",
-            "title" : "Text size and accessibility"
-          },
-          {
-            "body" : "The shipped device catalog, Guide, Bluetooth observation, magnetic exploration, saved history, and preparing JSON work on device. Apple Intelligence analysis also works locally once its supported model is ready. Local Network still needs a usable local link. Loading a map preview, sending email, opening website help, cloud file destinations, or using an external AI service may require internet. An unavailable map does not prevent reviewing saved coordinates or findings.",
-            "id" : "offline",
-            "title" : "What works without internet?"
-          }
-        ],
-        "title" : "Set up measurements and permissions"
-      }
-    },
-    {
-      "category" : "understandingResults",
-      "categoryTitle" : "Understanding results",
-      "content" : {
-        "id" : "monitoring",
-        "important" : "Keep Spectra open. Locking the iPhone or switching apps ends measurement. Monitor is not an unattended or background security alarm.",
-        "navigationTitle" : "Monitor",
-        "sections" : [
-          {
-            "body" : "Each available radio source needs 30 seconds of active observation to establish its baseline. Permission waiting does not count. The countdown follows the slowest participating source. **Observe 30 seconds longer** extends that comparison once to 60 seconds per source. No duration guarantees discovery of every device.",
-            "id" : "baseline",
-            "title" : "Give the starting comparison time"
-          },
-          {
-            "body" : "Baseline signals remain in the final inventory. A potentially concerning device already present is not cleared or hidden. A device first observed during baseline collection becomes part of that starting comparison; one first observed afterward is newly observed, not necessarily newly arrived.",
-            "id" : "meaning",
-            "title" : "Initially observed does not mean trusted"
-          },
-          {
-            "body" : "The **Newly observed**, **Returned**, and **Not recently seen** rows count distinct signal identities represented in retained changes. Repeated changes for the same identity count once in each row. One identity can appear in more than one row, so do not add these counts as a total device count. The latest change stays visible until you choose **Mark changes reviewed**; that acknowledgment does not trust a device, reset the baseline, or erase evidence.",
-            "id" : "dashboard",
-            "title" : "Read changes at a glance"
-          },
-          {
-            "body" : "Use **Monitor options** → **Start new baseline**. The earlier comparison and its retained events remain in the same session. Up to nine comparisons can be kept in one session; finish and start another **Monitor** when that limit is reached. Spectra does not automatically judge that you moved or silently replace your baseline.",
-            "id" : "restart",
-            "title" : "Moved to a different position?"
-          }
-        ],
-        "steps" : [
-          "Choose **Monitor** and the radio measurements you need. Place the phone where it can stay.",
-          "Wait for the starting comparison, then glance at the change summary. Do not interpret a quiet screen as an all-clear.",
-          "Choose **Stop Monitor** to explore named/grouped results, repeat counts, change times, and any earlier comparisons."
-        ],
-        "symbol" : "waveform.path",
-        "takeaway" : "Keep the iPhone stationary and watch for observation changes—not a stream of device arrivals.",
-        "technicalSections" : [
-          {
-            "body" : "The **Not recently seen** label means that a previously observed identity has stopped being observed. For Bluetooth, Spectra waits 45 seconds without an observation before showing it. For local-network services, it follows Bonjour announcements and removals. Sleep, identity rotation, interference, and changing broadcast behavior can produce changes without physical movement. Matching names or vendors never justify combining separate identities.",
-            "id" : "silence",
-            "title" : "Why did an identity disappear or return?"
-          },
-          {
-            "body" : "**Coverage** describes source loss rather than calling every device gone. A late or recovering source gets a 30-second source-local observation window; its initial identities join that source’s comparison instead of creating a burst of apparent arrivals. A network reconnection can change which services are visible; use a new baseline when the surroundings or network have changed.",
-            "id" : "recovery",
-            "title" : "What happens when a source stops?"
-          },
-          {
-            "body" : "Each comparison retains up to 40 recent raw change events. The display combines the same identity and change type, with retained occurrence count and first/latest times; full JSON preserves retained raw events. Counts may change as older events leave this bounded history. Radio intensity is not a measure of risk.",
-            "id" : "limits",
-            "title" : "Bounded events, not a lifetime counter"
-          }
-        ],
-        "title" : "Understand Monitor and its baseline"
       }
     },
     {
@@ -866,183 +1039,10 @@
         ],
         "title" : "Export JSON for analysis"
       }
-    },
-    {
-      "category" : "understandingResults",
-      "categoryTitle" : "Understanding results",
-      "content" : {
-        "id" : "troubleshooting",
-        "important" : "For a repeatable problem, contact support@arcsignal.zendesk.com or open **Support site** in Spectra **Settings**. Start with support information, the steps taken, and what you expected. Do not send private scan results unless you deliberately choose to share them.",
-        "navigationTitle" : "Troubleshooting",
-        "sections" : [
-          {
-            "body" : "The device may be silent, sleeping, already connected without recognizable advertisements, on another network, or outside current recognition coverage. Some watches expose more information only in discovery or workout modes. Use general **Quick Check** or **Area Sweep** to include unclassified activity; specialist checks show only supported matches. Longer listening may help an intermittent signal but cannot reveal fields the device or iOS does not supply. Do not connect to unknown equipment to force a result.",
-            "id" : "missing",
-            "title" : "My known device does not appear"
-          },
-          {
-            "body" : "An Apple, Garmin, Samsung, or other company code alone does not identify a wearable. Generic heart-rate services can also come from chest straps. Distinctive names can support a possible product match; selected historical protocol patterns remain explicitly uncertain and may not appear on current firmware. **Watches & Wearables** includes supported watches, fitness bands, smart rings, and other wearables. A silent device or a generic service can remain unclassified; use a general check to inspect that activity. A wearable match cannot tell whether a microphone is active.",
-            "id" : "wearables",
-            "title" : "Why a nearby watch or ring can remain unknown"
-          },
-          {
-            "body" : "A broadcast name is self-reported and can be renamed or copied. Company identifiers sometimes identify a chip or protocol namespace, not the retail manufacturer. **Possible** and **Probable** are evidence labels, not numeric probabilities. Conflicting product claims stay ambiguous; details explain the supporting evidence. Catalog updates ship with app updates; Spectra does not download identification data during a scan.",
-            "id" : "names",
-            "title" : "The name or type looks wrong"
-          },
-          {
-            "body" : "Some devices produce little detectable magnetic change. Sensor position, distance, shielding, and magnetic accessories can also affect the response. No change does not rule out a device. The sensor is a small point inside the phone, not its entire back. See **Reading the magnetic meter** for positioning and a safe comparison exercise. On iPhone 17 Pro Max, use the lower back near the USB-C end, not the camera area. Check that live readings are arriving before interpreting a flat graph.",
-            "id" : "magnetic-placement",
-            "title" : "The magnetic reading barely changes near a device"
-          },
-          {
-            "body" : "Actual field and display delta can work before the calibrated event detector is ready. A 0/25-style sample count describes accepted detector-baseline readings, not permission progress. Follow the current readiness instruction, pause away from obvious magnets, and check **Measurement Details**. Strong absolute field alone is not a qualifying relative excursion. Try removing a magnetic case or mount if practical.",
-            "id" : "magnetic",
-            "title" : "The graph moves but no spike is saved"
-          },
-          {
-            "body" : "Internet access does not prove local discovery works. Guest isolation, blocked multicast, unadvertised service types, separate subnets, or a denied Local Network permission can prevent results. Check **Coverage** and the joined network. Spectra is not a scanner for all Wi-Fi radios and does not probe arbitrary ports.",
-            "id" : "network",
-            "title" : "Wi-Fi works but no devices appear"
-          },
-          {
-            "body" : "Keep Spectra visible. Locking, switching apps, permission changes, source loss, and ending early can limit a check. Review the incomplete message and retained findings; do not interpret it as no matches. After restoring access, start a fresh check. On a busy scan, wait until collection finishes to explore stable detailed results.",
-            "id" : "interrupted",
-            "title" : "A check stopped or looks incomplete"
-          }
-        ],
-        "steps" : [
-          "Open **Coverage** and read the reason for each partial or unavailable measurement.",
-          "Check iPhone **Settings** if access was denied, return to Spectra, and repeat the smallest affected check.",
-          "In Spectra **Settings**, use **Copy support information**, then **Support site** or **Email support**. The copy includes version, build, iOS, hardware model, detection-engine revision and catalog revision—not scan data."
-        ],
-        "symbol" : "questionmark.circle",
-        "takeaway" : "First check coverage and measurement state. A missing observation is not evidence that nothing is there.",
-        "technicalSections" : [
-          {
-            "body" : "Live radios, sensors, and the screen use power. Finish checks you no longer need. Keep the phone ventilated and follow iOS temperature warnings; Spectra cannot guarantee identical performance across all hardware or conditions. Bounded buffers may drop observations in dense environments, which **Coverage** reports.",
-            "id" : "battery",
-            "title" : "Heat, battery, and dense environments"
-          },
-          {
-            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens arcsignal.zendesk.com; **Email support** opens your mail app. Zendesk handles information you submit. Nothing is attached or sent automatically. For company and product information, **Arc Signal website** in **Settings** → **About** opens arcsignal.app. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
-            "id" : "support",
-            "title" : "Help us reproduce it safely"
-          }
-        ],
-        "title" : "Troubleshoot unexpected results"
-      }
-    },
-    {
-      "category" : "gettingStarted",
-      "categoryTitle" : "Getting started",
-      "content" : {
-        "id" : "watch",
-        "important" : "**Experimental** means behavior is still being validated across Watches and environments. Bluetooth identifiers are not a verified device count. An empty or partial capture is never an all-clear.",
-        "navigationTitle" : "Experimental Watch",
-        "sections" : [
-          {
-            "body" : "The optional Experimental Watch companion requires watchOS 27 or later and a paired iPhone running iOS 27 or later with Spectra. The iPhone app works without an Apple Watch. The companion offers only a 30-second Bluetooth **Area Sweep**. It does not measure local-network services or magnetic fields, run specialist checks, tag locations, or identify devices on the Watch. New captures transfer automatically to your paired iPhone, where Spectra identifies retained signals and saves the result in **Sessions**. Importing does not attach the phone’s current location.",
-            "id" : "scope",
-            "title" : "One check, a smaller screen"
-          },
-          {
-            "body" : "After installing the companion and opening Spectra on your paired iPhone once to prepare transfer, you can collect without your iPhone nearby. The Watch uses its own Bluetooth radio and saves captures locally; collection does not need an internet connection or cellular plan. Keep Bluetooth available, allow access, and keep Spectra active with the display fully awake for each 30-second sweep. Check **Saved sweeps** before heading out: the Watch holds up to five captures in total, including earlier copies. When you reconnect, open Spectra on your paired iPhone to identify signals and review findings in **Sessions**. The Watch shows capture and transfer status, not identified results.",
-            "id" : "phone-free",
-            "title" : "Leave your iPhone behind, review later"
-          },
-          {
-            "body" : "The Watch start screen keeps **Start Sweep** as the main action. The tray button opens **Saved sweeps** for captures and transfer status. Open **Settings** below **Start Sweep** for **Sweep guidance**, **Storage & transfer**, **Diagnostic reports**, and **About**. **About** shows the version, release identifier, numeric build and watchOS version installed on your Watch; check these separately from iPhone when troubleshooting an update. Recognition uses the engine and catalog installed on iPhone, not a separate Watch catalog.",
-            "id" : "settings",
-            "title" : "A focused start, help when you need it"
-          },
-          {
-            "body" : "**Completion haptic** in Spectra’s Watch **Settings** is on by default. Turn it off if you prefer visual feedback only. The system feedback follows your Watch sound and haptic settings; it is not a guarantee of silent operation. Read the completion or partial-capture status: feedback alone does not mean that every nearby device was observed or that transfer finished.",
-            "id" : "feedback",
-            "title" : "Choose completion feedback"
-          },
-          {
-            "body" : "On Apple Watch, open **Settings** → **Display & Brightness** → **Wake Duration** and choose **Wake for 70 Seconds**. Tap to wake the display fully, start the sweep, and keep your wrist raised with Spectra active until it finishes. The first Start after launching Spectra shows a setup reminder: **Start Sweep** continues; **Not Now** starts nothing. Acknowledging it does not verify or change your setting. **Always On** can leave Spectra visible while inactive; visibility alone does not keep Bluetooth collection running. **Return to Clock** is a different setting. Spectra cannot change these system settings or guarantee active time on every Watch.",
-            "id" : "awake",
-            "title" : "Keep the display fully awake"
-          },
-          {
-            "body" : "If Spectra becomes inactive or you leave it during collection, the sweep ends and preserves the evidence already retained as partial. It does not resume when you return. An early stop, Bluetooth loss, or a retention limit can also reduce coverage. Review the reason, adjust your setup, and start a new sweep when ready. A timer finishing does not prove every nearby device was observed.",
-            "id" : "partial",
-            "title" : "An interruption keeps a partial capture"
-          },
-          {
-            "body" : "Open Spectra on your paired iPhone once to prepare transfer. After each new sweep, the Watch saves the capture before automatically queuing it for your paired iPhone. **Queued** means delivery is pending; **Received on iPhone** confirms local storage, not completed recognition. Open Spectra on iPhone to identify received signals and add them to **Sessions** automatically. No need to keep the Watch completion screen open. Choose **New Sweep** to collect again, or open **Saved sweeps** from the tray button to review transfer status and retry when needed. Transfers may wait for connectivity or Apple’s scheduling. **Settings** → **Experimental Watch** on iPhone provides processing and transfer help. Older captures sent before automatic handoff may still offer **Add to Sessions**.",
-            "id" : "handoff",
-            "title" : "Finish on Watch, review on iPhone"
-          },
-          {
-            "body" : "Look for the Watch-with-radio-waves icon and **Apple Watch · Bluetooth-only sweep** label. They identify where the evidence was collected, not a search for nearby watches. Your custom name never replaces this origin label, and rechecks keep it along with the original capture time. **Experimental** and partial-capture status stay visible. Blue icons identify original captures; violet icons and a **Recheck** number identify later interpretations. Review **Coverage**: even a complete 30-second capture cannot confirm that every nearby device was observed.",
-            "id" : "sessions-origin",
-            "title" : "Find your Watch sweep in Sessions"
-          },
-          {
-            "body" : "Each device retains up to five capture copies, bounded to 4 MiB each. When space is needed, the Watch retires only copies confirmed received on iPhone; the phone retires only inbox copies already processed into **Sessions**. Unsent or unprocessed evidence is not automatically discarded. **Sessions** remain until you delete them or normal session retention applies. A full store with no eligible copies stops accepting new captures; review the transfer or processing status before retrying. Watch sweeps save to **Sessions** independently of the **Save completed sessions** setting for iPhone checks.",
-            "id" : "capacity",
-            "title" : "Room for the next sweep"
-          },
-          {
-            "body" : "**Reset Spectra** on iPhone erases its sessions, received Watch data, and preferences, then requests erasure of captures, diagnostics, and preferences in the known paired Watch app. **Watch reset pending** means the Watch has not confirmed erasure; an offline Watch may still hold data. Keep the devices paired and open Spectra on Watch to finish. **Watch reset confirmed** appears only after the Watch reports completion. When the Watch receives a reset, it stops collection and discards any unfinished sweep. System permissions and files exported or shared elsewhere remain.",
-            "id" : "reset",
-            "title" : "Confirm a reset on both devices"
-          },
-          {
-            "body" : "In Spectra on iPhone, open **Settings** and review the **Apple Watch** section. **Watch reset not ready** can mean the paired Watch app has not introduced itself or needs an update. Open or update Spectra on both devices, then explicitly choose **Reset Watch** and confirm. A newly paired or reinstalled Watch is not automatically erased by an earlier request. If **Watch reset needs attention** appears, follow the recovery guidance; do not assume erasure succeeded. No paired Watch means there is no Watch reset to request.",
-            "id" : "reset-recovery",
-            "title" : "If the Watch reset is not ready"
-          },
-          {
-            "body" : "Captures can contain advertised names, manufacturer and service bytes, signal strength, timestamps, and session-scoped identity tokens. These fields can identify devices or people. Spectra uses protected local storage marked for exclusion from backups and Apple’s paired-device transfer; it does not upload captures to Arc Signal or an identification service. Operating-system backup behavior remains under Apple’s control.",
-            "id" : "privacy",
-            "title" : "Captured on Watch, reviewed on iPhone"
-          }
-        ],
-        "steps" : [
-          "Install the Watch companion and open Spectra on iPhone once. Set the Watch’s **Wake Duration** to 70 seconds.",
-          "Tap to wake the Watch fully, start a sweep, and keep Spectra active for the 30-second window.",
-          "Review completion or interruption status. New captures are saved and queued for your paired iPhone automatically.",
-          "Open Spectra on iPhone and review **Sessions** once processing finishes. Review findings and **Coverage** before drawing conclusions; use **Settings** → **Experimental Watch** if a transfer needs attention."
-        ],
-        "symbol" : "applewatch.radiowaves.left.and.right",
-        "takeaway" : "Capture without your iPhone nearby. Save up to five Bluetooth sweeps on your Watch, then review findings on your paired iPhone. This companion is experimental—not a background scanner.",
-        "technicalSections" : [
-          {
-            "body" : "The Watch retains bounded advertisement evidence, not every radio packet. Callback timing is delivery timing, not proof of uninterrupted sampling. Repeated callbacks do not establish separate physical devices; a product can change identifiers. Names and protocol fields are unauthenticated claims. Recognition on iPhone cannot recover information the Watch did not retain. Recorded signal strength was measured by the Watch, not the iPhone; readings taken later with the phone can differ.",
-            "id" : "evidence",
-            "title" : "Observation is bounded"
-          },
-          {
-            "body" : "For an eligible saved Watch finding, **Bluetooth Proximity** searches for possible matching broadcasts near your iPhone and asks you to confirm a candidate. It cannot reuse a Watch identity as a verified iPhone target or turn recorded Watch strength into a live reading. Matching names or payloads can come from different devices. The new signal measurement is taken by the iPhone; it does not verify identity or measure distance from the Watch.",
-            "id" : "proximity",
-            "title" : "A new proximity check uses the iPhone"
-          },
-          {
-            "body" : "Watch captures, the iPhone inbox, imported **Sessions**, and timing diagnostics are separate stores. **Erase Inbox Copies** leaves imported sessions intact. Individual session deletion leaves inbox and Watch copies intact. **Erase All Sessions** also clears the received Watch inbox, but does not request a Watch reset. Watch copies remain after those actions. **Reset Spectra** additionally clears received diagnostics and preferences and requests a paired Watch reset. Previously queued copies cannot silently restore erased iPhone data. Erasing captures directly on Watch cancels queued transfers where possible, but already delivered or in-flight phone copies may remain. Exported files and system permissions are not erased.",
-            "id" : "deletion",
-            "title" : "Copies have separate erase controls"
-          },
-          {
-            "body" : "A protected local reset-status record survives a reset so Spectra can finish an offline Watch request and reject stale commands or transfers. It contains random coordination identifiers and request status, not captured signals. A reset request applies only to the Watch app installation it names. Repeated delivery of an already completed request does not erase a new sweep. Confirmation describes completion of that request, not a promise that the Watch can never collect new data.",
-            "id" : "reset-control",
-            "title" : "Why a small reset record remains"
-          },
-          {
-            "body" : "Watch diagnostics are separate from scan captures. They retain up to 20 recent timing and count reports per device, including Watch model, OS/build, completion status and lifecycle events, but no nearby-device names, identity values or advertisement payloads. Use **Share Watch diagnostics** on iPhone to deliberately share received reports for troubleshooting. Dates and hardware details can still reveal context. Nothing is sent to support automatically.",
-            "id" : "diagnostics",
-            "title" : "Share timing diagnostics only when needed"
-          }
-        ],
-        "title" : "Try the Experimental Watch collector"
-      }
     }
   ],
-  "build" : "1038",
-  "buildIdentifier" : "1A1038",
+  "build" : "1039",
+  "buildIdentifier" : "1A1039",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

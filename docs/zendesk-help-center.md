@@ -4,7 +4,19 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
-## Build 1A1038 visual-content alignment
+## Build 1A1039 access-review alignment
+
+On October 3, 2026, Get started with Spectra (56434299423899) was separately
+saved in Zendesk and publicly read back. It now directs users to **Settings** →
+**Privacy & storage** → **Measurement access**, explains direct **Done** dismissal
+and distinguishes per-scan choices from reviewing readiness. Existing heading
+anchors, requirements, measurement/privacy limits and other text are preserved.
+The generated website Guide mirrors all 13 app topics and its setup-first order.
+Published screenshots do not picture the changed Settings/access/Guide screens;
+their accurate original iPhone/Watch provenance is retained with an expiring
+1039 content review. No theme, messaging, account or support request is changed.
+
+## Build 1A1038 visual-content alignment (historical)
 
 The Sessions and Experimental Watch articles were separately saved in Zendesk
 and publicly read back on October 3, 2026. They identify the current
