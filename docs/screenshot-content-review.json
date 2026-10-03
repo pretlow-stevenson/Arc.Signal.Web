@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1037",
-      "buildIdentifier": "1A1037",
-      "appSourceCommit": "7ff9c70ea5d287cba2c5cbde3eed96dc7e616802"
+      "bundleBuild": "1038",
+      "buildIdentifier": "1A1038",
+      "appSourceCommit": "b7e5b107e39e4dba40b12164660c36d5538d9a23"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1037",
-  "reviewedGuideBuildIdentifier": "1A1037",
+  "reviewedGuideBuild": "1038",
+  "reviewedGuideBuildIdentifier": "1A1038",
   "reviewedOn": "2026-10-03",
-  "reason": "Build 1037 gives phone checks, Watch-origin captures and rechecks a shared Sessions row hierarchy with compact inline symbols, recorded collector and measurement scope, coverage status and distinct capture/recheck timestamps. All six iPhone App Store panels and their QA captures are refreshed from the reviewed frozen 1037 source; the four website views import those exact native pixels losslessly. The generated Guide and published Sessions support article explain the hierarchy, unknown historical metadata and recheck dot. No Watch screen or collector behavior changes; separately recorded build 1028 Watch imagery remains accurate and retains its real provenance. Approved Circular branding, composition, example disclosures and unchanged feature claims remain intact. This scoped Watch content review expires at the next Guide build and cannot excuse stale imagery after a pictured workflow changes."
+  "reason": "Build 1038 uses approved native sunglasses and filled Watch styling on the main Scan screen, plus a Watch-with-radio-waves icon for Watch-collected sessions and related iPhone surfaces. Explicit source, measurement scope, Experimental status and recheck context remain. All six iPhone App Store panels and QA captures refresh from the reviewed frozen 1038 source; the four website views import exact native pixels losslessly. The generated Guide, website FAQ and published Sessions/Watch support articles explain collector origin without implying a live connection or specialist purpose. No watchOS screen or collector behavior changes; separately recorded build 1028 Watch imagery remains accurate with its actual provenance. Exact Circular branding, composition, example disclosures and unchanged feature claims remain intact. This scoped Watch content review expires at the next Guide build and cannot excuse stale imagery after a pictured workflow changes."
 }

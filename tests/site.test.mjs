@@ -675,10 +675,10 @@ test('Watch collection origin stays distinct from wearable discovery in public g
   const sessions = payload.articles.find(article => article.content.id === 'sessions')?.content;
   assert.ok(watch);
   assert.ok(sessions);
-  assert.equal(watch.symbol, 'antenna.radiowaves.left.and.right');
+  assert.equal(watch.symbol, 'applewatch.radiowaves.left.and.right');
   for (const content of [watch, sessions]) {
     const text = articleProse(content);
-    for (const phrase of ['Apple Watch · Bluetooth-only sweep', 'antenna', 'Experimental', 'recheck', 'partial']) {
+    for (const phrase of ['Apple Watch · Bluetooth-only sweep', 'Watch-with-radio-waves', 'Experimental', 'recheck', 'partial']) {
       assert.ok(text.includes(phrase), `Missing Watch origin guidance: ${phrase}`);
     }
   }

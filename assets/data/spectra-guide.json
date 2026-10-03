@@ -643,7 +643,7 @@
             "title" : "Find a check by day"
           },
           {
-            "body" : "An antenna icon and **Apple Watch · Bluetooth-only sweep** label identify a session collected by the Experimental Watch companion. This is a general Bluetooth sweep from your Watch—not the **Watches & Wearables** specialist check on iPhone. The origin label stays visible after renaming and on rechecks. **Experimental** and any partial-capture status remain visible too. Original icons are blue; rechecks are violet and also say **Recheck**. Open **Coverage** to see collection limits before drawing conclusions.",
+            "body" : "A Watch-with-radio-waves icon and **Apple Watch · Bluetooth-only sweep** label identify a session collected by the Experimental Watch companion. This is a general Bluetooth sweep from your Watch—not the **Watches & Wearables** specialist check on iPhone. The origin label stays visible after renaming and on rechecks. **Experimental** and any partial-capture status remain visible too. Original icons are blue; rechecks are violet and also say **Recheck**. Open **Coverage** to see collection limits before drawing conclusions.",
             "id" : "watch-origin",
             "title" : "Recognize a sweep collected on Watch"
           },
@@ -977,7 +977,7 @@
             "title" : "Finish on Watch, review on iPhone"
           },
           {
-            "body" : "Look for the antenna icon and **Apple Watch · Bluetooth-only sweep** label. They identify where the evidence was collected, not a search for nearby watches. Your custom name never replaces this origin label, and rechecks keep it along with the original capture time. **Experimental** and partial-capture status stay visible. Blue icons identify original captures; violet icons and a **Recheck** number identify later interpretations. Review **Coverage**: even a complete 30-second capture cannot confirm that every nearby device was observed.",
+            "body" : "Look for the Watch-with-radio-waves icon and **Apple Watch · Bluetooth-only sweep** label. They identify where the evidence was collected, not a search for nearby watches. Your custom name never replaces this origin label, and rechecks keep it along with the original capture time. **Experimental** and partial-capture status stay visible. Blue icons identify original captures; violet icons and a **Recheck** number identify later interpretations. Review **Coverage**: even a complete 30-second capture cannot confirm that every nearby device was observed.",
             "id" : "sessions-origin",
             "title" : "Find your Watch sweep in Sessions"
           },
@@ -1008,7 +1008,7 @@
           "Review completion or interruption status. New captures are saved and queued for your paired iPhone automatically.",
           "Open Spectra on iPhone and review **Sessions** once processing finishes. Review findings and **Coverage** before drawing conclusions; use **Settings** → **Experimental Watch** if a transfer needs attention."
         ],
-        "symbol" : "antenna.radiowaves.left.and.right",
+        "symbol" : "applewatch.radiowaves.left.and.right",
         "takeaway" : "Capture without your iPhone nearby. Save up to five Bluetooth sweeps on your Watch, then review findings on your paired iPhone. This companion is experimental—not a background scanner.",
         "technicalSections" : [
           {
@@ -1041,8 +1041,8 @@
       }
     }
   ],
-  "build" : "1037",
-  "buildIdentifier" : "1A1037",
+  "build" : "1038",
+  "buildIdentifier" : "1A1038",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

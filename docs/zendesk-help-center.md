@@ -2,7 +2,18 @@
 
 Live: https://arcsignal.zendesk.com/hc/en-us
 
-All ten published articles read back and reviewed October 2, 2026 against the canonical Guide and release-hardening candidate (Spectra 1.0.0 / 1A1033). Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate; this pass required no article or theme publication. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
+Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
+
+## Build 1A1038 visual-content alignment
+
+The Sessions and Experimental Watch articles were separately saved in Zendesk
+and publicly read back on October 3, 2026. They identify the current
+Watch-with-radio-waves icon alongside **Apple Watch · Bluetooth-only sweep**:
+collector origin remains after renaming/rechecking, distinct from a Watches &
+Wearables specialist check. The Sessions explanation also distinguishes it from
+a live connection. Existing anchors, UI-label emphasis, storage, privacy and
+Experimental limitations remain. The canonical Guide and website FAQ agree.
+No help-center theme, messaging configuration or support request is changed.
 
 ## Build 1A1032 session-action content alignment
 
