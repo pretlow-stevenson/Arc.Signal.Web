@@ -60,7 +60,7 @@
             "title" : "Names are claims, not authentication"
           },
           {
-            "body" : "Bluetooth company codes and member service numbers identify registered namespaces, sometimes belonging to a chip or protocol provider. A **Registry model** uses a public Matter vendor/product record matched to unverified broadcast identifiers. Neither proves the hardware is genuine. **Technical details** keep sources and registry versions. Saved catalog and name-based interpretations remain recorded history. An eligible session can be explicitly rechecked with newer recognition, creating a separate copy without changing the original.",
+            "body" : "Bluetooth company codes and member service numbers identify registered namespaces, sometimes belonging to a chip or protocol provider. **Google-registered Bluetooth service**, for example, means Google registered that service code—not that Google made the nearby device. **Device unknown** means Spectra has not identified the device. This is not an account-registration message or evidence that the device is communicating with Google. When reviewed bytes support a protocol such as Nearby Connections, Spectra shows that purpose separately; it still does not establish a model or activity. **Technical details** retain the service codes, parser outcomes, sources and registry versions. A **Registry model** uses a public Matter vendor/product record matched to unverified broadcast identifiers; it does not prove the hardware is genuine. Saved catalog and name-based interpretations remain recorded history. An eligible session can be explicitly rechecked with newer recognition, creating a separate copy without changing the original.",
             "id" : "registry",
             "title" : "Registry context is not a verified maker"
           },
@@ -1036,8 +1036,8 @@
       }
     }
   ],
-  "build" : "1035",
-  "buildIdentifier" : "1A1035",
+  "build" : "1036",
+  "buildIdentifier" : "1A1036",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
