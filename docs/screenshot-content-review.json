@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1033",
-      "buildIdentifier": "1A1033",
-      "appSourceCommit": "50ee7707b4428340a39ca4623e942a9c44b5e3c3"
+      "bundleBuild": "1037",
+      "buildIdentifier": "1A1037",
+      "appSourceCommit": "7ff9c70ea5d287cba2c5cbde3eed96dc7e616802"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1036",
-  "reviewedGuideBuildIdentifier": "1A1036",
-  "reviewedOn": "2026-10-02",
-  "reason": "Build 1036 clarifies registered Bluetooth service fallbacks and their unknown-device subtitle, with matching Guide explanations. No website or App Store frame depicts these registry fallback labels or the changed Guide paragraph. The genuine build-1033 iPhone images, source 50ee770, and separately recorded unchanged build-1028 Watch images remain accurate for all pictured workflows. Their source identities, exact native pixels, approved Circular branding, composition and fictional-data disclosures remain untouched. Collection, recognition, privacy, support destinations and experimental Watch behavior are unchanged. This scoped review expires at the next Guide build and cannot excuse stale imagery after a pictured workflow changes."
+  "reviewedGuideBuild": "1037",
+  "reviewedGuideBuildIdentifier": "1A1037",
+  "reviewedOn": "2026-10-03",
+  "reason": "Build 1037 gives phone checks, Watch-origin captures and rechecks a shared Sessions row hierarchy with compact inline symbols, recorded collector and measurement scope, coverage status and distinct capture/recheck timestamps. All six iPhone App Store panels and their QA captures are refreshed from the reviewed frozen 1037 source; the four website views import those exact native pixels losslessly. The generated Guide and published Sessions support article explain the hierarchy, unknown historical metadata and recheck dot. No Watch screen or collector behavior changes; separately recorded build 1028 Watch imagery remains accurate and retains its real provenance. Approved Circular branding, composition, example disclosures and unchanged feature claims remain intact. This scoped Watch content review expires at the next Guide build and cannot excuse stale imagery after a pictured workflow changes."
 }

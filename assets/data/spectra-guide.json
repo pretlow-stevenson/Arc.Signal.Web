@@ -648,7 +648,12 @@
             "title" : "Recognize a sweep collected on Watch"
           },
           {
-            "body" : "Tap the recheck count beneath an original session to show its saved interpretations, newest recheck first. Original icons are blue; recheck icons are violet and include a **Recheck** number. Renaming does not separate related copies. Each version opens, exports, and deletes independently. If the original was removed, the latest surviving recheck stays visible and says **Original removed**; any earlier rechecks remain expandable. Rechecks show their evaluation date separately from the original capture day.",
+            "body" : "Each row shows its name, scan type, original capture time and duration, collector, recorded measurement scope, and a results summary. The small icon beside the scan type is a visual cue; the text identifies the check. **Partial coverage** or **Some measurements unavailable** means the listed measurements did not all complete. Older sessions may show **Source not recorded**, **Measurements not recorded**, or **Source and measurements not recorded**. Spectra does not guess. If the list says **Collection details in saved results**, open the session to review its original metadata. Watch rows retain **Experimental** and any early or interrupted completion status.",
+            "id" : "row-context",
+            "title" : "Read a session at a glance"
+          },
+          {
+            "body" : "Tap the recheck count beneath an original session to show its saved interpretations, newest recheck first. Original icons are blue; recheck icons are violet and include a **Recheck** number. Renaming does not separate related copies. Each version opens, exports, and deletes independently. If the original was removed, the latest surviving recheck stays visible and says **Original removed**; any earlier rechecks remain expandable. Rechecks retain the original capture time and duration beside the scan type and show a separate evaluation date and time.",
             "id" : "families",
             "title" : "Keep rechecks with their capture"
           },
@@ -1036,8 +1041,8 @@
       }
     }
   ],
-  "build" : "1036",
-  "buildIdentifier" : "1A1036",
+  "build" : "1037",
+  "buildIdentifier" : "1A1037",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

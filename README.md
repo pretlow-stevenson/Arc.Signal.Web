@@ -358,13 +358,13 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-The October 2 refresh uses the same verified native captures as Spectra’s
+The October 3 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1033 / 1033, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1037 / 1037, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -379,7 +379,9 @@ rest of the app, without decorative icon tiles. Status and confidence badges
 remain. The unchanged Watch interface is separately recaptured from 1A1028;
 its manifest records the actual Watch binary and native pixels independently.
 The companion App Store set also shows the updated Sessions date disclosure,
-count and check-type icons. This site's generated Guide explains that interaction;
+count and inline check-type icons. Each row identifies its collector and recorded
+measurement scope; rechecks distinguish original capture time from evaluation time.
+This site's generated Guide explains that interaction;
 the existing four-image gallery remains focused on discovery and measurements.
 
 `assets/data/spectra-screenshots.json` records the exact app source commit,
