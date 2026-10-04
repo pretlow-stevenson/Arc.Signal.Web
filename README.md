@@ -364,7 +364,7 @@ Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1044 / 1044, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1045 / 1045, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -379,9 +379,14 @@ rest of the app, without decorative icon tiles. Status and confidence badges
 remain. Reviewed hardware categories now select specific or conservative parent
 symbols independently of capabilities, identity confidence and review priority;
 the Smart Glasses image shows that possible-category qualifier. This does not
-authenticate the advertised identity or prove recording. All six iPhone App Store
+authenticate the advertised identity or prove recording. Names and types lead
+compact supporting text with explicit leading alignment and a scoped readable
+secondary gray. Supported hardware/capability icons remain blue; unknown types
+use neutral symbols for retained observed sources. Confidence and the amber
+similarity caution remain independent. The generated Guide and published Findings
+support article explain that distinction. All six iPhone App Store
 frames and four separate light/dark large-system-text QA frames are freshly
-captured from reviewed source `d94d3be6efd79792b1f4d38c0aaf86b72f5fb67d`.
+captured from reviewed source `052a71f3303f679c1324b53f23344e81a275f321`.
 The unchanged Watch interface retains separately captured 1A1028 imagery;
 its manifest records the actual Watch binary and native pixels independently.
 The companion App Store set also shows the updated Sessions date disclosure,
