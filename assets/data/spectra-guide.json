@@ -151,14 +151,19 @@
         "takeaway" : "Spectra helps you investigate nearby signals. A signal is a clue—not proof of a hidden device.",
         "technicalSections" : [
           {
-            "body" : "Product-family labels come from reviewed metadata and an offline catalog. **Possible**, **Probable**, and signature labels describe the evidence—not numeric probabilities. A **System name** comes from iOS and may be cached rather than transmitted in that observation. Names and payloads can be changed or spoofed.",
+            "body" : "Product-family labels come from reviewed metadata and an offline catalog. **Possible**, **Probable**, and signature labels describe the evidence—not numeric probabilities. A **System name** comes from the collecting device’s Bluetooth framework and may be cached rather than transmitted in that observation. Names and payloads can be changed or spoofed.",
             "id" : "claims",
             "title" : "Names are claims, not authentication"
           },
           {
-            "body" : "Bluetooth company codes and member service numbers identify registered namespaces, sometimes belonging to a chip or protocol provider. **Google-registered Bluetooth service**, for example, means Google registered that service code—not that Google made the nearby device. **Device unknown** means Spectra has not identified the device. This is not an account-registration message or evidence that the device is communicating with Google. When reviewed bytes support a protocol such as Nearby Connections, Spectra shows that purpose separately; it still does not establish a model or activity. **Technical details** retain the service codes, parser outcomes, sources and registry versions. A **Registry model** uses a public Matter vendor/product record matched to unverified broadcast identifiers; it does not prove the hardware is genuine. Saved catalog and name-based interpretations remain recorded history. An eligible session can be explicitly rechecked with newer recognition, creating a separate copy without changing the original.",
+            "body" : "Bluetooth company codes and member service numbers identify registered namespaces, sometimes belonging to a chip or protocol provider. **Google-registered Bluetooth service**, for example, means Google registered that service code—not that Google made the nearby device. **Device unknown** means Spectra has not identified the device. This is not an account-registration message or evidence that the device is communicating with Google. **Technical details** retain the service codes, parser outcomes, sources and registry versions. A **Registry model** uses a public Matter vendor/product record matched to unverified broadcast identifiers; it does not prove the hardware is genuine. Saved catalog and name-based interpretations remain recorded history. An eligible session can be explicitly rechecked with newer recognition, creating a separate copy without changing the original.",
             "id" : "registry",
             "title" : "Registry context is not a verified maker"
+          },
+          {
+            "body" : "Reviewed complete broadcasts can reveal a protocol or declared category without an exact product. **Nearby Presence broadcast** describes a public proximity-related format, not a particular phone or wearable. **Possible phone · Nearby sharing broadcast** means the reviewed sharing format declares a phone category; it does not identify a maker, model, owner or operating system. **Possible HomeKit camera** is an accessory-category claim, not proof that Apple made the device or that it is recording. Supported audio formats can suggest an audio accessory. These clues are unauthenticated and may be spoofed. Unknown or incomplete formats stay uninterpreted. Encrypted contents and account information stay opaque; rotating identifiers are not resolved into an owner or stable device identity.",
+            "id" : "protocols",
+            "title" : "Useful clues inside a broadcast"
           },
           {
             "body" : "Bluetooth and local-network identities are not merged into one physical device from a shared name, manufacturer, strength, or timing. Magnetic observations are area clues, not device identities.",
@@ -1041,8 +1046,8 @@
       }
     }
   ],
-  "build" : "1040",
-  "buildIdentifier" : "1A1040",
+  "build" : "1041",
+  "buildIdentifier" : "1A1041",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

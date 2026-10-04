@@ -4,7 +4,38 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
-## Current build 1A1040 content and asset alignment
+## Current build 1A1041 recognition-content alignment
+
+October 3, 2026: all ten published articles in the inventory below were read
+from their public routes against the revised apps and canonical Guide. Findings
+(56434331296923) and Troubleshooting (56434354083227) were separately updated,
+saved in Zendesk and publicly read back. Reviewed Presence, Sharing-category and
+HomeKit-category clues are distinguished from verified products, makers, owners,
+operating systems and activity. Protected and unsupported payloads stay opaque.
+System-provided names are described by the collecting framework rather than
+incorrectly labeling Watch collection as iOS. Rejected local-network metadata
+does not become a model or type. Existing heading anchors and sharing/privacy
+limitations are preserved. Source mirrors are `zendesk-findings-article.html`
+and `zendesk-troubleshooting-article.html`.
+
+Getting started, Travel, Magnetic practice, Monitor, Sessions, Experimental
+Watch, About and Contact retain accurate workflow, requirements and privacy
+guidance; they need no changes for this recognition revision. No article body
+contains a changed app screenshot. The six iPhone panels and four website
+derivatives retain actual 1040 capture provenance, and the two Watch frames
+retain actual 1028 provenance. The scoped 1041 Guide/recognition review is in
+`screenshot-content-review.json`: none of those pictures shows the changed
+protocol clues or rejected metadata rows. Do not claim older pictures are newly
+captured 1041 images. The approved Circular artwork remains unchanged.
+
+The generated website Guide mirrors all 13 native topics and build 1041. Public
+App Store copy includes qualified capabilities; prepared content is not submitted
+public metadata. Existing corporate hero, theme, messaging, footer, article
+hierarchy and support links are unchanged. Zendesk publication is independent
+of GitHub Pages and TestFlight delivery. Authenticated public article readback
+does not replace the owner's signed-out and support-email delivery checks.
+
+## Build 1A1040 content and asset alignment (historical)
 
 On October 3, 2026, all ten published articles in the inventory below were read
 from their live help-center routes against Spectra 1.0.0 / 1A1040 and the canonical
@@ -117,7 +148,7 @@ them and their original capture provenance is preserved.
 | About us | 56413781880091 | Company overview | No |
 | Contact Arc Signal support | 56435622772379 | Company overview | Yes |
 
-All ten articles are published and configured for everyone. Article URLs use `https://arcsignal.zendesk.com/hc/en-us/articles/` followed by the article ID. `zendesk-articles.json` contains four articles added during the original polish pass (title, section, canonical Guide source IDs, and submitted HTML); it is an editorial source, not an automatic uploader. `zendesk-watch-article.html` mirrors the Watch article, including phone-free collection, five local captures, active-display requirements, later paired-iPhone review, and the subsequently updated collection-origin icon explanation. Additional full mirrors cover setup, sessions and About us; Findings and Troubleshooting are maintained in Zendesk and indexed here.
+All ten articles are published and configured for everyone. Article URLs use `https://arcsignal.zendesk.com/hc/en-us/articles/` followed by the article ID. `zendesk-articles.json` contains four articles added during the original polish pass (title, section, canonical Guide source IDs, and submitted HTML); it is an editorial source, not an automatic uploader. `zendesk-watch-article.html` mirrors the Watch article, including phone-free collection, five local captures, active-display requirements, later paired-iPhone review, and the subsequently updated collection-origin icon explanation. Additional full mirrors cover setup, sessions, About us, Findings and Troubleshooting; the latter two were added after their separate October 3 Zendesk publication and public readback.
 
 ## Content guardrails
 

@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1040",
-  "reviewedGuideBuildIdentifier": "1A1040",
+  "reviewedGuideBuild": "1041",
+  "reviewedGuideBuildIdentifier": "1A1041",
   "reviewedOn": "2026-10-03",
-  "reason": "Build 1040 uses an outlined open-book Guide tab and unshaded monochrome sunglasses/watch symbols on Scan. All six native iPhone App Store frames and four light/dark large-system-text QA images are refreshed from frozen source; the four website gallery images are imported losslessly from these actual 1040 captures. Guide metadata follows build 1040; instructional content and support paths remain unchanged. The Watch interface is unchanged and its reviewed images retain actual 1028 provenance, not a new capture label. Exact Circular branding, example disclosures, iOS/watchOS 27 requirements, and feature/privacy claims remain accurate. This scoped Watch content review expires at the next Guide build and cannot excuse stale imagery after a pictured workflow changes."
+  "reason": "Build 1041 updates qualified recognition, bounded one-finding analysis context, rejected network metadata and technical Guide explanations. None of the marketing frames depicts those changed protocol/TXT/Guide details. All six iPhone App Store frames, four large-system-text QA frames and four lossless website derivatives remain representative with actual 1040 capture provenance. Watch start/completion UI, awake-display scope, storage and transfer are unchanged; its images retain actual 1028 provenance. These are scoped current-content reviews, not new captures or proof of physical detection. Exact Circular branding, outlined tab/specialist symbols, example disclosures, iOS/watchOS 27 requirements and privacy claims remain accurate. This review expires at the next Guide build or an affected pictured-workflow change."
 }
