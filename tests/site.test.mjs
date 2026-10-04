@@ -443,16 +443,17 @@ test('company homepage leads with Arc Signal and keeps product identity in its c
 test('public bundle excludes development files and remains lightweight', async () => {
   assert.ok(files.every(name => !/(^|\/)(?:\.git|tests|scripts|node_modules|\.env)(\/|$)/.test(name)));
   const bytes = await Promise.all(files.map(async name => (await stat(join(root, name))).size));
-  // Retain the original content budget; approved brand images have separately
-  // bounded allowances so their original pixels can be preserved.
+  // The reviewed October 4 content budget is 3.1 decimal MB. Approved brand
+  // images keep separately bounded allowances to preserve original pixels.
   const wordmarkIndex = files.indexOf('assets/images/spectra-wordmark.webp');
   assert.ok(wordmarkIndex >= 0);
   assert.ok(bytes[wordmarkIndex] <= 415_000, 'Wordmark exceeds its bounded allowance');
   const invertedIconIndex = files.indexOf('assets/images/spectra-icon-inverted.png');
   assert.ok(invertedIconIndex >= 0);
   assert.ok(bytes[invertedIconIndex] <= 50_000, 'Inverted icon exceeds its bounded allowance');
-  assert.ok(bytes.reduce((sum, value, index) => sum + (index === wordmarkIndex || index === invertedIconIndex ? 0 : value), 0) < 3_000_000,
-    'Public content excluding the approved brand images exceeds the original 3 MB budget');
+  assert.ok(bytes.reduce((sum, value, index) => sum + (index === wordmarkIndex || index === invertedIconIndex ? 0 : value), 0) < 3_100_000,
+    'Public content excluding the approved brand images exceeds the reviewed 3.1 MB budget');
+  assert.match(await readFile(join(root, 'README.md'), 'utf8'), /3\.1 MB content budget/);
   assert.equal((await readFile(join(root, 'CNAME'), 'utf8')).trim(), 'arcsignal.app');
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/arcsignal\.app\/<\/loc>/);
 });

@@ -445,6 +445,11 @@
             "title" : "One list, with context on each result"
           },
           {
+            "body" : "Device icons describe a **possible hardware category**, not activity. A reviewed MacBook match can use a laptop; an uncertain subtype uses its supported parent category. Known electronic identities without a suitable specific icon use a **chip**; a **question mark** means the hardware type remains unclassified. Conflicting product claims never borrow one model's icon. The **confidence badge** and source evidence remain separate: a more specific icon does not make a match stronger. A known product can still have no reviewed capability evidence. Names and icons do not verify a manufacturer, owner, recording or playback.",
+            "id" : "hardware-icons",
+            "title" : "Hardware icons, separate confidence"
+          },
+          {
             "body" : "Use **Filters** to narrow results by the measurement that recorded them: **Bluetooth**, **Local network**, or **Magnetic**. Choose any combination and **Apply**; leave all unchecked to include everything. The button is hidden when only one measurement is represented. **Search names** looks for the displayed or broadcast name, including names whose device type is undetermined. It does not guess categories from your search. **Cancel** keeps the current measurement filter; **Clear filters** restores all results and clears name search. Device-type labels are helpful estimates, not exclusion rules. **Filters** and search never change collection, saved reports, or export scope.",
             "id" : "filters",
             "title" : "Filter what was found"
@@ -1056,8 +1061,8 @@
       }
     }
   ],
-  "build" : "1043",
-  "buildIdentifier" : "1A1043",
+  "build" : "1044",
+  "buildIdentifier" : "1A1044",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

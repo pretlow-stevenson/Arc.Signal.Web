@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1040",
-      "buildIdentifier": "1A1040",
-      "appSourceCommit": "b6cd08a56d0384bb45e88654e9e09b4103a5e16e"
+      "bundleBuild": "1044",
+      "buildIdentifier": "1A1044",
+      "appSourceCommit": "d94d3be6efd79792b1f4d38c0aaf86b72f5fb67d"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1043",
-  "reviewedGuideBuildIdentifier": "1A1043",
+  "reviewedGuideBuild": "1044",
+  "reviewedGuideBuildIdentifier": "1A1044",
   "reviewedOn": "2026-10-04",
-  "reason": "Build 1043 shares reviewed semantic name knowledge between Bluetooth and Bonjour, retains explicit protocol/serial evidence scopes, adds finite household inventory coverage and public Weave/Mesh/AltBeacon format interpretation, and updates technical Guide explanations. None of the marketing frames depicts the changed matching rules, protocol detail or technical Guide paragraph. All six iPhone App Store frames, four large-system-text QA frames and four lossless website derivatives remain representative with actual 1040 capture provenance. Watch start/completion UI, awake-display scope, storage and transfer are unchanged; its images retain actual 1028 provenance. These are scoped current-content reviews, not new captures or proof of physical detection. Exact Circular branding, outlined symbols, example disclosures, iOS/watchOS 27 requirements and privacy claims remain accurate. This review expires at the next Guide build or an affected pictured-workflow change."
+  "reason": "Build 1044 separates reviewed physical hardware categories from capabilities, confidence and review priority, and updates the Guide and Findings support article with that distinction. All six iPhone App Store frames and four large-system-text QA frames are freshly captured from the verified 1044 executable; four lossless website derivatives preserve their exact native pixels. The Smart Glasses panel shows the updated outlined hardware symbol and possible-category qualifier. Watch start/completion UI, awake-display scope, storage and transfer are unchanged; its reviewed images retain actual 1028 provenance. Exact Circular branding, example disclosures, iOS/watchOS 27 requirements and privacy claims remain accurate. This is a scoped current-content review, not evidence of physical detection or a public App Store submission. This review expires at the next Guide build or an affected pictured-workflow change."
 }

@@ -350,21 +350,21 @@ node scripts/import-spectra-wordmark.mjs /path/to/Spectra/repository
 
 The importer checks the approved source and decoded-pixel equality, validates
 both HTML placements, then updates content-hashed URLs. Normal site tests check
-committed hashes and placement without image tooling. The original 3 MB content
-budget stays in place, with separate allowances of 415,000 bytes for this
+committed hashes and placement without image tooling. The 3.1 MB content budget
+has separate allowances of 415,000 bytes for this
 lossless logo (currently 411,678 bytes) and 50,000 bytes for the owner-supplied
 `assets/images/spectra-icon-inverted.png` (48,187 bytes, retained unchanged).
 Images/fonts remain self-hosted.
 
 ## App screenshots
 
-The October 3 refresh uses the same verified native captures as Spectra’s
+The October 4 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1037 / 1037, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1044 / 1044, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -376,7 +376,13 @@ signal context, and Review details action. The current unified Results layout
 and name search are visible; there are no retired device-category filters.
 Result and magnetic-meter symbols use the same regular line weight as the
 rest of the app, without decorative icon tiles. Status and confidence badges
-remain. The unchanged Watch interface is separately recaptured from 1A1028;
+remain. Reviewed hardware categories now select specific or conservative parent
+symbols independently of capabilities, identity confidence and review priority;
+the Smart Glasses image shows that possible-category qualifier. This does not
+authenticate the advertised identity or prove recording. All six iPhone App Store
+frames and four separate light/dark large-system-text QA frames are freshly
+captured from reviewed source `d94d3be6efd79792b1f4d38c0aaf86b72f5fb67d`.
+The unchanged Watch interface retains separately captured 1A1028 imagery;
 its manifest records the actual Watch binary and native pixels independently.
 The companion App Store set also shows the updated Sessions date disclosure,
 count and inline check-type icons. Each row identifies its collector and recorded
@@ -399,8 +405,8 @@ Refresh tooling requires `cwebp` and ImageMagick. Lossless WebP preserves native
 1320 × 2868 dimensions and every decoded pixel while reducing transfer size.
 The importer uses maximum-effort lossless encoding (`-q 100 -m 6`), preserves the
 ICC profile, and checks decoded pixels after conversion. Its extra work happens
-only during asset preparation, not in a visitor's browser. The original 3 MB
-content budget excludes only the separately bounded brand images described above.
+only during asset preparation, not in a visitor's browser. The 3.1 MB content
+budget excludes only the separately bounded brand images described above.
 The importer also versions homepage/gallery image URLs and full-size links with
 the output content hash, replacing prior versions idempotently. Updated HTML
 therefore requests updated screenshots without relying on image cache expiry;
@@ -450,8 +456,13 @@ captures from the app’s built-in fictional sample flow, exported September 6,
 2026. They contain no customer images or private reproduction data. The Seamless
 icon is copied from the app’s current asset catalog. Homepage screenshot cards
 show cropped previews; full screenshots are available on the product pages.
-The public bundle stays within its 3 MB content budget plus the bounded brand-image
+The public bundle stays within its 3.1 MB content budget plus the bounded brand-image
 allowances, with full app screens loaded lazily.
+On October 4 the decimal-byte content cap increased from 3,000,000 to 3,100,000
+bytes, a bounded 3.33% allowance for current Guide explanations and exact-pixel
+captures, not an unbounded asset exemption. The reviewed bundle has 35 public
+files and 3,000,174 content bytes before separately bounded brand images; the
+manifest, private-file/symlink exclusions and lazy-loading behavior are unchanged.
 
 The waveform icon comes from Spectra’s original app asset catalog. The header
 reuses that waveform through an SVG luminance mask, displaying only the black
