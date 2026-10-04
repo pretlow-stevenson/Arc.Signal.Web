@@ -166,6 +166,11 @@
             "title" : "Useful clues inside a broadcast"
           },
           {
+            "body" : "Some complete broadcasts contain public product codes. Spectra can look up a Matter vendor/product tuple in its bundled public registry, or a supported MiBeacon product code in a reviewed model table. A public outer-header code may still be usable when the contents are encrypted; Spectra does not decrypt them. A **Possible** model or device type is a clue, not authenticated hardware. Supported sensor and automation formats may identify a family without a specific model. A code’s registered owner or ecosystem is not automatically the device’s manufacturer. Conflicting claims remain alternatives; saved findings retain the interpretation from that session until you explicitly recheck an eligible copy.",
+            "id" : "public-models",
+            "title" : "Model clues without a broadcast name"
+          },
+          {
             "body" : "Bluetooth and local-network identities are not merged into one physical device from a shared name, manufacturer, strength, or timing. Magnetic observations are area clues, not device identities.",
             "id" : "sources",
             "title" : "Different sources remain distinct"
@@ -1046,8 +1051,8 @@
       }
     }
   ],
-  "build" : "1041",
-  "buildIdentifier" : "1A1041",
+  "build" : "1042",
+  "buildIdentifier" : "1A1042",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

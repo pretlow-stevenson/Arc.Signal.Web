@@ -4,7 +4,28 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
-## Current build 1A1041 recognition-content alignment
+## Current build 1A1042 proactive-recognition alignment
+
+October 4, 2026: Findings (56434331296923) and Troubleshooting
+(56434354083227) were separately updated, saved in Zendesk and publicly read
+back. They explain offline public Matter model tuples and reviewed MiBeacon
+product codes, manufacturer-backed names and bounded family clues. Readable
+outer headers are distinguished from opaque encrypted contents; no decryption,
+authenticated model, hardware certification, owner or activity is promised.
+Existing heading anchors, source mirrors, namespace caveats and privacy limits
+remain intact. Other workflow, requirements and experimental-Watch articles are
+unaffected by this recognition-only revision. Their unchanged scope is covered
+by the preceding ten-article review, not falsely reported as new publication.
+
+The generated Guide contains all 13 native topics and the actual build 1042.
+The scoped screenshot review retains genuine iPhone-1040 / Watch-1028 capture
+provenance: none of those marketing frames depicts the new public-model details
+or technical Guide paragraph. App Store copy/assets are prepared release
+materials, not submitted public metadata. No support theme, messaging channel,
+audience or billing setting changed. Zendesk publishing, GitHub Pages deployment
+and TestFlight availability are independently verified delivery gates.
+
+## Build 1A1041 recognition-content alignment (historical)
 
 October 3, 2026: all ten published articles in the inventory below were read
 from their public routes against the revised apps and canonical Guide. Findings
