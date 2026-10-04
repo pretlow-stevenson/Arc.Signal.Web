@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1045",
-      "buildIdentifier": "1A1045",
-      "appSourceCommit": "052a71f3303f679c1324b53f23344e81a275f321"
+      "bundleBuild": "1046",
+      "buildIdentifier": "1A1046",
+      "appSourceCommit": "024a5e8e29281e006d0120818ba0f21a2ffa72ff"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1045",
-  "reviewedGuideBuildIdentifier": "1A1045",
+  "reviewedGuideBuild": "1046",
+  "reviewedGuideBuildIdentifier": "1A1046",
   "reviewedOn": "2026-10-04",
-  "reason": "Build 1045 gives finding names and types prominence above compact, explicitly leading-aligned supporting details with a scoped high-readability secondary color. Supported hardware/capability symbols stay blue; unknown types use neutral actual-source symbols. Confidence and amber similarity cautions remain independent. The canonical Guide and published Findings support article explain these distinctions. All six iPhone App Store frames and four large-system-text QA frames are freshly captured from the verified 1045 executable; four lossless website derivatives preserve their exact native pixels. Watch start/completion UI, awake-display scope, storage and transfer are unchanged; its reviewed images retain actual 1028 provenance. Exact Circular branding, example disclosures, iOS/watchOS 27 requirements and privacy claims remain accurate. This is a scoped current-content review, not evidence of physical detection, unrestricted Dynamic Type certification or a public App Store submission. This review expires at the next Guide build or an affected pictured-workflow change."
+  "reason": "Build 1046 uses plain signal wording and suppresses only complete reviewed repeated type text; Possible qualifiers, source context, independent confidence and amber similarity cautions remain. The canonical Guide and published Findings, Troubleshooting and Experimental Watch support articles explain deliberate, non-erasing recovery. All six iPhone App Store frames and four large-system-text QA frames are freshly captured from the verified 1046 executable; four lossless website derivatives preserve their exact native pixels. The pictured Watch idle and Added-to-Sessions completion states are unchanged and retain actual 1028 provenance. Unpictured Watch loading recovery and queued-transfer copy do change; this is not an assertion that all Watch UI is unchanged. Experimental awake-display scope, 30-second capture, five local copies, iPhone interpretation, exact Circular branding, example disclosures, iOS/watchOS 27 requirements and privacy claims remain accurate. This is a scoped current-content review, not evidence of physical detection, unrestricted Dynamic Type certification or a public App Store submission. This review expires at the next Guide build or an affected pictured-workflow change."
 }

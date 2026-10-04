@@ -951,13 +951,32 @@ test('Guide and policy distinguish Spectra Settings from iPhone permissions', ()
   const policy = prose(pages.get('spectra-privacy.html'));
   assert.match(guide, /Settings → App icon/);
   assert.match(guide, /Classic, Spectra Blue, Light, or Blue on White/);
-  assert.match(guide, /iPhone Settings → Privacy/);
+  assert.match(guide, /For Access not allowed, change Spectra’s access in iPhone Settings/);
+  assert.match(guide, /fresh access check/);
+  assert.match(guide, /cannot add unsupported hardware or override an iOS restriction/);
   assert.match(guide, /Spectra Settings/);
   assert.match(policy, /Settings → About/);
   for (const html of [guide, policy]) {
     assert.doesNotMatch(html, /Guide → (?:About|App icon|Measurement access|Copy support information)/);
     assert.doesNotMatch(html, /(?:Reset Spectra|sessions) in Guide/);
   }
+});
+
+test('Guide and support preserve qualified signals and deliberate non-erasing recovery', async () => {
+  const guide = prose(pages.get('guide.html'));
+  for (const phrase of ['Observed pattern', 'not identity confidence', 'not physical-device totals',
+    'Check ended early marks a foreground interruption', 'Review Coverage', 'separate saved status',
+    'Check Availability', 'without starting generation', 'Retry Analysis', 'Retry Loading',
+    'without erasing copies']) assert.ok(guide.includes(phrase), phrase);
+  const findings = await readFile(join(root, 'docs/zendesk-findings-article.html'), 'utf8');
+  assert.match(findings, /strongest relevant member’s evidence tier, not identity confidence/);
+  const troubleshooting = await readFile(join(root, 'docs/zendesk-troubleshooting-article.html'), 'utf8');
+  assert.match(troubleshooting, /marks a foreground interruption/);
+  assert.match(troubleshooting, /never starts analysis automatically/);
+  assert.match(troubleshooting, /Unsupported iPhones do not offer a futile availability retry/);
+  const watch = await readFile(join(root, 'docs/zendesk-watch-article.html'), 'utf8');
+  assert.match(watch, /does not erase copies or resend a capture/);
+  assert.match(watch, /different stages when offered/);
 });
 
 test('Guide explains specialist export scope and bounded optional analysis', async () => {

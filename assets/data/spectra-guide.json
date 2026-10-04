@@ -50,7 +50,7 @@
             "title" : "Choose an app icon"
           },
           {
-            "body" : "Local Network needs a joined Wi-Fi or supported wired local link and permission. Spectra offers **Check again** or continuation without that measurement when others can run. Returning from **Settings** rechecks availability; it does not silently start a scan. An internet connection is not required for local discovery.",
+            "body" : "Local Network needs a joined Wi-Fi or supported wired local link and permission. Spectra offers **Check again** when readiness can be rechecked, or continuation without that measurement when others can run. Returning from **Settings** rechecks availability; it does not silently start a scan. An internet connection is not required for local discovery.",
             "id" : "network",
             "title" : "No local network available?"
           },
@@ -62,7 +62,7 @@
         ],
         "steps" : [
           "In Spectra, open **Settings** → **Privacy & storage** → **Measurement access** to review permissions and sensor readiness. Tap **Done** to return; unused measurements do not need to be configured.",
-          "If iOS has already denied access, use iPhone **Settings** → **Privacy & Security** or the app’s settings to change it.",
+          "For **Access not allowed**, change Spectra’s access in iPhone **Settings**, then return to Spectra for a fresh access check. Retrying cannot add unsupported hardware or override an iOS restriction; follow its guidance or choose different measurements.",
           "Return to Spectra, choose measurements, and review any readiness message before starting."
         ],
         "symbol" : "checklist",
@@ -300,7 +300,7 @@
             "title" : "Find your Watch sweep in Sessions"
           },
           {
-            "body" : "Each device retains up to five capture copies, bounded to 4 MiB each. When space is needed, the Watch retires only copies confirmed received on iPhone; the phone retires only inbox copies already processed into **Sessions**. Unsent or unprocessed evidence is not automatically discarded. **Sessions** remain until you delete them or normal session retention applies. A full store with no eligible copies stops accepting new captures; review the transfer or processing status before retrying. Watch sweeps save to **Sessions** independently of the **Save completed sessions** setting for iPhone checks.",
+            "body" : "Each device retains up to five capture copies, bounded to 4 MiB each. When space is needed, the Watch retires only copies confirmed received on iPhone; the phone retires only inbox copies already processed into **Sessions**. Unsent or unprocessed evidence is not automatically discarded. **Sessions** remain until you delete them or normal session retention applies. A full store with no eligible copies stops accepting new captures; review the transfer or processing status before retrying. If capture storage cannot load, use **Retry Loading** before choosing erasure. It rechecks local storage without erasing copies; transfer or processing failures have their own retry actions. Watch sweeps save to **Sessions** independently of the **Save completed sessions** setting for iPhone checks.",
             "id" : "capacity",
             "title" : "Room for the next sweep"
           },
@@ -435,7 +435,7 @@
             "title" : "Likely network endpoints"
           },
           {
-            "body" : "Bluetooth identities with matching product or advertised profiles can share a similarity set. Its members may be separate devices; Spectra keeps their individual records.",
+            "body" : "Signals with similar broadcasts can share a similarity set. Its members may be separate devices; Spectra keeps their individual records. **Observed pattern** describes the strongest relevant member’s evidence tier, not identity confidence or proof that the signals belong together. The separate match badge and amber **Similarity only** caution still apply. Signal and service-signal counts describe retained records, not physical-device totals.",
             "id" : "profiles",
             "title" : "Similar is not the same"
           },
@@ -445,7 +445,7 @@
             "title" : "One list, with context on each result"
           },
           {
-            "body" : "Device icons describe a **possible hardware category**, not activity. A reviewed MacBook match can use a laptop; an uncertain subtype uses its supported parent category. Known electronic identities without a suitable specific icon use a **chip**. Conflicting product claims never borrow one model's icon. The **confidence badge** and source evidence remain separate: a more specific icon does not make a match stronger. A known product can still have no reviewed capability evidence. Names and icons do not verify a manufacturer, owner, recording or playback.",
+            "body" : "Device icons describe a **possible hardware category**, not activity. A reviewed MacBook match can use a laptop; an uncertain subtype uses its supported parent category. Known electronic identities without a suitable specific icon use a **chip**. Conflicting product claims never borrow one model's icon. The **confidence badge** and source evidence remain separate: a more specific icon does not make a match stronger. A type already stated in reviewed text need not repeat; its **Possible** qualifier and source context still apply. A known product can still have no reviewed capability evidence. Names and icons do not verify a manufacturer, owner, recording or playback.",
             "id" : "hardware-icons",
             "title" : "Hardware icons, separate confidence"
           },
@@ -461,7 +461,7 @@
           }
         ],
         "steps" : [
-          "Expand a **Summary** result to inspect its members and grouping explanation. Large groups offer **Show all identities**: a searchable list of that group’s exact records, also available in specialist checks. Choose a record to open its details. Matching results appear before related context; this list never merges similar identities into one device.",
+          "Expand a **Summary** result to inspect its members and grouping explanation. Large groups offer **Show all** with their signal count: a searchable list of that group’s individual records, also available in specialist checks. Choose a signal to open its details. Matching results appear before related context; this list never merges similar signals into one device.",
           "Choose **All Signals** above **Results** for the exact retained inventory, or **Show signals** to expand unclassified activity. If **Summary** and **All Signals** look alike, the check may contain only separate identities without supported relationships."
         ],
         "symbol" : "square.stack.3d.up",
@@ -664,7 +664,7 @@
             "title" : "Wi-Fi works but no devices appear"
           },
           {
-            "body" : "Keep Spectra visible. Locking, switching apps, permission changes, source loss, and ending early can limit a check. Review the incomplete message and retained findings; do not interpret it as no matches. After restoring access, start a fresh check. On a busy scan, wait until collection finishes to explore stable detailed results.",
+            "body" : "Keep Spectra visible. Locking, switching apps, permission changes, source loss, and ending early can limit a check. **Check ended early** marks a foreground interruption; returning does not resume the check. **Check interrupted** offers **Review Coverage** to inspect the problem and **Review Results** to finish reviewing available measurements, even if there are no signal findings. Confirm the separate saved status before closing. Restore access if needed, then start a fresh check from **Scan**. An incomplete check is not a no-match result. On a busy scan, wait until collection finishes to explore stable detailed results.",
             "id" : "interrupted",
             "title" : "A check stopped or looks incomplete"
           }
@@ -814,7 +814,7 @@
         "takeaway" : "A completed check tells you what Spectra observed—not everything that might be present.",
         "technicalSections" : [
           {
-            "body" : "Keep Spectra visible during measurement. A foreground interruption ends an active scan with a coverage limitation; Monitor is not an unrestricted background detector.",
+            "body" : "Keep Spectra visible during measurement. A foreground interruption ends an active scan with a coverage limitation and **Check ended early** status; returning does not resume collection. Review retained results and **Coverage** before starting another check. Monitor is not an unrestricted background detector.",
             "id" : "foreground",
             "title" : "Foreground operation"
           },
@@ -988,7 +988,7 @@
             "title" : "Analyze on Device"
           },
           {
-            "body" : "A check with no relevant findings does not start Apple Intelligence. Review **Coverage** instead; no matches is not an all-clear. Analysis requires Apple Intelligence enabled, its model ready, and a supported language and region. **Analyze on Device** is disabled while Apple Intelligence is unavailable. Returning to Spectra refreshes availability, for example after enabling it in iPhone **Settings**. **Check Availability** inside an open analysis also refreshes the status. Preparation and generation share a 45-second limit; **Cancel** stops the request. Backgrounding Spectra or closing analysis cancels generation. A failure leaves your scan unchanged. Choose another finding, retry, or use **Export JSON** for external review. Scanning and exporting do not require Apple Intelligence.",
+            "body" : "A check with no relevant findings does not start Apple Intelligence. Review **Coverage** instead; no matches is not an all-clear. Analysis requires Apple Intelligence enabled, its model ready, and a supported language and region. **Analyze on Device** is disabled while it is unavailable. Enable Apple Intelligence or review its language in iPhone **Settings**, then return to refresh availability. **Check Availability**, when offered in results or an open analysis, refreshes readiness without starting generation; unsupported hardware has no availability retry. Preparation and generation share a 45-second limit. **Cancel Analysis**, backgrounding Spectra, or closing analysis cancels generation. A failed or refused explanation leaves your scan unchanged. Use **Retry Analysis** when offered; a refused or oversized request is not retried unchanged. Review **Summary used for analysis**, **Choose another finding**, or use **Export JSON** for external review. Scanning and exporting do not require Apple Intelligence.",
             "id" : "readiness",
             "title" : "When analysis cannot run"
           },
@@ -1066,8 +1066,8 @@
       }
     }
   ],
-  "build" : "1045",
-  "buildIdentifier" : "1A1045",
+  "build" : "1046",
+  "buildIdentifier" : "1A1046",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
