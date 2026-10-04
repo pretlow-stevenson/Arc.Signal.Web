@@ -84,6 +84,11 @@
             "title" : "A Wi-Fi name is not a router identity"
           },
           {
+            "body" : "**Bluetooth Proximity** listens for new broadcasts. A private reference retained with a new iPhone capture can recognize the original framework identity after reopening; it cannot make a silent or rotating advertiser appear. Older or imported sessions and Watch captures may need a confirmed possible match. If no useful name or supported payload clue was retained and no private reference is available, Spectra explains that limitation rather than starting an indistinguishable search. Bluetooth access and finding the signal are separate requirements. A saved signal strength is not a current reading.",
+            "id" : "saved-proximity",
+            "title" : "Why is a saved signal not available?"
+          },
+          {
             "body" : "Spectra uses a fixed standard text size. Changing iOS Dynamic Type or Larger Text does not resize the app’s own interface. VoiceOver labels remain available, and contrast and reduced-motion preferences still apply. System-owned permission dialogs and sharing interfaces are controlled by iOS.",
             "id" : "text-size",
             "title" : "Text size and accessibility"
@@ -120,6 +125,11 @@
             "body" : "**Summary** surfaces named findings and supported possible device types, even when the manufacturer or model is unknown. Each result keeps its confidence or name-source label. Related observations stay together; other unnamed activity stays compact. Expand a result for its measurements and supporting evidence.",
             "id" : "explore",
             "title" : "Start with the summary"
+          },
+          {
+            "body" : "Local-network discovery can reveal supported printing, scanning, file sharing, media, automation, and imaging or audio services. A service describes what an endpoint advertises, not necessarily a physical device: a computer can host a print queue, and an imaging service may also belong to audio hardware. Reviewed names and protocol-specific model fields can support a **Possible** product or family. Without those clues, Spectra keeps the service role and its uncertainty visible instead of inventing a model.",
+            "id" : "network-roles",
+            "title" : "Recognize a network role without an exact device"
           },
           {
             "body" : "A **Possible smartwatch** or **Possible audio output** can appear without a product name when reviewed broadcast evidence supports that category. A result shows up to three retained possible interpretations; **Technical details** holds the remaining retained interpretations and their sources. These possibilities are not an exhaustive list of products. The **Conflicting identity claims** label means Spectra has not selected a product. Multiple interpretations do not create extra devices or increase review priority. The same eligible finding stays available for **Bluetooth Proximity** and analysis; neither verifies its identity.",
@@ -383,6 +393,11 @@
             "title" : "Briefly or repeatedly observed"
           },
           {
+            "body" : "**Bluetooth Proximity** starts a fresh, unsaved listen; it never reuses an old reading as a live measurement. New Bluetooth captures saved on this iPhone can retain a private reference so their framework identities can be recognized after reopening, including from a recheck. A changed identity or silent device may still be unavailable. Older sessions, imported files, and Watch captures may offer possible matches based on a broadcast name, a separately labeled **System name**, or supported payload evidence. Confirm a suggestion before following it; similar names or bytes do not prove it is the same physical device.",
+            "id" : "saved-proximity",
+            "title" : "Follow a signal from a saved check"
+          },
+          {
             "body" : "Use **Quick Check** or **Area Sweep** with Bluetooth selected, or **Monitor** while stationary. Recognizable names for AirTag, Tile, Chipolo, Pebblebee, Galaxy SmartTag, and eufy SmartTrack can appear as Possible item-tracker matches. **Finding-network accessory** and **Finding-network broadcast** describe recognized formats, not a specific tracker; phones, computers and headphones may also participate. Open a finding for its evidence or select it for **Bluetooth Proximity**. These results describe nearby signal presence, not ownership or movement with you. Trackers may change identifiers or omit recognizable names, so Spectra cannot identify every tracker or rule one out when no match appears.",
             "id" : "item-trackers",
             "title" : "Recognize nearby item trackers"
@@ -478,7 +493,7 @@
             "title" : "The local-network relationship"
           },
           {
-            "body" : "Session identifiers reset for each check. Spectra does not use them to track a product across sessions. Similarity sets and compact disclosures change presentation, not the underlying retained evidence.",
+            "body" : "Ordinary new checks use fresh session identifiers and do not automatically link devices across history. An explicit **Bluetooth Proximity** check can reuse a retained private reference for the selected iPhone capture; it does not merge sessions or authenticate hardware. Similarity sets and compact disclosures change presentation, not the underlying retained evidence.",
             "id" : "session",
             "title" : "A new check starts fresh"
           }
@@ -754,9 +769,9 @@
             "title" : "Protected, bounded history"
           },
           {
-            "body" : "Identifiers reset with each check. Recognizable advertised names and product metadata remain unverified claims and can contain personal information; resetting an identifier does not anonymize a transmitted name.",
+            "body" : "Each new capture uses its own identifiers. A saved iPhone Bluetooth capture can also retain a small, capture-specific reference in protected local history for an explicit **Bluetooth Proximity** check. It contains no raw Bluetooth framework identifier and is never included in JSON, AI copies, or Watch transfers. Its private index is marked for exclusion from device backups, subject to iOS backup behavior. Rechecks of that capture share its reference. Removing the last saved copy removes its active local reference; **Undo** can briefly restore it with the session. **Erase All Sessions** and **Reset Spectra** also clear protected recovery copies. Names remain unverified and may identify people or devices; resetting an identifier does not anonymize a transmitted name.",
             "id" : "identity",
-            "title" : "Session-scoped identifiers"
+            "title" : "Session identifiers and saved signal checks"
           },
           {
             "body" : "When selected, Spectra browses a fixed catalog of Bonjour services on the joined network. It does not pair with discovered devices or open application sessions to their endpoints.",
@@ -1066,8 +1081,8 @@
       }
     }
   ],
-  "build" : "1046",
-  "buildIdentifier" : "1A1046",
+  "build" : "1047",
+  "buildIdentifier" : "1A1047",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

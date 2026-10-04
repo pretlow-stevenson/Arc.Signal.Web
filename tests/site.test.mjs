@@ -343,6 +343,12 @@ test('Watch screenshots preserve current native dimensions and identify experime
 test('platform capture reviews reject stale releases and altered provenance', async () => {
   const review = JSON.parse(await readFile(join(root, 'docs/screenshot-content-review.json'), 'utf8'));
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const ios = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
+  const readme = await readFile(join(root, 'README.md'), 'utf8');
+  assert.ok(readme.includes(`The iPhone capture identity is version ${ios.appVersion} / ${ios.buildIdentifier} / ${ios.bundleBuild}`),
+    'README must describe the actual current iPhone producer');
+  assert.ok(readme.includes(`captured from reviewed source \`${ios.appSourceCommit}\``),
+    'README must retain the actual current capture source');
   for (const file of ['spectra-screenshots.json', 'spectra-watch-screenshots.json']) {
     const provenance = JSON.parse(await readFile(join(root, `assets/data/${file}`), 'utf8'));
     assertCaptureReview(review, provenance, guide);

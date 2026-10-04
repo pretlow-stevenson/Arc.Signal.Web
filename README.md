@@ -364,7 +364,7 @@ Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1046 / 1046, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1047 / 1047, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -391,10 +391,15 @@ canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
 All six iPhone App Store
 frames and four separate light/dark large-system-text QA frames are freshly
-captured from reviewed source `024a5e8e29281e006d0120818ba0f21a2ffa72ff`.
+captured from reviewed source `0bc5fa5b25437ee34dc517a928fbb7f72642d2d5`.
+The current Guide, privacy policy and published Findings, Troubleshooting and
+Sessions articles explain source-reviewed network roles and optional protected
+saved-session Bluetooth references. Follow-up always requires fresh readings;
+weaker cached-name or payload suggestions require confirmation. These images do
+not fabricate a newly identified product or a live reading from saved evidence.
 The pictured Watch idle and Added-to-Sessions completion states retain separately
-captured 1A1028 imagery. Unpictured loading recovery and queued-transfer copy do
-change; this is not a claim that every Watch screen is unchanged.
+captured 1A1028 imagery. Unpictured loading recovery and queued-transfer copy have
+changed since those captures; this is not a claim that every Watch screen is unchanged.
 Its manifest records the actual Watch binary and native pixels independently.
 The companion App Store set also shows the updated Sessions date disclosure,
 count and inline check-type icons. Each row identifies its collector and recorded

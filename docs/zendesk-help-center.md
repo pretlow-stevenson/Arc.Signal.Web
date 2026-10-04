@@ -4,7 +4,31 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
-## Current build 1A1043 shared-identification alignment
+## Build 1A1047 saved-proximity and local-network alignment
+
+October 4, 2026: Findings (56434331296923), Troubleshooting
+(56434354083227), and Sessions (56434367436187) were separately saved in
+Zendesk and read back from their public routes. Network roles remain useful
+without invented hardware or authenticated models. New saved iPhone Bluetooth
+captures **can retain** an optional protected local reference; fresh proximity
+readings remain unsaved and do not change the original session. Older, imported,
+and Watch evidence may instead offer explicitly confirmed possible matches.
+System-reported names may be cached or shared. Unavailable private storage has
+an intentional retry, not fabricated readings or automatic weaker matching.
+The Sessions article explains export exclusion, last-family removal and Undo.
+The privacy policy distinguishes active references from protected recovery copies,
+which Erase All Sessions and Reset Spectra also clear.
+
+Existing article titles, heading anchors, placement and public visibility are
+preserved. Other articles, the support theme and messaging/account configuration
+are unchanged; this is not a claim that all ten articles were newly published.
+The canonical thirteen-topic Guide is generated from build 1047. Prepared App
+Store metadata is not public metadata submission. Actual capture and scoped
+image-review provenance are recorded separately in `screenshot-content-review.json`.
+Authenticated article readback does not replace signed-out or support-email tests.
+GitHub Pages and internal TestFlight availability remain independent delivery gates.
+
+## Build 1A1043 shared-identification alignment (historical)
 
 October 4, 2026: Findings (56434331296923) and Troubleshooting
 (56434354083227) were separately saved and read back from their public routes.

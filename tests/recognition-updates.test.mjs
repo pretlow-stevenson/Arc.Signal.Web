@@ -36,3 +36,35 @@ test('shared identity guidance separates product knowledge from protocol evidenc
     for (const phrase of ['Weave', 'Bluetooth Mesh', 'AltBeacon', 'does not merge']) assert.ok(copy.includes(phrase), phrase);
   }
 });
+
+test('network roles and saved Bluetooth follow-up retain their identity and privacy limits', () => {
+  const guide = JSON.parse(readFileSync(new URL('../assets/data/spectra-guide.json', import.meta.url), 'utf8'));
+  const section = (article, id) => {
+    const content = guide.articles.find(a => a.content.id === article).content;
+    return [...content.sections, ...content.technicalSections].find(s => s.id === id).body;
+  };
+  const roles = section('detection', 'network-roles');
+  for (const phrase of ['printing, scanning, file sharing, media, automation',
+    'not necessarily a physical device', '**Possible** product or family', 'instead of inventing a model']) {
+    assert.ok(roles.includes(phrase), phrase);
+  }
+  const proximity = section('bluetooth', 'saved-proximity');
+  for (const phrase of ['fresh, unsaved listen', 'never reuses an old reading', 'can retain a private reference',
+    'Older sessions, imported files, and Watch captures', '**System name**', 'Confirm a suggestion',
+    'do not prove it is the same physical device']) assert.ok(proximity.includes(phrase), phrase);
+  const identity = section('privacy', 'identity');
+  for (const phrase of ['can also retain', 'protected local history', 'no raw Bluetooth framework identifier',
+    'never included in JSON, AI copies, or Watch transfers', 'subject to iOS backup behavior',
+    'Removing the last saved copy', '**Undo**', 'clear protected recovery copies']) {
+    assert.ok(identity.includes(phrase), phrase);
+  }
+  const findings = readFileSync(new URL('../docs/zendesk-findings-article.html', import.meta.url), 'utf8');
+  assert.ok(findings.includes('A network role without an exact model'));
+  assert.ok(findings.includes('can retain'));
+  const sessions = readFileSync(new URL('../docs/zendesk-session-article.html', import.meta.url), 'utf8');
+  assert.ok(sessions.includes('Follow up with a fresh signal check'));
+  const policy = readFileSync(new URL('../spectra-privacy.html', import.meta.url), 'utf8');
+  assert.ok(policy.includes('capture-specific'));
+  assert.ok(policy.includes('Undo'));
+  assert.doesNotMatch(proximity, /guaranteed|authenticated identity|distance estimate/i);
+});

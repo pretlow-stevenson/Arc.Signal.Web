@@ -82,6 +82,8 @@
 <p>Other complete formats can identify a <strong>Weave setup advertisement</strong>, <strong>Bluetooth Mesh setup advertisement</strong>, <strong>Bluetooth Mesh proxy advertisement</strong>, or <strong>AltBeacon proximity broadcast</strong>. These labels describe a protocol feature, not a product, physical device type, owner, or activity. Weave codes use their own namespace, not the Matter product registry. Private identifiers and security-state details are not exposed as recognition clues; a deliberately shared complete <strong>Technical archive</strong> may still contain their raw bytes.</p>
 <h2 id="shared-names-separate-sources">Shared names, separate observations</h2>
 <p>Reviewed product and family names help identify both Bluetooth and local-network observations. A recognizable Apple TV name, for example, can suggest the same family on either source. Protocol-specific model fields and byte signatures still require their own evidence. Bluetooth-only LE/BLE name decorations are not removed from ordinary network names. Sharing catalog knowledge does not merge the observations into one physical device or increase confidence. A matching name alone cannot establish that relationship.</p>
+<h2 id="network-service-roles">A network role without an exact model</h2>
+<p>Supported printing, scanning, file-sharing, media, automation, and imaging or audio services can explain what a network endpoint advertises even when its device is unknown. A service is not necessarily physical hardware: a computer can host a print queue, and an imaging service may also belong to audio hardware. Reviewed product names and protocol-specific model fields can support a <strong>Possible</strong> family or model. Conflicting or unsupported fields remain qualified; Spectra does not connect to endpoints or scan arbitrary ports to identify them.</p>
 <h2 id="h_01M3JTA5MKSWR87VRM60B9STF9">Filters do not change your saved evidence</h2>
 <p>
   The <strong>Filters</strong> control narrows completed results by recorded measurement:
@@ -100,8 +102,14 @@
 </p>
 <p>
   Choose <strong>Check Bluetooth Proximity</strong>, select a finding, and start
-  a signal check. Compare live readings in a similar phone orientation. An old
-  result may require confirming a possible matching broadcast. This does not authenticate
+  a fresh, unsaved signal check. New Bluetooth captures saved on this iPhone can retain
+  a private reference for recognizing their framework identity after reopening,
+  including from a recheck. A silent or rotated identity may still be unavailable.
+  Older or imported sessions and Watch captures may require confirming a possible
+  match from a broadcast name, a separately labeled <strong>System name</strong>,
+  or supported payload evidence. An explicit possible-match search is also available
+  when a retained identity has changed and useful clues exist. Compare fresh
+  readings in a similar phone orientation; saved readings never become live. This does not authenticate
   identity or measure metres or direction. A local-network-only finding has no
   measurable physical proximity in Spectra.
 </p>
