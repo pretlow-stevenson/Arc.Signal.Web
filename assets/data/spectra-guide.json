@@ -171,9 +171,14 @@
             "title" : "Model clues without a broadcast name"
           },
           {
-            "body" : "Bluetooth and local-network identities are not merged into one physical device from a shared name, manufacturer, strength, or timing. Magnetic observations are area clues, not device identities.",
+            "body" : "**Weave setup advertisement**, **Bluetooth Mesh setup advertisement**, **Bluetooth Mesh proxy advertisement**, and **AltBeacon proximity broadcast** describe supported public formats, not a product, physical device type, owner, or activity. Weave vendor/product codes use their own namespace, not the Matter registry. Private identifiers and security-state details are not exposed as recognition clues. A complete **Technical archive** can still contain their raw bytes; review it before sharing.",
+            "id" : "service-formats",
+            "title" : "A protocol without a device type"
+          },
+          {
+            "body" : "Reviewed product and family names help identify both Bluetooth and local-network observations. A recognizable Apple TV name, for example, can suggest the same family on either source. Protocol-specific model fields and byte signatures still require the matching protocol evidence. Bluetooth-only name decorations such as LE are not removed from ordinary network names. Sharing catalog knowledge does not merge the observations into one physical device or raise their confidence. A shared name, manufacturer, strength, or timing cannot establish that relationship. Magnetic observations are area clues, not device identities.",
             "id" : "sources",
-            "title" : "Different sources remain distinct"
+            "title" : "Shared knowledge, separate observations"
           }
         ],
         "title" : "How detection works"
@@ -1051,8 +1056,8 @@
       }
     }
   ],
-  "build" : "1042",
-  "buildIdentifier" : "1A1042",
+  "build" : "1043",
+  "buildIdentifier" : "1A1043",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

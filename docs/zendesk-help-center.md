@@ -4,7 +4,29 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
-## Current build 1A1042 proactive-recognition alignment
+## Current build 1A1043 shared-identification alignment
+
+October 4, 2026: Findings (56434331296923) and Troubleshooting
+(56434354083227) were separately saved and read back from their public routes.
+They explain shared Bluetooth/Bonjour product-name knowledge without merging
+physical observations or raising confidence. Protocol-specific fields and
+serial-name grammars retain their evidence requirements. Strict public Weave,
+Bluetooth Mesh and AltBeacon interpretations describe formats, not products,
+owners or activity; protected contents stay opaque. A deliberately shared
+complete Technical archive may still contain raw identifiers and security bytes.
+Existing heading anchors, placement, public visibility and management settings
+are preserved. No support theme or account configuration changed.
+
+The generated Guide mirrors all thirteen native topics at build 1043. Prepared
+App Store content is aligned but is not submitted public metadata. The current
+scoped image review retains actual iPhone-1040 and Watch-1028 provenance: the
+changed technical explanations and recognition rules are not depicted in those
+marketing frames. Other workflows, requirements and experimental-Watch articles
+are unchanged; their earlier ten-article review is not claimed as new publication.
+Authenticated public readback does not replace signed-out or support-email tests.
+GitHub Pages and internal TestFlight delivery remain separate verification gates.
+
+## Build 1A1042 proactive-recognition alignment (historical)
 
 October 4, 2026: Findings (56434331296923) and Troubleshooting
 (56434354083227) were separately updated, saved in Zendesk and publicly read
