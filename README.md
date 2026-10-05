@@ -364,7 +364,7 @@ Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1048 / 1048, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1049 / 1049, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -391,7 +391,16 @@ canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
 All six iPhone App Store
 frames and four separate light/dark large-system-text QA frames are freshly
-captured from reviewed source `7a6141a0aa9311c80a7d9de52e4948ad49f43ab2`.
+captured from reviewed source `4efabd7d32287f599360cf8329069ab234ebcbf2`.
+Sessions now shows supported archive import, confirmed saved counts, remaining
+slots and measured primary history usage; both large-system-text QA frames
+assert those actual labels above the tabs. The canonical Guide and published
+Sessions/Troubleshooting/Watch articles explain full Technical restoration,
+checksum limitations and history management without automatic removal. The
+subsequent runtime revision `d9837182ad5fe16d691965f0f68b261cbcad5a63` only
+qualifies one unpictured Guide privacy paragraph: imported copies cannot retain
+private local Bluetooth references. Its native light/dark opening/tail review
+passes separately; native marketing provenance is not relabeled.
 The current Guide, privacy policy and published Findings, Troubleshooting and
 Sessions articles explain source-reviewed network roles and optional protected
 saved-session Bluetooth references. Follow-up always requires fresh readings;

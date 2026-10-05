@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1048",
-      "buildIdentifier": "1A1048",
-      "appSourceCommit": "7a6141a0aa9311c80a7d9de52e4948ad49f43ab2"
+      "bundleBuild": "1049",
+      "buildIdentifier": "1A1049",
+      "appSourceCommit": "4efabd7d32287f599360cf8329069ab234ebcbf2"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1048",
-  "reviewedGuideBuildIdentifier": "1A1048",
+  "reviewedGuideBuild": "1049",
+  "reviewedGuideBuildIdentifier": "1A1049",
   "reviewedOn": "2026-10-05",
-  "reason": "Build 1048 distinguishes combined readings, bounded observation omissions, result-admission limits and historical totals with unknown causes. The canonical Guide and published Findings and Troubleshooting support articles explain those differences without claiming that a count proves missed devices, CPU pressure or full storage. Existing source-led recognition, independent confidence, possible qualifiers, protected Bluetooth follow-up references and export privacy boundaries remain. All six iPhone App Store frames and four large-system-text QA frames are freshly captured from the verified 1048 executable; four lossless website derivatives preserve their exact native pixels. The pictured Watch idle and Added-to-Sessions completion states are unchanged and retain actual 1028 provenance; this is not an assertion that every Watch state is unchanged. Experimental awake-display scope, 30-second capture, five local copies, exact Circular branding, example disclosures and iOS/watchOS 27 requirements remain accurate. These images do not fabricate hardware findings, historical attribution or live readings from saved evidence. This is a scoped current-content review, not physical detection, unrestricted Dynamic Type certification or public App Store submission. This review expires at the next Guide build or affected pictured-workflow change."
+  "reason": "Build 1049 adds explicitly confirmed supported Technical archive import, historical Imported context, exact-byte checksum mismatch detection without authenticity claims, and deliberate history management without automatic saved-session removal. The canonical Guide and published Sessions, Troubleshooting and Watch articles explain independent 50-session/256-MiB history limits, separate five-copy Watch storage, measured local-file scope and compatible-build recovery. All six iPhone App Store frames and four large-system-text QA frames are freshly captured from the verified 1049 executable and genuine 4efabd7 producer; both Sessions QA frames verify real settled saved-count/usage labels. Four lossless website derivatives preserve native pixels. The subsequent d983718 runtime change only qualifies one unpictured Guide privacy paragraph: imported-only survivors cannot retain private Bluetooth references. Its separate native light/dark opening/tail review passes; the marketing producer is not relabeled. The pictured Watch idle and Added-to-Sessions completion states remain unchanged with actual 1028 provenance, not a claim that every Watch state is unchanged. Experimental fully awake 30-second scope, five local copies, exact Circular branding, example disclosures and iOS 27 / watchOS 27 requirements remain accurate. These images do not fabricate hardware findings or live readings from saved evidence. This is a scoped current-content review, not physical detection, unrestricted Dynamic Type or VoiceOver certification or public App Store submission. It expires at the next Guide build or affected pictured-workflow change."
 }

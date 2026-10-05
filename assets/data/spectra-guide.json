@@ -248,7 +248,7 @@
         "takeaway" : "Use Spectra to inform your next decision—not to certify that a space is safe.",
         "technicalSections" : [
           {
-            "body" : "Reports and notes are bounded local records, not tamper-evident exports or a forensic chain of custody. The primary history file retains at most 50 sessions within 256 MiB and can retire older reports. Temporary replacement files and protected recovery copies may use additional disk space. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
+            "body" : "Reports and notes are bounded local records, not authenticated exports or a forensic chain of custody. The primary history file keeps at most **50 sessions** within **256 MiB**. Saved sessions are not automatically removed; export and delete copies you no longer need to make room. A matching archive checksum does not authenticate its author, collector, or contents. Temporary replacement files and protected recovery copies may use additional disk space. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
             "id" : "retention",
             "title" : "Not a forensic record"
           },
@@ -310,7 +310,7 @@
             "title" : "Find your Watch sweep in Sessions"
           },
           {
-            "body" : "Each device retains up to five capture copies, bounded to 4 MiB each. When space is needed, the Watch retires only copies confirmed received on iPhone; the phone retires only inbox copies already processed into **Sessions**. Unsent or unprocessed evidence is not automatically discarded. **Sessions** remain until you delete them or normal session retention applies. A full store with no eligible copies stops accepting new captures; review the transfer or processing status before retrying. If capture storage cannot load, use **Retry Loading** before choosing erasure. It rechecks local storage without erasing copies; transfer or processing failures have their own retry actions. Watch sweeps save to **Sessions** independently of the **Save completed sessions** setting for iPhone checks.",
+            "body" : "Each device retains up to five capture copies, bounded to 4 MiB each. When space is needed, the Watch retires only copies confirmed received on iPhone; the phone retires only inbox copies already processed into **Sessions**. Unsent or unprocessed evidence is not automatically discarded. Saved **Sessions** are not automatically removed to make room. If session history is full, remove sessions you no longer need and retry phone processing; the unprocessed inbox copy remains. A full capture store with no eligible copies stops accepting new captures; review transfer or processing status before retrying. If capture storage cannot load, use **Retry Loading** before choosing erasure. It rechecks local storage without erasing copies; transfer or processing failures have their own retry actions. Watch sweeps save to **Sessions** independently of the **Save completed sessions** setting for iPhone checks.",
             "id" : "capacity",
             "title" : "Room for the next sweep"
           },
@@ -687,6 +687,11 @@
             "body" : "**Some observations were not retained** does not by itself mean the result list or device storage is full. Read recorded reasons in **Coverage**. Repeated readings can be combined routinely; inventory and endpoint counts have different units. **Result retention limit reached** means some observations could not add a new result record at that limit. **Result records retired** means earlier records were removed from the bounded retained list. Retained results remain available; these notices alone do not require restarting or prove collection stopped. Older captures may not record a breakdown.",
             "id" : "observation-handling",
             "title" : "Does an observation notice mean storage is full?"
+          },
+          {
+            "body" : "Choose a supported **Technical archive**, not **Analysis JSON** or **Reduced identifying information**. A failed checksum or malformed file is different from an older archive with **Checksum unavailable**. Use the original exporter to create another technical archive when possible; a newer unsupported schema may require a Spectra update. If history is full, manage saved sessions before retrying; Spectra does not remove existing history for an import. If file or protected-storage access is unavailable, unlock the iPhone and retry the appropriate access step. Canceling file selection is not an import failure.",
+            "id" : "import",
+            "title" : "A file cannot be imported"
           }
         ],
         "steps" : [
@@ -735,9 +740,14 @@
             "title" : "You choose what gets measured"
           },
           {
-            "body" : "Completed checks are saved locally by default. Turning saving off keeps future checks out of history; it does not delete reports you already saved. Individual deletion offers a brief **Undo** using one temporary in-memory copy after removing the saved copy. Leaving **Sessions** or switching away from Spectra ends Undo; bulk erasure and reset also clear it. No Recently Deleted folder is kept. The Sessions guide explains the time window and separate copies.",
+            "body" : "Completed checks are saved locally by default. Turning saving off keeps future checks out of history; it does not delete reports you already saved or prevent a deliberate **Import Session** or recheck. Saved sessions are not automatically removed to make room. Individual deletion offers a brief **Undo** using one temporary in-memory copy after removing the saved copy. Leaving **Sessions** or switching away from Spectra ends Undo; bulk erasure and reset also clear it. No Recently Deleted folder is kept. The Sessions guide explains the time window and separate copies.",
             "id" : "history",
             "title" : "History is your choice"
+          },
+          {
+            "body" : "**Import Session** reads a supported **Technical archive** locally and asks you to review it before saving. **Imported** identifies a restored record, not a fresh measurement or authenticated capture. Recorded names, notes, collector details, and any location remain claims from the file. Import does not start scanning, analysis, or a map, and does not alter the source file. Private Bluetooth follow-up references are never restored from JSON. Review sensitive contents before choosing to import or share them.",
+            "id" : "import",
+            "title" : "Restore a file deliberately"
           },
           {
             "body" : "The Experimental Watch collector saves bounded Bluetooth evidence locally, including names and payloads that may identify people or devices. New sweeps automatically transfer to your paired iPhone and are identified and added to **Sessions** when Spectra is active, even if automatic iPhone scan saving is off. There is no cloud upload. Each device keeps up to five recent capture copies; only safely received Watch copies or processed phone inbox copies can make room automatically. Watch copies, the phone inbox, **Sessions**, and timing diagnostics have separate erase controls. **Reset Spectra** on iPhone clears received Watch data, rejects previously queued deliveries, and requests a reset of the known paired Watch app. An offline Watch may still hold data until it confirms erasure. The Experimental Watch guide explains pending resets, storage limits, and deletion. Exported or shared files remain.",
@@ -769,12 +779,12 @@
         "takeaway" : "No account. No advertising or analytics SDK. Observations stay on your devices unless you choose to share them.",
         "technicalSections" : [
           {
-            "body" : "Saved reports and notes use iOS file protection. New on-device AI explanations are temporary: they are not saved in sessions or included in exports. Older sessions may still contain explanations saved by an earlier app version; deleting those sessions removes that local history too. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. The primary history file retains up to 50 sessions within 256 MiB; older sessions may be removed when either limit is reached. Safe file replacement and protected recovery copies can require additional disk space. These are not tamper-evident forensic records or an unlimited archive.",
+            "body" : "Saved reports and notes use iOS file protection. New on-device AI explanations are temporary: they are not saved in sessions or included in exports. Older sessions may still contain explanations saved by an earlier app version; deleting those sessions removes that local history too. Spectra marks the session directory, including recovery copies, for exclusion from device backups. This is not a guarantee that sessions can never appear in a backup or on a restored device; iOS controls backup and restore behavior. Files you export may be stored or backed up by your chosen destination. The primary history file keeps up to **50 sessions** within **256 MiB**; originals, rechecks, and imported copies count toward these independent limits. Saved sessions are not automatically removed. Protected recovery copies also remain until deliberate erasure; **Erase All Sessions** and **Reset Spectra** include them. Newer local history formats may not open in older app builds. Return to a compatible build rather than erasing history you still need to resolve a version mismatch. Safe file replacement, protected recovery copies, and separate Watch inbox data can require additional disk space. The displayed history usage is not total app storage or an export file’s size. These are not tamper-evident forensic records or an unlimited archive.",
             "id" : "storage",
             "title" : "Protected, bounded history"
           },
           {
-            "body" : "Each new capture uses its own identifiers. A saved iPhone Bluetooth capture can also retain a small, capture-specific reference in protected local history for an explicit **Bluetooth Proximity** check. It contains no raw Bluetooth framework identifier and is never included in JSON, AI copies, or Watch transfers. Its private index is marked for exclusion from device backups, subject to iOS backup behavior. Rechecks of that capture share its reference. Removing the last saved copy removes its active local reference; **Undo** can briefly restore it with the session. **Erase All Sessions** and **Reset Spectra** also clear protected recovery copies. Names remain unverified and may identify people or devices; resetting an identifier does not anonymize a transmitted name.",
+            "body" : "Each new capture uses its own identifiers. A saved iPhone Bluetooth capture can also retain a small, capture-specific reference in protected local history for an explicit **Bluetooth Proximity** check. It contains no raw Bluetooth framework identifier and is never included in JSON, AI copies, or Watch transfers. Its private index is marked for exclusion from device backups, subject to iOS backup behavior. Rechecks of that capture share its reference. Removing the last non-imported original or recheck copy retires its active local reference; imported copies cannot keep it. **Undo** can briefly restore it with the session. **Erase All Sessions** and **Reset Spectra** also clear protected recovery copies. Names remain unverified and may identify people or devices; resetting an identifier does not anonymize a transmitted name.",
             "id" : "identity",
             "title" : "Session identifiers and saved signal checks"
           },
@@ -876,9 +886,19 @@
             "title" : "Keep rechecks with their capture"
           },
           {
-            "body" : "Saving completed sessions is on by default and can be changed in Spectra **Settings**. Turning it off affects future saving, not existing history. The completed check tells you whether it was saved. If saving fails, keep the result open and use **Retry Saving** or **Export JSON** before discarding it. A forced close, crash, or shutdown before saving can lose an unfinished check; there is no continuous autosaved draft. Finish and confirm important checks before closing the app.",
+            "body" : "Saving completed sessions is on by default and can be changed in Spectra **Settings**. Turning it off affects future saving, not existing history or a deliberate import or recheck. The completed check tells you whether it was saved. If saving fails, keep the results open to review, use **Export JSON**, or **Retry Saving** when offered. For a history limit, **Manage Sessions** lets you remove copies you no longer need before retrying. Managing history does not save or discard the open result. A forced close, crash, or shutdown before saving can lose it; there is no continuous autosaved draft. Confirm important checks were saved before closing.",
             "id" : "saving",
             "title" : "Confirm a check was saved"
+          },
+          {
+            "body" : "Choose **Import Session** in **Sessions** and select a file in Files, or open a compatible file with Spectra. Review the original capture time, recorded collector, compatibility, and integrity status, then choose **Import Session** to save it. **Cancel** leaves history unchanged. Only supported **Technical archive** files can restore a session; **Analysis JSON** and **Reduced identifying information** cannot. Files providers may need a connection to supply your chosen file; validation and saving run on device. Importing keeps the recorded acquisition and interpretation rather than collecting new evidence. **Imported** remains separate from the original collector and capture date. Opening a file while a check or another task is in progress waits for a safe point to review it; it does not discard the open results.",
+            "id" : "import",
+            "title" : "Import a saved Technical archive"
+          },
+          {
+            "body" : "New technical archives include a checksum. A matching checksum checks the archived bytes, not the author, collector, device identity, or truth of the measurements. Supported older archives can say **Checksum unavailable**; this is different from a failed integrity check. A failed checksum, malformed archive, or unsupported format cannot be imported. Importing does not start analysis, scanning, a recheck, or a map, and does not change the source file. Private Bluetooth follow-up references are not included in archives, so a later proximity check may require confirming a possible match.",
+            "id" : "import-integrity",
+            "title" : "A checksum is not authentication"
           },
           {
             "body" : "Open a session and choose **Session options** → **Rename**, or use its list-row menu. Names can be up to 80 characters. Clearing a custom name restores the check-type name. Notes hold up to 1,000 characters of your own context; they do not become detector evidence. A rename does not change the original scan time.",
@@ -921,14 +941,14 @@
             "title" : "When is another recheck useful?"
           },
           {
-            "body" : "A recheck keeps its own retained evidence, so it uses additional local storage and counts toward the session limit. It never removes an existing session to make room. Requesting a recheck explicitly saves a new copy even if automatic saving of completed scans is off. Deleting the original does not delete its independent rechecks. If saving fails, free space or remove sessions you no longer need, then retry. **Cancel** or leave the screen to stop pending work; a copy already saved at the moment you cancel remains in **Sessions**. **Erase All Sessions** and **Reset Spectra** include rechecks.",
+            "body" : "A recheck keeps its own retained evidence, so it uses additional local storage and counts toward the session limit. It never removes an existing session to make room. Requesting a recheck explicitly saves a new copy even if automatic saving of completed scans is off. Deleting the original does not delete its independent rechecks. If saving fails, follow the recovery advice shown, then retry. **Cancel** or leave the screen to stop pending work; a copy already saved at the moment you cancel remains in **Sessions**. **Erase All Sessions** and **Reset Spectra** include rechecks.",
             "id" : "recheck-storage",
             "title" : "Rechecks need room to save"
           },
           {
-            "body" : "The primary history file keeps up to 50 sessions within 256 MiB, whichever limit is reached first. Temporary replacement files and protected recovery copies may need additional disk space. Saving a new check can remove the oldest reports. **Sessions** warns as the count approaches the limit and reports retention removals. Export important records before continuing to fill history. Spectra marks local history for exclusion from device backups; iOS controls backup and restore behavior. Files you export may be backed up by your chosen destination.",
+            "body" : "**Sessions** shows the saved count and primary history-file usage; **Settings** → **Privacy & storage** → **Session storage** provides storage details. History keeps up to **50 sessions** within **256 MiB**, with originals, rechecks, and imported copies counted separately. These limits are independent: free bytes do not provide another session slot, and an available slot does not guarantee a report will fit. Saving or importing never removes another session to make room. Export important copies, then delete those you no longer need before retrying. Exporting alone does not free history space. **On this iPhone** separately measures local capture files, including protected recovery, pending history files, and received Watch captures; it is not total app storage or free device space. Local history is marked for exclusion from backups; iOS controls backup and restore behavior. Export destinations have their own storage and backup policies.",
             "id" : "capacity",
-            "title" : "Why did an older session disappear?"
+            "title" : "Make room without losing another session"
           },
           {
             "body" : "Swipe right on a session to reveal **Rename**, or swipe fully to open the name editor. Nothing changes until you save. Swipe left to reveal **Delete**, or swipe fully to delete that session. **Undo** briefly restores the most recently deleted session, including its name, notes, location tag, and retained evidence. It is available for 10 seconds, or 30 seconds when VoiceOver is running at deletion. Another deletion replaces the previous Undo opportunity. Leaving **Sessions**, switching away from Spectra, or starting confirmed bulk erasure or reset ends Undo. Spectra removes the saved copy first and keeps only one temporary in-memory recovery copy; there is no Recently Deleted folder.",
@@ -1028,7 +1048,7 @@
             "title" : "Analysis JSON"
           },
           {
-            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review. It may include personal information. Generated AI explanations are excluded, including any analysis retained by an earlier app version.",
+            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review or a supported **Import Session** restore. New archives include a checksum; it does not authenticate the author or observations. The file may include personal information. Generated AI explanations are excluded, including any analysis retained by an earlier app version.",
             "id" : "full",
             "title" : "Technical archive"
           },
@@ -1086,8 +1106,8 @@
       }
     }
   ],
-  "build" : "1048",
-  "buildIdentifier" : "1A1048",
+  "build" : "1049",
+  "buildIdentifier" : "1A1049",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
