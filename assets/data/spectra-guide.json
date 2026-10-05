@@ -55,7 +55,7 @@
             "title" : "No local network available?"
           },
           {
-            "body" : "A completed source ran for the available check window, not that every device was found. **Partial** means coverage was interrupted or quality-limited. **Unavailable** means the source could not run; **Not selected** means you excluded it. Read the accompanying reason before drawing conclusions.",
+            "body" : "A completed source ran for the available check window, not that every device was found. **Partial** means coverage was interrupted or quality-limited. **Unavailable** means the source could not run; **Not selected** means you excluded it. Read the accompanying reason before drawing conclusions. **Observation handling** counts are not physical-device counts or available disk space.",
             "id" : "coverage",
             "title" : "Read Coverage"
           }
@@ -682,6 +682,11 @@
             "body" : "Keep Spectra visible. Locking, switching apps, permission changes, source loss, and ending early can limit a check. **Check ended early** marks a foreground interruption; returning does not resume the check. **Check interrupted** offers **Review Coverage** to inspect the problem and **Review Results** to finish reviewing available measurements, even if there are no signal findings. Confirm the separate saved status before closing. Restore access if needed, then start a fresh check from **Scan**. An incomplete check is not a no-match result. On a busy scan, wait until collection finishes to explore stable detailed results.",
             "id" : "interrupted",
             "title" : "A check stopped or looks incomplete"
+          },
+          {
+            "body" : "**Some observations were not retained** does not by itself mean the result list or device storage is full. Read recorded reasons in **Coverage**. Repeated readings can be combined routinely; inventory and endpoint counts have different units. **Result retention limit reached** means some observations could not add a new result record at that limit. **Result records retired** means earlier records were removed from the bounded retained list. Retained results remain available; these notices alone do not require restarting or prove collection stopped. Older captures may not record a breakdown.",
+            "id" : "observation-handling",
+            "title" : "Does an observation notice mean storage is full?"
           }
         ],
         "steps" : [
@@ -693,7 +698,7 @@
         "takeaway" : "First check coverage and measurement state. A missing observation is not evidence that nothing is there.",
         "technicalSections" : [
           {
-            "body" : "Live radios, sensors, and the screen use power. Finish checks you no longer need. Keep the phone ventilated and follow iOS temperature warnings; Spectra cannot guarantee identical performance across all hardware or conditions. Bounded buffers may drop observations in dense environments, which **Coverage** reports.",
+            "body" : "Live radios, sensors, and the screen use power. Finish checks you no longer need. Keep the phone ventilated and follow iOS temperature warnings; Spectra cannot guarantee identical performance across all hardware or conditions. In a dense environment, read the recorded observation-handling reason in **Coverage** rather than treating a count as proof that the result list is full.",
             "id" : "battery",
             "title" : "Heat, battery, and dense environments"
           },
@@ -834,7 +839,7 @@
             "title" : "Foreground operation"
           },
           {
-            "body" : "Live buffers and retained evidence are bounded. High activity can cause observation drops or candidate retirement, which are reported as coverage limitations. **All Signals** means every retained record, not every transmission in the environment.",
+            "body" : "Live observation buffers and the retained result list have separate limits. Repeated readings may be combined before processing; other observations may be omitted at a buffer or retention boundary, or during shutdown. **Coverage** distinguishes recorded reasons and retired result records; older captures may record a total without its source or reason. These counts do not measure missing devices, free disk space, or whether collection stopped. **All Signals** means every retained record, not every transmission in the environment.",
             "id" : "bounds",
             "title" : "Busy-environment limits"
           }
@@ -1081,8 +1086,8 @@
       }
     }
   ],
-  "build" : "1047",
-  "buildIdentifier" : "1A1047",
+  "build" : "1048",
+  "buildIdentifier" : "1A1048",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

@@ -358,13 +358,13 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-The October 4 refresh uses the same verified native captures as Spectra’s
+The October 5 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1047 / 1047, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1048 / 1048, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -391,12 +391,16 @@ canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
 All six iPhone App Store
 frames and four separate light/dark large-system-text QA frames are freshly
-captured from reviewed source `0bc5fa5b25437ee34dc517a928fbb7f72642d2d5`.
+captured from reviewed source `7a6141a0aa9311c80a7d9de52e4948ad49f43ab2`.
 The current Guide, privacy policy and published Findings, Troubleshooting and
 Sessions articles explain source-reviewed network roles and optional protected
 saved-session Bluetooth references. Follow-up always requires fresh readings;
 weaker cached-name or payload suggestions require confirmation. These images do
 not fabricate a newly identified product or a live reading from saved evidence.
+The Guide and published Findings and Troubleshooting articles distinguish
+combined readings, observation omissions, result limits and unknown historical
+handling totals. Those totals are not missed-device counts or proof of CPU
+pressure, and do not mean session storage is full.
 The pictured Watch idle and Added-to-Sessions completion states retain separately
 captured 1A1028 imagery. Unpictured loading recovery and queued-transfer copy have
 changed since those captures; this is not a claim that every Watch screen is unchanged.
