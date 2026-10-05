@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1049",
-      "buildIdentifier": "1A1049",
-      "appSourceCommit": "4efabd7d32287f599360cf8329069ab234ebcbf2"
+      "bundleBuild": "1050",
+      "buildIdentifier": "1A1050",
+      "appSourceCommit": "2158b49102788b508c43bb4a87bfcb8d989adae9"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1049",
-  "reviewedGuideBuildIdentifier": "1A1049",
+  "reviewedGuideBuild": "1050",
+  "reviewedGuideBuildIdentifier": "1A1050",
   "reviewedOn": "2026-10-05",
-  "reason": "Build 1049 adds explicitly confirmed supported Technical archive import, historical Imported context, exact-byte checksum mismatch detection without authenticity claims, and deliberate history management without automatic saved-session removal. The canonical Guide and published Sessions, Troubleshooting and Watch articles explain independent 50-session/256-MiB history limits, separate five-copy Watch storage, measured local-file scope and compatible-build recovery. All six iPhone App Store frames and four large-system-text QA frames are freshly captured from the verified 1049 executable and genuine 4efabd7 producer; both Sessions QA frames verify real settled saved-count/usage labels. Four lossless website derivatives preserve native pixels. The subsequent d983718 runtime change only qualifies one unpictured Guide privacy paragraph: imported-only survivors cannot retain private Bluetooth references. Its separate native light/dark opening/tail review passes; the marketing producer is not relabeled. The pictured Watch idle and Added-to-Sessions completion states remain unchanged with actual 1028 provenance, not a claim that every Watch state is unchanged. Experimental fully awake 30-second scope, five local copies, exact Circular branding, example disclosures and iOS 27 / watchOS 27 requirements remain accurate. These images do not fabricate hardware findings or live readings from saved evidence. This is a scoped current-content review, not physical detection, unrestricted Dynamic Type or VoiceOver certification or public App Store submission. It expires at the next Guide build or affected pictured-workflow change."
+  "reason": "Build 1050 promotes New Baseline into the main Monitor panel, shows capture and elapsed comparison time, preserves earlier comparisons, and separates Since baseline, Starting baseline and Earlier observations. The current generated Guide and published Monitor support article describe these temporal sections, bounded recent counters and separate Mark changes reviewed action without trust or arrival claims. All six native iPhone App Store frames and four large-system-text QA frames are freshly captured from the verified 1050 executable and genuine 2158b49102788b508c43bb4a87bfcb8d989adae9 runtime. Seven capture journeys pass initially; the Monitor capture passes after a test-only correction to select the unique change-summary label, with unchanged app runtime bytes. The source/export hash gate passes for six frames. Four lossless website derivatives preserve native dimensions, decoded pixels and color profiles, and receive direct visual review. The new Monitor frame visibly includes New Baseline, baseline time, elapsed comparison time and the latest-40-event limit. The pictured Watch idle and Added-to-Sessions completion states receive direct review against current source and retain actual 1028 provenance; unpictured loading and queued-transfer states changed in earlier releases, so this is not a claim that every Watch state is unchanged. Experimental fully awake 30-second scope, five local copies, exact Circular branding, example disclosures and iOS 27 / watchOS 27 requirements remain accurate. These images do not fabricate hardware findings or live readings from saved evidence. This scoped content review does not certify physical detection, unrestricted Dynamic Type, VoiceOver or public App Store submission. It expires at the next Guide build or affected pictured-workflow change."
 }

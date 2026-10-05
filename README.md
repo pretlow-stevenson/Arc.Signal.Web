@@ -101,6 +101,14 @@ allocate a build or change the lock. Regenerate after an approved release change
 release identity shape and matching numeric/public build suffix, support address,
 compatibility, and the public policy link.
 
+Build 1A1050 makes **New Baseline** visible in the main Monitor panel. It starts a
+fresh 30-second observation window, shows baseline capture and elapsed comparison
+time, and preserves earlier comparisons for final review. **Mark changes reviewed**
+acknowledges activity without clearing counters or changing the baseline. The
+three counters describe distinct identities within the current comparison’s latest
+40 retained events; they are not lifetime totals or physical-device counts. Keep
+the generated Guide and published Monitor support article consistent with these boundaries.
+
 Build 1A1034 adds **Arc Signal website** in the app's Settings → About, separate
 from hosted support. The canonical troubleshooting Guide names that route.
 No marketing image depicts this section; the explicit content review retains
@@ -364,7 +372,7 @@ Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1049 / 1049, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1050 / 1050, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -391,16 +399,19 @@ canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
 All six iPhone App Store
 frames and four separate light/dark large-system-text QA frames are freshly
-captured from reviewed source `4efabd7d32287f599360cf8329069ab234ebcbf2`.
+captured from reviewed source `2158b49102788b508c43bb4a87bfcb8d989adae9`.
 Sessions now shows supported archive import, confirmed saved counts, remaining
 slots and measured primary history usage; both large-system-text QA frames
 assert those actual labels above the tabs. The canonical Guide and published
 Sessions/Troubleshooting/Watch articles explain full Technical restoration,
 checksum limitations and history management without automatic removal. The
-subsequent runtime revision `d9837182ad5fe16d691965f0f68b261cbcad5a63` only
-qualifies one unpictured Guide privacy paragraph: imported copies cannot retain
-private local Bluetooth references. Its native light/dark opening/tail review
-passes separately; native marketing provenance is not relabeled.
+Monitor image shows the main-panel **New Baseline** action, capture time,
+elapsed comparison time and the latest-40-event counter limit. Seven capture
+journeys pass initially; the Monitor capture passes after a test-only unique-label
+selector correction with unchanged app runtime bytes. All four website
+derivatives preserve native pixels and receive direct visual review. Imported
+copies still cannot retain private local Bluetooth references; this release
+does not change those privacy boundaries.
 The current Guide, privacy policy and published Findings, Troubleshooting and
 Sessions articles explain source-reviewed network roles and optional protected
 saved-session Bluetooth references. Follow-up always requires fresh readings;

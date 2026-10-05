@@ -455,7 +455,7 @@
             "title" : "Similar is not the same"
           },
           {
-            "body" : "**Summary** puts named findings and related signal profiles in one list, even when a match is only **Possible** or its device type is unknown. Each card shows its confidence and whether it represents one identity, likely related network services, or similar broadcasts that may be separate devices. Higher-evidence findings come first; items you marked expected stay at the end. **Monitor** distinguishes **Since baseline** from **Starting baseline**, not trusted from untrusted devices. The same names and device-type icons appear in analysis and proximity choices. A manufacturer code alone is not a device name. Unnamed, low-evidence activity stays expandable; **All Signals** retains every source identity and area clue. Visibility does not increase confidence or mark a finding as dangerous.",
+            "body" : "**Summary** puts named findings and related signal profiles in one list, even when a match is only **Possible** or its device type is unknown. Each card shows its confidence and whether it represents one identity, likely related network services, or similar broadcasts that may be separate devices. Higher-evidence findings come first; items you marked expected stay at the end. **Monitor** distinguishes **Since baseline**, **Starting baseline**, and **Earlier observations** retained from before the current comparison. These sections describe observation time, not trusted or untrusted devices. The same names and device-type icons appear in analysis and proximity choices. A manufacturer code alone is not a device name. Unnamed, low-evidence activity stays expandable; **All Signals** retains every source identity and area clue. Visibility does not increase confidence or mark a finding as dangerous.",
             "id" : "unknown",
             "title" : "One list, with context on each result"
           },
@@ -593,7 +593,7 @@
         "navigationTitle" : "Monitor",
         "sections" : [
           {
-            "body" : "Each available radio source needs 30 seconds of active observation to establish its baseline. Permission waiting does not count. The countdown follows the slowest participating source. **Observe 30 seconds longer** extends that comparison once to 60 seconds per source. No duration guarantees discovery of every device.",
+            "body" : "Monitor starts establishing a baseline automatically. Keep the iPhone stationary: each available radio source needs 30 seconds of active observation. Permission waiting does not count. The countdown follows the slowest participating source. **Observe 30 seconds longer** extends that comparison once to 60 seconds per source. When the baseline is ready, the change counters start at zero and the panel shows its capture time and elapsed comparison time. No duration guarantees discovery of every device.",
             "id" : "baseline",
             "title" : "Give the starting comparison time"
           },
@@ -603,14 +603,14 @@
             "title" : "Initially observed does not mean trusted"
           },
           {
-            "body" : "The **Newly observed**, **Returned**, and **Not recently seen** rows count distinct signal identities represented in retained changes. Repeated changes for the same identity count once in each row. One identity can appear in more than one row, so do not add these counts as a total device count. The latest change stays visible until you choose **Mark changes reviewed**; that acknowledgment does not trust a device, reset the baseline, or erase evidence.",
+            "body" : "The **Newly observed**, **Returned**, and **Not recently seen** rows count distinct signal identities in the current comparison’s latest 40 retained change events. Repeated changes for the same identity count once in each row. Counts may decrease as older events leave that bounded history. One identity can appear in more than one row, so do not add these counts as a total device count. **Mark changes reviewed** acknowledges the latest change without zeroing these counters, trusting a device, changing the baseline, or erasing evidence.",
             "id" : "dashboard",
             "title" : "Read changes at a glance"
           },
           {
-            "body" : "Use **Monitor options** → **Start new baseline**. The earlier comparison and its retained events remain in the same session. Up to nine comparisons can be kept in one session; finish and start another **Monitor** when that limit is reached. Spectra does not automatically judge that you moved or silently replace your baseline.",
+            "body" : "Tap **New Baseline** in the main Monitor panel when you want a fresh reference, such as after moving the phone or changing networks. The tap starts a new 30-second observation window immediately; it does not simply clear the numbers. When the new baseline is ready, its change counters begin at zero. Earlier comparisons and their retained events remain in the same session for review after **Stop Monitor**. Wait for the current baseline to finish before starting another. Up to nine comparisons fit in one session; stop and start another **Monitor** when that limit is reached. Spectra does not automatically judge that you moved or silently replace your baseline.",
             "id" : "restart",
-            "title" : "Moved to a different position?"
+            "title" : "Choose a fresh comparison"
           }
         ],
         "steps" : [
@@ -1106,8 +1106,8 @@
       }
     }
   ],
-  "build" : "1049",
-  "buildIdentifier" : "1A1049",
+  "build" : "1050",
+  "buildIdentifier" : "1A1050",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

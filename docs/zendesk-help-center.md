@@ -4,6 +4,24 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## Build 1A1050 Monitor baseline alignment
+
+October 5, 2026: the canonical generated Guide and the local Monitor editorial
+source in `zendesk-articles.json` now describe the main-panel **New Baseline**
+action, fresh observation window, capture/elapsed time, separately acknowledged
+changes, preserved prior comparisons, and bounded current counters. The existing
+**Understand Monitor and its baseline** article is **56435605386651** in
+**Product Guide**. The article was saved in Zendesk and read back from its public
+route, with **Published** status and **Visible to Everyone** confirmed. The
+published body includes **New Baseline**, the latest-40-event limit, and the
+**Since baseline**, **Starting baseline**, and **Earlier observations** temporal
+sections; the obsolete **Monitor options** route is absent. The desktop article
+was reviewed at 1280 pixels without horizontal overflow. Title, placement and
+audience are preserved; no other support article, theme, messaging or account
+setting changed. This authenticated browser readback does not establish signed-out
+access or support-email delivery. Website deployment and TestFlight availability
+remain separate release gates.
+
 ## Build 1A1047 saved-proximity and local-network alignment
 
 October 4, 2026: Findings (56434331296923), Troubleshooting
