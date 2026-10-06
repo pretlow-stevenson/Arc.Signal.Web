@@ -366,6 +366,16 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
+October 6, build 1A1052: the canonical Guide and published Sessions support
+article explain the refined Session storage card and smaller Estimated size
+line below each row's capture time. Binary sizes compare saved captures, not
+exact deletion savings; unknown estimates are omitted. Shared history,
+recovery/inbox/export copies remain separate. The four discovery/measurement
+gallery states are unaffected and retain their genuine 1051 pixels and producer;
+unchanged Watch idle/completion frames retain 1028 provenance. The scoped review
+is pinned to Guide 1052 without relabeling capture identities. Fresh App Store
+Sessions and QA imagery is verified separately in the app's 1052 release record.
+
 The October 5 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional

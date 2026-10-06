@@ -881,6 +881,11 @@
             "title" : "Read a session at a glance"
           },
           {
+            "body" : "**Estimated size** appears below each row’s capture time to help you compare larger saved sessions before deleting. It includes recorded capture data and that session’s saved list information, such as its name and notes. **KiB** and **MiB** use binary units. Shared history information, protected recovery copies, received Watch captures and exports are separate, so row estimates do not add up to the history total and deletion may free a different amount. A recheck or imported copy has its own size. An unavailable estimate is not shown; it does not mean the session is empty.",
+            "id" : "session-size",
+            "title" : "Compare saved sizes"
+          },
+          {
             "body" : "Tap the recheck count beneath an original session to show its saved interpretations, newest recheck first. Original icons are blue; recheck icons are violet and include a **Recheck** number. Renaming does not separate related copies. Each version opens, exports, and deletes independently. If the original was removed, the latest surviving recheck stays visible and says **Original removed**; any earlier rechecks remain expandable. Rechecks retain the original capture time and duration beside the scan type and show a separate evaluation date and time.",
             "id" : "families",
             "title" : "Keep rechecks with their capture"
@@ -1106,8 +1111,8 @@
       }
     }
   ],
-  "build" : "1051",
-  "buildIdentifier" : "1A1051",
+  "build" : "1052",
+  "buildIdentifier" : "1A1052",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

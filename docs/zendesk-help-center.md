@@ -269,6 +269,19 @@ All ten articles are published and configured for everyone. Article URLs use `ht
 
 ## Verification and maintenance
 
+October 6, build 1A1052: published and read back Manage sessions, export results,
+and erase your data (56434367436187). The new Estimated size paragraph matches
+the canonical Guide: a smaller line below capture time, payload and per-session
+list information, binary KiB/MiB, independent recheck/import sizes, omitted
+unavailable estimates, and separate shared history/recovery/inbox/export copies.
+Deletion can free a different amount; these estimates are not the history total
+or exact disk reclamation. Existing Everyone visibility and article placement
+were preserved. No theme, messaging, permissions, billing or category changes.
+The company Guide is regenerated from the same 1052 source. Website gallery
+frames do not depict Sessions and retain truthful 1051 provenance; unchanged
+Watch imagery retains its actual producer. App Store assets and internal
+TestFlight delivery are separate verification gates in the app release record.
+
 September 30, remembered map choice (build 1A1031): the local editorial mirror
 `zendesk-session-article.html` explains Enable map previews / Not now, remembered
 consent, automatic previews after enabling, Settings → Session maps, revocation,

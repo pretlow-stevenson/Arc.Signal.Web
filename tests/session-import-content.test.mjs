@@ -82,6 +82,18 @@ test('history slots, primary bytes and measured local files remain independent',
   assert.doesNotMatch(privacy, /(?:oldest|saved) sessions (?:are|will be) automatically (?:removed|deleted|retired)|up to three (?:protected )?recovery copies/i);
 });
 
+test('session-size guidance qualifies comparison units, unknown values and separate copies', async () => {
+  const size = section('sessions', 'session-size');
+  const support = await text('docs/zendesk-session-article.html');
+  for (const value of [size, support]) {
+    for (const phrase of ['Estimated size', 'below each row’s capture time',
+      'KiB and MiB use binary units', 'Shared history information',
+      'row estimates do not add up to the history total',
+      'deletion may free a different amount', 'A recheck or imported copy has its own size',
+      'An unavailable estimate is not shown']) assert.ok(value.includes(phrase), phrase);
+  }
+});
+
 test('capacity recovery preserves an unsaved result without claiming it is saved', async () => {
   const saving = section('sessions', 'saving');
   for (const phrase of ['keep the results open', 'Export JSON', 'Retry Saving', 'Manage Sessions',
