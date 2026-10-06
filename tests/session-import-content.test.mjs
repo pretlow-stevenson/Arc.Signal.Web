@@ -86,7 +86,7 @@ test('session-size guidance qualifies comparison units, unknown values and separ
   const size = section('sessions', 'session-size');
   const support = await text('docs/zendesk-session-article.html');
   for (const value of [size, support]) {
-    for (const phrase of ['Estimated size', 'below each row’s capture time',
+    for (const phrase of ['Estimated size', 'Each saved-session row includes',
       'KiB and MiB use binary units', 'Shared history information',
       'row estimates do not add up to the history total',
       'deletion may free a different amount', 'A recheck or imported copy has its own size',

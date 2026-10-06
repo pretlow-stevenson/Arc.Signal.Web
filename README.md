@@ -366,7 +366,18 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 6, build 1A1053: the Sessions utility card uses the concise Storage
+October 6, build 1A1054: collector and measurement scope precede the smaller
+estimated-size caption in Sessions, with one consistent readable adaptive gray
+for supporting text. The canonical Sessions Guide and published Zendesk article
+describe Estimated size without position-specific wording. Guide metadata
+advances to 1054; the other twelve article bodies are unchanged. Website images
+do not depict Sessions and retain actual 1051 iPhone and 1028 Watch producers.
+The scoped image/content review is pinned to Guide 1054, not a relabeled capture
+identity. Affected App Store Sessions and QA frames require separate genuine
+refresh and verification in the app's 1054 release record. Limits, formats, Watch
+behavior, Experimental labeling and OS requirements are unchanged.
+
+Historical October 6, build 1A1053: the Sessions utility card uses the concise Storage
 heading, the existing subtle Scan-card outline and a native divider above
 Import Session. Website Guide metadata advances to 1053; all thirteen article
 bodies and the published Sessions support prose remain accurate and unchanged.

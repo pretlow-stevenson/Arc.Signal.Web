@@ -881,7 +881,7 @@
             "title" : "Read a session at a glance"
           },
           {
-            "body" : "**Estimated size** appears below each row’s capture time to help you compare larger saved sessions before deleting. It includes recorded capture data and that session’s saved list information, such as its name and notes. **KiB** and **MiB** use binary units. Shared history information, protected recovery copies, received Watch captures and exports are separate, so row estimates do not add up to the history total and deletion may free a different amount. A recheck or imported copy has its own size. An unavailable estimate is not shown; it does not mean the session is empty.",
+            "body" : "Each saved-session row includes **Estimated size** to help you compare larger saved sessions before deleting. It includes recorded capture data and that session’s saved list information, such as its name and notes. **KiB** and **MiB** use binary units. Shared history information, protected recovery copies, received Watch captures and exports are separate, so row estimates do not add up to the history total and deletion may free a different amount. A recheck or imported copy has its own size. An unavailable estimate is not shown; it does not mean the session is empty.",
             "id" : "session-size",
             "title" : "Compare saved sizes"
           },
@@ -1111,8 +1111,8 @@
       }
     }
   ],
-  "build" : "1053",
-  "buildIdentifier" : "1A1053",
+  "build" : "1054",
+  "buildIdentifier" : "1A1054",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
