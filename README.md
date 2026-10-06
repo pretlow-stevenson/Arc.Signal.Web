@@ -366,7 +366,17 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 6, build 1A1052: the canonical Guide and published Sessions support
+October 6, build 1A1053: the Sessions utility card uses the concise Storage
+heading, the existing subtle Scan-card outline and a native divider above
+Import Session. Website Guide metadata advances to 1053; all thirteen article
+bodies and the published Sessions support prose remain accurate and unchanged.
+Settings' Session storage destination is not renamed. Website gallery states
+do not depict Sessions and retain their actual 1051 producer; pictured Watch
+states retain actual 1028 provenance. The scoped review is pinned to Guide 1053,
+without relabeling image identities. Affected App Store captures and QA require
+separate genuine refresh and verification in the app's 1053 release record.
+
+Historical October 6, build 1A1052: the canonical Guide and published Sessions support
 article explain the refined Session storage card and smaller Estimated size
 line below each row's capture time. Binary sizes compare saved captures, not
 exact deletion savings; unknown estimates are omitted. Shared history,
