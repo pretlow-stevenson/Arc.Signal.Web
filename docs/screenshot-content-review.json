@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1050",
-      "buildIdentifier": "1A1050",
-      "appSourceCommit": "2158b49102788b508c43bb4a87bfcb8d989adae9"
+      "bundleBuild": "1051",
+      "buildIdentifier": "1A1051",
+      "appSourceCommit": "c5687b4bbf9bafed0988d68bd72eacbd0be4fd4e"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1050",
-  "reviewedGuideBuildIdentifier": "1A1050",
+  "reviewedGuideBuild": "1051",
+  "reviewedGuideBuildIdentifier": "1A1051",
   "reviewedOn": "2026-10-05",
-  "reason": "Build 1050 promotes New Baseline into the main Monitor panel, shows capture and elapsed comparison time, preserves earlier comparisons, and separates Since baseline, Starting baseline and Earlier observations. The current generated Guide and published Monitor support article describe these temporal sections, bounded recent counters and separate Mark changes reviewed action without trust or arrival claims. All six native iPhone App Store frames and four large-system-text QA frames are freshly captured from the verified 1050 executable and genuine 2158b49102788b508c43bb4a87bfcb8d989adae9 runtime. Seven capture journeys pass initially; the Monitor capture passes after a test-only correction to select the unique change-summary label, with unchanged app runtime bytes. The source/export hash gate passes for six frames. Four lossless website derivatives preserve native dimensions, decoded pixels and color profiles, and receive direct visual review. The new Monitor frame visibly includes New Baseline, baseline time, elapsed comparison time and the latest-40-event limit. The pictured Watch idle and Added-to-Sessions completion states receive direct review against current source and retain actual 1028 provenance; unpictured loading and queued-transfer states changed in earlier releases, so this is not a claim that every Watch state is unchanged. Experimental fully awake 30-second scope, five local copies, exact Circular branding, example disclosures and iOS 27 / watchOS 27 requirements remain accurate. These images do not fabricate hardware findings or live readings from saved evidence. This scoped content review does not certify physical detection, unrestricted Dynamic Type, VoiceOver or public App Store submission. It expires at the next Guide build or affected pictured-workflow change."
+  "reason": "Build 1051 expands saved iPhone history to 500 sessions within the unchanged independent 256 MiB primary-history budget. Saving, rechecking and importing never automatically remove another saved session; capacity and I/O causes remain distinct. The canonical 13-topic Guide, product/privacy pages and published Sessions/Troubleshooting support articles agree. All eight fresh native capture journeys pass without source or harness changes. Six iPhone App Store frames and four maximum-system-text QA images use the actual 1051 executable and committed c5687b4bbf9bafed0988d68bd72eacbd0be4fd4e runtime. Source/export hashes, opaque RGB rendering and six-frame OCR checks pass. Root/peer direct visual review covers six native frames, four QA images, six composites and the contact sheet. Sessions visibly shows 4 of 500 and 496 remaining slots with measured history usage; separate native capacity journeys exercise real persisted 495/500 histories and the oldest of 500 day groups. Four website derivatives preserve native dimensions, decoded pixels and color profiles and receive direct visual review. The two pictured Watch idle and Added-to-Sessions completion states receive current-source/pixel review and retain genuine 1028 provenance; no claim is made that every Watch state is unchanged. Experimental fully awake 30-second Bluetooth scope, separate five-copy storage, exact Circular branding, example disclosures and iOS 27 / watchOS 27 requirements remain accurate. No hardware findings or live readings are fabricated. Prepared App Store assets are not publicly submitted metadata. Physical-device performance, protected disk access, unrestricted Dynamic Type, VoiceOver and signed-out support remain separate acceptance checks. This scoped review expires at the next Guide build or affected pictured-workflow change."
 }

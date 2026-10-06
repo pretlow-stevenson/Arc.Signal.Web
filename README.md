@@ -372,7 +372,7 @@ Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1050 / 1050, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1051 / 1051, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -399,16 +399,18 @@ canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
 All six iPhone App Store
 frames and four separate light/dark large-system-text QA frames are freshly
-captured from reviewed source `2158b49102788b508c43bb4a87bfcb8d989adae9`.
+captured from reviewed source `c5687b4bbf9bafed0988d68bd72eacbd0be4fd4e`.
 Sessions now shows supported archive import, confirmed saved counts, remaining
-slots and measured primary history usage; both large-system-text QA frames
+slots and measured primary history usage within the independent 500-session
+and 256 MiB primary-history limits; both large-system-text QA frames
 assert those actual labels above the tabs. The canonical Guide and published
 Sessions/Troubleshooting/Watch articles explain full Technical restoration,
 checksum limitations and history management without automatic removal. The
 Monitor image shows the main-panel **New Baseline** action, capture time,
-elapsed comparison time and the latest-40-event counter limit. Seven capture
-journeys pass initially; the Monitor capture passes after a test-only unique-label
-selector correction with unchanged app runtime bytes. All four website
+elapsed comparison time and the latest-40-event counter limit. All eight fresh
+1051 capture journeys pass without source or harness changes. Root/peer direct
+review covers six native frames, four QA images, six composites and the contact
+sheet. Source/export hashes and six-frame OCR checks pass. All four website
 derivatives preserve native pixels and receive direct visual review. Imported
 copies still cannot retain private local Bluetooth references; this release
 does not change those privacy boundaries.

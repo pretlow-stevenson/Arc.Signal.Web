@@ -65,7 +65,7 @@ test('checksum matches is byte integrity, while legacy absence differs from fail
 
 test('history slots, primary bytes and measured local files remain independent', async () => {
   const capacity = section('sessions', 'capacity');
-  for (const phrase of ['50 sessions', '256 MiB', 'originals, rechecks, and imported copies',
+  for (const phrase of ['500 sessions', '256 MiB', 'originals, rechecks, and imported copies',
     'free bytes do not provide another session slot', 'an available slot does not guarantee',
     'never removes another session', 'Exporting alone does not free history space',
     'On this iPhone', 'protected recovery, pending history files, and received Watch captures',
@@ -76,6 +76,9 @@ test('history slots, primary bytes and measured local files remain independent',
   assert.match(privacy, /Protected recovery copies remain until deliberate erasure/);
   assert.match(privacy, /Creating another recovery copy does not automatically remove an earlier one/);
   assert.match(privacy, /device storage remains finite/);
+  assert.match(privacy, /A failed save preserves previously committed sessions and their retained references/);
+  assert.match(privacy, /does not silently remove valid references to make the new save fit/);
+  assert.doesNotMatch(privacy, /references may be shed|references? (?:are|is) sacrificed before evidence/i);
   assert.doesNotMatch(privacy, /(?:oldest|saved) sessions (?:are|will be) automatically (?:removed|deleted|retired)|up to three (?:protected )?recovery copies/i);
 });
 

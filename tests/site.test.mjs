@@ -726,7 +726,7 @@ test('privacy policy is public, linked, readable without scripts, and explains d
   const policy = pages.get('spectra-privacy.html');
   assert.match(policy, /Effective October 1, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
-  for (const text of ['Arc Signal LLC', 'support@arcsignal.zendesk.com', '50 sessions', '256 MiB', 'recovery copies',
+  for (const text of ['Arc Signal LLC', 'support@arcsignal.zendesk.com', '500 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
       'do not sell', 'under 13', 'iOS file protection', 'camera images', 'Geographic coordinates', 'privacy regulator']) {
     assert.ok(policy.includes(text), `Missing privacy explanation: ${text}`);

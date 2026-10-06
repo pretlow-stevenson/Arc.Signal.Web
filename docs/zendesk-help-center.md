@@ -4,7 +4,27 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
-## Build 1A1050 Monitor baseline alignment
+## Build 1A1051 saved-session capacity alignment
+
+October 5, 2026: **Manage sessions, rechecks, and exports**
+(56434367436187) and **Troubleshoot missing devices and unexpected readings**
+(56434354083227) were separately updated from the reviewed HTML mirrors,
+saved in Zendesk and read back from their public article views. Both editors
+confirm **Published**, **Visible to Everyone** and **Saved**. The text now states
+up to **500 sessions** within the independent **256 MiB** primary-history budget;
+originals, rechecks and imported copies consume slots, and saved sessions are
+never removed automatically. Exporting alone does not free history space.
+The canonical app/website Guide distinguishes local file usage, protected
+recovery and five-copy Experimental Watch/inbox storage from these limits.
+
+Article titles, sections and audiences are unchanged. No article contains an
+affected app screenshot. The readback uses the existing authenticated
+administrator session; signed-out access and support-email delivery remain
+owner acceptance checks. GitHub Pages and TestFlight are separate publication
+gates. The Knowledge trial displays six days remaining; subscription readiness
+is an account-owner decision, not changed by this release.
+
+## Build 1A1050 Monitor baseline alignment (historical)
 
 October 5, 2026: the canonical generated Guide and the local Monitor editorial
 source in `zendesk-articles.json` now describe the main-panel **New Baseline**
