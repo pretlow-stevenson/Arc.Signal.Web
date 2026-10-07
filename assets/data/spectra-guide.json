@@ -886,6 +886,11 @@
             "title" : "Compare saved sizes"
           },
           {
+            "body" : "Open a session to see its original capture time, duration, collector, and recorded measurements. General radio results also show retained signal identities and how many have **type undetermined**. These totals do not change when you filter results; signal identities are not a count of physical devices. Coverage warnings remain visible. **Scan breakdown** contains app and recognition revisions and more detailed counts. Choose **Add notes** to record your own context; saved notes are separate from sensor evidence.",
+            "id" : "overview",
+            "title" : "Review the original capture"
+          },
+          {
             "body" : "Tap the recheck count beneath an original session to show its saved interpretations, newest recheck first. Original icons are blue; recheck icons are violet and include a **Recheck** number. Renaming does not separate related copies. Each version opens, exports, and deletes independently. If the original was removed, the latest surviving recheck stays visible and says **Original removed**; any earlier rechecks remain expandable. Rechecks retain the original capture time and duration beside the scan type and show a separate evaluation date and time.",
             "id" : "families",
             "title" : "Keep rechecks with their capture"
@@ -1111,8 +1116,8 @@
       }
     }
   ],
-  "build" : "1054",
-  "buildIdentifier" : "1A1054",
+  "build" : "1055",
+  "buildIdentifier" : "1A1055",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

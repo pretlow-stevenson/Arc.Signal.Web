@@ -366,7 +366,18 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 6, build 1A1054: collector and measurement scope precede the smaller
+October 6, build 1A1055: saved-session details group original date/time, duration,
+recorded collector and measurements with filter-independent retained radio
+identity/type-undetermined counts. Empty notes use Add notes; authored notes and
+coverage warnings remain. The canonical Sessions Guide and support mirror add
+the original-capture explanation. Website metadata advances to 1055; no gallery
+frame depicts this saved overview, so actual 1051 iPhone and 1028 Watch producer
+identities and pixels remain unchanged. Existing App Store panels likewise retain
+their actual 1054 capture set; genuine new detail QA is separate. No acquisition,
+engine, catalog, storage, Watch or format changes. Hardware and hands-on VoiceOver
+remain separate acceptance gates; this is not a public App Store submission.
+
+Historical October 6, build 1A1054: collector and measurement scope precede the smaller
 estimated-size caption in Sessions, with one consistent readable adaptive gray
 for supporting text. The canonical Sessions Guide and published Zendesk article
 describe Estimated size without position-specific wording. Guide metadata

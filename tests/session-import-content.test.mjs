@@ -17,6 +17,19 @@ const section = (articleID, sectionID) => {
 const text = async path => (await readFile(join(root, path), 'utf8'))
   .replace(/<\/?(?:b|strong)\b[^>]*>/g, '');
 
+test('saved-session overview preserves original scope and filter-independent signal counts', async () => {
+  const overview = section('sessions', 'overview');
+  for (const value of [overview, await text('docs/zendesk-session-article.html')]) {
+    assert.match(value, /original capture time, duration, collector, and recorded measurements/);
+    assert.match(value, /totals do not change when you filter results/);
+    assert.match(value, /signal identities are not a count of physical devices/);
+    assert.match(value, /Coverage warnings remain visible/);
+    assert.match(value, /Scan breakdown/);
+    assert.match(value, /Add notes/);
+    assert.match(value, /saved notes are separate from sensor evidence/);
+  }
+});
+
 test('imported-only survivors cannot retain a private local Bluetooth reference', async () => {
   const identity = section('privacy', 'identity');
   assert.match(identity, /last non-imported original or recheck copy/);
