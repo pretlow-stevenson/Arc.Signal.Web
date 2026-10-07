@@ -366,7 +366,16 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 7, build 1A1056: expanded Scan breakdown adds full Session ID and
+October 7, build 1A1057: the upper Sessions Storage area opens the existing
+Session Storage details without changing tabs; Import Session is a separate
+lower action. The canonical Guide and matching support article explain both
+the Sessions and Settings routes. Gallery workflows do not depict Sessions,
+so genuine 1051 iPhone and 1028 Watch image provenance is preserved. The affected
+App Store Sessions frame is refreshed in the app repository using actual native
+captures. Storage limits, formats, collection, recognition and Watch UI do not
+change. Physical hardware and hands-on accessibility remain owner acceptance.
+
+Historical October 7, build 1A1056: expanded Scan breakdown adds full Session ID and
 recheck-only Original capture ID. Copy ID deliberately copies only a saved
 reference on this iPhone for ten minutes; it does not authenticate evidence or
 send data. Guide/support explain those controls. Existing gallery and App Store

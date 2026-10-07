@@ -956,7 +956,7 @@
             "title" : "Rechecks need room to save"
           },
           {
-            "body" : "**Sessions** shows the saved count and primary history-file usage; **Settings** → **Privacy & storage** → **Session storage** provides storage details. History keeps up to **500 sessions** within **256 MiB**, with originals, rechecks, and imported copies counted separately. These limits are independent: free bytes do not provide another session slot, and an available slot does not guarantee a report will fit. Saving or importing never removes another session to make room. Export important copies, then delete those you no longer need before retrying. Exporting alone does not free history space. **On this iPhone** separately measures local capture files, including protected recovery, pending history files, and received Watch captures; it is not total app storage or free device space. Local history is marked for exclusion from backups; iOS controls backup and restore behavior. Export destinations have their own storage and backup policies.",
+            "body" : "**Sessions** shows the saved count and primary history-file usage. Tap the upper **Storage** section for details; **Import Session** below is a separate action. You can also open **Settings** → **Privacy & storage** → **Session storage**. History keeps up to **500 sessions** within **256 MiB**, with originals, rechecks, and imported copies counted separately. These limits are independent: free bytes do not provide another session slot, and an available slot does not guarantee a report will fit. Saving or importing never removes another session to make room. Export important copies, then delete those you no longer need before retrying. Exporting alone does not free history space. **On this iPhone** separately measures local capture files, including protected recovery, pending history files, and received Watch captures; it is not total app storage or free device space. Local history is marked for exclusion from backups; iOS controls backup and restore behavior. Export destinations have their own storage and backup policies.",
             "id" : "capacity",
             "title" : "Make room without losing another session"
           },
@@ -1116,8 +1116,8 @@
       }
     }
   ],
-  "build" : "1056",
-  "buildIdentifier" : "1A1056",
+  "build" : "1057",
+  "buildIdentifier" : "1A1057",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

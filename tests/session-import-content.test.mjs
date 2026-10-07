@@ -82,6 +82,14 @@ test('checksum matches is byte integrity, while legacy absence differs from fail
   assert.match(support, /Canceling file selection is not an import failure/);
 });
 
+test('Sessions separates storage navigation from import and retains the Settings route', async () => {
+  for (const value of [section('sessions', 'capacity'), await text('docs/zendesk-session-article.html')]) {
+    assert.match(value, /Tap the upper Storage section for details/);
+    assert.match(value, /Import Session below is a separate action/);
+    assert.match(value, /You can also open Settings → Privacy &(?:amp;)? storage → Session storage/);
+  }
+});
+
 test('history slots, primary bytes and measured local files remain independent', async () => {
   const capacity = section('sessions', 'capacity');
   for (const phrase of ['500 sessions', '256 MiB', 'originals, rechecks, and imported copies',
