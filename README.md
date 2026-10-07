@@ -366,6 +366,14 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
+October 7, build 1A1056: expanded Scan breakdown adds full Session ID and
+recheck-only Original capture ID. Copy ID deliberately copies only a saved
+reference on this iPhone for ten minutes; it does not authenticate evidence or
+send data. Guide/support explain those controls. Existing gallery and App Store
+frames do not depict this expanded area, so their actual 1051 iPhone / 1028 Watch
+and 1054 App Store producers stay unchanged. No Watch UI, storage, detection or
+format change. Hardware and hands-on VoiceOver remain separate acceptance gates.
+
 October 6, build 1A1055: saved-session details group original date/time, duration,
 recorded collector and measurements with filter-independent retained radio
 identity/type-undetermined counts. Empty notes use Add notes; authored notes and

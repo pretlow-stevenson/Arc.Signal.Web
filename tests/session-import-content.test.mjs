@@ -25,6 +25,12 @@ test('saved-session overview preserves original scope and filter-independent sig
     assert.match(value, /signal identities are not a count of physical devices/);
     assert.match(value, /Coverage warnings remain visible/);
     assert.match(value, /Scan breakdown/);
+    assert.match(value, /Session ID/);
+    assert.match(value, /Original capture ID/);
+    assert.match(value, /Copy ID/);
+    assert.match(value, /only the chosen reference on this iPhone for ten minutes/);
+    assert.match(value, /nothing is sent automatically/);
+    assert.match(value, /not authenticate its evidence/);
     assert.match(value, /Add notes/);
     assert.match(value, /saved notes are separate from sensor evidence/);
   }

@@ -886,7 +886,7 @@
             "title" : "Compare saved sizes"
           },
           {
-            "body" : "Open a session to see its original capture time, duration, collector, and recorded measurements. General radio results also show retained signal identities and how many have **type undetermined**. These totals do not change when you filter results; signal identities are not a count of physical devices. Coverage warnings remain visible. **Scan breakdown** contains app and recognition revisions and more detailed counts. Choose **Add notes** to record your own context; saved notes are separate from sensor evidence.",
+            "body" : "Open a session to see its original capture time, duration, collector, and recorded measurements. General radio results also show retained signal identities and how many have **type undetermined**. These totals do not change when you filter results; signal identities are not a count of physical devices. Coverage warnings remain visible. **Scan breakdown** contains app and recognition revisions, more detailed counts, and **Session ID**. Rechecks also show **Original capture ID**. **Copy ID** copies only the chosen reference on this iPhone for ten minutes; nothing is sent automatically. These IDs help reference a saved session, not authenticate its evidence. Choose **Add notes** to record your own context; saved notes are separate from sensor evidence.",
             "id" : "overview",
             "title" : "Review the original capture"
           },
@@ -1116,8 +1116,8 @@
       }
     }
   ],
-  "build" : "1055",
-  "buildIdentifier" : "1A1055",
+  "build" : "1056",
+  "buildIdentifier" : "1A1056",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
