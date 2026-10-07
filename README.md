@@ -29,7 +29,9 @@ anchors, sections and audiences remain; Watch's raw body is unchanged.
 See `docs/zendesk-help-center.md` for exact publication and promotion receipts.
 The article reuses the gallery's genuine magnetic-meter screenshot with an explicit
 example-data caption. Its actual 1060 producer and final local asset hashes are
-verified; live image delivery and desktop/mobile rendering are separate gates.
+verified. All 35 live website files match the committed bytes; the published
+image loads and fits in the reviewed desktop support layout. Mobile-device,
+signed-out interactive and accessibility acceptance remain separate checks.
 Sessions' leading blue dot means **Recheck available**, not
 unread, confidence or a new measurement. Opening a session does not clear it.
 

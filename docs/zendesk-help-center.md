@@ -82,6 +82,26 @@ and Troubleshooting remain promoted. API body verification
 does not replace desktop/mobile rendering, signed-out help-center usability,
 support-email delivery, website deployment or TestFlight verification.
 
+### Live website and rendered support review
+
+At **23:39:11 UTC**, a bounded, bodyless-GET comparison verifies all **35 public
+website files** byte-for-byte against committed source
+`4a2b28b9b3b52b5e110e8a1c955dda02b6632f96`. The magnetic WebP delivers the exact
+SHA-256 above. Root reviews the published support homepage and magnetic article
+in the signed-in browser: the four promoted links are Getting started, magnetic
+meter, Troubleshooting and Contact; the Watch remains normally browseable.
+The article image loads at native **1320 × 2868**, displays at **440 × 956** in
+the **1280 × 720** desktop viewport, preserves its responsive max-width/automatic
+height rules, and introduces no horizontal page overflow. The actual field,
+signed reference, graph and following limitations are readable; the full example
+caption and alt text are verified in both the rendered DOM and public body.
+This desktop review does not establish mobile-device rendering, signed-out
+interactive usability, screen-reader acceptance or support-email delivery.
+
+The signed-in Knowledge UI also reports **four days left in trial**. Plan and
+billing continuity are an owner launch check, outside this content update; no
+account or subscription change was made.
+
 ## Build 1A1059 Guide alignment
 
 October 7, 2026: Get started with Spectra (56434299423899), Manage sessions,
