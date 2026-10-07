@@ -961,11 +961,35 @@ test('Guide and policy distinguish Spectra Settings from iPhone permissions', ()
   assert.match(guide, /fresh access check/);
   assert.match(guide, /cannot add unsupported hardware or override an iOS restriction/);
   assert.match(guide, /Spectra Settings/);
-  assert.match(policy, /Settings → About/);
+  assert.match(policy, /Settings → About Spectra → Privacy policy/);
+  assert.match(policy, /Settings → Support information → Copy support information/);
   for (const html of [guide, policy]) {
     assert.doesNotMatch(html, /Guide → (?:About|App icon|Measurement access|Copy support information)/);
     assert.doesNotMatch(html, /(?:Reset Spectra|sessions) in Guide/);
   }
+});
+
+test('Settings support and About details have explicit app and support routes', async () => {
+  const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const troubleshooting = articleProse(guide.articles.find(article => article.content.id === 'troubleshooting').content);
+  const privacy = articleProse(guide.articles.find(article => article.content.id === 'privacy').content);
+  assert.match(troubleshooting, /open Support information and choose Copy support information/);
+  assert.match(troubleshooting, /Settings → About Spectra → Arc Signal website/);
+  assert.match(privacy, /Settings → About Spectra → Privacy policy/);
+  assert.match(privacy, /Privacy & storage guide in Settings/);
+  const rendered = prose(await renderGuide());
+  assert.match(rendered, /Settings → Support information → Copy support information/);
+  const mirror = await readFile(join(root, 'docs/zendesk-troubleshooting-article.html'), 'utf8');
+  const mirrorText = mirror.replace(/<strong>([^<>]*)<\/strong>/g, '$1').replace(/\s+/g, ' ');
+  assert.match(mirrorText, /Settings, open Support information and choose Copy support information/);
+  assert.match(mirrorText, /Settings → About Spectra → Arc Signal website/);
+  assert.match(mirrorText, /Watch app’s Settings → About/);
+  const supplemental = JSON.parse(await readFile(join(root, 'docs/zendesk-articles.json'), 'utf8'));
+  const contact = supplemental.find(article => article.title === 'Contact Arc Signal support');
+  const contactText = contact.html.replace(/<strong>([^<>]*)<\/strong>/g, '$1');
+  assert.match(contactText, /Settings → Support information → Copy support information/);
+  assert.match(contactText, /Settings → About Spectra → Arc Signal website/);
+  assert.match(contactText, /Experimental Watch companion, include its Settings → About/);
 });
 
 test('Guide and support preserve qualified signals and deliberate non-erasing recovery', async () => {

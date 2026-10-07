@@ -4,6 +4,44 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## Build 1A1058 Settings-route alignment
+
+October 7, 2026: **Troubleshoot missing devices and unexpected readings**
+(56434354083227) and **Contact Arc Signal support** (56435622772379) were
+separately published from their reviewed local sources and read back from their
+public article routes. Both retain **Published** status and the administrator's
+**Everyone** audience setting. The text now directs iPhone users through
+**Settings → Support information → Copy support information** and
+**Settings → About Spectra → Arc Signal website**. Direct **Support site** and
+**Email support** links remain in Settings. The Watch app's **Settings → About**
+route and the deliberate-sharing/privacy qualifications are unchanged.
+
+The complete published bodies were compared with their reviewed sources, with
+provider-only formatting normalized rather than discarding article content.
+The troubleshooting readback at **17:58:49 UTC** preserves all **14 existing
+live heading anchors**. Its local mirror contains 14 headings, 13 with authored
+IDs; the un-IDed location heading's existing live anchor is also preserved.
+Contact retains all **three existing heading anchors**; its final complete
+content was checked against the reviewed source on October 7. The normalized
+readback body SHA-256 receipts are:
+
+- Troubleshooting: `bd583b3a5432ef0f601f0da1d5a33d6219b409ffa54574902e5a8887fbfecf5d`
+- Contact: `d6380ec5e6024aa4308a2cc11abf9cc79a4e824b7df14f74f5a2ed75cc068b87`
+
+Article titles, sections and audiences are preserved. Only these two articles
+were newly published for this Settings update; earlier reviews of other articles
+are historical, not new publication claims. No support theme, messaging or
+account configuration was changed. No affected article contains an app screenshot.
+
+The native and generated website Guide agree at build 1058. All **78 website
+tests**, Guide parity and the **35-file public build** pass. The gallery's four
+iPhone images retain their genuine 1051 producing-runtime provenance and its
+two Watch images retain 1028; only their scoped applicability review advances.
+App Store frames retain actual 1057 capture provenance in the app repository.
+These checks and authenticated public-route readbacks do not establish signed-out
+access, support-email delivery, physical-device acceptance, GitHub Pages deployment
+or TestFlight availability. Prepared App Store content is not public submission.
+
 ## Build 1A1051 saved-session capacity alignment
 
 October 5, 2026: **Manage sessions, rechecks, and exports**

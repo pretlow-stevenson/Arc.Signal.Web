@@ -697,7 +697,7 @@
         "steps" : [
           "Open **Coverage** and read the reason for each partial or unavailable measurement.",
           "Check iPhone **Settings** if access was denied, return to Spectra, and repeat the smallest affected check.",
-          "In Spectra **Settings**, use **Copy support information**, then **Support site** or **Email support**. The copy includes version, build, iOS, hardware model, detection-engine revision and catalog revision—not scan data."
+          "In Spectra **Settings**, open **Support information** and choose **Copy support information**. Return to **Settings** for **Support site** or **Email support**. The copy includes version, build, iOS, hardware model, detection-engine revision and catalog revision—not scan data."
         ],
         "symbol" : "questionmark.circle",
         "takeaway" : "First check coverage and measurement state. A missing observation is not evidence that nothing is there.",
@@ -708,7 +708,7 @@
             "title" : "Heat, battery, and dense environments"
           },
           {
-            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens arcsignal.zendesk.com; **Email support** opens your mail app. Zendesk handles information you submit. Nothing is attached or sent automatically. For company and product information, **Arc Signal website** in **Settings** → **About** opens arcsignal.app. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
+            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens arcsignal.zendesk.com; **Email support** opens your mail app. Zendesk handles information you submit. Nothing is attached or sent automatically. For company and product information, **Settings** → **About Spectra** → **Arc Signal website** opens arcsignal.app. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
             "id" : "support",
             "title" : "Help us reproduce it safely"
           }
@@ -755,7 +755,7 @@
             "title" : "Experimental Watch has separate copies"
           },
           {
-            "body" : "Open **Privacy policy** from **Welcome** or Spectra **Settings** → **About** for the public policy, including local observations, permissions, erasure, optional exports, support correspondence, and website hosting. Reading the website requires an internet connection; this practical Guide stays available offline.",
+            "body" : "Open **Privacy policy** from **Welcome**, or choose **Settings** → **About Spectra** → **Privacy policy** in Spectra for the public policy, including local observations, permissions, erasure, optional exports, support correspondence, and website hosting. The **Privacy & storage guide** in **Settings** opens this practical Guide, which stays available offline. Reading the public policy requires an internet connection.",
             "id" : "policy",
             "title" : "Read the full privacy policy"
           },
@@ -1116,8 +1116,8 @@
       }
     }
   ],
-  "build" : "1057",
-  "buildIdentifier" : "1A1057",
+  "build" : "1058",
+  "buildIdentifier" : "1A1058",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

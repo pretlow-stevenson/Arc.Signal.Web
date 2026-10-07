@@ -59,7 +59,7 @@ export async function renderGuide() {
       </article>`).join('\n')}
       <section id="support" class="guide-topic"><p class="eyebrow">A person can help</p><h2>Still have a question?</h2>
         <p>Visit the <a href="${escape(document.supportURL)}" rel="noreferrer">Arc Signal support site</a> or email <a href="mailto:${escape(document.supportEmail)}">${escape(document.supportEmail)}</a>. Include the scan mode, selected measurements, what happened, and what you expected.</p>
-        <p>In Spectra, choose <b class="ui-label">Settings</b> → <b class="ui-label">Copy support information</b> for the version, build, iOS, hardware model, detection-engine revision, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
+        <p>In Spectra, choose <b class="ui-label">Settings</b> → <b class="ui-label">Support information</b> → <b class="ui-label">Copy support information</b> for the version, build, iOS, hardware model, detection-engine revision, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
         <p>Support is provided through Zendesk. Nothing is attached or sent automatically. For a credible security threat, use a trusted security contact rather than relying on a phone scan or waiting for product support.</p>
       </section>
     </div></div>

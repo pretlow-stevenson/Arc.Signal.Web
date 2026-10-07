@@ -6,7 +6,7 @@ The company website for **Arc Signal LLC**, focused on Spectra and security awar
 - `spectra.html`: Spectra, preparing for release; **iPhone · iOS 27 or later**.
 - `seamless.html`: unlisted Seamless screenshot stitching page, coming soon for **Apple iPhone · iOS 18 or later**.
 - `guide.html`: the complete Spectra Guide and support contact, generated from native app content.
-- `spectra-privacy.html`: the public Spectra privacy policy, also linked in the app before setup and from Settings → About.
+- `spectra-privacy.html`: the public Spectra privacy policy, also linked in the app before setup and from Settings → About Spectra → Privacy policy.
 - `404.html`: recovery links that work even when the requested URL is nested.
 
 Public navigation and promotional copy focus on Spectra. `seamless.html` and its
@@ -15,6 +15,20 @@ entry. Its `noindex, follow` metadata asks search engines not to list the page;
 this is not access control. Keep it crawlable so search engines can read that directive.
 
 ## Development
+
+Build 1A1058 content alignment (October 7): support context
+is reviewed in **Settings → Support information → Copy support information**.
+**Support site** and **Email support** remain direct links in Settings. Installed
+identity, company links, the public policy and acknowledgments are under
+**Settings → About Spectra**. **Privacy & storage guide** opens the offline Guide,
+separate from **Session storage**. The Watch app's **Settings → About** route is
+unchanged. The canonical Guide is regenerated from 1058 sources. The two affected
+Zendesk articles were separately published and read back; see the scoped receipt
+in `docs/zendesk-help-center.md`. No gallery image depicts these destinations;
+existing iPhone-1051 and Watch-1028 captures retain their actual provenance.
+All 78 website tests, Guide parity and the 35-file public build pass. GitHub Pages
+deployment, native acceptance and TestFlight availability remain separate gates;
+these checks do not establish signed-out support access or email delivery.
 
 ### Zendesk support content
 
