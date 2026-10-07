@@ -785,7 +785,7 @@ test('Guide setup order and access review match the current application', async 
   assert.match(setup.steps[0], /\*\*Done\*\*/);
   assert.match(setup.steps[0], /unused measurements do not need to be configured/);
   const support = await readFile(join(root, 'docs/zendesk-getting-started-article.html'), 'utf8');
-  assert.match(support, /Settings → Privacy &amp; storage → Measurement access/);
+  assert.match(support, /open <strong>Settings<\/strong>\. Under <strong>Privacy &amp; storage<\/strong>, choose <strong>Measurement access<\/strong>/);
   assert.match(support, /Tap <strong>Done<\/strong> to return/);
 });
 

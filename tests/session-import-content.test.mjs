@@ -86,7 +86,7 @@ test('Sessions separates storage navigation from import and retains the Settings
   for (const value of [section('sessions', 'capacity'), await text('docs/zendesk-session-article.html')]) {
     assert.match(value, /Tap the upper Storage section for details/);
     assert.match(value, /Import Session below is a separate action/);
-    assert.match(value, /You can also open Settings → Privacy &(?:amp;)? storage → Session storage/);
+    assert.match(value, /You can also choose (?:<strong>)?Session storage(?:<\/strong>)? under (?:<strong>)?Privacy &(?:amp;)? storage(?:<\/strong>)? in Spectra (?:<strong>)?Settings/);
   }
 });
 

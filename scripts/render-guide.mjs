@@ -51,10 +51,10 @@ export async function renderGuide() {
     </nav><div class="guide-articles">
       ${articles.map(({ content: article }) => `<article id="${escape(article.id)}" class="guide-topic">
         <h2>${escape(article.title)}</h2><p class="guide-takeaway">${inline(article.takeaway)}</p>
+        <aside class="guide-important"><strong>Important to know</strong><p>${inline(article.important)}</p></aside>
+        <section><h3>What to try</h3><ol>${article.steps.map(step => `<li>${inline(step)}</li>`).join('')}</ol></section>
         ${sections(article.sections)}
-        <aside class="guide-important"><strong>Keep in mind</strong><p>${inline(article.important)}</p></aside>
-        <section><h3>How to use it</h3><ol>${article.steps.map(step => `<li>${inline(step)}</li>`).join('')}</ol></section>
-        <details><summary>More detail</summary>${sections(article.technicalSections)}</details>
+        <details><summary>Technical detail</summary>${sections(article.technicalSections)}</details>
         <a class="text-link" href="#main">Back to topics ↑</a>
       </article>`).join('\n')}
       <section id="support" class="guide-topic"><p class="eyebrow">A person can help</p><h2>Still have a question?</h2>

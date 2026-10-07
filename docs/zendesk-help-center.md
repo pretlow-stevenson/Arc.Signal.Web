@@ -4,6 +4,36 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## Build 1A1059 Guide alignment
+
+October 7, 2026: Get started with Spectra (56434299423899), Manage sessions,
+export results, and erase your data (56434367436187), and Understand findings,
+names, and signal strength (56434331296923) were separately saved and published
+from their reviewed local HTML mirrors. Their editors confirm Published, Everyone
+and Saved. Authenticated public-route readback verifies each complete normalized
+body, all 8/11/13 existing heading anchors, respectively, and the existing links.
+Titles, sections, audiences and unrelated theme/account settings are unchanged.
+
+Getting started and Sessions now distinguish automatic future iPhone saving from
+explicit imports, rechecks and independently saved Watch captures, and identify
+actual Settings destinations. Findings distinguishes genuine interface labels
+from ordinary hardware and source concepts. The canonical website Guide follows
+the app's four task-based groups and warning/action-first reading order. All 81
+website checks and the 35-file static build pass. No changed Guide or support
+workflow is pictured in the existing gallery; actual iPhone-1051 and Watch-1028
+pixel provenance stays unchanged, with only applicability reviewed for 1059.
+
+Final public-body readback receipts (whitespace and HTML entity normalization):
+
+- Getting started, 20:48:24 UTC: `d098b868850ce17f26d4e85c76e03552c3bcb6e8190a20df1af951f7bf42edf3`
+- Sessions, 20:48:24 UTC: `4641af25266a7150a1b207e7edac3b2ba05d649efa71d5d5bde6b2e14b120e52`
+- Findings, 20:47:54 UTC: `38ebb22d8da511a6cea3ce3296227e3886c61a63cafb551efe5fb64aa8374a33`
+
+These are actual published/read-back changes, not just prepared repository copy.
+They do not certify signed-out access, support email delivery, physical-device
+rendering, website deployment or TestFlight availability. Public App Store
+submission is not part of this internal release.
+
 ## Build 1A1058 Settings-route alignment
 
 October 7, 2026: **Troubleshoot missing devices and unexpected readings**
