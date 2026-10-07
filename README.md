@@ -16,6 +16,23 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 ## Development
 
+Build 1A1060 support alignment (October 7): **Use the magnetic meter** now has
+a complete local source in `docs/zendesk-magnetic-article.html`. It separates the
+unsaved practice exercise from magnetic **Area Sweep**, uses the exact native
+Guide and sweep controls, explains both reading modes, and preserves the existing
+article ID and heading anchors. Getting started and Troubleshooting link to it.
+Homepage promotion now prioritizes this core iPhone measurement instead of
+the Experimental Watch article; the Watch article remains published and browseable.
+The three revised support bodies were separately published and independently
+compared in full through unauthenticated public API readbacks. All existing
+anchors, sections and audiences remain; Watch's raw body is unchanged.
+See `docs/zendesk-help-center.md` for exact publication and promotion receipts.
+The article reuses the gallery's genuine magnetic-meter screenshot with an explicit
+example-data caption. Its actual 1060 producer and final local asset hashes are
+verified; live image delivery and desktop/mobile rendering are separate gates.
+Sessions' leading blue dot means **Recheck available**, not
+unread, confidence or a new measurement. Opening a session does not clear it.
+
 Build 1A1058 content alignment (October 7): support context
 is reviewed in **Settings → Support information → Copy support information**.
 **Support site** and **Email support** remain direct links in Settings. Installed
@@ -38,6 +55,8 @@ Git subtree with documented update and rollback procedures. See [its configurati
 for the published support topics, content boundaries, and verification limits.
 [Hero assets and provenance](docs/zendesk-hero.md) and the four supplemental
 article sources in `docs/zendesk-articles.json` are kept in this repository.
+The full [magnetic-meter article](docs/zendesk-magnetic-article.html) is canonical
+for the supplemental magnetic entry; keep their HTML synchronized.
 Zendesk-only artwork stays under `docs/support-assets`, outside the corporate
 website's public bundle. A Git push does not publish Zendesk changes.
 
@@ -440,13 +459,13 @@ unchanged Watch idle/completion frames retain 1028 provenance. The scoped review
 is pinned to Guide 1052 without relabeling capture identities. Fresh App Store
 Sessions and QA imagery is verified separately in the app's 1052 release record.
 
-The October 5 refresh uses the same verified native captures as Spectra’s
+The October 7 refresh uses the same verified native captures as Spectra’s
 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1051 / 1051, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1060 / 1060, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -473,7 +492,7 @@ canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
 All six iPhone App Store
 frames and four separate light/dark large-system-text QA frames are freshly
-captured from reviewed source `c5687b4bbf9bafed0988d68bd72eacbd0be4fd4e`.
+captured from reviewed source `6fffeb965b6198129415f6130021ed19aaf3fcaf`.
 Sessions now shows supported archive import, confirmed saved counts, remaining
 slots and measured primary history usage within the independent 500-session
 and 256 MiB primary-history limits; both large-system-text QA frames
@@ -481,8 +500,8 @@ assert those actual labels above the tabs. The canonical Guide and published
 Sessions/Troubleshooting/Watch articles explain full Technical restoration,
 checksum limitations and history management without automatic removal. The
 Monitor image shows the main-panel **New Baseline** action, capture time,
-elapsed comparison time and the latest-40-event counter limit. All eight fresh
-1051 capture journeys pass without source or harness changes. Root/peer direct
+elapsed comparison time and the latest-40-event counter limit. Fresh 1060
+screenshots and light/dark QA pass the native capture pipeline. Root/peer direct
 review covers six native frames, four QA images, six composites and the contact
 sheet. Source/export hashes and six-frame OCR checks pass. All four website
 derivatives preserve native pixels and receive direct visual review. Imported

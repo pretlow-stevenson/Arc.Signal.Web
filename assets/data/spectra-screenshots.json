@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "platform": "iOS",
-  "appSourceCommit": "c5687b4bbf9bafed0988d68bd72eacbd0be4fd4e",
+  "appSourceCommit": "6fffeb965b6198129415f6130021ed19aaf3fcaf",
   "appVersion": "1.0.0",
-  "bundleBuild": "1051",
-  "buildIdentifier": "1A1051",
+  "bundleBuild": "1060",
+  "buildIdentifier": "1A1060",
   "minimumOSVersion": "27.0",
-  "bundleInfoPlistSHA256": "8482554e3f59265a5692ffcdbfb3e937ca0a6e7630824057ef10ffcfe230341a",
+  "bundleInfoPlistSHA256": "d4ef000a4a69267b65b90ba4c4a29fec3f6fe279b457104cba6297845b376af1",
   "captureDevice": "iPhone 17 Pro Max",
   "captureRuntime": "iOS 27.0 Simulator; Xcode 27.0 (27A266a)",
   "exampleData": true,
@@ -26,10 +26,10 @@
     {
       "id": "02-smart-glasses",
       "source": "captures/02-smart-glasses.png",
-      "sourceSHA256": "d6c066b25c6b2f838c42cd4ef494d5d3f16d472ac9b03834b483f743f88586bf",
+      "sourceSHA256": "296ce406032d3e51f7943ac656777210550e2eaede7a62e1dc2e7e9884fe6ab7",
       "output": "assets/images/spectra-smart-glasses.webp",
-      "outputSHA256": "d83e9b7afbd92997a60613353f7e75a32e016381e799bfd8248787d7e3a55386",
-      "pixelSHA256": "ba00feab53527da65836c04917de2544300f7dd46bcaa1408034ff6f10498c48",
+      "outputSHA256": "1e09065f266e49a0ca6fc4c2a74cb3af8e8ea635e622ff7bdd0e67357ed068dd",
+      "pixelSHA256": "2286c6ebc9e90f91915cf4c0b55dca50dc45b4b97493b0698d2db658b196aa48",
       "width": 1320,
       "height": 2868,
       "appearance": "light"
@@ -37,10 +37,10 @@
     {
       "id": "03-magnetic-sweep",
       "source": "captures/03-magnetic-sweep.png",
-      "sourceSHA256": "df3bb536ce75d05b3fe14c0787095d044a605071ff32214fc2fd6e13c06309d2",
+      "sourceSHA256": "848c7ecdb7d0e2224d9744550df22dff0ebf21c8129835dedb779eca56cd3bef",
       "output": "assets/images/spectra-area-sweep.webp",
-      "outputSHA256": "048aefbef4b36b485e9c34e92954ba9adcf44fbf20b8ef8cedb045d2caed7100",
-      "pixelSHA256": "da1f7eb583a30c84d123bb1aabc83b41cf5bdf306316f13f9ce40894de104c27",
+      "outputSHA256": "4fd9a5d3c02eda13bd1d4f55368a57448a6aaea380f1edf56bf3a6e0756c4ec5",
+      "pixelSHA256": "bd889cac44a25050d36e9f05575e545f8f7bbe7245f3656f1b34705ef5b88f2f",
       "width": 1320,
       "height": 2868,
       "appearance": "dark"
@@ -48,10 +48,10 @@
     {
       "id": "05-monitor",
       "source": "captures/05-monitor.png",
-      "sourceSHA256": "8e9684ef0170f235ec0b905548ebd73848bb1600e2fe5aa94c298adc488bf2fa",
+      "sourceSHA256": "d9dcc89959ae1754a43c6f0658ef83522cf461da62d1393d64fc844ce13eed7f",
       "output": "assets/images/spectra-monitor.webp",
-      "outputSHA256": "c96e3c5f4c2a57d0d3850a12e212f4c1e9c6bfd5ac113e749fc1a379ed301393",
-      "pixelSHA256": "49484f1b95f790795d090cdd7b19b7c6ad81c5658bc32ec7494b7694dba437fb",
+      "outputSHA256": "e70fc7e2d08ba6afeba337473b9c7dcf320d56a6ef308c67f3772caba4fcb13e",
+      "pixelSHA256": "4ae2b9c8ba752759fdd925845a7f4466d0ce1bae9a82418d7905fccf11f79383",
       "width": 1320,
       "height": 2868,
       "appearance": "dark"

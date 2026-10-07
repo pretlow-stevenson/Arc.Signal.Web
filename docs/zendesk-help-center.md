@@ -4,6 +4,84 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## Build 1A1060 magnetic-meter support alignment
+
+October 7, 2026: the reviewed local source `zendesk-magnetic-article.html`
+replaces the short practice-only article with **Use the magnetic meter** at the
+same article ID, **56435559529627**, in **Product Guide**. Existing live heading
+anchors are preserved. The article distinguishes a safe, unsaved practice exercise
+from an actual magnetic **Area Sweep**, explains the display reference and
+independent detector, and keeps model-specific placement and inconclusive quiet
+readings explicit. Its steps match the native **Continue**, **Begin Area Sweep**,
+and **Finish Area Sweep** controls. Getting started and Troubleshooting link
+directly to this article; the practice route names **Reading the magnetic meter**.
+
+The magnetic article is now promoted on the homepage; homepage promotion was
+removed from the Experimental Watch article, **56434359907227**. The Watch article
+remains published, in its existing section and available through normal browsing and
+search. This prioritizes a core iPhone measurement without hiding the optional,
+experimental companion. Keep Getting started, Troubleshooting and Contact
+promoted. The inventory below records the reviewed promotion state.
+
+The changed article bodies, requested title and promotion flags were separately
+published and independently read back from the unauthenticated public API, as
+recorded below. The standalone magnetic mirror is canonical; its HTML is
+mechanically mirrored into the supplemental
+`zendesk-articles.json` entry. No theme, messaging, support request, account or
+public App Store setting is changed by these files.
+
+The magnetic illustration is a genuine native **1060** example-data capture,
+produced from source **6fffeb965b6198129415f6130021ed19aaf3fcaf**, imported by the
+reviewed lossless website pipeline. Its WebP SHA-256 is
+`4fd9a5d3c02eda13bd1d4f55368a57448a6aaea380f1edf56bf3a6e0756c4ec5`;
+both image and full-size link use cache key `4fd9a5d3c02e`. The visible caption
+identifies example data and the actual app interface; the alt text does not
+present these illustrative readings as evidence of nearby devices. This asset
+provenance does not itself establish live website or Zendesk image delivery.
+
+### Independently verified publication steps
+
+At **23:25:41 UTC**, an independent peer compared unauthenticated public API
+readbacks against both complete reviewed local mirrors. Normalization retains
+the full tag order, text and attributes; it decodes HTML entities, collapses
+whitespace and removes only Zendesk's generated `data-list-item-id` attributes.
+It does not discard links, emphasis, headings or substantive article content.
+
+- **Get started with Spectra**, **56434299423899**, updated **23:18:54 UTC**:
+  the complete 178-token structured body matches; all **eight existing heading
+  anchors** and the new direct magnetic-help link are present. SHA-256:
+  `76a01d5cbd53b49611c224f4da1e8cf9745ad2991f734a6145c20f19efa7f688`.
+- **Troubleshoot missing devices and unexpected readings**, **56434354083227**,
+  updated **23:19:09 UTC**: the complete 360-token structured body matches;
+  all **14 existing heading anchors**, including the saved-Bluetooth follow-up
+  anchor, remain present. The direct magnetic-help link and exact Guide route
+  are verified. SHA-256:
+  `120f2bc317f5ca6ceb0a9b2c8f4a6efb18b4f5cfa58b3c06194aaed4e429431a`.
+- **Take a sweep with the Experimental Apple Watch companion**, **56434359907227**,
+  updated **23:20:34 UTC**: promotion is now **false**, publication remains
+  **true**, and the complete raw body is unchanged from the pre-update readback,
+  including all **seven heading anchors**. The normalized structured-body SHA-256
+  is `99df4cccff699321ff53f482afe4c836dde6949e9e82b4c1ce65ef6a267b1ed3`.
+
+- **Use the magnetic meter**, **56435559529627**, updated **23:34:52 UTC**:
+  a fresh independent four-article readback at **23:36:29 UTC** verifies the
+  requested title, **published** and **promoted** states, and the complete
+  **233-token structured body**. All **five existing heading anchors** survive
+  alongside the new `magnetic-area-sweep` anchor. Image and full-size link use
+  the final **1060** cache key, **440 × 956** display dimensions, complete alt
+  text and visible example-data caption. SHA-256:
+  `3e5f4c4bf775f06f26adc15ab8901490c5a58ca00a146c6dead68ae3a3f47cfe`.
+
+Zendesk wrapped the image link in a paragraph inside the figure and reordered
+the two unchanged responsive CSS declarations. These exact published changes
+are mirrored locally; verification was not weakened to ignore them. The final
+four-article readback again verifies both other bodies and Watch's unchanged raw
+body. Except for the requested magnetic title rename, titles, locale, sections,
+permission groups and unrestricted audiences are unchanged. Getting started
+and Troubleshooting remain promoted. API body verification
+does not replace desktop/mobile rendering, signed-out help-center usability,
+support-email delivery, website deployment or TestFlight verification.
+
 ## Build 1A1059 Guide alignment
 
 October 7, 2026: Get started with Spectra (56434299423899), Manage sessions,
@@ -313,15 +391,15 @@ them and their original capture provenance is preserved.
 | Get started with Spectra | 56434299423899 | Getting started | Yes |
 | Use Spectra while traveling and in shared spaces | 56435630260123 | Getting started | No |
 | Understand findings, names, and signal strength | 56434331296923 | Product Guide | No |
-| Practice with the magnetic meter | 56435559529627 | Product Guide | No |
+| Use the magnetic meter | 56435559529627 | Product Guide | Yes |
 | Understand Monitor and its baseline | 56435605386651 | Product Guide | No |
 | Troubleshoot missing devices and unexpected readings | 56434354083227 | Troubleshooting | Yes |
 | Manage sessions, export results, and erase your data | 56434367436187 | Privacy & sessions | No |
-| Take a sweep with the Experimental Apple Watch companion | 56434359907227 | Experimental Apple Watch | Yes |
+| Take a sweep with the Experimental Apple Watch companion | 56434359907227 | Experimental Apple Watch | No |
 | About us | 56413781880091 | Company overview | No |
 | Contact Arc Signal support | 56435622772379 | Company overview | Yes |
 
-All ten articles are published and configured for everyone. Article URLs use `https://arcsignal.zendesk.com/hc/en-us/articles/` followed by the article ID. `zendesk-articles.json` contains four articles added during the original polish pass (title, section, canonical Guide source IDs, and submitted HTML); it is an editorial source, not an automatic uploader. `zendesk-watch-article.html` mirrors the Watch article, including phone-free collection, five local captures, active-display requirements, later paired-iPhone review, and the subsequently updated collection-origin icon explanation. Additional full mirrors cover setup, sessions, About us, Findings and Troubleshooting; the latter two were added after their separate October 3 Zendesk publication and public readback.
+All ten articles are published and configured for everyone; the completed scoped updates and readbacks are recorded above. Article URLs use `https://arcsignal.zendesk.com/hc/en-us/articles/` followed by the article ID. `zendesk-articles.json` contains four supplemental articles (title, section, canonical Guide source IDs, and reviewed HTML); it is an editorial source, not an automatic uploader. `zendesk-magnetic-article.html` is the full magnetic-meter source and retains the existing live heading anchors. `zendesk-watch-article.html` mirrors the Watch article, including phone-free collection, five local captures, active-display requirements, later paired-iPhone review, and the subsequently updated collection-origin icon explanation. Additional full mirrors cover setup, sessions, About us, Findings and Troubleshooting; the latter two were added after their separate October 3 Zendesk publication and public readback.
 
 ## Content guardrails
 
