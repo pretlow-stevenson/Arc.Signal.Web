@@ -4,6 +4,45 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## Build 1A1061 final content hardening
+
+October 7, 2026 (local): the Watch article **56434359907227** was separately
+published with one diagnostic-recovery paragraph. **Retry Loading** rechecks
+stored reports without erasing them. The native Guide and generated website
+Guide contain the same advice; the Guide also corrects the distinction between
+Bonjour service types omitted from a finding copy and evidence retained for
+session rechecks. Neither change broadens collection or sharing.
+
+At **02:12:43 UTC on October 8**, an independent unauthenticated API readback
+verified all ten published article bodies against their reviewed local sources.
+The Watch article, updated at **02:10:00 UTC**, exactly matches all **226 parsed
+HTML tokens**, including text, element order, attributes, links and its seven
+original heading anchors. Normalization decodes entities, collapses whitespace,
+sorts attributes and removes only provider-generated `data-list-item-id`.
+Its normalized structured-body SHA-256 is
+`0556c6b673ead88cf544c1b878d8c8ae31940ac5a480515db08164e7e884f9e5`.
+The full local mirror SHA-256 is
+`9749a046ee0c146374b00b46155a5b1bf31c981d43be95ea3f876608e2d41dbf`.
+The local mirror now includes the pre-existing public
+`h_01M4591YD5WYDH9AF01T5R6WNV` anchor for **Capture without your iPhone nearby**;
+the earlier public snapshot confirms that this anchor was preserved, not newly
+introduced by this update. No further publication was needed for that local fix.
+
+All nine other articles match the complete meaningful structure, text and links.
+Some older editorial mirrors omit generated heading IDs; About and Contact also
+omit Zendesk's `ck-list-bogus-paragraph` spans. Those specific provider wrappers
+were separately accounted for, not removed from the strict Watch comparison.
+About, Findings, Sessions, Monitor, Contact and Travel also match the raw bodies
+in the earlier October 7 snapshot. Getting started, Troubleshooting and magnetic
+help retain the exact structured hashes recorded in the 1060 review below.
+
+All ten remain published in `en-us`, with their existing sections, management
+permission group and unrestricted audiences. Only Getting started, magnetic help,
+Troubleshooting and Contact are promoted; Watch remains unpromoted and normally
+browseable. Root separately reviewed the newly rendered public Watch paragraph.
+API and rendered-article checks do not establish signed-out browser behavior,
+support-email delivery, website deployment, hardware or VoiceOver acceptance.
+
 ## Build 1A1060 magnetic-meter support alignment
 
 October 7, 2026: the reviewed local source `zendesk-magnetic-article.html`

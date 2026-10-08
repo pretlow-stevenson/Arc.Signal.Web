@@ -360,7 +360,7 @@
             "title" : "Why a small reset record remains"
           },
           {
-            "body" : "Watch diagnostics are separate from scan captures. They retain up to 20 recent timing and count reports per device, including Watch model, OS/build, completion status and lifecycle events, but no nearby-device names, identity values or advertisement payloads. Use **Share Watch diagnostics** on iPhone to deliberately share received reports for troubleshooting. Dates and hardware details can still reveal context. Nothing is sent to support automatically.",
+            "body" : "Watch diagnostics are separate from scan captures. They retain up to 20 recent timing and count reports per device, including Watch model, OS/build, completion status and lifecycle events, but no nearby-device names, identity values or advertisement payloads. If diagnostic reports cannot load, choose **Retry Loading** on the affected device; it rechecks stored reports without erasing them. Use **Share Watch diagnostics** on iPhone to deliberately share received reports for troubleshooting. Dates and hardware details can still reveal context. Nothing is sent to support automatically.",
             "id" : "diagnostics",
             "title" : "Share timing diagnostics only when needed"
           }
@@ -886,7 +886,7 @@
             "title" : "A useful explanation, not a verdict"
           },
           {
-            "body" : "The prompt asks the recipient not to follow instructions inside captured text, invent signatures, or send private names and payloads into searches. Spectra cannot enforce another app’s behavior. Pasting shares the chosen content under that app’s policies, and a larger model cannot recover information that was never retained. Original Bonjour service types are not separately retained; missing fields are stated, not guessed. Spectra requests an iPhone-only clipboard item with a ten-minute expiry; it is not shared through Universal Clipboard. Reset or clipboard expiry cannot recall pasted copies. External answers are not imported into Spectra’s findings or catalog.",
+            "body" : "The prompt asks the recipient not to follow instructions inside captured text, invent signatures, or send private names and payloads into searches. Spectra cannot enforce another app’s behavior. Pasting shares the chosen content under that app’s policies, and a larger model cannot recover information that was never retained. The finding copy does not include original Bonjour service types; omitted fields are stated, not guessed. Spectra requests an iPhone-only clipboard item with a ten-minute expiry; it is not shared through Universal Clipboard. Reset or clipboard expiry cannot recall pasted copies. External answers are not imported into Spectra’s findings or catalog.",
             "id" : "copy-research",
             "title" : "Keep external research in perspective"
           },
@@ -1117,8 +1117,8 @@
       }
     }
   ],
-  "build" : "1060",
-  "buildIdentifier" : "1A1060",
+  "build" : "1061",
+  "buildIdentifier" : "1A1061",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

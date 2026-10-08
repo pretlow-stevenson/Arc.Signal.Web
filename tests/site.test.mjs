@@ -810,6 +810,9 @@ test('external finding prompts explain four useful questions without implying mo
     'Bluetooth, network, or magnetic evidence', 'Unknown remains a valid conclusion', 'not independent proof']) {
     assert.ok(copy.includes(phrase), phrase);
   }
+  const research = guidePlainText(sections.find(section => section.id === 'copy-research').body);
+  assert.match(research, /finding copy does not include original Bonjour service types/);
+  assert.doesNotMatch(research, /Bonjour service types are not separately retained/);
   const product = prose(pages.get('spectra.html'));
   assert.match(product, /what a finding may be, what it means, how confident to be, and what to check next/);
   assert.match(product, /Nothing uploads automatically/);
@@ -1007,6 +1010,12 @@ test('Guide and support preserve qualified signals and deliberate non-erasing re
   const watch = await readFile(join(root, 'docs/zendesk-watch-article.html'), 'utf8');
   assert.match(watch, /does not erase copies or resend a capture/);
   assert.match(watch, /different stages when offered/);
+  assert.match(watch, /<h2 id="h_01M4591YD5WYDH9AF01T5R6WNV">Capture without your iPhone nearby<\/h2>/);
+  const watchProse = watch.replace(/<strong>([^<>]*)<\/strong>/g, '$1');
+  for (const text of [guide, watchProse]) {
+    assert.match(text, /If diagnostic reports cannot load, choose Retry Loading on the affected device/);
+    assert.match(text, /rechecks stored reports without erasing them/);
+  }
 });
 
 test('Guide explains specialist export scope and bounded optional analysis', async () => {
