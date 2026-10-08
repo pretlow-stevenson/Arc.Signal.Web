@@ -420,9 +420,11 @@ workflows remain representative. Keep actual iPhone 1060 and Watch 1028 capture
 provenance and native pixels; `docs/screenshot-content-review.json` records the
 review against Guide 1062 without claiming a recapture. Updated product, privacy
 and Guide text explains the new explicit sharing and atomic-import contract.
-The App Store Sessions panel is affected by the Import Sessions label and needs
-a genuine refresh in the app repository; its capture and review evidence is
-separate from this narrow website applicability decision. Runtime, physical
+The App Store Sessions panel is affected by the Import Sessions label. Its
+separate six-panel set and four QA images were genuinely refreshed in the app
+repository from `bda1544da6fb37999b83b3d8caeb999cbe73a88d` / 1A1062 / 1062;
+that capture and review evidence is separate from this narrow website
+applicability decision. Runtime, physical
 hardware, hands-on accessibility and signed delivery remain separate gates.
 
 Historical October 7, build 1A1057: the upper Sessions Storage area opens the existing
@@ -485,8 +487,8 @@ unchanged Watch idle/completion frames retain 1028 provenance. The scoped review
 is pinned to Guide 1052 without relabeling capture identities. Fresh App Store
 Sessions and QA imagery is verified separately in the app's 1052 release record.
 
-The October 7 refresh uses the same verified native captures as Spectra’s
-App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the current
+The website retains four verified native captures from Spectra’s October 7
+1060 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
@@ -516,8 +518,8 @@ qualified type labels preserve uncertainty; Observed pattern describes evidence,
 not identity confidence, and signal counts are not physical-device totals. The
 canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
-All six iPhone App Store
-frames and four separate light/dark large-system-text QA frames are freshly
+At that October 7 release, all six iPhone App Store
+frames and four separate light/dark large-system-text QA frames were freshly
 captured from reviewed source `6fffeb965b6198129415f6130021ed19aaf3fcaf`.
 Sessions now shows supported archive import, confirmed saved counts, remaining
 slots and measured primary history usage within the independent 500-session
@@ -526,10 +528,10 @@ assert those actual labels above the tabs. The canonical Guide and published
 Sessions/Troubleshooting/Watch articles explain full Technical restoration,
 checksum limitations and history management without automatic removal. The
 Monitor image shows the main-panel **New Baseline** action, capture time,
-elapsed comparison time and the latest-40-event counter limit. Fresh 1060
-screenshots and light/dark QA pass the native capture pipeline. Root/peer direct
-review covers six native frames, four QA images, six composites and the contact
-sheet. Source/export hashes and six-frame OCR checks pass. All four website
+elapsed comparison time and the latest-40-event counter limit. Those 1060
+screenshots and light/dark QA passed the native capture pipeline. Root/peer direct
+review covered six native frames, four QA images, six composites and the contact
+sheet. Source/export hashes and six-frame OCR checks passed. All four website
 derivatives preserve native pixels and receive direct visual review. Imported
 copies still cannot retain private local Bluetooth references; this release
 does not change those privacy boundaries.
