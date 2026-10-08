@@ -124,6 +124,17 @@ assistive-technology testing in browsers.
 
 ### Shared Guide content
 
+October 8 collection workflow: **Export All Sessions** is on **Session Storage**,
+below its history statistics. **Import Sessions** on the main card accepts one
+Technical JSON or a Spectra ZIP collection without unzipping. A collection adds
+all new accepted reports together or none; duplicates stay unchanged, and
+conflicts, invalid members or insufficient capacity block the import. No saved
+session is deleted automatically. Location tags start excluded, and collections
+are not full app backups. Keep product/privacy copy, canonical Guide, Sessions
+and Troubleshooting help mirrors, App Store copy and the depicted Sessions
+control consistent. Separate publication and image-provenance receipts are
+required; prepared source changes do not prove deployment or new captures.
+
 The app's `GuideArticle.swift` and `GuideReleaseArticles.swift` are canonical.
 The neighboring Spectra checkout's `scripts/ExportGuide.swift` exports them to
 `assets/data/spectra-guide.json`; `npm run guide` then produces `guide.html`.
@@ -401,7 +412,20 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 7, build 1A1057: the upper Sessions Storage area opens the existing
+October 8, build 1A1062 scoped website review: Export All Sessions and Spectra
+ZIP collection import affect Sessions, Session Storage and their sharing/import
+sheets. None appears in this website's four iPhone gallery images or its two
+Watch images. Direct visual and source review confirms those six pictured
+workflows remain representative. Keep actual iPhone 1060 and Watch 1028 capture
+provenance and native pixels; `docs/screenshot-content-review.json` records the
+review against Guide 1062 without claiming a recapture. Updated product, privacy
+and Guide text explains the new explicit sharing and atomic-import contract.
+The App Store Sessions panel is affected by the Import Sessions label and needs
+a genuine refresh in the app repository; its capture and review evidence is
+separate from this narrow website applicability decision. Runtime, physical
+hardware, hands-on accessibility and signed delivery remain separate gates.
+
+Historical October 7, build 1A1057: the upper Sessions Storage area opens the existing
 Session Storage details without changing tabs; Import Session is a separate
 lower action. The canonical Guide and matching support article explain both
 the Sessions and Settings routes. Gallery workflows do not depict Sessions,

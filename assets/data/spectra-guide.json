@@ -754,9 +754,19 @@
             "title" : "Rechecks need room to save"
           },
           {
-            "body" : "Choose **Import Session** in **Sessions** and select a file in Files, or open a compatible file with Spectra. Review the original capture time, recorded collector, compatibility, and integrity status, then choose **Import Session** to save it. **Cancel** leaves history unchanged. Only supported **Technical archive** files can restore a session; **Analysis JSON** and **Reduced identifying information** cannot. Files providers may need a connection to supply your chosen file; validation and saving run on device. Importing keeps the recorded acquisition and interpretation rather than collecting new evidence. **Imported** remains separate from the original collector and capture date. Opening a file while a check or another task is in progress waits for a safe point to review it; it does not discard the open results.",
+            "body" : "Choose **Import Sessions** in **Sessions** and select a file in Files, or open a compatible file with Spectra. Choose one supported **Technical archive** JSON or a Spectra ZIP collection made with **Export All Sessions**; no unzipping is needed. Other ZIP files, **Analysis JSON**, and **Reduced identifying information** cannot restore sessions. Review the original capture time, recorded collector, compatibility, and integrity status for a single archive. For a collection, review how many sessions will be added and how many are already saved, then confirm the import. **Cancel** leaves history unchanged. Files providers may need a connection to supply your chosen file; validation and saving run on device. **Imported** remains separate from the original collector and capture date. Opening a file while a check or another task is in progress waits for a safe point to review it; it does not discard the open results.",
             "id" : "import",
-            "title" : "Import a saved Technical archive"
+            "title" : "Import a session or collection"
+          },
+          {
+            "body" : "Import adds all eligible sessions together or adds none. Already-saved copies are left unchanged and use no additional slots. If a session has the same ID but different saved contents, Spectra reports a conflict instead of overwriting it. A damaged or unsupported archive, a conflict, or insufficient history capacity blocks the collection; Spectra never silently imports only part of it or deletes another session to make room. Original capture dates, collector details, and recheck relationships stay with the reports. Import restores recorded results, not fresh measurements, and does not rerun recognition. Importing an export without location does not remove a location from an already-saved copy.",
+            "id" : "import-collection",
+            "title" : "A collection imports together"
+          },
+          {
+            "body" : "Open **Storage** from **Sessions**, or **Settings** → **Privacy & storage** → **Session storage**, then choose **Export All Sessions**. Spectra prepares one ZIP collection containing a **Technical archive** for every session saved when preparation starts. Review the sharing options, then choose **Save to Files** or another destination in Apple’s share sheet. Location tags are excluded by default; enable **Include scan locations** only if you want to share the saved coordinates. This is not a full app backup: it excludes settings, generated AI explanations, private Bluetooth follow-up references, unsaved results, and Watch captures not yet added to Sessions. Exporting does not delete anything or free history space. Check that the external file was saved before deliberately deleting local copies.",
+            "id" : "export-all",
+            "title" : "Keep an external copy of saved sessions"
           },
           {
             "body" : "New technical archives include a checksum. A matching checksum checks the archived bytes, not the author, collector, device identity, or truth of the measurements. Supported older archives can say **Checksum unavailable**; this is different from a failed integrity check. A failed checksum, malformed archive, or unsupported format cannot be imported. Importing does not start analysis, scanning, a recheck, or a map, and does not change the source file. Private Bluetooth follow-up references are not included in archives, so a later proximity check may require confirming a possible match.",
@@ -784,7 +794,7 @@
             "title" : "Compare saved sizes"
           },
           {
-            "body" : "**Sessions** shows the saved count and primary history-file usage. Tap the upper **Storage** section for details; **Import Session** below is a separate action. You can also choose **Session storage** under **Privacy & storage** in Spectra **Settings**. History keeps up to **500 sessions** within **256 MiB**, with originals, rechecks, and imported copies counted separately. These limits are independent: free bytes do not provide another session slot, and an available slot does not guarantee a report will fit. Saving or importing never removes another session to make room. Export important copies, then delete those you no longer need before retrying. Exporting alone does not free history space. **On this iPhone** separately measures local capture files, including protected recovery, pending history files, and received Watch captures; it is not total app storage or free device space. Local history is marked for exclusion from backups; iOS controls backup and restore behavior. Export destinations have their own storage and backup policies.",
+            "body" : "**Sessions** shows the saved count and primary history-file usage. Tap the upper **Storage** section for details; **Import Sessions** below is a separate action. You can also choose **Session storage** under **Privacy & storage** in Spectra **Settings**. History keeps up to **500 sessions** within **256 MiB**, with originals, rechecks, and imported copies counted separately. These limits are independent: free bytes do not provide another session slot, and an available slot does not guarantee a report will fit. Saving or importing never removes another session to make room. Export important copies, then delete those you no longer need before retrying. Exporting alone does not free history space. **On this iPhone** separately measures local capture files, including protected recovery, pending history files, and received Watch captures; it is not total app storage or free device space. Local history is marked for exclusion from backups; iOS controls backup and restore behavior. Export destinations have their own storage and backup policies.",
             "id" : "capacity",
             "title" : "Make room without losing another session"
           },
@@ -851,7 +861,7 @@
             "title" : "Analysis JSON"
           },
           {
-            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review or a supported **Import Session** restore. New archives include a checksum; it does not authenticate the author or observations. The file may include personal information. Generated AI explanations are excluded, including any analysis retained by an earlier app version.",
+            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review or a supported **Import Sessions** restore. **Export All Sessions** packages these Technical archives in one Spectra ZIP collection. New archives include a checksum; it does not authenticate the author or observations. The file may include personal information. Generated AI explanations are excluded, including any analysis retained by an earlier app version.",
             "id" : "full",
             "title" : "Technical archive"
           },
@@ -968,12 +978,12 @@
             "title" : "You choose what gets measured"
           },
           {
-            "body" : "Completed iPhone checks are saved locally by default. Turning saving off stops automatic saving of future iPhone checks; it does not delete reports you already saved. Deliberate **Import Session** actions, rechecks, and Watch sweeps save independently of this preference. Saved sessions are not automatically removed to make room. Individual deletion offers a brief **Undo** using one temporary in-memory copy after removing the saved copy. Leaving **Sessions** or switching away from Spectra ends Undo; bulk erasure and reset also clear it. No Recently Deleted folder is kept. The Sessions guide explains the time window and separate copies.",
+            "body" : "Completed iPhone checks are saved locally by default. Turning saving off stops automatic saving of future iPhone checks; it does not delete reports you already saved. Deliberate **Import Sessions** actions, rechecks, and Watch sweeps save independently of this preference. Saved sessions are not automatically removed to make room. Individual deletion offers a brief **Undo** using one temporary in-memory copy after removing the saved copy. Leaving **Sessions** or switching away from Spectra ends Undo; bulk erasure and reset also clear it. No Recently Deleted folder is kept. The Sessions guide explains the time window and separate copies.",
             "id" : "history",
             "title" : "History is your choice"
           },
           {
-            "body" : "**Import Session** reads a supported **Technical archive** locally and asks you to review it before saving. **Imported** identifies a restored record, not a fresh measurement or authenticated capture. Recorded names, notes, collector details, and any location remain claims from the file. Import does not start scanning, analysis, or a map, and does not alter the source file. Private Bluetooth follow-up references are never restored from JSON. Review sensitive contents before choosing to import or share them.",
+            "body" : "**Import Sessions** reads a supported **Technical archive** JSON or Spectra ZIP collection locally and asks you to review it before saving. A collection adds all eligible sessions together or none; already-saved copies stay unchanged, and conflicts or invalid files block the import. **Imported** identifies a restored record, not a fresh measurement or authenticated capture. Recorded names, notes, collector details, and any location remain claims from the file. Import does not start scanning, analysis, or a map, and does not alter the source file. Private Bluetooth follow-up references are never restored from archives. Review sensitive contents before choosing to import or share them.",
             "id" : "import",
             "title" : "Restore a file deliberately"
           },
@@ -988,7 +998,7 @@
             "title" : "Read the full privacy policy"
           },
           {
-            "body" : "**Export JSON** on completed or saved results lets you choose **Analysis JSON**, **Technical archive**, or **Reduced identifying information**. **Analysis JSON** includes meaningful retained evidence and your notes; the technical archive also includes raw retained data and saved graphs. All formats exclude generated AI explanations. Reduced omits identifying text and raw payloads but is not anonymous. All formats ignore visible results filters. Nothing is uploaded automatically.",
+            "body" : "**Export JSON** on completed or saved results lets you choose **Analysis JSON**, **Technical archive**, or **Reduced identifying information**. **Analysis JSON** includes meaningful retained evidence and your notes; the technical archive also includes raw retained data and saved graphs. All formats exclude generated AI explanations. Reduced omits identifying text and raw payloads but is not anonymous. All formats ignore visible results filters. **Export All Sessions** on **Session Storage** packages saved sessions as Technical archives in one ZIP; it is not a full app backup. Location tags start excluded, and **Include scan locations** is a separate choice for the collection. Nothing is uploaded automatically.",
             "id" : "export",
             "title" : "Share only when you choose"
           },
@@ -1032,7 +1042,7 @@
             "title" : "An optional place in your own history"
           },
           {
-            "body" : "Every JSON format omits the tag by default, including **Technical archive**. **Include scan location** explicitly adds coordinates, accuracy, and the location timestamp—even to **Reduced identifying information**. This can reveal where you were. On-device finding summaries and **Copy for AI analysis** always omit the tag. **Remove location** changes only this session copy; other rechecks, protected recovery copies, or files already shared may still retain it. **Erase All Sessions** or **Reset Spectra** clears local session and recovery history, not external copies.",
+            "body" : "Every JSON format omits the tag by default, including **Technical archive**. In a single-session export, **Include scan location** explicitly adds coordinates, accuracy, and the location timestamp—even to **Reduced identifying information**. A collection uses **Include scan locations**. These choices can reveal where you were. On-device finding summaries and **Copy for AI analysis** always omit the tag. **Remove location** changes only this session copy; other rechecks, protected recovery copies, or files already shared may still retain it. **Erase All Sessions** or **Reset Spectra** clears local session and recovery history, not external copies.",
             "id" : "location-sharing",
             "title" : "Location has its own sharing choice"
           }
@@ -1089,7 +1099,7 @@
             "title" : "Does an observation notice mean storage is full?"
           },
           {
-            "body" : "Choose a supported **Technical archive**, not **Analysis JSON** or **Reduced identifying information**. A failed checksum or malformed file is different from an older archive with **Checksum unavailable**. Use the original exporter to create another technical archive when possible; a newer unsupported schema may require a Spectra update. If history is full, manage saved sessions before retrying; Spectra does not remove existing history for an import. If file or protected-storage access is unavailable, unlock the iPhone and retry the appropriate access step. Canceling file selection is not an import failure.",
+            "body" : "Choose a supported **Technical archive** JSON or a Spectra ZIP collection, not an arbitrary ZIP, **Analysis JSON**, or **Reduced identifying information**. A collection with a conflict, invalid member, or insufficient capacity is not partially imported. Already-saved copies are left unchanged. A failed checksum or malformed file is different from an older archive with **Checksum unavailable**. Use the original exporter to create another technical archive when possible; a newer unsupported schema may require a Spectra update. If history is full, manage saved sessions before retrying; Spectra does not remove existing history for an import. If file or protected-storage access is unavailable, unlock the iPhone and retry the appropriate access step. Canceling file selection is not an import failure.",
             "id" : "import",
             "title" : "A file cannot be imported"
           }
@@ -1117,8 +1127,8 @@
       }
     }
   ],
-  "build" : "1061",
-  "buildIdentifier" : "1A1061",
+  "build" : "1062",
+  "buildIdentifier" : "1A1062",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

@@ -50,8 +50,8 @@ test('imported-only survivors cannot retain a private local Bluetooth reference'
 
 test('import is previewed and explicitly confirmed, not an automatic fresh capture', async () => {
   const preview = section('sessions', 'import');
-  for (const phrase of ['Import Session', 'select a file in Files', 'open a compatible file',
-    'Review the original capture time', 'then choose Import Session to save',
+  for (const phrase of ['Import Sessions', 'select a file in Files', 'open a compatible file',
+    'Review the original capture time', 'then confirm the import', 'no unzipping is needed',
     'Cancel leaves history unchanged', 'Analysis JSON', 'Reduced identifying information',
     'validation and saving run on device', 'separate from the original collector and capture date',
     'does not discard the open results']) assert.ok(preview.includes(phrase), phrase);
@@ -61,7 +61,7 @@ test('import is previewed and explicitly confirmed, not an automatic fresh captu
   assert.match(privacy, /Private Bluetooth follow-up references are never restored/);
   for (const path of ['spectra.html', 'spectra-privacy.html', 'docs/zendesk-session-article.html']) {
     const page = await text(path);
-    assert.match(page, /Import Session/, path);
+    assert.match(page, /Import Sessions/, path);
     assert.match(page, /Technical archive/, path);
     assert.match(page, /historical|not a fresh|not fresh|Imported records retain the file’s acquisition and interpretation context/, path);
     assert.doesNotMatch(page, /imports? (?:a |an |the )?(?:authenticated|verified) capture|restores? every (?:JSON|export)/i, path);
@@ -85,9 +85,40 @@ test('checksum matches is byte integrity, while legacy absence differs from fail
 test('Sessions separates storage navigation from import and retains the Settings route', async () => {
   for (const value of [section('sessions', 'capacity'), await text('docs/zendesk-session-article.html')]) {
     assert.match(value, /Tap the upper Storage section for details/);
-    assert.match(value, /Import Session below is a separate action/);
+    assert.match(value, /Import Sessions below is a separate action/);
     assert.match(value, /You can also choose (?:<strong>)?Session storage(?:<\/strong>)? under (?:<strong>)?Privacy &(?:amp;)? storage(?:<\/strong>)? in Spectra (?:<strong>)?Settings/);
   }
+});
+
+test('collection import is atomic and export is an explicitly scoped external copy', async () => {
+  const collection = section('sessions', 'import-collection');
+  const support = await text('docs/zendesk-session-article.html');
+  for (const value of [collection, support]) {
+    for (const phrase of ['adds all eligible sessions together or adds none',
+      'use no additional slots', 'same ID but different saved contents',
+      'never silently imports only part', 'does not remove a location from an already-saved copy']) {
+      assert.ok(value.includes(phrase), phrase);
+    }
+  }
+  const bulkExport = section('sessions', 'export-all');
+  for (const value of [bulkExport, support]) {
+    for (const phrase of ['Export All Sessions', 'every session saved when preparation starts',
+      'Include scan locations', 'excluded by default', 'not a full app backup',
+      'private Bluetooth follow-up references', 'unsaved results',
+      'Watch captures not yet added to Sessions']) assert.ok(value.includes(phrase), phrase);
+  }
+  const privacy = await text('spectra-privacy.html');
+  assert.match(privacy, /Other ZIP files are not accepted/);
+  assert.match(privacy, /same-ID contents, invalid members, or insufficient capacity block the collection/);
+  assert.match(privacy, /Exporting does not remove local history or free space/);
+  const troubleshooting = await text('docs/zendesk-troubleshooting-article.html');
+  assert.match(troubleshooting, /A collection is imported together or not at all/);
+  assert.match(troubleshooting, /same-ID content conflict/);
+  const supplemental = JSON.parse(await readFile(join(root, 'docs/zendesk-articles.json'), 'utf8'));
+  const contact = supplemental.find(article => article.title === 'Contact Arc Signal support').html;
+  assert.match(contact, /single report uses <strong>Include scan location<\/strong>/);
+  assert.match(contact, /Export All Sessions<\/strong> uses <strong>Include scan locations<\/strong>/);
+  assert.match(contact, /share only the relevant session rather than a whole collection/);
 });
 
 test('history slots, primary bytes and measured local files remain independent', async () => {

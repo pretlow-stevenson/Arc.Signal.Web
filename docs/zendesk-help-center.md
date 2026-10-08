@@ -4,6 +4,51 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## October 8: collection export and import publication
+
+The Sessions article (56434367436187) and Troubleshooting article
+(56434354083227) have published, independently verified copy for **Export All Sessions** and
+**Import Sessions**. Session Storage offers one ZIP collection of saved Technical
+archives; imports accept that Spectra ZIP directly or one supported Technical
+JSON. The copy distinguishes all-or-nothing import, unchanged duplicates,
+blocking conflicts/invalid members/capacity, and the default-off location choice.
+It does not promise a full app backup, automatic deletion, private Bluetooth
+reference restoration, or new measurements. Settings, unsaved results,
+unprocessed Watch inbox captures, and generated AI explanations are excluded.
+
+Contact support (56435622772379) distinguishes **Include scan location** for a
+single report from **Include scan locations** for a collection and recommends
+sending only the relevant session when investigating a scan issue.
+
+After their separate publications, an independent unauthenticated public API
+readback on October 8 verified all three complete structured bodies against the
+reviewed local mirrors. Normalization decodes entities, collapses whitespace,
+sorts attributes and removes only Zendesk's generated `data-list-item-id`
+attributes and `ck-list-bogus-paragraph` wrapper spans. Text, links, emphasis,
+element order, heading anchors and substantive attributes remain checked.
+
+- **Sessions**, updated **08:52:44 UTC**: all **531 tokens** match. Structured
+  SHA-256: `9e51a0bf34ed3b5146a585db0a6475aa70933b6f3efd07f3fd90476a68eda64c`.
+  All eleven existing heading anchors remain, with new `collection-import`
+  and `export-all-sessions` anchors.
+- **Troubleshooting**, updated **08:54:07 UTC**: all **360 tokens** match.
+  Structured SHA-256: `a2e505d2e56410440d785feb4649db9d49332a741e9a618983cb5c04dbb68757`.
+  All fourteen existing heading anchors remain.
+- **Contact**, updated **08:56:33 UTC**: all **103 tokens** match. Structured
+  SHA-256: `2674898de6555ba3457317d9bfd99b9b0dd81c3b1c374c35efd9df36a46df3c4`.
+  All three existing heading anchors remain.
+
+All three retain their existing titles, article IDs, sections, locale,
+management permission group and unrestricted audience. They remain published;
+Troubleshooting and Contact remain promoted, and Sessions remains unpromoted.
+No theme, messaging or account settings changed. These API checks do not
+establish browser rendering, website deployment, support-email delivery, signed
+TestFlight delivery or physical-device acceptance. The canonical generated web
+Guide, product/privacy pages and App Store descriptions use the same contract.
+The pictured App Store Sessions Import control requires a genuine updated native
+capture; unchanged website and Watch pictures retain their actual producers
+rather than being relabeled as new.
+
 ## Build 1A1061 final content hardening
 
 October 7, 2026 (local): the Watch article **56434359907227** was separately
