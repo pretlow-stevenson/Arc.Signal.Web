@@ -412,7 +412,17 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 8, build 1A1062 scoped website review: Export All Sessions and Spectra
+October 8, build 1A1063 scoped website review: only the ordinary export footer
+on iPhone Session Storage is removed, retaining its disabled empty-state reason
+and the export destination's full sharing disclosures. No website image shows
+that detail page. Public Guide, product, privacy and support instructions remain
+accurate; only generated Guide release metadata advances to 1063. Preserve
+genuine website iPhone 1060 and Watch 1028 image producers and pixels, as recorded
+in `docs/screenshot-content-review.json`. The separate App Store set retains its
+actual 1062 producer. This is an applicability review, not a new image capture,
+changed export behavior, signed delivery or public App Store submission.
+
+Historical October 8, build 1A1062 scoped website review: Export All Sessions and Spectra
 ZIP collection import affect Sessions, Session Storage and their sharing/import
 sheets. None appears in this website's four iPhone gallery images or its two
 Watch images. Direct visual and source review confirms those six pictured
