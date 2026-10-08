@@ -4,6 +4,28 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## October 8: live-category count clarification (1A1064 publication)
+
+The published Troubleshooting article (**56434354083227**) adds one
+`live-category-counts` section. It explains supported wearable signal identities,
+unclassified activity, shared live/completed recognition, and explicit rechecks
+as separate saved copies. Company codes and generic services alone do not
+identify a watch or ring. Existing headings, article identity, audience and
+promotion remain unchanged; no health, wearer or complete-detection inference
+is introduced. The section has no screenshot. Website and App Store pictured
+flows do not show the changed live overview footer and retain their real capture
+producers. The root agent published the reviewed section through the signed-in
+editor; an independent unauthenticated public API readback verified all **381
+structured tokens** against the full local mirror. The article reports an update
+at **2026-10-08 22:38:45 UTC**. Structured SHA-256:
+`901788e0428abd7dccc5fd7701627f58c8501b5bc8589ba0025f4a7a67a764a8`.
+All fourteen prior heading anchors remain, with only `live-category-counts`
+added. Title, ID, locale, section, management permissions, unrestricted audience,
+published status and promotion match the prepublication snapshot. No theme,
+messaging or account changes were made. Public readback verifies content and
+metadata, not support-email delivery, native radio performance or accessibility.
+A Git push alone does not publish Zendesk articles.
+
 ## October 8: collection export and import publication
 
 The Sessions article (56434367436187) and Troubleshooting article

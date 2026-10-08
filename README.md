@@ -412,7 +412,21 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 8, build 1A1063 scoped website review: only the ordinary export footer
+October 8, build 1A1064 scoped website review: live category counts and supported
+wearable recognition receive clearer limits in the canonical Guide, product FAQ
+and reviewed Troubleshooting support mirror. Live and completed results use the
+same recognition rules; supported signal identities are not every nearby device.
+Opening a saved session keeps its recorded interpretation; an eligible recheck
+creates a separate copy. No marketed frame shows the changed general-radio or
+wearable overview footer. In particular, `spectra-monitor.webp` shows the
+unchanged change-event dashboard, not the session-inventory overview. Retain
+the actual iPhone 1060 and Watch 1028 producers and unchanged pixels for all
+six website images. The separate App Store set retains its genuine 1062 source.
+`docs/screenshot-content-review.json` records this scoped applicability review.
+Runtime parity, native light/dark validation, support publication and TestFlight
+delivery are separate gates; no image is relabeled as a new 1064 capture.
+
+Historical October 8, build 1A1063 scoped website review: only the ordinary export footer
 on iPhone Session Storage is removed, retaining its disabled empty-state reason
 and the export destination's full sharing disclosures. No website image shows
 that detail page. Public Guide, product, privacy and support instructions remain

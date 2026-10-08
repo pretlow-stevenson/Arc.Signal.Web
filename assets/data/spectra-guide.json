@@ -1069,6 +1069,11 @@
             "title" : "Why a nearby watch or ring can remain unknown"
           },
           {
+            "body" : "iPhone scans use the same recognition rules for live counts and completed results. Counts refresh as observations are processed. Finishing organizes the retained evidence; it does not run a stronger scan. **Watches & wearables** counts supported wearable signal identities, not every nearby wearable. **Other & unclassified** may include wearables without a supported match. One physical device can broadcast several identities. Opening a saved session keeps its recorded interpretation. When available, **Recheck session** creates a separate copy using newer recognition without changing the original.",
+            "id" : "live-counts",
+            "title" : "What do the live category counts mean?"
+          },
+          {
             "body" : "A broadcast name is self-reported and can be renamed or copied. Company identifiers sometimes identify a chip or protocol namespace, not the retail manufacturer. **Possible** and **Probable** are evidence labels, not numeric probabilities. Conflicting product claims stay ambiguous; details explain the supporting evidence. Catalog updates ship with app updates; Spectra does not download identification data during a scan.",
             "id" : "names",
             "title" : "The name or type looks wrong"
@@ -1127,8 +1132,8 @@
       }
     }
   ],
-  "build" : "1063",
-  "buildIdentifier" : "1A1063",
+  "build" : "1064",
+  "buildIdentifier" : "1A1064",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
