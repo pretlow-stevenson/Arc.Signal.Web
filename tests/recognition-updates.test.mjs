@@ -54,7 +54,7 @@ test('network roles and saved Bluetooth follow-up retain their identity and priv
     'do not prove it is the same physical device']) assert.ok(proximity.includes(phrase), phrase);
   const identity = section('privacy', 'identity');
   for (const phrase of ['can also retain', 'protected local history', 'no raw Bluetooth framework identifier',
-    'never included in JSON, AI copies, or Watch transfers', 'subject to iOS backup behavior',
+    'never included in JSON, external finding shares or copies, or Watch transfers', 'subject to iOS backup behavior',
     'Removing the last non-imported original or recheck copy', 'imported copies cannot keep it',
     '**Undo**', 'clear protected recovery copies']) {
     assert.ok(identity.includes(phrase), phrase);

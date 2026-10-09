@@ -724,7 +724,7 @@ test('Watch reset guidance distinguishes a request from confirmed remote erasure
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective October 1, 2026/);
+  assert.match(policy, /Effective October 9, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
   for (const text of ['Arc Signal LLC', 'support@arcsignal.zendesk.com', '500 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
@@ -765,10 +765,10 @@ test('location tagging remains per-check, optional, source-specific and separate
   }
   for (const phrase of ['every format by default', 'Technical archive', 'Include scan location',
     'fix timestamp', 'starts off when you reopen export', 'Reduced identifying information',
-    'does not add the tag to Copy for AI analysis']) assert.ok(section('export-location').includes(phrase), phrase);
+    'does not add the tag to Share for Analysis, Copy for Analysis']) assert.ok(section('export-location').includes(phrase), phrase);
   const product = prose(pages.get('spectra.html'));
   for (const phrase of ['Remember where you started', 'starts off every time', 'Watch captures stay untagged',
-    'All JSON formats omit it by default', 'AI copies never include the tag']) assert.ok(product.includes(phrase), phrase);
+    'All JSON formats omit it by default', 'external finding shares or copies never include the tag']) assert.ok(product.includes(phrase), phrase);
   const policy = prose(pages.get('spectra-privacy.html'));
   for (const phrase of ['off by default for every new iPhone scan', 'bounded to 12 seconds',
     'Denied access or an unavailable fix never prevents scanning', 'authorizes automatic requests',
@@ -811,10 +811,10 @@ test('external finding prompts explain four useful questions without implying mo
     assert.ok(copy.includes(phrase), phrase);
   }
   const research = guidePlainText(sections.find(section => section.id === 'copy-research').body);
-  assert.match(research, /finding copy does not include original Bonjour service types/);
+  assert.match(research, /prepared finding text does not include original Bonjour service types/);
   assert.doesNotMatch(research, /Bonjour service types are not separately retained/);
   const product = prose(pages.get('spectra.html'));
-  assert.match(product, /what a finding may be, what it means, how confident to be, and what to check next/);
+  assert.match(product, /explain what it may be, assess uncertainty, and suggest useful next steps/);
   assert.match(product, /Nothing uploads automatically/);
   assert.match(product, /AI can make mistakes/);
 });
@@ -935,9 +935,9 @@ test('practical guidance keeps observation, HTTPS, VPNs, and physical safety dis
   assert.match(pages.get('guide.html'), /Where a VPN helps—and where it does not/);
 });
 
-test('policy distinguishes local preparation, explicit clipboard consent, and external copies', () => {
+test('policy distinguishes local preparation, explicit sharing, clipboard consent, and recipient copies', () => {
   const policy = prose(pages.get('spectra-privacy.html'));
-  for (const phrase of ['Selecting one finding prepares', 'only tapping Copy prompt and finding', 'not anonymous either', 'on-device-only clipboard', 'ten-minute expiration', 'cannot recall', 'under that recipient’s policies']) {
+  for (const phrase of ['Selecting one finding prepares', 'analysis prompt followed by bounded finding evidence locally', 'Share for Analysis', 'Copy for Analysis', 'Only tapping Copy', 'not anonymous either', 'on-device-only clipboard', 'ten-minute expiration', 'not shared text or copies made by recipients', 'cannot recall', 'under that recipient’s policies', 'cannot verify its processing or retention']) {
     assert.ok(policy.includes(phrase), phrase);
   }
   assert.doesNotMatch(policy, /Save to Files and Share JSON/);

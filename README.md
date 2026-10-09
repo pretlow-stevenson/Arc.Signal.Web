@@ -201,8 +201,8 @@ Optional per-check Tag location records one scan-start position, accuracy, and f
 time—not a route or detected-device location. It starts off every time, accepts
 eligible approximate fixes, never blocks scanning, and is not added to Watch
 imports. All JSON formats omit it unless Include scan location is explicitly
-enabled; finding analysis and AI copies always omit the tag. Rechecks retain the
-original tag, while Remove location affects only the selected copy. Keep these
+enabled; on-device finding analysis and external finding shares or copies always
+omit the tag. Rechecks retain the original tag, while Remove location affects only the selected copy. Keep these
 sharing and removal boundaries consistent in the product FAQ, Guide, and policy.
 Enable map previews is a separate, remembered choice: after enabling, tagged
 results automatically request saved areas from Apple Maps, never a fresh collector
@@ -278,8 +278,11 @@ history, and JSON export have no in-app purchase or Apple Intelligence gate.
 Only optional on-device analysis requires Apple Intelligence-capable hardware
 and an enabled, ready model in a supported language and region. Analysis uses
 one selected finding summary locally; generated explanations are temporary,
-not saved or exported. Copy for AI is a separate user-initiated clipboard action,
-not an automatic upload; external recipients control data pasted into them.
+not saved or exported. Share for Analysis and Copy for Analysis prepare the same
+single-finding text: instructions followed by evidence. The user explicitly opens
+the native share sheet or writes a local-only, ten-minute clipboard item; only the
+Copy route has that expiration. Recipient handling is outside Spectra’s control,
+and shared copies cannot be recalled. Neither preparation nor preview uploads data.
 The approved U.S. launch price is **$3.99, one-time upfront**, without a discount,
 subscription, or in-app purchase. The site says planned price until release.
 App Store Connect pricing must be configured and checked separately; repository
@@ -412,7 +415,23 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 8, build 1A1064 scoped website review: live category counts and supported
+October 9, build 1A1065 scoped website review: the native analysis card adds
+**Share for Analysis** before **Copy for Analysis**, with the same reviewed prompt
+and one finding. The generated Guide, product explanation, privacy policy and
+published Sessions support article distinguish native sharing from the dedicated
+local-only, expiring clipboard. Public listing copy now covers both routes.
+Independent inspection of all six website gallery images, the six-panel App
+Store contact sheet and four retained QA images finds no changed action or
+review content in those frames. The evidence panel shows only the unchanged
+analysis heading edge. Preserve genuine website iPhone 1060, Watch 1028 and
+separate App Store 1062 producers; no pixels are relabeled or regenerated.
+The scoped Troubleshooting fallback sentence also covers both routes. Independent
+public readback verifies both complete support mirrors and unchanged metadata;
+see `docs/zendesk-help-center.md`. Eight focused desktop/mobile website renders
+have no horizontal overflow or content-layout defects. New native sharing/Guide
+renders and delivery remain separate gates, not established by this source review.
+
+Historical October 8, build 1A1064 scoped website review: live category counts and supported
 wearable recognition receive clearer limits in the canonical Guide, product FAQ
 and reviewed Troubleshooting support mirror. Live and completed results use the
 same recognition rules; supported signal identities are not every nearby device.

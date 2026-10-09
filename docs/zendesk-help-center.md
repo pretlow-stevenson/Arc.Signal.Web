@@ -4,6 +4,33 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## October 9: external finding sharing (1A1065 publication)
+
+The reviewed Sessions article (**56434367436187**) explains **Analyze on Device**,
+**Share for Analysis**, and **Copy for Analysis** as separate choices. The external
+routes prepare instructions followed by one finding, with exact preview and
+optional technical disclosure before delivery. Only dedicated Copy requests a
+local-only clipboard item with ten-minute expiry; shared recipient copies have
+their own policies and cannot be recalled. Troubleshooting (**56434354083227**)
+also distinguishes sharing or copying from an automatic fallback when on-device
+analysis is unavailable. Both reviewed mirrors were published through the signed-in
+editor, then independently read back from the unauthenticated public API.
+
+The complete Sessions body matches all **558 structured tokens**, updated
+**2026-10-09 15:55:30 UTC**, with structured SHA-256
+`bac088f4ad3d6eff071476c2400fced0b675821e818a560b2fa326da75f7073d`.
+Troubleshooting matches all **381 structured tokens**, updated
+**2026-10-09 15:59:12 UTC**, with structured SHA-256
+`1ef7b3b3b6decde322eaa0e8b51a3fee43df9fca3e8143948fb0db511ac01f3c`.
+Readback normalizes whitespace and editor-only list identifiers; it checks all
+remaining structure, text and attributes. Article IDs, titles, locales, sections,
+published state, audience, permission groups and promotion match the snapshots
+before publication. Existing heading anchors remain unchanged. A cache-fresh
+public request confirmed the second save after an earlier cached response.
+No theme, messaging, account or public App Store submission changed. This verifies
+support content and metadata, not native sharing, destination receipt or physical
+accessibility. A Git push alone does not publish Zendesk articles.
+
 ## October 8: live-category count clarification (1A1064 publication)
 
 The published Troubleshooting article (**56434354083227**) adds one

@@ -846,7 +846,7 @@
         "navigationTitle" : "Analysis & export",
         "sections" : [
           {
-            "body" : "Completed checks and saved sessions put findings and measurements first. Below them, **Bluetooth proximity** lets you investigate an eligible recorded Bluetooth identity while nearby. **Analyze a finding** offers either on-device explanation or a copy for external AI analysis. **Export results** saves or shares the scan. These are independent options, not required steps. A device’s details can open proximity or analysis with that finding already selected.",
+            "body" : "Completed checks and saved sessions put findings and measurements first. Below them, **Bluetooth proximity** lets you investigate an eligible recorded Bluetooth identity while nearby. **Analyze a finding** offers **Analyze on Device**, **Share for Analysis**, and **Copy for Analysis**. **Export results** saves or shares the scan. These are independent options, not required steps. A device’s details can open proximity or analysis with that finding already selected.",
             "id" : "result-tools",
             "title" : "Explore first, then choose a tool"
           },
@@ -871,7 +871,7 @@
             "title" : "Reduced identifying information"
           },
           {
-            "body" : "Location tags are excluded from every format by default—even **Technical archive**. If the session has a tag, **Include scan location** lets you explicitly add its coordinates, estimated accuracy, and fix timestamp to this export. The choice starts off when you reopen export and is separate from the format selection. It can reveal where you were, including in **Reduced identifying information**. This setting does not add the tag to **Copy for AI analysis** or on-device finding summaries.",
+            "body" : "Location tags are excluded from every format by default—even **Technical archive**. If the session has a tag, **Include scan location** lets you explicitly add its coordinates, estimated accuracy, and fix timestamp to this export. The choice starts off when you reopen export and is separate from the format selection. It can reveal where you were, including in **Reduced identifying information**. This setting does not add the tag to **Share for Analysis**, **Copy for Analysis**, or on-device finding summaries.",
             "id" : "export-location",
             "title" : "Choose whether to share the location"
           },
@@ -881,22 +881,22 @@
             "title" : "Save or share"
           },
           {
-            "body" : "In **Analyze a finding**, choose **Copy for AI analysis**, then select one item. From a finding’s details, the item is already selected. Review the privacy notice and optionally open **Preview prompt and data**. Tap **Copy prompt and finding**, then paste into your preferred AI app. Apple Intelligence is not required. Nothing is uploaded or opened automatically. A general check can include unknown findings; specialist checks offer only findings within their scan type. Display filters do not change the choices.",
+            "body" : "In **Analyze a finding**, choose **Share for Analysis** or **Copy for Analysis**, then select one item. From a finding’s details, the item is already selected. Spectra adds a ready-to-use analysis prompt before the selected finding’s evidence, asking the AI to explain it, assess uncertainty, and suggest useful next steps. Review the privacy notice and optionally open **Preview prompt and data**. **Share** opens Apple’s share sheet; choose an app or destination that accepts text. **Copy** places the same prepared text on the clipboard so you can paste it into your preferred AI app. Available destinations and what they do with the text depend on the receiving app. Apple Intelligence is not required, and selecting a finding does not share it automatically. A general check can include unknown findings; specialist checks offer only findings within their scan type. Display filters do not change the choices.",
             "id" : "copy-finding",
-            "title" : "Copy one finding for external AI"
+            "title" : "Share or copy one finding for external AI"
           },
           {
-            "body" : "The default copy includes protocol identifiers, interpretation confidence, historical catalog context, and signal statistics. Recorded names, declared network text, and raw payloads are excluded. **Include names and technical payloads** is optional and resets for each finding or new presentation. Names and bytes may identify people or devices. Location tags, session names, notes, other findings, and AI explanations are never deliberately included, even with technical sharing enabled. Magnetic copies contain a summary and up to three strongest retained incidents, with no technical-data switch when it has no effect. Grouped network services remain separate within the selected finding; omission counts describe bounded evidence.",
+            "body" : "The default prepared text includes protocol identifiers, interpretation confidence, historical catalog context, and signal statistics. Recorded names, declared network text, and raw payloads are excluded. **Include names and technical payloads** is optional and resets for each finding or new presentation. Names and bytes may identify people or devices. Location tags, session names, notes, other findings, and AI explanations are never deliberately included, even with technical sharing enabled. Magnetic findings contain a summary and up to three strongest retained incidents, with no technical-data switch when it has no effect. Grouped network services remain separate within the selected finding; omission counts describe bounded evidence.",
             "id" : "copy-privacy",
             "title" : "Choose whether to include technical data"
           },
           {
-            "body" : "The clipboard contains a concise prompt followed by JSON, not a standalone JSON file. It asks what the finding may be, what that means, how confident the identification is, and which practical next checks would help. It leads with device type, adds only supported names or models, and separates a device’s usual capabilities from behavior actually observed. Instructions are tailored to the included Bluetooth, network, or magnetic evidence. A magnetic change cannot identify a device or brand. Unknown remains a valid conclusion; catalog guesses and the names they came from are not independent proof.",
+            "body" : "Both actions prepare a concise prompt followed by JSON, not a standalone JSON file. It asks what the finding may be, what that means, how confident the identification is, and which practical next checks would help. It leads with device type, adds only supported names or models, and separates a device’s usual capabilities from behavior actually observed. Instructions are tailored to the included Bluetooth, network, or magnetic evidence. A magnetic change cannot identify a device or brand. Unknown remains a valid conclusion; catalog guesses and the names they came from are not independent proof.",
             "id" : "copy-limits",
             "title" : "A useful explanation, not a verdict"
           },
           {
-            "body" : "The prompt asks the recipient not to follow instructions inside captured text, invent signatures, or send private names and payloads into searches. Spectra cannot enforce another app’s behavior. Pasting shares the chosen content under that app’s policies, and a larger model cannot recover information that was never retained. The finding copy does not include original Bonjour service types; omitted fields are stated, not guessed. Spectra requests an iPhone-only clipboard item with a ten-minute expiry; it is not shared through Universal Clipboard. Reset or clipboard expiry cannot recall pasted copies. External answers are not imported into Spectra’s findings or catalog.",
+            "body" : "The prompt asks the recipient not to follow instructions inside captured text, invent signatures, or send private names and payloads into searches. Spectra cannot enforce another app’s behavior. Sharing or pasting sends the chosen content under that app’s policies, and a larger model cannot recover information that was never retained. The prepared finding text does not include original Bonjour service types; omitted fields are stated, not guessed. Only **Copy** requests an iPhone-only clipboard item with a ten-minute expiry; that item is not shared through Universal Clipboard. Reset or clipboard expiry cannot recall shared or pasted copies. External answers are not imported into Spectra’s findings or catalog.",
             "id" : "copy-research",
             "title" : "Keep external research in perspective"
           },
@@ -922,13 +922,13 @@
           }
         ],
         "steps" : [
-          "To explain one finding, use **Analyze on Device** when available or **Copy for AI analysis** under **Analyze a finding**. These options are independent of JSON export.",
+          "To explain one finding, use **Analyze on Device** when available, **Share for Analysis**, or **Copy for Analysis** under **Analyze a finding**. These options are independent of JSON export.",
           "To export a saved session, choose **Export JSON** from the top **Session options** menu. After a completed check, use the **Export results** section.",
           "Select one format: **Analysis JSON**, **Technical archive**, or **Reduced identifying information**. Read what is included. **Include scan location**, when offered, is a separate choice and starts off.",
           "Tap **Export JSON** and wait for preparation to finish. In the share sheet, choose **Save to Files** or a recipient you trust."
         ],
         "symbol" : "square.and.arrow.up",
-        "takeaway" : "Explain one finding on device, copy it for another AI app, or export JSON. Choose what to share; nothing uploads automatically.",
+        "takeaway" : "Explain one finding on device, share or copy it for another AI app, or export JSON. Choose what to share; nothing uploads automatically.",
         "technicalSections" : [
           {
             "body" : "The export identifies its schema and producing app build. The technical archive uses ISO 8601 UTC timestamps, RSSI in dBm, magnetic field in microteslas (µT), and durations in seconds. Payload bytes use base64. Missing fields mean not recorded or unavailable, not zero. Reduced exports are a separate allowlisted shape, not a full report with blank names.",
@@ -1003,9 +1003,9 @@
             "title" : "Share only when you choose"
           },
           {
-            "body" : "Selecting one finding in **Copy for AI analysis** prepares its data and a prompt locally. Review the preview and privacy notice; only tapping **Copy prompt and finding** writes to the clipboard. Names and optional technical data may identify devices or people; the default copy is not anonymous either. Spectra requests an on-device-only clipboard item that expires after ten minutes. Pasting into another app shares it under its policies; expiration or **Reset Spectra** cannot recall copies already shared. No AI app opens and nothing uploads automatically.",
+            "body" : "Selecting one finding in **Share for Analysis** or **Copy for Analysis** prepares an analysis prompt followed by its evidence locally. Review the exact preview and privacy notice before continuing. Names and optional technical data may identify devices or people; the default text is not anonymous either. **Share** opens Apple’s share sheet with that prepared text. The app or destination you choose handles it under its policies; Spectra cannot verify its processing or retention. Only tapping **Copy** writes to Spectra’s on-device-only clipboard item, which expires after ten minutes. That expiry applies to this clipboard item, not shared text or a recipient’s copies. Pasting shares the text with the receiving app. Expiration, deleting a session, or **Reset Spectra** cannot recall information already shared. Selecting a finding or opening the preview does not share it automatically.",
             "id" : "external-copy",
-            "title" : "Copying a finding for another AI app"
+            "title" : "Sharing a finding for another AI app"
           }
         ],
         "steps" : [
@@ -1022,7 +1022,7 @@
             "title" : "Protected, bounded history"
           },
           {
-            "body" : "Each new capture uses its own identifiers. A saved iPhone Bluetooth capture can also retain a small, capture-specific reference in protected local history for an explicit **Bluetooth Proximity** check. It contains no raw Bluetooth framework identifier and is never included in JSON, AI copies, or Watch transfers. Its private index is marked for exclusion from device backups, subject to iOS backup behavior. Rechecks of that capture share its reference. Removing the last non-imported original or recheck copy retires its active local reference; imported copies cannot keep it. **Undo** can briefly restore it with the session. **Erase All Sessions** and **Reset Spectra** also clear protected recovery copies. Names remain unverified and may identify people or devices; resetting an identifier does not anonymize a transmitted name.",
+            "body" : "Each new capture uses its own identifiers. A saved iPhone Bluetooth capture can also retain a small, capture-specific reference in protected local history for an explicit **Bluetooth Proximity** check. It contains no raw Bluetooth framework identifier and is never included in JSON, external finding shares or copies, or Watch transfers. Its private index is marked for exclusion from device backups, subject to iOS backup behavior. Rechecks of that capture share its reference. Removing the last non-imported original or recheck copy retires its active local reference; imported copies cannot keep it. **Undo** can briefly restore it with the session. **Erase All Sessions** and **Reset Spectra** also clear protected recovery copies. Names remain unverified and may identify people or devices; resetting an identifier does not anonymize a transmitted name.",
             "id" : "identity",
             "title" : "Session identifiers and saved signal checks"
           },
@@ -1042,7 +1042,7 @@
             "title" : "An optional place in your own history"
           },
           {
-            "body" : "Every JSON format omits the tag by default, including **Technical archive**. In a single-session export, **Include scan location** explicitly adds coordinates, accuracy, and the location timestamp—even to **Reduced identifying information**. A collection uses **Include scan locations**. These choices can reveal where you were. On-device finding summaries and **Copy for AI analysis** always omit the tag. **Remove location** changes only this session copy; other rechecks, protected recovery copies, or files already shared may still retain it. **Erase All Sessions** or **Reset Spectra** clears local session and recovery history, not external copies.",
+            "body" : "Every JSON format omits the tag by default, including **Technical archive**. In a single-session export, **Include scan location** explicitly adds coordinates, accuracy, and the location timestamp—even to **Reduced identifying information**. A collection uses **Include scan locations**. These choices can reveal where you were. On-device finding summaries, **Share for Analysis**, and **Copy for Analysis** always omit the tag. **Remove location** changes only this session copy; other rechecks, protected recovery copies, or files already shared may still retain it. **Erase All Sessions** or **Reset Spectra** clears local session and recovery history, not external copies.",
             "id" : "location-sharing",
             "title" : "Location has its own sharing choice"
           }
@@ -1132,8 +1132,8 @@
       }
     }
   ],
-  "build" : "1064",
-  "buildIdentifier" : "1A1064",
+  "build" : "1065",
+  "buildIdentifier" : "1A1065",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
