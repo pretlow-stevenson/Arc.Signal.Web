@@ -278,8 +278,8 @@ history, and JSON export have no in-app purchase or Apple Intelligence gate.
 Only optional on-device analysis requires Apple Intelligence-capable hardware
 and an enabled, ready model in a supported language and region. Analysis uses
 one selected finding summary locally; generated explanations are temporary,
-not saved or exported. Share for Analysis and Copy for Analysis prepare the same
-single-finding text: instructions followed by evidence. The user explicitly opens
+not saved or exported. Use Another App prepares single-finding text: instructions
+followed by evidence. One review offers Copy and Share. The user explicitly opens
 the native share sheet or writes a local-only, ten-minute clipboard item; only the
 Copy route has that expiration. Recipient handling is outside Spectra’s control,
 and shared copies cannot be recalled. Neither preparation nor preview uploads data.
@@ -415,7 +415,22 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 9, build 1A1065 scoped website review: the native analysis card adds
+October 9, build 1A1066 scoped website review: **Use Another App** replaces the
+separate external-analysis entries. The common review ends with **Copy** and
+**Share**; prepared evidence and privacy policies are unchanged. The canonical
+Guide, product page, privacy policy and published Sessions support mirror follow
+the single-entry flow. Public App Store descriptions already describe sharing
+or copying and remain accurate without changes. The same six website images,
+six App Store panels and four retained QA frames do not show these controls;
+preserve genuine website iPhone 1060, Watch 1028 and App Store 1062 producers.
+No pixels are relabeled or regenerated. The 94 website tests, generated Guide
+parity and 35-file production validation pass. Eight focused mobile/desktop
+renders show no horizontal overflow or content-layout defects. The full support
+body and metadata match the independent public readback recorded in
+`docs/zendesk-help-center.md`. Native render checks and signed delivery remain
+separate gates, not established by this applicability review.
+
+Historical October 9, build 1A1065 scoped website review: the native analysis card adds
 **Share for Analysis** before **Copy for Analysis**, with the same reviewed prompt
 and one finding. The generated Guide, product explanation, privacy policy and
 published Sessions support article distinguish native sharing from the dedicated

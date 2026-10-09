@@ -846,7 +846,7 @@
         "navigationTitle" : "Analysis & export",
         "sections" : [
           {
-            "body" : "Completed checks and saved sessions put findings and measurements first. Below them, **Bluetooth proximity** lets you investigate an eligible recorded Bluetooth identity while nearby. **Analyze a finding** offers **Analyze on Device**, **Share for Analysis**, and **Copy for Analysis**. **Export results** saves or shares the scan. These are independent options, not required steps. A device’s details can open proximity or analysis with that finding already selected.",
+            "body" : "Completed checks and saved sessions put findings and measurements first. Below them, **Bluetooth proximity** lets you investigate an eligible recorded Bluetooth identity while nearby. **Analyze a finding** offers **Analyze on Device** and **Use Another App**. The latter prepares one finding for review before you choose **Share** or **Copy**. **Export results** saves or shares the scan. These are independent options, not required steps. A device’s details can open proximity or analysis with that finding already selected.",
             "id" : "result-tools",
             "title" : "Explore first, then choose a tool"
           },
@@ -871,7 +871,7 @@
             "title" : "Reduced identifying information"
           },
           {
-            "body" : "Location tags are excluded from every format by default—even **Technical archive**. If the session has a tag, **Include scan location** lets you explicitly add its coordinates, estimated accuracy, and fix timestamp to this export. The choice starts off when you reopen export and is separate from the format selection. It can reveal where you were, including in **Reduced identifying information**. This setting does not add the tag to **Share for Analysis**, **Copy for Analysis**, or on-device finding summaries.",
+            "body" : "Location tags are excluded from every format by default—even **Technical archive**. If the session has a tag, **Include scan location** lets you explicitly add its coordinates, estimated accuracy, and fix timestamp to this export. The choice starts off when you reopen export and is separate from the format selection. It can reveal where you were, including in **Reduced identifying information**. This setting does not add the tag to the text prepared by **Use Another App** or on-device finding summaries.",
             "id" : "export-location",
             "title" : "Choose whether to share the location"
           },
@@ -881,7 +881,7 @@
             "title" : "Save or share"
           },
           {
-            "body" : "In **Analyze a finding**, choose **Share for Analysis** or **Copy for Analysis**, then select one item. From a finding’s details, the item is already selected. Spectra adds a ready-to-use analysis prompt before the selected finding’s evidence, asking the AI to explain it, assess uncertainty, and suggest useful next steps. Review the privacy notice and optionally open **Preview prompt and data**. **Share** opens Apple’s share sheet; choose an app or destination that accepts text. **Copy** places the same prepared text on the clipboard so you can paste it into your preferred AI app. Available destinations and what they do with the text depend on the receiving app. Apple Intelligence is not required, and selecting a finding does not share it automatically. A general check can include unknown findings; specialist checks offer only findings within their scan type. Display filters do not change the choices.",
+            "body" : "In **Analyze a finding**, choose **Use Another App**, then select one item. From a finding’s details, the item is already selected. Spectra adds a ready-to-use analysis prompt before the selected finding’s evidence, asking the AI to explain it, assess uncertainty, and suggest useful next steps. Review the privacy notice and optionally open **Preview prompt and data**, then choose **Share** or **Copy** on the same screen. **Share** opens Apple’s share sheet; choose an app or destination that accepts text. **Copy** places the same prepared text on the clipboard so you can paste it into your preferred AI app. Available destinations and what they do with the text depend on the receiving app. Apple Intelligence is not required, and selecting a finding does not share it automatically. A general check can include unknown findings; specialist checks offer only findings within their scan type. Display filters do not change the choices.",
             "id" : "copy-finding",
             "title" : "Share or copy one finding for external AI"
           },
@@ -922,7 +922,7 @@
           }
         ],
         "steps" : [
-          "To explain one finding, use **Analyze on Device** when available, **Share for Analysis**, or **Copy for Analysis** under **Analyze a finding**. These options are independent of JSON export.",
+          "To explain one finding, use **Analyze on Device** when available or **Use Another App** under **Analyze a finding**. The latter lets you review, then share or copy the prepared text. Both options are independent of JSON export.",
           "To export a saved session, choose **Export JSON** from the top **Session options** menu. After a completed check, use the **Export results** section.",
           "Select one format: **Analysis JSON**, **Technical archive**, or **Reduced identifying information**. Read what is included. **Include scan location**, when offered, is a separate choice and starts off.",
           "Tap **Export JSON** and wait for preparation to finish. In the share sheet, choose **Save to Files** or a recipient you trust."
@@ -1003,7 +1003,7 @@
             "title" : "Share only when you choose"
           },
           {
-            "body" : "Selecting one finding in **Share for Analysis** or **Copy for Analysis** prepares an analysis prompt followed by its evidence locally. Review the exact preview and privacy notice before continuing. Names and optional technical data may identify devices or people; the default text is not anonymous either. **Share** opens Apple’s share sheet with that prepared text. The app or destination you choose handles it under its policies; Spectra cannot verify its processing or retention. Only tapping **Copy** writes to Spectra’s on-device-only clipboard item, which expires after ten minutes. That expiry applies to this clipboard item, not shared text or a recipient’s copies. Pasting shares the text with the receiving app. Expiration, deleting a session, or **Reset Spectra** cannot recall information already shared. Selecting a finding or opening the preview does not share it automatically.",
+            "body" : "**Use Another App** prepares an analysis prompt followed by one selected finding’s evidence locally. Review the exact preview and privacy notice, then choose **Share** or **Copy** on the same screen. Names and optional technical data may identify devices or people; the default text is not anonymous either. **Share** opens Apple’s share sheet with that prepared text. Some destinations may send it immediately. The destination handles it under its policies; Spectra cannot verify its processing or retention. Available destinations depend on your installed apps and the text they accept. Only tapping **Copy** writes to Spectra’s on-device-only clipboard item, which expires after ten minutes. That expiry applies to this clipboard item, not shared text or a recipient’s copies. Pasting shares the text with the receiving app. Expiration, deleting a session, or **Reset Spectra** cannot recall information already shared or pasted. Selecting a finding or opening the preview does not share it automatically.",
             "id" : "external-copy",
             "title" : "Sharing a finding for another AI app"
           }
@@ -1042,7 +1042,7 @@
             "title" : "An optional place in your own history"
           },
           {
-            "body" : "Every JSON format omits the tag by default, including **Technical archive**. In a single-session export, **Include scan location** explicitly adds coordinates, accuracy, and the location timestamp—even to **Reduced identifying information**. A collection uses **Include scan locations**. These choices can reveal where you were. On-device finding summaries, **Share for Analysis**, and **Copy for Analysis** always omit the tag. **Remove location** changes only this session copy; other rechecks, protected recovery copies, or files already shared may still retain it. **Erase All Sessions** or **Reset Spectra** clears local session and recovery history, not external copies.",
+            "body" : "Every JSON format omits the tag by default, including **Technical archive**. In a single-session export, **Include scan location** explicitly adds coordinates, accuracy, and the location timestamp—even to **Reduced identifying information**. A collection uses **Include scan locations**. These choices can reveal where you were. On-device finding summaries and the text prepared by **Use Another App** always omit the tag. **Remove location** changes only this session copy; other rechecks, protected recovery copies, or files already shared may still retain it. **Erase All Sessions** or **Reset Spectra** clears local session and recovery history, not external copies.",
             "id" : "location-sharing",
             "title" : "Location has its own sharing choice"
           }
@@ -1132,8 +1132,8 @@
       }
     }
   ],
-  "build" : "1065",
-  "buildIdentifier" : "1A1065",
+  "build" : "1066",
+  "buildIdentifier" : "1A1066",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

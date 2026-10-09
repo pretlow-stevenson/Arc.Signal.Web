@@ -13,18 +13,20 @@ const troubleshooting = await text('docs/zendesk-troubleshooting-article.html');
 const section = (topic, id) => guide.articles.find(({content}) => content.id === topic)
   ?.content.sections.find(item => item.id === id)?.body;
 
-test('external finding routes consistently identify the prepared instructions and reviewed scope', () => {
+test('one external finding entry consistently identifies prepared instructions and reviewed scope', () => {
   for (const body of [section('exporting', 'copy-finding'), section('privacy', 'external-copy'),
     product, policy, support]) {
     assert.ok(body);
-    assert.match(body, /Share for Analysis/);
-    assert.match(body, /Copy for Analysis/);
-    assert.doesNotMatch(body, /Copy for AI analysis|Copy prompt and finding/);
+    assert.match(body, /Use Another App/);
+    assert.doesNotMatch(body, /Share for Analysis|Copy for Analysis|Copy for AI analysis|Copy prompt and finding/);
   }
   assert.match(section('exporting', 'copy-finding'), /analysis prompt before the selected finding’s evidence/);
   assert.match(support, /analysis prompt followed by one selected finding’s evidence/);
   assert.match(product, /ready-to-use prompt before the selected finding’s evidence/);
   assert.match(policy, /analysis prompt followed by bounded finding evidence locally/);
+  assert.match(section('exporting', 'copy-finding'), /choose \*\*Share\*\* or \*\*Copy\*\* on the same screen/);
+  assert.match(support, /On that same review screen, choose/);
+  assert.match(policy, /offers one optional review before you choose/);
   assert.match(support, /<h2 id="h_01M479WCTMPHQSZM5A2BEE4DPC">Understand one finding<\/h2>/);
 });
 
@@ -38,6 +40,8 @@ test('external sharing does not inherit dedicated clipboard lifetime or guarante
     assert.doesNotMatch(body, /shared text expires|guaranteed analysis|all AI apps/);
   }
   assert.match(policy, /This limit applies to that clipboard item, not shared text/);
+  assert.match(policy, /Some destinations may send it immediately/);
+  assert.match(support, /Some share destinations may send it immediately/);
   assert.match(policy, /location tags, other findings, and generated AI text/);
   assert.match(support, /does not expire shared text or recipient copies/);
   assert.match(troubleshooting, /Sharing or copying for external analysis remains a separate deliberate choice, not an automatic fallback/);

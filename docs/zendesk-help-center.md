@@ -4,6 +4,29 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## October 9: consolidated external finding review (1A1066 publication)
+
+The reviewed Sessions article (**56434367436187**) changes only its
+**Understand one finding** section: **Use Another App** is the single external
+entry, with **Copy** and **Share** on the same review screen. The prepared prompt,
+evidence scope, optional technical disclosure and dedicated clipboard lifetime
+are unchanged. The text also makes immediate share-destination actions explicit.
+All existing heading anchors, article identity, audience and promotion remain
+unchanged. Troubleshooting's generic sharing-or-copying fallback remains accurate
+and needed no new publication. The Sessions update was saved through the signed-in
+editor, then independently fetched through the unauthenticated public API.
+The complete body matches all **554 structured tokens**, updated
+**2026-10-09 23:24:57 UTC**, with structured SHA-256
+`43c2083d14d30171ddbad08f161947226e63ed9b4a2bd23997c84f02bc7026e5`.
+The exact reviewed HTML source has SHA-256
+`248fa2cc0bf0ec2c1f316f15e01c53b0778e2de18b8c0a2c7c918549c202f353`.
+Readback normalizes whitespace and editor-only list identifiers, then compares
+the remaining complete structure, text and attributes. ID, title, locale,
+section, published state, unrestricted audience, permission group and promotion
+match the prepublication snapshot. The published section was also reviewed
+visually. No account, theme, messaging or App Store settings changed. This
+verifies support content and metadata, not native sharing or recipient handling.
+
 ## October 9: external finding sharing (1A1065 publication)
 
 The reviewed Sessions article (**56434367436187**) explains **Analyze on Device**,

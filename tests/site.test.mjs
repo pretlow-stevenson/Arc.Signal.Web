@@ -765,7 +765,7 @@ test('location tagging remains per-check, optional, source-specific and separate
   }
   for (const phrase of ['every format by default', 'Technical archive', 'Include scan location',
     'fix timestamp', 'starts off when you reopen export', 'Reduced identifying information',
-    'does not add the tag to Share for Analysis, Copy for Analysis']) assert.ok(section('export-location').includes(phrase), phrase);
+    'does not add the tag to the text prepared by Use Another App']) assert.ok(section('export-location').includes(phrase), phrase);
   const product = prose(pages.get('spectra.html'));
   for (const phrase of ['Remember where you started', 'starts off every time', 'Watch captures stay untagged',
     'All JSON formats omit it by default', 'external finding shares or copies never include the tag']) assert.ok(product.includes(phrase), phrase);
@@ -937,7 +937,7 @@ test('practical guidance keeps observation, HTTPS, VPNs, and physical safety dis
 
 test('policy distinguishes local preparation, explicit sharing, clipboard consent, and recipient copies', () => {
   const policy = prose(pages.get('spectra-privacy.html'));
-  for (const phrase of ['Selecting one finding prepares', 'analysis prompt followed by bounded finding evidence locally', 'Share for Analysis', 'Copy for Analysis', 'Only tapping Copy', 'not anonymous either', 'on-device-only clipboard', 'ten-minute expiration', 'not shared text or copies made by recipients', 'cannot recall', 'under that recipient’s policies', 'cannot verify its processing or retention']) {
+  for (const phrase of ['Selecting one finding prepares', 'analysis prompt followed by bounded finding evidence locally', 'Use Another App', 'one optional review before you choose Share or Copy', 'Only tapping Copy', 'not anonymous either', 'on-device-only clipboard', 'ten-minute expiration', 'not shared text or copies made by recipients', 'cannot recall', 'under that recipient’s policies', 'cannot verify its processing or retention']) {
     assert.ok(policy.includes(phrase), phrase);
   }
   assert.doesNotMatch(policy, /Save to Files and Share JSON/);
