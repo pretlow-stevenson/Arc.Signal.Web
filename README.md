@@ -16,6 +16,14 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 ## Development
 
+Build 1A1069 applicability (October 10): the saved-session rename pencil now
+aligns with the first heading line while keeping its independent 44-point target.
+Guide/support instructions and public descriptions remain accurate. The website
+gallery and App Store panels do not show that overview; preserve actual iPhone
+1067 and Watch 1028 pixels and producer identities. Canonical Guide identity and
+applicability advance to 1069; recognition and Experimental Watch behavior stay
+unchanged. Native correction renders are separate test evidence.
+
 Build 1A1068 alignment (October 10): saved-session overviews use the pencil
 beside the heading for renaming; list-row shortcuts remain. The canonical Guide
 and Sessions support source describe that route, not the removed overflow-menu
