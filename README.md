@@ -16,6 +16,15 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 ## Development
 
+Build 1A1068 alignment (October 10): saved-session overviews use the pencil
+beside the heading for renaming; list-row shortcuts remain. The canonical Guide
+and Sessions support source describe that route, not the removed overflow-menu
+command. Sourced JLab coverage and conflicting-name hardening do not change the
+fictional findings pictured in the gallery. Screenshot applicability is reviewed
+against Guide 1068 while genuine iPhone 1067 and Watch 1028 producer identities
+and pixels remain unchanged. Signed delivery and public publication are separate
+gates, recorded in the application release report and Help Center receipts.
+
 Build 1A1060 support alignment (October 7): **Use the magnetic meter** now has
 a complete local source in `docs/zendesk-magnetic-article.html`. It separates the
 unsaved practice exercise from magnetic **Area Sweep**, uses the exact native

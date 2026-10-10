@@ -4,6 +4,27 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## October 10: pencil rename route (1A1068 publication)
+
+Sessions article **56434367436187** changes only the name-editor instruction:
+open a session and tap the pencil beside its heading; the list-row menu retains
+**Rename session**. Swipe guidance, exporting, history, privacy, measurement
+limits and Watch guidance are unchanged. The canonical native/website Guide
+describes the same route. No pictured gallery workflow changes; keep genuine
+iPhone 1067 and Watch 1028 pixels and actual producer identities.
+
+The authenticated editor published at **2026-10-10 18:02:03 UTC**. Independent
+unauthenticated API readback compares the complete body with the reviewed source,
+all **554 structured tokens**, and unchanged ID, title, locale, section, draft,
+promotion, audience and permission metadata. Complete structured SHA-256:
+`8f6b3db475503821db9999331d3f1e4b15c9979c2f88433a2d8e9e7838b1977d`.
+Reviewed local source SHA-256:
+`10f5cb8a620063a819b7b3abd38395bbc91511008a86bb1f2ac2cfed7414fe79`.
+Normalization ignores only whitespace and editor-only list attributes/wrappers;
+all remaining structure, text, links and heading anchors match. No other support
+article, theme, agent, messaging or account setting changed. Public article
+verification is separate from signed app delivery and hardware accessibility.
+
 ## October 10: native screenshot refresh (1A1067 publication)
 
 The **Use the magnetic meter** article (**56435559529627**) retains its existing

@@ -719,7 +719,7 @@
             "title" : "Review the original capture"
           },
           {
-            "body" : "Open a session and choose **Session options** → **Rename**, or use its list-row menu. Names can be up to 80 characters. Clearing a custom name restores the check-type name. Notes hold up to 1,000 characters of your own context; they do not become detector evidence. A rename does not change the original scan time.",
+            "body" : "Open a session and tap the pencil beside its heading to rename it. You can also choose **Rename session** from its list-row menu. Names can be up to 80 characters. Clearing a custom name restores the check-type name. Notes hold up to 1,000 characters of your own context; they do not become detector evidence. A rename does not change the original scan time.",
             "id" : "names",
             "title" : "Give a session a useful name"
           },
@@ -1132,8 +1132,8 @@
       }
     }
   ],
-  "build" : "1067",
-  "buildIdentifier" : "1A1067",
+  "build" : "1068",
+  "buildIdentifier" : "1A1068",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
