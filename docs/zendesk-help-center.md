@@ -4,6 +4,39 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
+## October 10: native screenshot refresh (1A1067 publication)
+
+The **Use the magnetic meter** article (**56435559529627**) retains its existing
+instructions, anchors, caption and simulated-reading disclosure. Its linked
+image and image source now use `spectra-area-sweep.webp?v=ba3e8115ce13`, the genuine
+1067 native capture imported losslessly from frozen runtime
+`9312b0153eb0fb57d55648a1f8d8069ee90e8db4`. The reviewed image was public before
+the URL-only support update was saved through the authenticated editor. Zendesk
+removed eleven editor-only `data-list-item-id` attributes during the edit; all
+other source content remained identical except the two intended URL hashes.
+
+Independent unauthenticated API readback verifies the complete body, all **233
+structured tokens**, and unchanged title, ID, locale, section, published state,
+unrestricted audience, permission group and promotion. The article reports
+**2026-10-10 14:43:51 UTC** as its update time. Structured SHA-256:
+`4374ce2bb6d9ab91fcd9ce26dfe5b8892f18088c694f295e54aa278dec1512f2`.
+The exact reviewed local source has SHA-256
+`08cd66d96f638530eff11873c4441ee247b626c28d0449714872c0ec07a35067`.
+Normalization ignores only whitespace and editor-only list metadata/wrappers;
+the remaining structure, text, image/link attributes and heading anchors match.
+The exact versioned image URL returns HTTP 200, 339,248 bytes, and SHA-256
+`ba3e8115ce131a88e9fc0ff9d6906a2643226eff1e8061d5dfdab1997a0b52df`.
+
+Website payload commit `72a8bb69809f88fcc148914e2d6300c6430ca449` was independently
+verified on GitHub Pages as built at **14:40:00 UTC**. At **14:40:04 UTC**, public
+GETs matched all **35** allowlisted files byte-for-byte, including the four new
+iPhone images and truthful retained Watch 1028 provenance. The 94 website tests,
+generated Guide parity and six focused mobile/desktop render checks passed.
+This later documentation receipt does not change those public payloads. No
+other support article, theme, messaging or account setting changed. Screenshot
+and publication verification is separate from native behavior, physical-device
+acceptance, signed TestFlight delivery or public App Store submission.
+
 ## October 9: consolidated external finding review (1A1066 publication)
 
 The reviewed Sessions article (**56434367436187**) changes only its
