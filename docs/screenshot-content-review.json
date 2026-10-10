@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1060",
-      "buildIdentifier": "1A1060",
-      "appSourceCommit": "6fffeb965b6198129415f6130021ed19aaf3fcaf"
+      "bundleBuild": "1067",
+      "buildIdentifier": "1A1067",
+      "appSourceCommit": "9312b0153eb0fb57d55648a1f8d8069ee90e8db4"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1066",
-  "reviewedGuideBuildIdentifier": "1A1066",
-  "reviewedOn": "2026-10-09",
-  "reason": "Build 1066 consolidates the iPhone’s external-analysis entry as Use Another App beside Analyze on Device. One review ends with Copy and Share; prompt-first evidence, location exclusions, recipient-policy boundaries and the dedicated local-only ten-minute clipboard item remain unchanged. Canonical Guide, product and privacy pages and the reviewed Sessions support mirror use the consolidated workflow. The affected controls and review are absent from spectra-overview.webp, spectra-smart-glasses.webp, spectra-area-sweep.webp, spectra-monitor.webp, spectra-watch-start.webp and spectra-watch-complete.webp. The App Store contact sheet and four retained QA images likewise show no changed controls; the evidence panel shows only the unchanged analysis heading edge. Keep genuine website iPhone producer 6fffeb965b6198129415f6130021ed19aaf3fcaf / 1A1060 / 1060, Watch producer 0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d / 1A1028 / 1028 and separate App Store 1062 producer. No existing pixels are relabeled. Hash/dimension/pixel checks remain required. New native review renders, support publication, recipient behavior and signed delivery are separate gates. This review is not physical-device acceptance, unrestricted Dynamic Type support, accessibility certification or public App Store submission. It expires at the next Guide build or affected pictured-workflow change."
+  "reviewedGuideBuild": "1067",
+  "reviewedGuideBuildIdentifier": "1A1067",
+  "reviewedOn": "2026-10-10",
+  "reason": "Build 1067 replaces the Scan hero shield with the approved static blue signal wave and A 30-second look at nearby signals. Exact Circular branding, native controls, disclaimer and behavior are unchanged. The website’s spectra-overview.webp, spectra-smart-glasses.webp, spectra-area-sweep.webp and spectra-monitor.webp are genuine new native captures from runtime 9312b0153eb0fb57d55648a1f8d8069ee90e8db4 / 1A1067 / 1067, imported losslessly with decoded-pixel, hash and dimension verification. Independent review accepted all six new App Store native frames, four separate QA images, six composed panels and contact sheet. The magnetic support article’s image URL follows the new capture; article instructions and public listing descriptions remain accurate without rewriting. spectra-watch-start.webp and spectra-watch-complete.webp retain actual producer 0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d / 1A1028 / 1028; their pictured idle/completion states remain representative. No existing pixels are relabeled. Guide 1067 article bodies are unchanged; release metadata alone advances. Native render checks, support publication and signed delivery remain separate gates. This scoped review is not physical-device acceptance, unrestricted Dynamic Type support, accessibility certification or public App Store submission. It expires at the next Guide build or affected pictured-workflow change."
 }

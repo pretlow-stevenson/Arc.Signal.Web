@@ -415,7 +415,28 @@ Images/fonts remain self-hosted.
 
 ## App screenshots
 
-October 9, build 1A1066 scoped website review: **Use Another App** replaces the
+October 10, build 1A1067 screenshot refresh: the approved Scan hero uses a static
+blue signal wave and **A 30-second look at nearby signals.** Its exact Circular
+wordmark, native controls, disclaimer and behavior remain unchanged. The four
+iPhone gallery images are new genuine captures from frozen runtime
+`9312b0153eb0fb57d55648a1f8d8069ee90e8db4` / 1A1067 / 1067, imported losslessly
+with full decoded-pixel verification. The separate six-panel App Store set and
+four QA frames were also recaptured and independently reviewed. Watch idle and
+completion images retain actual producer 1028; no old image is relabeled.
+Generated Guide metadata advances to 1067 without changing article bodies.
+The magnetic support article's image reference follows the new native capture;
+its instructions and all other support content remain accurate. Public listing
+descriptions need no rewrite. Native rendering, signed delivery and physical
+hardware acceptance remain separate gates. Prepared App Store previews do not
+constitute submission or satisfy every required device-size slot by themselves.
+The 94 website tests, generated Guide parity and 35-file production validation
+pass. Six focused mobile/desktop section renders show no horizontal overflow
+or image/content-layout defects. Native maximum-system-text requests retain
+the app's existing fixed-large text policy; they do not establish unrestricted
+Dynamic Type support. Zendesk publication is independently verified and recorded
+in `docs/zendesk-help-center.md`, not inferred from a Git push.
+
+Historical October 9, build 1A1066 scoped website review: **Use Another App** replaces the
 separate external-analysis entries. The common review ends with **Copy** and
 **Share**; prepared evidence and privacy policies are unchanged. The canonical
 Guide, product page, privacy policy and published Sessions support mirror follow
@@ -545,13 +566,13 @@ unchanged Watch idle/completion frames retain 1028 provenance. The scoped review
 is pinned to Guide 1052 without relabeling capture identities. Fresh App Store
 Sessions and QA imagery is verified separately in the app's 1052 release record.
 
-The website retains four verified native captures from Spectra’s October 7
-1060 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the
+The website uses four verified native captures from Spectra’s October 10
+1067 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1060 / 1060, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1067 / 1067, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -576,9 +597,9 @@ qualified type labels preserve uncertainty; Observed pattern describes evidence,
 not identity confidence, and signal counts are not physical-device totals. The
 canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
-At that October 7 release, all six iPhone App Store
+At this October 10 refresh, all six iPhone App Store
 frames and four separate light/dark large-system-text QA frames were freshly
-captured from reviewed source `6fffeb965b6198129415f6130021ed19aaf3fcaf`.
+captured from reviewed source `9312b0153eb0fb57d55648a1f8d8069ee90e8db4`.
 Sessions now shows supported archive import, confirmed saved counts, remaining
 slots and measured primary history usage within the independent 500-session
 and 256 MiB primary-history limits; both large-system-text QA frames
@@ -586,7 +607,7 @@ assert those actual labels above the tabs. The canonical Guide and published
 Sessions/Troubleshooting/Watch articles explain full Technical restoration,
 checksum limitations and history management without automatic removal. The
 Monitor image shows the main-panel **New Baseline** action, capture time,
-elapsed comparison time and the latest-40-event counter limit. Those 1060
+elapsed comparison time and the latest-40-event counter limit. These 1067
 screenshots and light/dark QA passed the native capture pipeline. Root/peer direct
 review covered six native frames, four QA images, six composites and the contact
 sheet. Source/export hashes and six-frame OCR checks passed. All four website
