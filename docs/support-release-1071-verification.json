@@ -1,0 +1,13 @@
+{
+  "reviewedBuild": "1A1071",
+  "articleID": 56434331296923,
+  "publishedAt": "2026-10-11T06:36:04Z",
+  "method": "Independent unauthenticated public article read; complete structured body and existing metadata comparison.",
+  "source": "docs/zendesk-findings-article.html",
+  "sourceSHA256": "9b80496196021a01b92fc0b70b11b79c14e7a04f161035a9a14ad4349e6c1eb6",
+  "structuredSHA256": "6217c121b7cd45336a5840cab279a6872aa174ebc55fa27e0f062822f7984e21",
+  "structuredTokens": 267,
+  "fullBodyMatch": true,
+  "existingMetadataUnchanged": true,
+  "scope": "Streaming hardware versus capability and source-reviewed smart-glasses family and observability guidance. No title, section, promotion, audience or permission change."
+}

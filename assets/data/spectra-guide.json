@@ -147,6 +147,11 @@
             "title" : "Check for glasses or wearables"
           },
           {
+            "body" : "Reviewed names and some manufacturer-documented Bluetooth services can suggest a smart-glasses family. The check also includes supported head-worn smart displays; not every result is ordinary eyewear. Shared pairing names or services may not distinguish its models or generations. Generic audio, battery, and input services do not identify glasses by themselves. Wired display glasses, devices already connected elsewhere, and powered-off or quiet devices may not expose a recognizable Bluetooth advertisement. No match does not rule out glasses nearby.",
+            "id" : "glasses-coverage",
+            "title" : "A glasses family, not necessarily a model"
+          },
+          {
             "body" : "During a wearable check, the overview counts findings by type. Repeated broadcasts from the same retained Bluetooth identity count once; rotating identities can still represent one physical device. After completion, **Search names** finds a particular supported match without changing the type counts. Device types are estimates, not selectable filters. **View observed activity** opens every other retained Bluetooth identity, including names whose type could not be determined. This separate context is not a specialist match and is excluded from specialist export, analysis, and proximity choices. Export, on-device analysis choices, and **Bluetooth Proximity** still include every eligible finding in the check, regardless of the display filters. Older sessions without a recorded wearable subtype appear under **Other wearables** without changing their saved product interpretation.",
             "id" : "wearable-filters",
             "title" : "Understand the wearable overview"
@@ -1147,8 +1152,8 @@
       }
     }
   ],
-  "build" : "1070",
-  "buildIdentifier" : "1A1070",
+  "build" : "1071",
+  "buildIdentifier" : "1A1071",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

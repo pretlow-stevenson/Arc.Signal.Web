@@ -708,6 +708,14 @@ The release-specific content review records each platform's actual source commit
 and build independently. Older unchanged Watch imagery is permitted only by an
 explicit review that expires with the next Guide build; its identity is never
 rewritten to match fresh iPhone captures.
+
+The 1A1071 review covers streaming-player versus streaming-service symbols and
+source-backed smart-glasses family coverage. The canonical Guide and published
+Findings article explain shared names, head-worn displays and Bluetooth
+observability limits. None of the retained website or App Store screenshot views
+depicts an affected glyph or the new Guide section; their actual 1070 iPhone and
+1028 Watch producer identities remain unchanged. Revalidate applicability for
+the next Guide build rather than relabeling unchanged pixels.
 Import using:
 
 ```sh
