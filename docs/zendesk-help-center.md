@@ -4,7 +4,7 @@ Live: https://arcsignal.zendesk.com/hc/en-us
 
 ## October 11 UTC: deliberate session tools (1A1070 publication)
 
-Five existing English support articles were published for the six approved
+Six existing English support articles were published for the six approved
 quality-of-life updates. Sessions explains local metadata search, non-selectable
 original-capture context, exact selected ZIP export, one-time saving, estimated
 size cleanup, and the relocation of **Erase All Sessions** to **Session Storage**.
@@ -53,6 +53,21 @@ both the local source and public body.
   `0bb53d3ca12836ddf64d2c58fa02a5817d9088d18da077cc23b3d62fa53bb166`.
   Reviewed source SHA-256:
   `cf8cd771d9e247a36739810cdf32a5ff1175222158a8a5349bfd4e75cc711b3f`.
+- **Use the magnetic meter** (**56435559529627**),
+  updated **2026-10-11 04:02:42 UTC**; **237 structured tokens**.
+  Structured SHA-256:
+  `a9bdc5c9122087293ca278fab6354e5dabd41b91736611e3370efda5e22e237a`.
+  Reviewed source SHA-256:
+  `3205038ebddae678af44178a349fd0a0142c8008ea1b449cff328ab4d57767b4`.
+  The one-time **Save Session** instruction and the genuinely recaptured magnetic
+  image use the reviewed 1070 source. Both image links use `22357811a8a3`.
+
+Website publication at **2026-10-11 04:01:06 UTC** independently compares all
+**35/35** public files byte-for-byte with reviewed commit
+`8c271dbb9747694db0b429ec84268e43d4659603`, after GitHub Pages reports that exact
+commit built. The magnetic article was updated only after that new image was
+publicly available. The later receipt-only documentation commit does not change
+the public files.
 
 No other article, help-center theme, agent, messaging, or account setting changed.
 This publication/readback receipt does not establish website deployment, native
