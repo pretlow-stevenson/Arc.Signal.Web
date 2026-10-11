@@ -70,8 +70,8 @@ publicly available. The later receipt-only documentation commit does not change
 the public files.
 
 No other article, help-center theme, agent, messaging, or account setting changed.
-This publication/readback receipt does not establish website deployment, native
-interaction or accessibility acceptance, physical Watch or haptic behavior,
+This publication/readback receipt does not establish native interaction or
+accessibility acceptance, physical Watch or haptic behavior,
 signed TestFlight delivery, or public App Store release. Screenshot applicability
 and producer identities remain separate gates; these receipts do not relabel
 any existing image.
