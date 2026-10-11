@@ -709,7 +709,13 @@ and build independently. Older unchanged Watch imagery is permitted only by an
 explicit review that expires with the next Guide build; its identity is never
 rewritten to match fresh iPhone captures.
 
-The 1A1071 review covers streaming-player versus streaming-service symbols and
+The 1A1072 review permits the Apple TV outline only for reviewed, agreeing
+Apple TV family findings; other players and ambiguous families remain generic.
+Confidence/source caveats and public Guide/support instructions are unchanged.
+No retained marketing frame depicts that identity-specific glyph. Genuine
+iPhone 1070 and Watch 1028 pixels and producer identities remain applicable.
+
+The historical 1A1071 review covers streaming-player versus streaming-service symbols and
 source-backed smart-glasses family coverage. The canonical Guide and published
 Findings article explain shared names, head-worn displays and Bluetooth
 observability limits. None of the retained website or App Store screenshot views
