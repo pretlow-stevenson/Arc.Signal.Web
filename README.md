@@ -16,7 +16,24 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 ## Development
 
-Build 1A1069 applicability (October 10): the saved-session rename pencil now
+Build 1A1070 alignment (October 11 UTC): Sessions and Guide use native bottom
+search within the four existing tabs. History search covers metadata, not every
+device payload. Save Session keeps one completed check without changing future
+automatic saving. Largest Sessions offers independent estimated-size cleanup;
+Export Selected uses the exact chosen saved copies and the existing reviewed
+Technical-archive ZIP format. Neutral iPhone completion feedback is optional
+and off by default; a newly saved Watch sweep offers a quiet View cue without
+automatic navigation or changing capture chronology. Erase All belongs in
+Session Storage, with confirmation and its complete history/inbox scope.
+Canonical Guide 1070, product/privacy pages, support sources and prepared App
+Store text agree. The app's six native frames and four light/dark QA originals
+were genuinely recaptured from d88f0d1c7a5130f0041ef9677d2d991088472cf6 / 1070;
+four website derivatives preserve decoded pixels losslessly. Unchanged pictured
+Watch states retain actual 1028 provenance and Experimental status. Independent
+publication, signed delivery and physical-device/accessibility gates remain
+separate; these are not public App Store submission receipts.
+
+Historical build 1A1069 applicability (October 10): the saved-session rename pencil now
 aligns with the first heading line while keeping its independent 44-point target.
 Guide/support instructions and public descriptions remain accurate. The website
 gallery and App Store panels do not show that overview; preserve actual iPhone
@@ -583,13 +600,13 @@ unchanged Watch idle/completion frames retain 1028 provenance. The scoped review
 is pinned to Guide 1052 without relabeling capture identities. Fresh App Store
 Sessions and QA imagery is verified separately in the app's 1052 release record.
 
-The website uses four verified native captures from Spectra’s October 10
-1067 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the
+The website uses four verified native captures from Spectra’s October 11 UTC
+1070 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1067 / 1067, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1070 / 1070, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -614,17 +631,18 @@ qualified type labels preserve uncertainty; Observed pattern describes evidence,
 not identity confidence, and signal counts are not physical-device totals. The
 canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
-At this October 10 refresh, all six iPhone App Store
+At this October 11 UTC refresh, all six iPhone App Store
 frames and four separate light/dark large-system-text QA frames were freshly
-captured from reviewed source `9312b0153eb0fb57d55648a1f8d8069ee90e8db4`.
-Sessions now shows supported archive import, confirmed saved counts, remaining
+captured from reviewed source `d88f0d1c7a5130f0041ef9677d2d991088472cf6`.
+Sessions now shows native bottom metadata search and filters, no permanent
+Erase All footer, supported archive import, confirmed saved counts, remaining
 slots and measured primary history usage within the independent 500-session
 and 256 MiB primary-history limits; both large-system-text QA frames
 assert those actual labels above the tabs. The canonical Guide and published
 Sessions/Troubleshooting/Watch articles explain full Technical restoration,
 checksum limitations and history management without automatic removal. The
 Monitor image shows the main-panel **New Baseline** action, capture time,
-elapsed comparison time and the latest-40-event counter limit. These 1067
+elapsed comparison time and the latest-40-event counter limit. These 1070
 screenshots and light/dark QA passed the native capture pipeline. Root/peer direct
 review covered six native frames, four QA images, six composites and the contact
 sheet. Source/export hashes and six-frame OCR checks passed. All four website

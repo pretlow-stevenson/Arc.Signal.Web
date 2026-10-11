@@ -2,6 +2,65 @@
 
 Live: https://arcsignal.zendesk.com/hc/en-us
 
+## October 11 UTC: deliberate session tools (1A1070 publication)
+
+Five existing English support articles were published for the six approved
+quality-of-life updates. Sessions explains local metadata search, non-selectable
+original-capture context, exact selected ZIP export, one-time saving, estimated
+size cleanup, and the relocation of **Erase All Sessions** to **Session Storage**.
+Getting started explains deliberate saving and optional, off-by-default iPhone
+completion feedback. Watch explains the quiet **Watch sweep added** / **View**
+cue after saving, unchanged capture chronology, independent haptic settings,
+and separate erase scopes. Troubleshooting preserves the open-result recovery
+instructions; Contact support identifies the selected collection's location
+control. Existing privacy, integrity, 500-session / 256 MiB history limits,
+five-capture Watch retention, and **Experimental** scope remain.
+
+Post-publication public API readback matches the complete structured body of
+each reviewed source. A separate local audit confirms the source hashes and
+unchanged ID, title, locale, section, published state, promotion, audience, and
+permission-group metadata against the before/after records. Article update
+times below are the service's actual UTC timestamps; structured hashes match
+both the local source and public body.
+
+- **Manage sessions, export results, and erase your data** (**56434367436187**),
+  updated **2026-10-11 02:46:18 UTC**; **646 structured tokens**.
+  Structured SHA-256:
+  `05a07ea38e1292ee2816aeb34ce11652aab03e2975cf36764d9124aed9db36a1`.
+  Reviewed source SHA-256:
+  `47b21e38842dfae838e800171fb0e3f3673003de906820392c321ac4e92f889b`.
+- **Get started with Spectra** (**56434299423899**),
+  updated **2026-10-11 02:47:02 UTC**; **207 structured tokens**.
+  Structured SHA-256:
+  `bdce64d43a5257e97d2eda1656cf4f4fc06da644db553333524569aa5e6cacf4`.
+  Reviewed source SHA-256:
+  `5bb0cb7cdd58692a1ee3ce6cef2be92519564fa0af9f801c7b442cccacd33e42`.
+- **Take a sweep with the Experimental Apple Watch companion** (**56434359907227**),
+  updated **2026-10-11 02:48:21 UTC**; **264 structured tokens**.
+  Structured SHA-256:
+  `32f88d1e9ed9ac3daf8b5d1d7940ebdf8f7807e302484c140f6b0eda3a6ef9ef`.
+  Reviewed source SHA-256:
+  `13f5f2a9b90b83d0d48121ab37a5a72207f678b88e906f6f4ed66cf93138954e`.
+- **Troubleshoot missing devices and unexpected readings** (**56434354083227**),
+  updated **2026-10-11 02:49:35 UTC**; **385 structured tokens**.
+  Structured SHA-256:
+  `d788ec95264ec58a258266b326b0231b0a4bf64bd7ce3751e1c978e43acb3ad7`.
+  Reviewed source SHA-256:
+  `c721a0f50e409a71646bf6407c9d975908ad8b9340300c3330d455e01b3652cd`.
+- **Contact Arc Signal support** (**56435622772379**),
+  updated **2026-10-11 02:50:19 UTC**; **107 structured tokens**.
+  Structured SHA-256:
+  `0bb53d3ca12836ddf64d2c58fa02a5817d9088d18da077cc23b3d62fa53bb166`.
+  Reviewed source SHA-256:
+  `cf8cd771d9e247a36739810cdf32a5ff1175222158a8a5349bfd4e75cc711b3f`.
+
+No other article, help-center theme, agent, messaging, or account setting changed.
+This publication/readback receipt does not establish website deployment, native
+interaction or accessibility acceptance, physical Watch or haptic behavior,
+signed TestFlight delivery, or public App Store release. Screenshot applicability
+and producer identities remain separate gates; these receipts do not relabel
+any existing image.
+
 Historical release-hardening review: all ten published articles were read back October 2, 2026 against Spectra 1.0.0 / 1A1033. Existing recognition, privacy, measurement and experimental-Watch guidance remains accurate. Zendesk is an independently published service: a Git commit does not deploy its configuration or articles. Product behavior remains defined by the apps and canonical Guide, not these shorter help articles.
 
 ## October 10: pencil rename route (1A1068 publication)

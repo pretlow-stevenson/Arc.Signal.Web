@@ -45,7 +45,7 @@
             "title" : "Apple Intelligence is optional"
           },
           {
-            "body" : "The iPhone **Area Sweep** limit starts when collection begins, not while permissions or instructions are open. At 25 minutes, a quiet notice offers **Extend 30 Minutes** or **Finish Area Sweep**. Each extension adds 30 minutes to the deadline, with another notice five minutes before it. Elapsed time stays visible. At the deadline, Spectra finishes through its normal results flow and follows **Save completed sessions**; it does not override your saving preference. Confirm the saved status or use **Retry Saving** or **Export JSON** if needed. **Monitor** and the Watch’s 30-second sweep are unchanged. Longer listening does not guarantee complete discovery or unlimited retained evidence.",
+            "body" : "The iPhone **Area Sweep** limit starts when collection begins, not while permissions or instructions are open. At 25 minutes, a quiet notice offers **Extend 30 Minutes** or **Finish Area Sweep**. Each extension adds 30 minutes to the deadline, with another notice five minutes before it. Elapsed time stays visible. At the deadline, Spectra finishes through its normal results flow and follows **Save completed sessions**; it does not override your saving preference. Confirm the saved status; **Save Session**, **Retry Saving**, or **Export JSON** may help when offered. **Monitor** and the Watch’s 30-second sweep are unchanged. Longer listening does not guarantee complete discovery or unlimited retained evidence.",
             "id" : "sweep-limit",
             "title" : "Take your time, with a clear stopping point"
           },
@@ -58,6 +58,11 @@
             "body" : "In Spectra, open **Settings** → **App icon** to choose **Classic**, **Spectra Blue**, **Light**, or **Blue on White**. Each uses Spectra’s original waveform. A checkmark identifies the icon confirmed by iOS; a spinner shows a change in progress. This changes the app icon, not the colors inside Spectra. Your iPhone’s icon appearance settings may adjust the colors. **Reset Spectra** erases local data and returns to **Welcome** first, then asks iOS to restore **Classic**. If iOS takes longer than expected, Spectra reports the unconfirmed change; iOS may still finish an earlier request. Review the icon in **Settings** after setup.",
             "id" : "app-icon",
             "title" : "Choose an app icon"
+          },
+          {
+            "body" : "In Spectra’s iPhone **Settings** → **Preferences**, turn on **Completion haptic** for a short touch when an iPhone check ends. It is off by default and separate from the Watch’s setting. iOS may suppress feedback or the device may not support it. Feedback does not confirm that the session was saved, that coverage was complete, or that an area is safe. Read the completed results and saved status.",
+            "id" : "completion-feedback",
+            "title" : "An optional touch when a check ends"
           }
         ],
         "steps" : [
@@ -290,7 +295,7 @@
             "title" : "An interruption keeps a partial capture"
           },
           {
-            "body" : "Open Spectra on your paired iPhone once to prepare transfer. After each new sweep, the Watch saves the capture before automatically queuing it for your paired iPhone. **Queued** means delivery is pending; **Received on iPhone** confirms local storage, not completed recognition. Open Spectra on iPhone to identify received signals and add them to **Sessions** automatically. No need to keep the Watch completion screen open. Choose **New Sweep** to collect again, or open **Saved sweeps** from the tray button to review transfer status and retry when needed. Transfers may wait for connectivity or Apple’s scheduling. **Settings** → **Experimental Watch** on iPhone provides processing and transfer help. Older captures sent before automatic handoff may still offer **Add to Sessions**.",
+            "body" : "Open Spectra on your paired iPhone once to prepare transfer. After each new sweep, the Watch saves the capture before automatically queuing it for your paired iPhone. **Queued** means delivery is pending; **Received on iPhone** confirms local storage, not completed recognition. Open Spectra on iPhone to identify received signals and add them to **Sessions** automatically. A **Watch sweep added** cue in **Sessions** offers **View** after a new result is saved. It does not open results automatically or send a notification. The session keeps its original capture date, even if transfer happened later. No need to keep the Watch completion screen open. Choose **New Sweep** to collect again, or open **Saved sweeps** from the tray button to review transfer status and retry when needed. Transfers may wait for connectivity or Apple’s scheduling. **Settings** → **Experimental Watch** on iPhone provides processing and transfer help. Older captures sent before automatic handoff may still offer **Add to Sessions**.",
             "id" : "handoff",
             "title" : "Finish on Watch, review on iPhone"
           },
@@ -694,7 +699,7 @@
         "navigationTitle" : "Sessions",
         "sections" : [
           {
-            "body" : "Automatic saving of completed iPhone checks is on by default. Change **Save completed sessions** in Spectra **Settings**. Turning it off affects future iPhone checks, not existing history, deliberate imports, rechecks, or Watch sweeps. The completed check tells you whether it was saved. If saving fails, keep the results open to review, use **Export JSON**, or **Retry Saving** when offered. For a history limit, **Manage Sessions** lets you remove copies you no longer need before retrying. Managing history does not save or discard the open result. A forced close, crash, or shutdown before saving can lose it; there is no continuous autosaved draft. Confirm important checks were saved before closing.",
+            "body" : "Automatic saving of completed iPhone checks is on by default. Change **Save completed sessions** in Spectra **Settings**. Turning it off affects future iPhone checks, not existing history, deliberate imports, rechecks, or Watch sweeps. With automatic saving off, choose **Save Session** on completed results to keep just that check without changing your preference. The completed check tells you whether it was saved. If saving fails, keep the results open to review, use **Export JSON**, or choose **Save Session** or **Retry Saving** when offered. For a history limit, **Manage Sessions** lets you remove copies you no longer need before retrying. Managing history does not save or discard the open result. A forced close, crash, or shutdown before saving can lose it; there is no continuous autosaved draft. Confirm important checks were saved before closing.",
             "id" : "saving",
             "title" : "Confirm a check was saved"
           },
@@ -702,6 +707,11 @@
             "body" : "**Sessions** groups checks by their original capture day, newest first, with the newest capture times first inside each day. The most recent day starts open; tap any date heading to show or hide its sessions. Each heading counts all saved versions for that day, including rechecks. You can keep several days open, and your choices stay in place while moving between tabs or opening and returning from a session. These choices are not saved across app launches. A new most-recent day starts open; deleting all history or changing time zone can reset the day groups. Each row keeps its check-type or Watch-origin icon even after you rename it.",
             "id" : "browsing",
             "title" : "Find a check by day"
+          },
+          {
+            "body" : "Use **Search sessions** at the bottom of the screen to match saved session names, notes, scan types, and recorded source information. The filter menu narrows by type, collector, or **Imported** status. This searches the session list, not device names or raw evidence inside every capture. A matching recheck can show its original as **Original capture · Context** so the relationship stays clear; that context is not another match and cannot be selected. Clearing search and filters returns to the full library. **Search Guide** in the Guide tab searches help instead.",
+            "id" : "search",
+            "title" : "Find a saved session"
           },
           {
             "body" : "Each row shows its name, scan type, original capture time and duration, collector, recorded measurement scope, and a results summary. The small icon beside the scan type is a visual cue; the text identifies the check. **Partial coverage** or **Some measurements unavailable** means the listed measurements did not all complete. Older sessions may show **Source not recorded**, **Measurements not recorded**, or **Source and measurements not recorded**. Spectra does not guess. If the list says **Collection details in saved results**, open the session to review its original metadata. Watch rows retain **Experimental** and any early or interrupted completion status.",
@@ -754,7 +764,7 @@
             "title" : "Rechecks need room to save"
           },
           {
-            "body" : "Choose **Import Sessions** in **Sessions** and select a file in Files, or open a compatible file with Spectra. Choose one supported **Technical archive** JSON or a Spectra ZIP collection made with **Export All Sessions**; no unzipping is needed. Other ZIP files, **Analysis JSON**, and **Reduced identifying information** cannot restore sessions. Review the original capture time, recorded collector, compatibility, and integrity status for a single archive. For a collection, review how many sessions will be added and how many are already saved, then confirm the import. **Cancel** leaves history unchanged. Files providers may need a connection to supply your chosen file; validation and saving run on device. **Imported** remains separate from the original collector and capture date. Opening a file while a check or another task is in progress waits for a safe point to review it; it does not discard the open results.",
+            "body" : "Choose **Import Sessions** in **Sessions** and select a file in Files, or open a compatible file with Spectra. Choose one supported **Technical archive** JSON or a Spectra ZIP collection made with **Export All Sessions** or **Export Selected**; no unzipping is needed. Other ZIP files, **Analysis JSON**, and **Reduced identifying information** cannot restore sessions. Review the original capture time, recorded collector, compatibility, and integrity status for a single archive. For a collection, review how many sessions will be added and how many are already saved, then confirm the import. **Cancel** leaves history unchanged. Files providers may need a connection to supply your chosen file; validation and saving run on device. **Imported** remains separate from the original collector and capture date. Opening a file while a check or another task is in progress waits for a safe point to review it; it does not discard the open results.",
             "id" : "import",
             "title" : "Import a session or collection"
           },
@@ -767,6 +777,11 @@
             "body" : "Open **Storage** from **Sessions**, or **Settings** → **Privacy & storage** → **Session storage**, then choose **Export All Sessions**. Spectra prepares one ZIP collection containing a **Technical archive** for every session saved when preparation starts. Review the sharing options, then choose **Save to Files** or another destination in Apple’s share sheet. Location tags are excluded by default; enable **Include scan locations** only if you want to share the saved coordinates. This is not a full app backup: it excludes settings, generated AI explanations, private Bluetooth follow-up references, unsaved results, and Watch captures not yet added to Sessions. Exporting does not delete anything or free history space. Check that the external file was saved before deliberately deleting local copies.",
             "id" : "export-all",
             "title" : "Keep an external copy of saved sessions"
+          },
+          {
+            "body" : "In **Sessions**, optionally search or filter first, then tap **Select** and choose the saved copies you want. Search and filters stay fixed while selecting. **Export** shows the selected count and opens **Export Selected** for privacy review before preparing a ZIP of Technical archives. Only selected sessions are included; selecting an original never automatically includes its rechecks, and original-capture context cannot be selected. Each selected recheck exports independently. Location tags are excluded by default. Review names, notes, and technical evidence before sharing; the same collection privacy limits apply as **Export All Sessions**. Exporting leaves history unchanged.",
+            "id" : "export-selected",
+            "title" : "Export only the sessions you choose"
           },
           {
             "body" : "New technical archives include a checksum. A matching checksum checks the archived bytes, not the author, collector, device identity, or truth of the measurements. Supported older archives can say **Checksum unavailable**; this is different from a failed integrity check. A failed checksum, malformed archive, or unsupported format cannot be imported. Importing does not start analysis, scanning, a recheck, or a map, and does not change the source file. Private Bluetooth follow-up references are not included in archives, so a later proximity check may require confirming a possible match.",
@@ -789,7 +804,7 @@
             "title" : "A tag belongs to each saved copy"
           },
           {
-            "body" : "Each saved-session row includes **Estimated size** to help you compare larger saved sessions before deleting. It includes recorded capture data and that session’s saved list information, such as its name and notes. **KiB** and **MiB** use binary units. Shared history information, protected recovery copies, received Watch captures and exports are separate, so row estimates do not add up to the history total and deletion may free a different amount. A recheck or imported copy has its own size. An unavailable estimate is not shown; it does not mean the session is empty.",
+            "body" : "Each saved-session row includes **Estimated size** to help you compare larger saved sessions before deleting. Open **Session Storage** → **Largest Sessions** for a largest-first list of each saved copy, including rechecks and imports. An unavailable size appears after known estimates in this list. Open a row to review it, or swipe left and confirm deletion. Deletion in **Largest Sessions** cannot be undone and removes only the chosen session, not other saved versions. An estimate includes recorded capture data and that session’s saved list information, such as its name and notes. **KiB** and **MiB** use binary units. Shared history information, protected recovery copies, received Watch captures and exports are separate, so row estimates do not add up to the history total and deletion may free a different amount. A recheck or imported copy has its own size. An unavailable estimate is not shown in the main list; it does not mean the session is empty.",
             "id" : "session-size",
             "title" : "Compare saved sizes"
           },
@@ -799,21 +814,21 @@
             "title" : "Make room without losing another session"
           },
           {
-            "body" : "Swipe right on a session to reveal **Rename**, or swipe fully to open the name editor. Nothing changes until you save. Swipe left to reveal **Delete**, or swipe fully to delete that session. **Undo** briefly restores the most recently deleted session, including its name, notes, location tag, and retained evidence. It is available for 10 seconds, or 30 seconds when VoiceOver is running at deletion. Another deletion replaces the previous Undo opportunity. Leaving **Sessions**, switching away from Spectra, or starting confirmed bulk erasure or reset ends Undo. Spectra removes the saved copy first and keeps only one temporary in-memory recovery copy; there is no Recently Deleted folder.",
+            "body" : "In the main **Sessions** list, swipe right on a session to reveal **Rename**, or swipe fully to open the name editor. Nothing changes until you save. Swipe left to reveal **Delete**, or swipe fully to delete that session. **Undo** briefly restores the most recently deleted session, including its name, notes, location tag, and retained evidence. It is available for 10 seconds, or 30 seconds when VoiceOver is running at deletion. Another deletion replaces the previous Undo opportunity. Leaving **Sessions**, switching away from Spectra, or starting confirmed bulk erasure or reset ends Undo. Spectra removes the saved copy first and keeps only one temporary in-memory recovery copy; there is no Recently Deleted folder. Deletion in **Largest Sessions** has a confirmation instead of Undo.",
             "id" : "swipe-actions",
             "title" : "Swipe to rename or delete"
           },
           {
-            "body" : "Use **Select** to delete several sessions with confirmation. Hiding a day or collapsing rechecks does not deselect hidden sessions: the date heading and recheck disclosure keep their selected counts, and **Delete Selected** shows the total. Expand the relevant group to change its selection. Deleting an original does not select or delete its rechecks. **Erase All Sessions** includes closed groups, recovery copies, and received Watch inbox captures; it is disabled when there is nothing to erase. Watch copies remain; this action does not request a Watch reset. Use **Settings** → **Experimental Watch** → **Erase Inbox Copies** to clear that inbox separately without deleting imported sessions. **Reset Spectra** additionally clears received Watch diagnostics and preferences, returns to **Welcome**, and requests a reset of the known paired Watch app. Check its separate pending or confirmed status. **Delete Selected**, **Erase All Sessions**, and **Reset Spectra** clear pending Undo and cannot be undone.",
+            "body" : "Use **Select** to delete several sessions with confirmation. Search and filters stay fixed while selecting. Hiding a day or collapsing rechecks does not deselect hidden sessions: the date heading and recheck disclosure keep their selected counts, and the **Delete** action shows the total. Expand the relevant group to change its selection. Deleting an original does not select or delete its rechecks. Open **Storage** → **Session Storage** for **Erase All Sessions**. It includes closed groups, recovery copies, and received Watch inbox captures, regardless of search or filters; it is disabled when there is nothing to erase. Watch copies remain; this action does not request a Watch reset. Use **Settings** → **Experimental Watch** → **Erase Inbox Copies** to clear that inbox separately without deleting imported sessions. **Reset Spectra** additionally clears received Watch diagnostics and preferences, returns to **Welcome**, and requests a reset of the known paired Watch app. Check its separate pending or confirmed status. **Delete Selected**, **Erase All Sessions**, and **Reset Spectra** clear pending Undo and cannot be undone.",
             "id" : "erase",
             "title" : "Choose the right erase action"
           }
         ],
         "steps" : [
-          "Open **Sessions**, tap a date heading if needed, and choose a check by its name and time. A blue dot marks an available recheck, not an unread session.",
+          "Open **Sessions**, browse by date or use **Search sessions**, and choose a saved check. A blue dot marks an available recheck, not an unread session.",
           "If **Recheck session** is available, tap it and wait for a separately saved result. Review the original **Captured** date, the **Rechecked** date, and any identification changes.",
           "Review results and **Coverage**, rename or add notes, then export anything you need to keep outside bounded history.",
-          "Use individual, selected, or all-session deletion for the scope you intend. Read the confirmation before erasing."
+          "Use individual or selected deletion for the scope you intend. For **Largest Sessions** or **Erase All Sessions**, open **Storage**. Read the confirmation before erasing."
         ],
         "symbol" : "clock.arrow.circlepath",
         "takeaway" : "Keep the checks you need, add context, and stay in control of local history.",
@@ -861,7 +876,7 @@
             "title" : "Analysis JSON"
           },
           {
-            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review or a supported **Import Sessions** restore. **Export All Sessions** packages these Technical archives in one Spectra ZIP collection. New archives include a checksum; it does not authenticate the author or observations. The file may include personal information. Generated AI explanations are excluded, including any analysis retained by an earlier app version.",
+            "body" : "Includes all retained results within the scan type, confidence, advertised names and payloads, coverage, catalog metadata, session name and notes, retained Monitor events and comparisons, and a saved magnetic graph when applicable. It ignores the visible results filter. Use this for detailed technical review or a supported **Import Sessions** restore. **Export All Sessions** packages these Technical archives in one Spectra ZIP collection; **Export Selected** includes only the saved copies you deliberately select, not their unselected rechecks. Both support collection import. New archives include a checksum; it does not authenticate the author or observations. The file may include personal information. Generated AI explanations are excluded, including any analysis retained by an earlier app version.",
             "id" : "full",
             "title" : "Technical archive"
           },
@@ -978,7 +993,7 @@
             "title" : "You choose what gets measured"
           },
           {
-            "body" : "Completed iPhone checks are saved locally by default. Turning saving off stops automatic saving of future iPhone checks; it does not delete reports you already saved. Deliberate **Import Sessions** actions, rechecks, and Watch sweeps save independently of this preference. Saved sessions are not automatically removed to make room. Individual deletion offers a brief **Undo** using one temporary in-memory copy after removing the saved copy. Leaving **Sessions** or switching away from Spectra ends Undo; bulk erasure and reset also clear it. No Recently Deleted folder is kept. The Sessions guide explains the time window and separate copies.",
+            "body" : "Completed iPhone checks are saved locally by default. Turning saving off stops automatic saving of future iPhone checks; it does not delete reports you already saved. **Save Session** on an unsaved completed check keeps that one result without changing your automatic-saving preference. Deliberate **Import Sessions** actions, rechecks, and Watch sweeps save independently of this preference. Saved sessions are not automatically removed to make room. Individual deletion in the main **Sessions** list offers a brief **Undo** using one temporary in-memory copy after removing the saved copy. Leaving **Sessions** or switching away from Spectra ends Undo; bulk erasure and reset also clear it. **Largest Sessions** uses confirmed deletion without Undo. No Recently Deleted folder is kept. The Sessions guide explains the time window and separate copies.",
             "id" : "history",
             "title" : "History is your choice"
           },
@@ -998,7 +1013,7 @@
             "title" : "Read the full privacy policy"
           },
           {
-            "body" : "**Export JSON** on completed or saved results lets you choose **Analysis JSON**, **Technical archive**, or **Reduced identifying information**. **Analysis JSON** includes meaningful retained evidence and your notes; the technical archive also includes raw retained data and saved graphs. All formats exclude generated AI explanations. Reduced omits identifying text and raw payloads but is not anonymous. All formats ignore visible results filters. **Export All Sessions** on **Session Storage** packages saved sessions as Technical archives in one ZIP; it is not a full app backup. Location tags start excluded, and **Include scan locations** is a separate choice for the collection. Nothing is uploaded automatically.",
+            "body" : "**Export JSON** on completed or saved results lets you choose **Analysis JSON**, **Technical archive**, or **Reduced identifying information**. **Analysis JSON** includes meaningful retained evidence and your notes; the technical archive also includes raw retained data and saved graphs. All formats exclude generated AI explanations. Reduced omits identifying text and raw payloads but is not anonymous. All formats ignore visible results filters. **Export All Sessions** on **Session Storage** packages saved sessions as Technical archives in one ZIP; **Export Selected** packages only the saved copies you choose in **Sessions**. Neither is a full app backup. Location tags start excluded, and **Include scan locations** is a separate choice for the collection. Nothing is uploaded automatically.",
             "id" : "export",
             "title" : "Share only when you choose"
           },
@@ -1009,8 +1024,8 @@
           }
         ],
         "steps" : [
-          "Use **Save completed sessions** in Spectra **Settings** to control automatic saving of future iPhone checks. Imports, rechecks, and Watch sweeps save independently.",
-          "Open **Sessions** to delete one report, use **Select** for several, or **Erase All Sessions** to also remove recovery copies and received Watch inbox captures. Watch copies remain.",
+          "Use **Save completed sessions** in Spectra **Settings** to control automatic saving of future iPhone checks, or **Save Session** to keep one completed result. Imports, rechecks, and Watch sweeps save independently.",
+          "Open **Sessions** to delete one report or use **Select** for several. Open **Storage** → **Session Storage** for **Erase All Sessions**, which also removes recovery copies and received Watch inbox captures. Watch copies remain.",
           "Use **Reset Spectra** in Spectra **Settings** to erase local sessions and preferences, return to **Welcome**, and request a paired Watch reset. Check the Watch reset status separately; a pending request is not confirmed erasure. System permissions and copies you saved or shared elsewhere remain."
         ],
         "symbol" : "hand.raised",
@@ -1132,8 +1147,8 @@
       }
     }
   ],
-  "build" : "1069",
-  "buildIdentifier" : "1A1069",
+  "build" : "1070",
+  "buildIdentifier" : "1A1070",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

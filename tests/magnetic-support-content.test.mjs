@@ -67,12 +67,14 @@ test('the actual magnetic Area Sweep has a separate start-to-finish workflow and
   assert.ok(sweep);
   assert.equal([...sweep.matchAll(/<li>/g)].length, 4);
   for (const label of ['Scan', 'Area Sweep', 'Motion and magnetic', 'Continue',
-    'Begin Area Sweep', 'Finish Area Sweep', 'Coverage', 'Review graph', 'Save completed sessions']) {
+    'Begin Area Sweep', 'Finish Area Sweep', 'Coverage', 'Review graph', 'Save completed sessions', 'Save Session']) {
     assert.ok(sweep.includes(`<strong>${label}</strong>`), label);
   }
   assert.match(sweep, /Keep Spectra visible and your iPhone unlocked/);
   assert.match(sweep, /when graph data is available/);
   assert.match(sweep, /Check the saved status before closing/);
+  assert.match(sweep, /Automatic saving follows your <strong>Save completed sessions<\/strong> preference/);
+  assert.match(sweep, /With automatic saving off, choose <strong>Save Session<\/strong> to keep just this check without changing your preference/);
   assert.match(sweep, /initially allows 30 minutes/);
   assert.match(sweep, /does not enable background measurement or remove graph-retention limits/);
 });

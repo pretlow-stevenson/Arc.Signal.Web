@@ -1036,7 +1036,8 @@ test('Guide explains specialist export scope and bounded optional analysis', asy
 test('saved-session rechecks keep eligibility, originals, storage and privacy explicit', () => {
   assert.match(pages.get('spectra.html'), /expandable day groups/);
   for (const phrase of ['Find a check by day', 'most recent day starts open',
-    'does not deselect', 'Delete Selected shows the total', 'includes closed groups']) {
+    'does not deselect', 'Delete action shows the total', 'includes closed groups',
+    'Search and filters stay fixed while selecting']) {
     assert.ok(prose(pages.get('guide.html')).includes(phrase), phrase);
   }
   const product = prose(pages.get('spectra.html'));

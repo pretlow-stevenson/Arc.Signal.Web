@@ -8,7 +8,7 @@ test('session deletion guidance distinguishes temporary Undo from bulk erasure',
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   const sessions = guide.articles.find(article => article.content.id === 'sessions').content;
   const swipe = sessions.sections.find(section => section.id === 'swipe-actions').body;
-  assert.match(swipe, /Swipe right.*Rename.*Swipe left.*Delete/s);
+  assert.match(swipe, /main \*\*Sessions\*\* list, swipe right.*Rename.*Swipe left.*Delete/s);
   for (const [name, value] of [
     ['Guide', swipe],
     ['privacy policy', await readFile(join(root, 'spectra-privacy.html'), 'utf8')],
@@ -24,4 +24,16 @@ test('session deletion guidance distinguishes temporary Undo from bulk erasure',
   }
   const erase = sessions.sections.find(section => section.id === 'erase').body;
   assert.match(erase, /Delete Selected.*Erase All Sessions.*Reset Spectra.*clear pending Undo and cannot be undone/);
+  assert.match(erase, /Storage\*\* → \*\*Session Storage\*\* for \*\*Erase All Sessions/);
+  assert.match(erase, /regardless of search or filters/);
+  const largest = sessions.sections.find(section => section.id === 'session-size').body;
+  assert.match(largest, /Largest Sessions.*cannot be undone/s);
+  assert.match(largest, /only the chosen session, not other saved versions/);
+  for (const path of ['spectra-privacy.html', 'docs/zendesk-session-article.html']) {
+    const text = (await readFile(join(root, path), 'utf8')).replace(/<[^>]*>/g, '');
+    assert.match(text, /Storage → Session Storage.*Erase All Sessions/s, path);
+    assert.match(text, /regardless of search or filters/, path);
+    assert.match(text, /Largest Sessions.*confirmation instead of (?:offering )?Undo/s, path);
+    assert.match(text, /does not erase Watch copies or request a Watch reset/, path);
+  }
 });
