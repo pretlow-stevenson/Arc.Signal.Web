@@ -539,7 +539,9 @@ test('Spectra imagery and mode descriptions match current radio and magnetic wor
   assert.match(html, /02 \/ Area Sweep/);
   assert.match(html, /Magnetic measurement is available in Area Sweep/);
   assert.match(html, /Focused glasses and wearable checks/);
-  assert.match(html, /Available in Area Sweep\. See actual field readings/);
+  const magneticRow = html.match(/<article><span class="measurement-number" aria-hidden="true">03<\/span><h3>Magnetic field<\/h3>[\s\S]*?<\/article>/)?.[0];
+  assert.ok(magneticRow);
+  assert.match(magneticRow, /Available in Area Sweep\. See actual field readings/);
   assert.doesNotMatch(html, /Optional detector sound|Available in Area Sweep and Monitor/);
   assert.ok(!files.includes('assets/images/spectra-home.png'));
   assert.ok(!files.includes('assets/images/spectra-magnetic.png'));

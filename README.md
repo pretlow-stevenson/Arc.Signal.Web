@@ -93,6 +93,13 @@ pages, and `npm run support:check` detects stale output. Preserve article anchor
 and complete bodies when updating content; do not edit generated pages by hand.
 The supplemental magnetic entry mirrors its complete canonical manuscript.
 
+Magnetic purpose/value copy leads with a possible close-range clue during physical
+inspection, even without a recognizable wireless broadcast. Ordinary magnetic
+sources, uncertain identity/recording and no-all-clear limits remain beside the
+benefit. Homepage, product caption/measurement row and related help entry points
+stay consistent; native Guide data and genuine screenshot producers are unchanged.
+See `docs/magnetic-purpose-web-2026-10-12.md` for claim boundaries and verification.
+
 Email support uses `support@arcsignal.dev`. Google Workspace handles email;
 Zoho Desk handles tickets and replies, not public help pages. Opening email
 support attaches and sends nothing. The owner confirmed the branded Google
