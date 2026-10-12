@@ -649,9 +649,10 @@ sheet. Source/export hashes and six-frame OCR checks passed. All four website
 derivatives preserve native pixels and receive direct visual review. Imported
 copies still cannot retain private local Bluetooth references; this release
 does not change those privacy boundaries.
-The final production runtime `98de5681400b74820a40cd9ced5a93f9163c0305`
-changes only seven unpictured preparation text foregrounds after that capture
-producer. Independent visual applicability review retains the actual 5259 image
+The final production runtime `9867d6c0d56b818b13d8f40671f63e356cc822e4`
+changes only eleven unpictured foreground branches after that capture producer:
+seven preparation text roles and four completed-detector values. Independent
+visual applicability review retains the actual 5259 image
 identity, hashes and pixels. Engine 28 corrects offered-service interpretation
 without changing catalog 32 / schema 17 resources or saved originals. The thirteen
 Guide bodies and public support/listing claims remain accurate. Default native

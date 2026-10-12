@@ -30,8 +30,24 @@ finding-review schema 2 do not change those documented controls or privacy
 choices. The Experimental Watch's active-screen, phone-free collection,
 five-capture retention and later paired-iPhone review boundaries remain accurate.
 No support text, promotion, theme or agent change is required for these fixes.
-The magnetic screenshot refresh and its independent publication receipt are
-recorded separately below when completed.
+The magnetic screenshot refresh is published and independently verified.
+The public article **56435559529627** is updated at **2026-10-12 03:03:21 UTC**.
+Both image references now use the lossless, genuinely captured 1073 derivative
+`https://arcsignal.app/assets/images/spectra-area-sweep.webp?v=64629dead2e2`.
+Unauthenticated API readback at **03:03:41 UTC** matches all **237 structured
+tokens**, the six heading anchors and the reviewed full body. Only the two image
+URLs change; provider-generated list-item IDs are normalized during comparison.
+Title, locale, section, promotion, Everyone audience, published state, author and
+permission metadata remain unchanged. Structured body SHA-256:
+`33e96e040e654a1892bef145c99c371c87e278897c2288f94e047888ed444337`.
+The signed-in published article visibly loads the new image and its unchanged
+example-data caption; that view is not signed-out browser acceptance.
+
+Website commit `d3e92ed8df2bd9d859c110c31dacd160af8bd841` is built by GitHub
+Pages. At **2026-10-12 03:00:48 UTC**, all **35 allowlisted public files** match
+the reviewed local bytes through unauthenticated GETs, including the magnetic
+image and canonical Guide. Later documentation-only closure does not change
+those published pixels or article copy.
 
 Historical pre-activation check: anonymous HTTP access at **2026-10-12 00:21 UTC** receives a Cloudflare
 challenge (HTTP 403), as in the preceding review. The existing browser session
