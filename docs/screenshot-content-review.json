@@ -3,9 +3,9 @@
   "appVersion": "1.0.0",
   "sources": {
     "iOS": {
-      "bundleBuild": "1070",
-      "buildIdentifier": "1A1070",
-      "appSourceCommit": "d88f0d1c7a5130f0041ef9677d2d991088472cf6"
+      "bundleBuild": "1073",
+      "buildIdentifier": "1A1073",
+      "appSourceCommit": "5259e8ea0a0814c5272f8e0383cec7ca27984caf"
     },
     "watchOS": {
       "bundleBuild": "1028",
@@ -13,8 +13,8 @@
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1072",
-  "reviewedGuideBuildIdentifier": "1A1072",
-  "reviewedOn": "2026-10-11",
-  "reason": "Build 1072 uses the unmodified Apple TV outline only for reviewed, agreeing recorded Apple TV family findings; ambiguous families, other streaming players and capability-only broadcasts retain their generic symbols. Confidence, identification, catalog32/engine27 and stored evidence are unchanged. Existing Guide and Findings support instructions remain accurate. Independent design review of all six website images, App Store panels and both Watch originals finds no affected finding pictured. Retain genuine iPhone1070 frames from d88f0d1c7a5130f0041ef9677d2d991088472cf6 and Watch1028 frames from 0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d with their actual producer identities, hashes and pixels. Native1072 correction renders are separate regression evidence. Watch collection, transfer, retention and Experimental status are unchanged. This is not physical-device acceptance, unrestricted Dynamic Type support, accessibility certification or public App Store submission. Revalidate at the next Guide build or affected pictured-workflow change."
+  "reviewedGuideBuild": "1073",
+  "reviewedGuideBuildIdentifier": "1A1073",
+  "reviewedOn": "2026-10-12",
+  "reason": "Engine28 preserves explicit offered-service provenance separately from observed namespaces across phone and Experimental Watch collection and recheck; catalog32/schema17 resources remain unchanged. All six native iPhone frames and four public QA images were genuinely recaptured from 5259e8ea0a0814c5272f8e0383cec7ca27984caf with the actual1073 executable. Root/design review accepts those images, two separate private consent QA frames, six composed panels and contact sheet; hash/RGB/OCR gates pass. Four website derivatives preserve native pixels. The final production runtime98de5681400b74820a40cd9ced5a93f9163c0305 changes only seven unpictured preparation text foregrounds after that capture producer; retain the actual5259 producer rather than relabeling pixels. Watch pictured states are unchanged and retain actual1028 producer0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d. All13 Guide bodies and support/listing claims remain accurate. Native search-placeholder contrast, hardware acceptance, hands-on VoiceOver, unrestricted Dynamic Type and public App Store screenshot requirements remain separate limits, not certifications. Revalidate at the next Guide build or affected pictured-workflow change."
 }

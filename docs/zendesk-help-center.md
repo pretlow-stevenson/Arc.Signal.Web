@@ -2,6 +2,47 @@
 
 Live: https://arcsignal.zendesk.com/hc/en-us
 
+## October 12 UTC: final interpretation hardening (1A1073 applicability)
+
+After the owner restores the browser session, the administrative settings show
+that the Help Center has never been activated. **Require sign in** is off and
+the magnetic article's audience is **Everyone**; the activation state is the
+validated access issue, not a guessed ticket, subscription, or article policy.
+With explicit action-time owner approval, the Help Center is activated and
+end-user profiles are changed from public to private. The saved settings show
+**Private user profiles** selected and **Deactivate Help Center**, confirming
+activation. Ticket access, billing, account permissions, unsafe content,
+analytics and anonymous tracking are unchanged.
+
+An unauthenticated public API inventory at **2026-10-12 01:39:30 UTC** returns
+all ten published English articles with no restricted user segment, including
+**Use the magnetic meter**. Automated HTML GETs still receive a Cloudflare
+challenge (HTTP 403), not the former application sign-in page. Public API
+readability and saved activation are verified; signed-out interactive HTML and
+inbound email delivery remain separate acceptance checks. No Cloudflare or
+authentication protection is bypassed or weakened.
+
+The native Guide's thirteen article bodies remain unchanged. Public Findings
+guidance already distinguishes registered namespaces from verified hardware;
+Sessions describes explicit rechecks and unchanged originals. Engine 28's
+offered-service correction, bounded phone/Watch provenance retention and external
+finding-review schema 2 do not change those documented controls or privacy
+choices. The Experimental Watch's active-screen, phone-free collection,
+five-capture retention and later paired-iPhone review boundaries remain accurate.
+No support text, promotion, theme or agent change is required for these fixes.
+The magnetic screenshot refresh and its independent publication receipt are
+recorded separately below when completed.
+
+Historical pre-activation check: anonymous HTTP access at **2026-10-12 00:21 UTC** receives a Cloudflare
+challenge (HTTP 403), as in the preceding review. The existing browser session
+then expires, and a fresh direct navigation to the magnetic article redirects
+to end-user sign-in. This does not identify the cause of the access policy or
+establish public access. The owner is asked to sign back in for an administrative
+review; no authentication, audience, subscription or account setting is changed.
+Anonymous access and inbound email delivery remain public-submission acceptance
+checks. Do not silently weaken access controls or treat a stale signed-in page
+as evidence that the public site is accessible.
+
 ## October 11 UTC: deliberate session tools (1A1070 publication)
 
 Six existing English support articles were published for the six approved

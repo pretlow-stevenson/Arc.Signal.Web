@@ -600,13 +600,13 @@ unchanged Watch idle/completion frames retain 1028 provenance. The scoped review
 is pinned to Guide 1052 without relabeling capture identities. Fresh App Store
 Sessions and QA imagery is verified separately in the app's 1052 release record.
 
-The website uses four verified native captures from Spectra’s October 11 UTC
-1070 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the
+The website uses four verified native captures from Spectra’s October 12 UTC
+1073 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the
 Monitor change dashboard. The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1070 / 1070, with its exact
+The iPhone capture identity is version 1.0.0 / 1A1073 / 1073, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -631,9 +631,9 @@ qualified type labels preserve uncertainty; Observed pattern describes evidence,
 not identity confidence, and signal counts are not physical-device totals. The
 canonical Guide and published Troubleshooting and Experimental Watch articles
 explain state-specific recovery without automatic generation or erasure.
-At this October 11 UTC refresh, all six iPhone App Store
+At this October 12 UTC refresh, all six iPhone App Store
 frames and four separate light/dark large-system-text QA frames were freshly
-captured from reviewed source `d88f0d1c7a5130f0041ef9677d2d991088472cf6`.
+captured from reviewed source `5259e8ea0a0814c5272f8e0383cec7ca27984caf`.
 Sessions now shows native bottom metadata search and filters, no permanent
 Erase All footer, supported archive import, confirmed saved counts, remaining
 slots and measured primary history usage within the independent 500-session
@@ -642,13 +642,22 @@ assert those actual labels above the tabs. The canonical Guide and published
 Sessions/Troubleshooting/Watch articles explain full Technical restoration,
 checksum limitations and history management without automatic removal. The
 Monitor image shows the main-panel **New Baseline** action, capture time,
-elapsed comparison time and the latest-40-event counter limit. These 1070
+elapsed comparison time and the latest-40-event counter limit. These 1073
 screenshots and light/dark QA passed the native capture pipeline. Root/peer direct
 review covered six native frames, four QA images, six composites and the contact
 sheet. Source/export hashes and six-frame OCR checks passed. All four website
 derivatives preserve native pixels and receive direct visual review. Imported
 copies still cannot retain private local Bluetooth references; this release
 does not change those privacy boundaries.
+The final production runtime `98de5681400b74820a40cd9ced5a93f9163c0305`
+changes only seven unpictured preparation text foregrounds after that capture
+producer. Independent visual applicability review retains the actual 5259 image
+identity, hashes and pixels. Engine 28 corrects offered-service interpretation
+without changing catalog 32 / schema 17 resources or saved originals. The thirteen
+Guide bodies and public support/listing claims remain accurate. Default native
+search-placeholder contrast remains a documented OS-interface limit, not an
+accessibility certification; physical-device and hands-on VoiceOver checks are
+separate. Unchanged Watch pictures retain their actual 1028 producer.
 The current Guide, privacy policy and published Findings, Troubleshooting and
 Sessions articles explain source-reviewed network roles and optional protected
 saved-session Bluetooth references. Follow-up always requires fresh readings;
@@ -753,7 +762,7 @@ allowances, with full app screens loaded lazily.
 On October 4 the decimal-byte content cap increased from 3,000,000 to 3,100,000
 bytes, a bounded 3.33% allowance for current Guide explanations and exact-pixel
 captures, not an unbounded asset exemption. The reviewed bundle has 35 public
-files and 3,000,174 content bytes before separately bounded brand images; the
+files and 2,983,056 content bytes before separately bounded brand images; the
 manifest, private-file/symlink exclusions and lazy-loading behavior are unchanged.
 
 The waveform icon comes from Spectra’s original app asset catalog. The header
