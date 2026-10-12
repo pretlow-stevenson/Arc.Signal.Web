@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "downloads": "node scripts/render-downloads.mjs",
+    "downloads:check": "node scripts/render-downloads.mjs --check",
     "guide": "node scripts/render-guide.mjs",
     "guide:check": "node scripts/render-guide.mjs --check",
     "support": "node scripts/render-support.mjs",

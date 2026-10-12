@@ -5,12 +5,15 @@ import { join, posix } from 'node:path';
 import { createHash } from 'node:crypto';
 import { root, documents, supportDocuments, listPublicFiles, resolvePublicReference } from '../scripts/site-files.mjs';
 import { renderGuide } from '../scripts/render-guide.mjs';
+import { appStoreDestination } from '../scripts/render-downloads.mjs';
 import { guideRuns, guidePlainText, renderGuideInline } from '../scripts/guide-inline.mjs';
 
 const files = await listPublicFiles();
 const pages = new Map(await Promise.all(documents.map(async name => [name, await readFile(join(root, name), 'utf8')])));
 const css = await readFile(join(root, 'assets/css/site.css'), 'utf8');
 const motionSource = await readFile(join(root, 'assets/js/site-motion.js'), 'utf8');
+const downloadSource = await readFile(join(root, 'assets/js/site-download.js'), 'utf8');
+const storeURL = appStoreDestination(JSON.parse(await readFile(join(root, 'content/app-store.json'), 'utf8')));
 const revision = value => createHash('sha256').update(value).digest('hex').slice(0, 12);
 const ids = html => [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 // Content assertions ignore only our exact, noninteractive UI-label wrapper.
@@ -87,6 +90,7 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
       if (name === 'spectra.html' && attribute.startsWith('href=') && editorialLinks.has(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && value === 'https://developer.apple.com/download/files/accessories/dimensional-drawings/iphone-17-pro-max.pdf#page=5') continue;
       if (name === 'help/magnetic-meter.html' && attribute.startsWith('href=') && value === 'https://developer.apple.com/download/files/accessories/dimensional-drawings/iphone-17-pro-max.pdf') continue;
+      if (storeURL && ['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === storeURL.replaceAll('&', '&amp;')) continue;
       if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === nordAffiliateHref) continue;
       if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === 'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00') continue;
       if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && value === 'https://stripe.com/privacy') continue;
@@ -102,13 +106,15 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
   }
 });
 
-test('only the local optional motion script is permitted; no third-party content or tracking', () => {
+test('only the reviewed local motion and download scripts are permitted; no third-party content or tracking', () => {
   for (const [name, html] of pages) {
     const branded = ['index.html', 'spectra.html'].includes(name);
     const motion = `<script src="assets/js/site-motion.js${branded ? `?v=${revision(motionSource)}` : ''}" defer></script>`;
     const marketing = ['index.html', 'spectra.html', 'seamless.html'].includes(name);
     assert.equal(html.split(motion).length - 1, marketing ? 1 : 0, name);
-    assert.doesNotMatch(html.replace(motion, ''), /<(?:script|iframe|object|embed|form)\b|\s(?:on[a-z]+|ping)\s*=/i, name);
+    const download = `<script src="assets/js/site-download.js?v=${revision(downloadSource)}" defer></script>`;
+    assert.equal(html.split(download).length - 1, branded ? 1 : 0, name);
+    assert.doesNotMatch(html.replace(motion, '').replace(download, ''), /<(?:script|iframe|object|embed|form)\b|\s(?:on[a-z]+|ping)\s*=/i, name);
     assert.match(html, /default-src 'none'; style-src 'self'; (?:script-src 'self'; )?font-src 'self'; img-src 'self'/, name);
     if (marketing) assert.ok(html.includes("script-src 'self'"), name);
     assert.match(html, /base-uri 'none'; form-action 'none'; object-src 'none'/, name);
@@ -125,14 +131,15 @@ test('branded pages fetch the exact CSS and motion revisions needed by the wordm
   }
 });
 
-test('unreleased download is a truthful status rather than a broken link', () => {
+test('launch copy preserves compatibility and purchase limits while download state is explicit', () => {
   const html = pages.get('spectra.html');
-  assert.match(html, /<p id="app-store-download" class="status">App Store release coming soon<\/p>/);
+  assert.match(html, /id="app-store-download"/);
+  assert.ok(html.includes('Now available on the App Store'));
   assert.match(html, /id="compatibility"[^>]*>Requires an iPhone running iOS 27 or later/);
   assert.match(html, /Scanning does not require Apple Intelligence/);
   assert.match(html, /No in-app purchases\./);
   for (const page of [html, pages.get('index.html')]) {
-    assert.doesNotMatch(page, /href="http:\/\/"|Available now|Now available|iPhone 16\/17/);
+    assert.doesNotMatch(page, /href="http:\/\/"|Coming soon|coming soon|Coming to the App Store|iPhone 16\/17/);
   }
 });
 
@@ -284,8 +291,8 @@ test('Watch screenshots preserve current native dimensions and identify experime
   const html = pages.get('spectra.html');
   const section = html.match(/<section[^>]*id="watch-preview"[\s\S]*?<\/section>/)?.[0];
   assert.ok(section);
-  for (const phrase of ['Experimental Watch', 'Current TestFlight companion', '30-second Bluetooth',
-    'not background scanning', 'watchOS 27 or later', 'iOS 27 or later', 'Public-release availability is not yet promised',
+  for (const phrase of ['Experimental Watch', 'Included with Spectra', '30-second Bluetooth',
+    'not background scanning', 'watchOS 27 or later', 'iOS 27 or later', 'The Experimental companion is included with Spectra',
     'Example data, not nearby-device evidence', 'guide.html#watch']) assert.ok(section.includes(phrase), phrase);
   const provenance = JSON.parse(await readFile(join(root, 'assets/data/spectra-watch-screenshots.json'), 'utf8'));
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
@@ -684,7 +691,8 @@ test('Experimental Watch guidance distinguishes collection, transfer, import and
       '4 MiB', 'separate lifetimes', 'previously queued copies', '20 reports']) {
     assert.ok(policy.includes(phrase), `Missing Watch privacy: ${phrase}`);
   }
-  assert.ok(pages.get('spectra.html').includes('availability in the final public release is not promised'));
+  assert.ok(pages.get('spectra.html').includes('Spectra includes an optional <strong>Experimental Watch</strong> collector'));
+  assert.doesNotMatch(pages.get('spectra.html'), /Current TestFlight companion|current TestFlight companion|availability.*not.*promised/);
   assert.ok(pages.get('spectra.html').includes('guide.html#watch'));
 });
 
@@ -841,10 +849,10 @@ test('Spectra result discovery does not imply complete device-category coverage'
   assert.doesNotMatch(guide, /32 MiB|filter by device category|filter by device type/i);
 });
 
-test('launch pricing is explicit but not presented as a live purchase or promotion', () => {
+test('launch pricing is explicit, one-time and region-qualified without a promotion', () => {
   for (const name of ['index.html', 'spectra.html']) {
     const html = pages.get(name);
-    assert.match(html, /Planned U\.S\. price:?\s+(?:<strong>)?\$3\.99/);
+    assert.match(html, /U\.S\. price:?\s+(?:<strong>)?\$3\.99/);
     assert.match(html, /One-time purchase/);
     assert.doesNotMatch(html, /\$2\.99|launch discount|introductory price|was \$3\.99/i);
   }

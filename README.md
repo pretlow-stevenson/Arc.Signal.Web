@@ -3,7 +3,7 @@
 The company website for **Arc Signal LLC**, focused on Spectra and security awareness:
 
 - `index.html`: Arc Signal introduction, the Spectra product card, our approach, and privacy.
-- `spectra.html`: Spectra, preparing for release; **iPhone · iOS 27 or later**.
+- `spectra.html`: Spectra release-day presentation; **iPhone · iOS 27 or later**, with an optional Experimental Watch companion.
 - `seamless.html`: unlisted Seamless screenshot stitching page, coming soon for **Apple iPhone · iOS 18 or later**.
 - `guide.html`: the complete Spectra Guide and support contact, generated from native app content.
 - `spectra-privacy.html`: the public Spectra privacy policy, also linked in the app before setup and from Settings → About Spectra → Privacy policy.
@@ -119,8 +119,9 @@ must also exist and cannot be symlinks. This prevents accidental publication,
 not malicious replacement of approved content; content and provenance tests
 remain separate release gates.
 
-The site is static HTML and CSS with one small, deferred local script for optional
-image and section reveals. There are no runtime dependencies, forms, analytics,
+The site is static HTML and CSS with a small, deferred local motion script and
+an independent temporary download-notice script on the two marketing pages.
+There are no runtime dependencies, forms, analytics,
 or third-party resource requests on page load. Optional external links navigate
 only when followed; they are not prefetched or embedded. Content remains visible with JavaScript blocked
 or IntersectionObserver unavailable. Reduced motion disables reveals and hover
@@ -300,15 +301,27 @@ routine request logging; this site does not claim to eliminate those logs.
 
 ## App Store download
 
-The site presents Spectra as coming to the App Store. `app-store-download` is a
-noninteractive status, not a broken `http://` link or a simulated download button.
-At release, replace it with the official badge and verified Spectra listing URL;
-update the homepage status, metadata, and download validation together.
+The owner requested launch-day “Now available” copy before supplying the live
+listing link. The current temporary download controls display exactly
+“Releasing Fall 2026” only when activated. This is launch-layout preparation,
+not evidence that Apple has made the app publicly available. The owner also
+confirmed that the optional Experimental Watch companion is included at launch;
+its 30-second, Bluetooth-only, foreground and paired-iPhone limits stay explicit.
+
+`content/app-store.json` is the single destination setting. Keep `appStoreURL`
+`null` while the listing link is pending. Once the owner supplies the verified
+Spectra URL, set it to the HTTPS `apps.apple.com` product link and run
+`npm run downloads`. All three marked controls become ordinary links, usable
+without JavaScript, rather than simulated navigation. Run `npm run downloads:check`
+and the full build before publishing. The configuration and renderer are not
+public assets; only the generated controls and local notice script are shipped.
+Controls are disabled until their notice handler loads, with the same release
+message in a no-JavaScript fallback. Motion preferences do not gate the handler.
 
 The official black [Download on the App Store badge](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)
-is stored locally for use at release. Preserve its proportions
+is used unchanged, once on each marketing page. Preserve its proportions
 and surrounding clear space, following [Apple’s marketing guidelines](https://developer.apple.com/app-store/marketing/guidelines/).
-The footer credits Apple, Apple Intelligence, the Apple logo, iPhone, and App Store, and includes the
+The footer credits Apple, Apple Intelligence, the Apple logo, Apple Watch, watchOS, iPhone, and App Store, and includes the
 IOS credit from [Apple’s trademark list](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html).
 
 Keep compatibility, customer-support details, and privacy disclosures aligned
@@ -326,7 +339,7 @@ the native share sheet or writes a local-only, ten-minute clipboard item; only t
 Copy route has that expiration. Recipient handling is outside Spectra’s control,
 and shared copies cannot be recalled. Neither preparation nor preview uploads data.
 The approved U.S. launch price is **$3.99, one-time upfront**, without a discount,
-subscription, or in-app purchase. The site says planned price until release.
+subscription, or in-app purchase. The launch-day copy presents that approved price.
 App Store Connect pricing must be configured and checked separately; repository
 copy is not confirmation of the live price. Regional prices may vary. Do not
 promise a free download or advertise the retired scan-unlock product.

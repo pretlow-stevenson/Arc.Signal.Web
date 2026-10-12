@@ -24,7 +24,7 @@ export const publicAssets = Object.freeze([
   'assets/images/spectra-overview.webp', 'assets/images/spectra-smart-glasses.webp',
   'assets/images/spectra-touch-icon.png', 'assets/images/spectra-wordmark.webp',
   'assets/images/spectra-watch-start.webp', 'assets/images/spectra-watch-complete.webp',
-  'assets/js/site-motion.js',
+  'assets/js/site-motion.js', 'assets/js/site-download.js',
 ]);
 const approvedAssets = new Set(publicAssets);
 const approvedHelp = new Set(supportDocuments.filter(path => path.startsWith('help/')));
@@ -39,7 +39,7 @@ export function resolvePublicReference(document, value, files, idsByDocument) {
   if (/%(?:2f|5c)/i.test(url.pathname)) throw new Error('Encoded public path separator');
   const target = decodeURIComponent(url.pathname).replace(/^\//, '') || 'index.html';
   if (!files.includes(target)) throw new Error(`${document}: missing ${target}`);
-  if (url.search && !/^\/assets\/(?:images\/spectra-[a-z-]+\.webp|css\/(?:site|guide)\.css|js\/site-motion\.js)$/.test(url.pathname)) throw new Error('Unreviewed public query');
+  if (url.search && !/^\/assets\/(?:images\/spectra-[a-z-]+\.webp|css\/(?:site|guide)\.css|js\/site-(?:motion|download)\.js)$/.test(url.pathname)) throw new Error('Unreviewed public query');
   if (url.search && !/^\?v=[a-f0-9]{12}$/.test(url.search)) throw new Error('Unreviewed public query');
   if (value.includes('#')) {
     const fragment = decodeURIComponent(url.hash.slice(1));
