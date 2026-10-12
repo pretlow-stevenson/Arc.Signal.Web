@@ -12,7 +12,7 @@ test('session deletion guidance distinguishes temporary Undo from bulk erasure',
   for (const [name, value] of [
     ['Guide', swipe],
     ['privacy policy', await readFile(join(root, 'spectra-privacy.html'), 'utf8')],
-    ['support article', await readFile(join(root, 'docs/zendesk-session-article.html'), 'utf8')],
+    ['support article', await readFile(join(root, 'content/support/sessions.html'), 'utf8')],
   ]) {
     const text = value.replace(/<[^>]*>/g, '').replaceAll('**', '');
     assert.match(text, /10 seconds, or 30 seconds when VoiceOver is running at deletion/, name);
@@ -29,7 +29,7 @@ test('session deletion guidance distinguishes temporary Undo from bulk erasure',
   const largest = sessions.sections.find(section => section.id === 'session-size').body;
   assert.match(largest, /Largest Sessions.*cannot be undone/s);
   assert.match(largest, /only the chosen session, not other saved versions/);
-  for (const path of ['spectra-privacy.html', 'docs/zendesk-session-article.html']) {
+  for (const path of ['spectra-privacy.html', 'content/support/sessions.html']) {
     const text = (await readFile(join(root, path), 'utf8')).replace(/<[^>]*>/g, '');
     assert.match(text, /Storage → Session Storage.*Erase All Sessions/s, path);
     assert.match(text, /regardless of search or filters/, path);

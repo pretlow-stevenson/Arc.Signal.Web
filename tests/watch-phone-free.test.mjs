@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 test('Watch collection copy distinguishes local capture, capacity, and later review', () => {
-  for (const file of ['../spectra.html', '../docs/zendesk-watch-article.html']) {
+  for (const file of ['../spectra.html', '../content/support/apple-watch.html']) {
     const text = readFileSync(new URL(file, import.meta.url), 'utf8');
     for (const phrase of ['without your iPhone nearby', 'up to five captures in total',
       'Unsent captures are not automatically overwritten', 'display fully awake',

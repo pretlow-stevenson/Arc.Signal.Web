@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "getting-started",
+    "title": "Get started with Spectra",
+    "section": "Getting started",
+    "description": "Choose a check, set up access, and understand what each measurement can tell you.",
+    "file": "content/support/getting-started.html",
+    "legacyArticleID": "56434299423899"
+  },
+  {
+    "slug": "travel",
+    "title": "Use Spectra while traveling and in shared spaces",
+    "section": "Getting started",
+    "description": "Practical checks for hotels, shared spaces, travel, and places you are allowed to inspect.",
+    "file": "content/support/travel.html",
+    "legacyArticleID": "56435630260123"
+  },
+  {
+    "slug": "findings",
+    "title": "Understand findings, names, and signal strength",
+    "section": "Product Guide",
+    "description": "Read possible identities, supporting evidence, signal strength, and the limits behind each finding.",
+    "file": "content/support/findings.html",
+    "legacyArticleID": "56434331296923"
+  },
+  {
+    "slug": "magnetic-meter",
+    "title": "Use the magnetic meter",
+    "section": "Product Guide",
+    "description": "Aim the sensor, practice safely, and explore repeatable magnetic-field changes.",
+    "file": "content/support/magnetic-meter.html",
+    "legacyArticleID": "56435559529627"
+  },
+  {
+    "slug": "monitoring",
+    "title": "Understand Monitor and its baseline",
+    "section": "Product Guide",
+    "description": "Understand starting comparisons, observation changes, and deliberate baseline updates.",
+    "file": "content/support/monitoring.html",
+    "legacyArticleID": "56435605386651"
+  },
+  {
+    "slug": "troubleshooting",
+    "title": "Troubleshoot missing devices and unexpected readings",
+    "section": "Troubleshooting",
+    "description": "Resolve access, collection, storage, import, and measurement issues without losing your evidence.",
+    "file": "content/support/troubleshooting.html",
+    "legacyArticleID": "56434354083227"
+  },
+  {
+    "slug": "sessions",
+    "title": "Manage sessions, export results, and erase your data",
+    "section": "Privacy & sessions",
+    "description": "Save, search, recheck, import, export, and manage your observations deliberately.",
+    "file": "content/support/sessions.html",
+    "legacyArticleID": "56434367436187"
+  },
+  {
+    "slug": "apple-watch",
+    "title": "Take a sweep with the Experimental Apple Watch companion",
+    "section": "Experimental Apple Watch",
+    "description": "Prepare a 30-second Bluetooth sweep and review transfers, capacity, and recovery.",
+    "file": "content/support/apple-watch.html",
+    "legacyArticleID": "56434359907227"
+  },
+  {
+    "slug": "about",
+    "title": "About us",
+    "section": "Company overview",
+    "description": "Meet Arc Signal and the principles behind Spectra.",
+    "file": "content/support/about.html",
+    "legacyArticleID": "56413781880091"
+  },
+  {
+    "slug": "contact",
+    "title": "Contact Arc Signal support",
+    "section": "Company overview",
+    "description": "Explain an app issue and share only the information needed to investigate it.",
+    "file": "content/support/contact.html",
+    "legacyArticleID": "56435622772379"
+  }
+]

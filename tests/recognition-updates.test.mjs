@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 test('included recognition improvements have consistent scope across public content', () => {
-  for (const file of ['index.html', 'spectra.html', 'docs/zendesk-getting-started-article.html',
-    'docs/zendesk-session-article.html', 'docs/zendesk-about-article.html']) {
+  for (const file of ['index.html', 'spectra.html', 'content/support/getting-started.html',
+    'content/support/sessions.html', 'content/support/about.html']) {
     const text = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
     for (const phrase of ['device catalog and detection engine', 'App Store updates at no additional charge']) {
       assert.ok(text.includes(phrase), `${file}: ${phrase}`);
@@ -29,8 +29,8 @@ test('shared identity guidance separates product knowledge from protocol evidenc
   for (const phrase of ['Weave setup advertisement', 'Bluetooth Mesh setup advertisement',
     'Bluetooth Mesh proxy advertisement', 'AltBeacon proximity broadcast', 'not the Matter registry',
     'raw bytes', 'review it before sharing']) assert.ok(formats.includes(phrase), phrase);
-  const findings = readFileSync(new URL('../docs/zendesk-findings-article.html', import.meta.url), 'utf8');
-  const troubleshooting = readFileSync(new URL('../docs/zendesk-troubleshooting-article.html', import.meta.url), 'utf8');
+  const findings = readFileSync(new URL('../content/support/findings.html', import.meta.url), 'utf8');
+  const troubleshooting = readFileSync(new URL('../content/support/troubleshooting.html', import.meta.url), 'utf8');
   assert.ok(findings.includes('id="shared-names-separate-sources"'));
   for (const copy of [findings, troubleshooting]) {
     for (const phrase of ['Weave', 'Bluetooth Mesh', 'AltBeacon', 'does not merge']) assert.ok(copy.includes(phrase), phrase);
@@ -59,10 +59,10 @@ test('network roles and saved Bluetooth follow-up retain their identity and priv
     '**Undo**', 'clear protected recovery copies']) {
     assert.ok(identity.includes(phrase), phrase);
   }
-  const findings = readFileSync(new URL('../docs/zendesk-findings-article.html', import.meta.url), 'utf8');
+  const findings = readFileSync(new URL('../content/support/findings.html', import.meta.url), 'utf8');
   assert.ok(findings.includes('A network role without an exact model'));
   assert.ok(findings.includes('can retain'));
-  const sessions = readFileSync(new URL('../docs/zendesk-session-article.html', import.meta.url), 'utf8');
+  const sessions = readFileSync(new URL('../content/support/sessions.html', import.meta.url), 'utf8');
   assert.ok(sessions.includes('Follow up with a fresh signal check'));
   const policy = readFileSync(new URL('../spectra-privacy.html', import.meta.url), 'utf8');
   assert.ok(policy.includes('capture-specific'));

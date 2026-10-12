@@ -1,5 +1,6 @@
 .guide-page { padding-top: 5rem; padding-bottom: 5rem; }
 .guide-intro { max-width: 48rem; margin-bottom: 4rem; }
+.guide-intro .eyebrow { overflow-wrap: anywhere; }
 .guide-intro h1 { font-size: clamp(2.25rem, 4.5vw, 3.5rem); }
 .guide-intro .lead { font-size: clamp(1.125rem, 1.6vw, 1.25rem); margin-top: 1.25rem; margin-bottom: .75rem; }
 .guide-layout { display: grid; grid-template-columns: minmax(14rem, 1fr) minmax(0, 3fr); gap: 4rem; align-items: start; }
@@ -10,7 +11,7 @@
 .guide-contents ul { list-style: none; padding: 0; margin: .5rem 0 1.25rem; }
 .guide-group ul { padding-left: .75rem; margin-bottom: 0; }
 .guide-contents li { margin: .25rem 0; }
-.guide-contents a { font-size: 1rem; line-height: 1.5; display: flex; padding: .5rem 0; text-underline-offset: .2em; }
+.guide-contents a { font-size: 1rem; line-height: 1.5; display: flex; min-width: 0; overflow-wrap: anywhere; padding: .5rem 0; text-underline-offset: .2em; }
 .guide-contents > .text-link { margin-top: 1.5rem; }
 .guide-topic { max-width: 48rem; padding: 0 0 3rem; margin: 0 0 3rem; border-bottom: 1px solid #cdd3dc; scroll-margin-top: 6rem; }
 .guide-topic h2 { font-size: clamp(1.625rem, 2.75vw, 2.125rem); line-height: 1.2; }
@@ -24,10 +25,23 @@
 .guide-important p { margin-bottom: 0; }
 .guide-topic details { border-top: 1px solid #cdd3dc; padding: 1rem 0; margin: 1.5rem 0; }
 .guide-topic summary { cursor: pointer; font-weight: 600; padding: .5rem 0; color: #075bb5; }
+.support-page h1 { font-family: var(--font-sans); font-weight: 500; }
+.support-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 4rem; margin-bottom: 4rem; }
+.support-group ul { list-style: none; padding: 0; margin: 1rem 0 0; }
+.support-group li { border-top: 1px solid var(--line); padding: 1rem 0; }
+.support-group a { display: inline-flex; min-height: 44px; align-items: center; color: var(--blue); font-weight: 500; line-height: 1.5; }
+.support-group p { color: var(--muted); font-size: .9375rem; line-height: 1.6; margin-top: .35rem; }
+.support-contact .button { margin-top: 1.25rem; }
+.support-address { overflow-wrap: anywhere; margin-top: .75rem; }
+.support-article h2 { font: 600 1.125rem/1.4 var(--font-sans); margin: 1.75rem 0 .5rem; scroll-margin-top: 7rem; }
+.support-article figure { max-width: 440px; margin: 2rem 0; }
+.support-article figcaption { font-size: .875rem; line-height: 1.6; margin-top: 1rem; color: var(--muted); }
 @media (max-width: 760px) {
+  .support-groups { grid-template-columns: minmax(0, 1fr); gap: 2rem; margin-bottom: 2.5rem; }
+  .support-article h2 { scroll-margin-top: 1rem; }
   .guide-page { padding-top: 2.5rem; }
   .guide-intro { margin-bottom: 2.5rem; }
-  .guide-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .guide-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .guide-contents { position: static; max-height: none; overflow: visible; padding-bottom: 1rem; border-bottom: 1px solid #cdd3dc; }
   .guide-topic { scroll-margin-top: 1rem; }
 }

@@ -8,8 +8,8 @@ const text = file => readFile(join(root, file), 'utf8');
 const guide = JSON.parse(await text('assets/data/spectra-guide.json'));
 const product = await text('spectra.html');
 const policy = await text('spectra-privacy.html');
-const support = await text('docs/zendesk-session-article.html');
-const troubleshooting = await text('docs/zendesk-troubleshooting-article.html');
+const support = await text('content/support/sessions.html');
+const troubleshooting = await text('content/support/troubleshooting.html');
 const section = (topic, id) => guide.articles.find(({content}) => content.id === topic)
   ?.content.sections.find(item => item.id === id)?.body;
 

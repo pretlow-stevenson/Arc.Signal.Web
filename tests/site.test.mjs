@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { join, posix } from 'node:path';
 import { createHash } from 'node:crypto';
-import { root, documents, listPublicFiles } from '../scripts/site-files.mjs';
+import { root, documents, supportDocuments, listPublicFiles, resolvePublicReference } from '../scripts/site-files.mjs';
 import { renderGuide } from '../scripts/render-guide.mjs';
 import { guideRuns, guidePlainText, renderGuideInline } from '../scripts/guide-inline.mjs';
 
@@ -68,34 +68,29 @@ test('documents have descriptive metadata, one main landmark and one h1', () => 
 });
 
 test('all local links, fragments, images, styles and font preloads resolve', () => {
+  const pageIds = new Map([...pages].map(([name, html]) => [name, ids(html)]));
   for (const [name, html] of pages) {
+    for (const [element] of html.matchAll(/<[^>]+>/g)) {
+      // Keep URL inspection exhaustive: silently ignored single-quoted or
+      // unquoted destinations must not escape the publication checks below.
+      for (const [reference] of element.matchAll(/\b(?:href|src)\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi)) {
+        assert.match(reference, /^(?:href|src)="[^"]*"$/, `${name}: unreviewed URL attribute syntax`);
+      }
+    }
     for (const [attribute, value] of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
       assert.notEqual(value, '', `${name}: empty link`);
-      if (attribute.startsWith('href=') && ['guide.html', 'spectra-privacy.html'].includes(name)
-        && ['mailto:support@arcsignal.zendesk.com', 'https://arcsignal.zendesk.com'].includes(value)) continue;
-      if (name === 'spectra-privacy.html' && attribute.startsWith('href=')
-        && value === 'https://www.zendesk.com/company/agreements-and-terms/privacy-notice/') continue;
-      if (name === 'spectra-privacy.html' && attribute.startsWith('href=')
+      if (attribute.startsWith('href=') && ['guide.html', 'spectra-privacy.html', ...supportDocuments].includes(name)
+        && value === 'mailto:support@arcsignalllc.zohodesk.com') continue;
+      if (['spectra-privacy.html', 'help/sessions.html'].includes(name) && attribute.startsWith('href=')
         && value === 'https://www.apple.com/legal/privacy/data/en/apple-maps/') continue;
       if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && [nordPrivacyURL, 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement'].includes(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && editorialLinks.has(value)) continue;
       if (name === 'spectra.html' && attribute.startsWith('href=') && value === 'https://developer.apple.com/download/files/accessories/dimensional-drawings/iphone-17-pro-max.pdf#page=5') continue;
+      if (name === 'help/magnetic-meter.html' && attribute.startsWith('href=') && value === 'https://developer.apple.com/download/files/accessories/dimensional-drawings/iphone-17-pro-max.pdf') continue;
       if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === nordAffiliateHref) continue;
       if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === 'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00') continue;
       if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && value === 'https://stripe.com/privacy') continue;
-      if (value.startsWith('https://')) {
-        assert.ok(value.startsWith('https://arcsignal.app/'), `Unexpected external resource: ${value}`);
-        continue;
-      }
-      assert.ok(!/^(?:[a-z]+:|\/\/)/i.test(value), `Unsupported URL: ${value}`);
-      const [path, fragment] = value.split('#');
-      if (path.includes('?')) assert.match(path, /^assets\/(?:images\/spectra-[a-z-]+\.webp|css\/site\.css|js\/site-motion\.js)\?v=[a-f0-9]{12}$/);
-      const pathname = path.split('?')[0];
-      const target = pathname === '/' ? 'index.html' : pathname.replace(/^\//, '') || name;
-      assert.ok(files.includes(target), `${name}: missing ${target}`);
-      if (fragment !== undefined) {
-        assert.ok(fragment && ids(pages.get(target) ?? '').includes(fragment), `${name}: missing #${fragment}`);
-      }
+      resolvePublicReference(name, value, files, pageIds);
     }
     for (const [, labels] of html.matchAll(/\baria-(?:labelledby|describedby)="([^"]+)"/g)) {
       for (const id of labels.split(/\s+/)) assert.ok(ids(html).includes(id), `${name}: missing accessible label ${id}`);
@@ -113,7 +108,7 @@ test('only the local optional motion script is permitted; no third-party content
     const motion = `<script src="assets/js/site-motion.js${branded ? `?v=${revision(motionSource)}` : ''}" defer></script>`;
     const marketing = ['index.html', 'spectra.html', 'seamless.html'].includes(name);
     assert.equal(html.split(motion).length - 1, marketing ? 1 : 0, name);
-    assert.doesNotMatch(html.replace(motion, ''), /<(?:script|iframe|object|embed|form)\b|\son[a-z]+\s*=/i, name);
+    assert.doesNotMatch(html.replace(motion, ''), /<(?:script|iframe|object|embed|form)\b|\s(?:on[a-z]+|ping)\s*=/i, name);
     assert.match(html, /default-src 'none'; style-src 'self'; (?:script-src 'self'; )?font-src 'self'; img-src 'self'/, name);
     if (marketing) assert.ok(html.includes("script-src 'self'"), name);
     assert.match(html, /base-uri 'none'; form-action 'none'; object-src 'none'/, name);
@@ -449,7 +444,7 @@ test('company homepage leads with Arc Signal and keeps product identity in its c
 test('public bundle excludes development files and remains lightweight', async () => {
   assert.ok(files.every(name => !/(^|\/)(?:\.git|tests|scripts|node_modules|\.env)(\/|$)/.test(name)));
   const bytes = await Promise.all(files.map(async name => (await stat(join(root, name))).size));
-  // The reviewed October 4 content budget is 3.1 decimal MB. Approved brand
+  // The reviewed October 12 support migration budget is 3.2 decimal MB. Approved brand
   // images keep separately bounded allowances to preserve original pixels.
   const wordmarkIndex = files.indexOf('assets/images/spectra-wordmark.webp');
   assert.ok(wordmarkIndex >= 0);
@@ -457,9 +452,9 @@ test('public bundle excludes development files and remains lightweight', async (
   const invertedIconIndex = files.indexOf('assets/images/spectra-icon-inverted.png');
   assert.ok(invertedIconIndex >= 0);
   assert.ok(bytes[invertedIconIndex] <= 50_000, 'Inverted icon exceeds its bounded allowance');
-  assert.ok(bytes.reduce((sum, value, index) => sum + (index === wordmarkIndex || index === invertedIconIndex ? 0 : value), 0) < 3_100_000,
-    'Public content excluding the approved brand images exceeds the reviewed 3.1 MB budget');
-  assert.match(await readFile(join(root, 'README.md'), 'utf8'), /3\.1 MB content budget/);
+  assert.ok(bytes.reduce((sum, value, index) => sum + (index === wordmarkIndex || index === invertedIconIndex ? 0 : value), 0) < 3_200_000,
+    'Public content excluding the approved brand images exceeds the reviewed 3.2 MB budget');
+  assert.match(await readFile(join(root, 'README.md'), 'utf8'), /3\.2 MB content budget/);
   assert.equal((await readFile(join(root, 'CNAME'), 'utf8')).trim(), 'arcsignal.app');
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/arcsignal\.app\/<\/loc>/);
 });
@@ -571,14 +566,14 @@ test('website Guide is generated from all native topics with release and support
   assert.equal(payload.minimumWatchOS, 'watchOS 27 or later');
   assert.equal(payload.supportedHardware, 'iPhone');
   assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
-  assert.equal(payload.supportEmail, 'support@arcsignal.zendesk.com');
-  assert.equal(payload.supportURL, 'https://arcsignal.zendesk.com');
+  assert.equal(payload.supportEmail, 'support@arcsignalllc.zohodesk.com');
+  assert.equal(payload.supportURL, 'https://arcsignal.app/support.html');
   assert.equal(payload.articles.length, 13);
   assert.equal(pages.get('guide.html'), await renderGuide(), 'Stale generated Guide');
   for (const {content} of payload.articles) assert.ok(ids(pages.get('guide.html')).includes(content.id));
   assert.match(pages.get('guide.html'), /not anonymous/);
-  assert.match(pages.get('guide.html'), /mailto:support@arcsignal.zendesk.com/);
-  assert.ok(pages.get('guide.html').includes('href="https://arcsignal.zendesk.com" rel="noreferrer"'));
+  assert.match(pages.get('guide.html'), /mailto:support@arcsignalllc.zohodesk.com/);
+  assert.ok(pages.get('guide.html').includes('href="https://arcsignal.app/support.html" rel="noreferrer"'));
   assert.match(pages.get('guide.html'), /Nothing is attached or sent automatically/);
   assert.ok(pages.get('guide.html').includes(`Build ${payload.buildIdentifier}`));
   assert.match(pages.get('guide.html'), /forced close, crash, or shutdown/);
@@ -593,13 +588,17 @@ test('website Guide is generated from all native topics with release and support
 });
 
 test('support migration preserves privacy boundaries and product documentation', async () => {
-  for (const [name, html] of pages) assert.ok(!html.includes('support@arcsignal.app'), name);
+  for (const [name, html] of pages) {
+    assert.ok(!html.includes('support@arcsignal.app'), name);
+    assert.doesNotMatch(html, /zendesk|href="https?:\/\/[^"\s]*zoho|src="https?:\/\//i, name);
+  }
   const guide = pages.get('guide.html');
   const policy = pages.get('spectra-privacy.html');
-  assert.ok(guide.includes('href="https://arcsignal.zendesk.com" rel="noreferrer"'));
-  assert.ok(policy.includes('href="https://arcsignal.zendesk.com" rel="noreferrer"'));
-  assert.ok(policy.includes('Zendesk processes support correspondence for us'));
-  assert.ok(policy.includes('We do not embed a Zendesk widget or SDK'));
+  assert.ok(guide.includes('href="https://arcsignal.app/support.html" rel="noreferrer"'));
+  assert.ok(policy.includes('href="support.html"'));
+  assert.ok(policy.includes('Zoho Desk processes new email support correspondence for us'));
+  assert.ok(policy.includes('does not automatically migrate or erase earlier correspondence'));
+  assert.ok(policy.includes('We do not embed a support widget or SDK'));
   assert.ok(policy.includes('collecting device’s platform, hardware model'));
   assert.ok(policy.includes('Older missing details remain unknown'));
   assert.ok(guide.includes('A Watch capture remains a Watch capture after transfer or recheck'));
@@ -608,8 +607,7 @@ test('support migration preserves privacy boundaries and product documentation',
   for (const html of [guide, policy]) {
     assert.ok(html.includes('App and recognition versions remain, including the original capture build for rechecks.'));
     assert.doesNotMatch(html, /omits collector hardware, OS version and app build/);
-    assert.doesNotMatch(html, /(?:href|src)="https:\/\/arcsignal\.zendesk\.com[^"\s]*[?#]/);
-    assert.doesNotMatch(html, /<(?:script|iframe)[^>]*zendesk/i);
+    assert.doesNotMatch(html, /<(?:script|iframe)[^>]*zoho/i);
   }
 });
 
@@ -724,9 +722,9 @@ test('Watch reset guidance distinguishes a request from confirmed remote erasure
 
 test('privacy policy is public, linked, readable without scripts, and explains data choices', async () => {
   const policy = pages.get('spectra-privacy.html');
-  assert.match(policy, /Effective October 9, 2026/);
+  assert.match(policy, /Effective October 12, 2026/);
   assert.match(policy, /<link rel="canonical" href="https:\/\/arcsignal.app\/spectra-privacy.html">/);
-  for (const text of ['Arc Signal LLC', 'support@arcsignal.zendesk.com', '500 sessions', '256 MiB', 'recovery copies',
+  for (const text of ['Arc Signal LLC', 'support@arcsignalllc.zohodesk.com', '500 sessions', '256 MiB', 'recovery copies',
       'Precise Location', 'Reduced identifying information', 'not anonymous', 'GitHub Pages', 'email provider',
       'do not sell', 'under 13', 'iOS file protection', 'camera images', 'Geographic coordinates', 'privacy regulator']) {
     assert.ok(policy.includes(text), `Missing privacy explanation: ${text}`);
@@ -784,7 +782,7 @@ test('Guide setup order and access review match the current application', async 
   assert.match(setup.steps[0], /\*\*Privacy & storage\*\*/);
   assert.match(setup.steps[0], /\*\*Done\*\*/);
   assert.match(setup.steps[0], /unused measurements do not need to be configured/);
-  const support = await readFile(join(root, 'docs/zendesk-getting-started-article.html'), 'utf8');
+  const support = await readFile(join(root, 'content/support/getting-started.html'), 'utf8');
   assert.match(support, /open <strong>Settings<\/strong>\. Under <strong>Privacy &amp; storage<\/strong>, choose <strong>Measurement access<\/strong>/);
   assert.match(support, /Tap <strong>Done<\/strong> to return/);
 });
@@ -922,7 +920,7 @@ test('privacy explains post-click referral attribution without weakening app pri
     assert.ok(policy.includes(phrase), phrase);
   }
   assert.ok(policy.includes(`href="${nordPrivacyURL}" rel="noreferrer"`));
-  assert.match(policy, /We do not contact NordVPN, Zendesk, or Stripe or load their scripts when you browse our pages/);
+  assert.match(policy, /We do not contact NordVPN, Zoho Desk, or Stripe or load their scripts when you browse our pages/);
   assert.doesNotMatch(policy, /No affiliate links are active|If we later activate|current direct NordVPN link/);
 });
 
@@ -982,14 +980,13 @@ test('Settings support and About details have explicit app and support routes', 
   assert.match(privacy, /Privacy & storage guide in Settings/);
   const rendered = prose(await renderGuide());
   assert.match(rendered, /Settings → Support information → Copy support information/);
-  const mirror = await readFile(join(root, 'docs/zendesk-troubleshooting-article.html'), 'utf8');
+  const mirror = await readFile(join(root, 'content/support/troubleshooting.html'), 'utf8');
   const mirrorText = mirror.replace(/<strong>([^<>]*)<\/strong>/g, '$1').replace(/\s+/g, ' ');
   assert.match(mirrorText, /Settings, open Support information and choose Copy support information/);
   assert.match(mirrorText, /Settings → About Spectra → Arc Signal website/);
   assert.match(mirrorText, /Watch app’s Settings → About/);
-  const supplemental = JSON.parse(await readFile(join(root, 'docs/zendesk-articles.json'), 'utf8'));
-  const contact = supplemental.find(article => article.title === 'Contact Arc Signal support');
-  const contactText = contact.html.replace(/<strong>([^<>]*)<\/strong>/g, '$1');
+  const contact = await readFile(join(root, 'content/support/contact.html'), 'utf8');
+  const contactText = contact.replace(/<strong>([^<>]*)<\/strong>/g, '$1');
   assert.match(contactText, /Settings → Support information → Copy support information/);
   assert.match(contactText, /Settings → About Spectra → Arc Signal website/);
   assert.match(contactText, /Experimental Watch companion, include its Settings → About/);
@@ -1001,13 +998,13 @@ test('Guide and support preserve qualified signals and deliberate non-erasing re
     'Check ended early marks a foreground interruption', 'Review Coverage', 'separate saved status',
     'Check Availability', 'without starting generation', 'Retry Analysis', 'Retry Loading',
     'without erasing copies']) assert.ok(guide.includes(phrase), phrase);
-  const findings = await readFile(join(root, 'docs/zendesk-findings-article.html'), 'utf8');
+  const findings = await readFile(join(root, 'content/support/findings.html'), 'utf8');
   assert.match(findings, /strongest relevant member’s evidence tier, not identity confidence/);
-  const troubleshooting = await readFile(join(root, 'docs/zendesk-troubleshooting-article.html'), 'utf8');
+  const troubleshooting = await readFile(join(root, 'content/support/troubleshooting.html'), 'utf8');
   assert.match(troubleshooting, /marks a foreground interruption/);
   assert.match(troubleshooting, /never starts analysis automatically/);
   assert.match(troubleshooting, /Unsupported iPhones do not offer a futile availability retry/);
-  const watch = await readFile(join(root, 'docs/zendesk-watch-article.html'), 'utf8');
+  const watch = await readFile(join(root, 'content/support/apple-watch.html'), 'utf8');
   assert.match(watch, /does not erase copies or resend a capture/);
   assert.match(watch, /different stages when offered/);
   assert.match(watch, /<h2 id="h_01M4591YD5WYDH9AF01T5R6WNV">Capture without your iPhone nearby<\/h2>/);

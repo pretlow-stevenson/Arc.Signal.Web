@@ -193,6 +193,11 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 
 @media (max-width: 760px) { .hero { grid-template-columns: minmax(0, 1fr); min-height: auto; } .hero-product { width: 180px; margin-block: 1rem; } .product-section, .download-layout, .three-column, .feature-grid, .questions-section { grid-template-columns: minmax(0, 1fr); } .download-action { justify-self: start; } .site-header { position: static; align-items: start; flex-wrap: wrap; gap: 0 1.5rem; } nav { gap: 0 1.25rem; } .split-heading { display: grid; } .measurement-list article { grid-template-columns: 1.5rem minmax(0, 1fr); } .measurement-list article > div { grid-column: 2; } html { scroll-padding-top: 1rem; } }
 @media (max-width: 560px) { .screenshot-grid { grid-template-columns: minmax(0, 1fr); } }
+/* Keep the complete company identity readable when narrow-screen text enlarges. */
+@media (max-width: 760px) {
+  .brand-mark { min-width: 0; max-width: 100%; white-space: normal; }
+  .site-header .brand-mark > span { min-width: 0; overflow-wrap: anywhere; }
+}
 @media (max-width: 760px) { .company-hero h1 { font-size: clamp(2.25rem, 9.8vw, 3.5rem); } .company-hero .company-intro { margin-top: 1.5rem; } .company-signal { display: none; } }
 @media (max-width: 400px) { .hero { padding-block: 3rem; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }

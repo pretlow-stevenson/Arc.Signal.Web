@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { root } from './site-files.mjs';
 import { escapeHTML as escape, renderGuideInline as inline } from './guide-inline.mjs';
@@ -6,13 +7,14 @@ import { escapeHTML as escape, renderGuideInline as inline } from './guide-inlin
 // Input is generated from Spectra's native Guide, never visitor-supplied HTML.
 // Escape every value anyway: native help and public HTML have different contexts.
 export async function renderGuide() {
+  const styleRevision = async file => createHash('sha256').update(await readFile(join(root, file))).digest('hex').slice(0, 12);
   const document = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   const product = await readFile(join(root, 'spectra.html'), 'utf8');
   const header = product.match(/<header\b[\s\S]*?<\/header>/)?.[0];
   const footer = product.match(/<footer\b[\s\S]*?<\/footer>/)?.[0];
   if (!header || !footer || document.schemaVersion !== 1 || !Array.isArray(document.articles)) throw new Error('Invalid guide source or site shell');
-  if (document.supportURL !== 'https://arcsignal.zendesk.com'
-    || document.supportEmail !== 'support@arcsignal.zendesk.com') throw new Error('Unexpected support destination');
+  if (document.supportURL !== 'https://arcsignal.app/support.html'
+    || document.supportEmail !== 'support@arcsignalllc.zohodesk.com') throw new Error('Unexpected support destination');
   const articles = document.articles;
   const seen = new Set();
   for (const { content: article } of articles) {
@@ -24,19 +26,19 @@ export async function renderGuide() {
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spectra Guide &amp; Support — Arc Signal</title>
+  <title>Spectra Guide — Arc Signal</title>
   <meta name="description" content="Learn to use Spectra: permissions, Bluetooth, magnetic readings, Monitor baselines, saved sessions, JSON exports, privacy and troubleshooting.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="canonical" href="https://arcsignal.app/guide.html">
-  <link rel="stylesheet" href="assets/css/site.css">
-  <link rel="stylesheet" href="assets/css/guide.css">
+  <link rel="stylesheet" href="assets/css/site.css?v=${await styleRevision('assets/css/site.css')}">
+  <link rel="stylesheet" href="assets/css/guide.css?v=${await styleRevision('assets/css/guide.css')}">
   <link rel="icon" href="assets/images/spectra-icon.png" type="image/png">
 </head><body>
   <a class="skip-link" href="#main">Skip to content</a>
   ${header.replace('href="spectra.html" aria-current="page"', 'href="spectra.html"').replace('href="guide.html"', 'href="guide.html" aria-current="page"')}
   <main id="main" tabindex="-1" class="shell guide-page">
-    <div class="guide-intro"><p class="eyebrow">Spectra / Guide &amp; support</p><h1>Understand what<br>you’re <em>seeing.</em></h1>
+    <div class="guide-intro"><p class="eyebrow">Spectra / Guide</p><h1>Understand what<br>you’re <em>seeing.</em></h1>
     <p class="lead">Choose a topic for practical steps, clear explanations, and the limits that matter.</p>
     <p class="caption">Release ${escape(document.appVersion)} · Build ${escape(document.buildIdentifier)} · Also available offline in the app.</p>
     <p class="caption">${escape(document.supportedHardware)} · ${escape(document.minimumOS)}</p>
@@ -60,7 +62,7 @@ export async function renderGuide() {
       <section id="support" class="guide-topic"><p class="eyebrow">A person can help</p><h2>Still have a question?</h2>
         <p>Visit the <a href="${escape(document.supportURL)}" rel="noreferrer">Arc Signal support site</a> or email <a href="mailto:${escape(document.supportEmail)}">${escape(document.supportEmail)}</a>. Include the scan mode, selected measurements, what happened, and what you expected.</p>
         <p>In Spectra, choose <b class="ui-label">Settings</b> → <b class="ui-label">Support information</b> → <b class="ui-label">Copy support information</b> for the version, build, iOS, hardware model, detection-engine revision, and catalog revision. It contains no scan data. Review screenshots and exports for personal information before sharing.</p>
-        <p>Support is provided through Zendesk. Nothing is attached or sent automatically. For a credible security threat, use a trusted security contact rather than relying on a phone scan or waiting for product support.</p>
+        <p>Public support articles are hosted on Arc Signal’s website. Zoho Desk handles the information you choose to email. Nothing is attached or sent automatically. For a credible security threat, use a trusted security contact rather than relying on a phone scan or waiting for product support.</p>
       </section>
     </div></div>
   </main>${footer}

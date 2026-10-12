@@ -5,19 +5,19 @@ import {join} from 'node:path';
 import {root} from '../scripts/site-files.mjs';
 
 const text = path => readFile(join(root, path), 'utf8');
-const magnetic = await text('docs/zendesk-magnetic-article.html');
-const inventory = await text('docs/zendesk-help-center.md');
+const magnetic = await text('content/support/magnetic-meter.html');
+const inventory = JSON.parse(await text('content/support/articles.json'));
 const guide = JSON.parse(await text('assets/data/spectra-guide.json'));
-const articleURL = 'https://arcsignal.zendesk.com/hc/en-us/articles/56435559529627';
+const articleURL = 'https://arcsignal.app/help/magnetic-meter.html';
 const section = id => magnetic.split(`<h2 id="${id}">`)[1]?.split('<h2')[0];
 
-test('magnetic support has one canonical full mirror and retains its existing article identity', async () => {
-  const supplemental = JSON.parse(await text('docs/zendesk-articles.json'));
-  const entry = supplemental.find(article => article.source === 'magnetic');
+test('magnetic support has one canonical manuscript and retains its existing migration identity', async () => {
+  const entry = inventory.find(article => article.slug === 'magnetic-meter');
   assert.equal(entry?.title, 'Use the magnetic meter');
   assert.equal(entry?.section, 'Product Guide');
-  assert.equal(entry?.html, magnetic.trim());
-  assert.match(inventory, /\| Use the magnetic meter \| 56435559529627 \| Product Guide \| Yes \|/);
+  assert.equal(entry?.file, 'content/support/magnetic-meter.html');
+  assert.equal(entry?.legacyArticleID, '56435559529627');
+  assert.equal(inventory.filter(article => article.slug === 'magnetic-meter').length, 1);
   const existing = [
     'h_01M3JZ42BV39CYN5ZBR448HHXG',
     'h_01M3JZ42BV7FDZ17ZF5ZN9P733',
@@ -92,22 +92,29 @@ test('reading-mode guidance distinguishes the display reference from detection a
 });
 
 test('getting started and troubleshooting link directly to magnetic help without changing the article ID', async () => {
-  for (const path of ['docs/zendesk-getting-started-article.html', 'docs/zendesk-troubleshooting-article.html']) {
+  for (const path of ['content/support/getting-started.html', 'content/support/troubleshooting.html']) {
     assert.ok((await text(path)).includes(`<a href="${articleURL}">Use the magnetic meter</a>`), path);
   }
-  const troubleshooting = await text('docs/zendesk-troubleshooting-article.html');
+  const troubleshooting = await text('content/support/troubleshooting.html');
   assert.match(troubleshooting, /<strong>Guide<\/strong>[\s\S]*<strong>Reading the magnetic meter<\/strong>[\s\S]*<strong>Practice with the magnetometer<\/strong>[\s\S]*<strong>Start Practice<\/strong>/);
   assert.match(magnetic, /href="https:\/\/arcsignal\.app\/guide\.html#magnetic"/);
 });
 
-test('promotion prioritizes core magnetic help without removing the Experimental Watch article', () => {
-  for (const row of [
-    '| Get started with Spectra | 56434299423899 | Getting started | Yes |',
-    '| Troubleshoot missing devices and unexpected readings | 56434354083227 | Troubleshooting | Yes |',
-    '| Contact Arc Signal support | 56435622772379 | Company overview | Yes |',
-    '| Take a sweep with the Experimental Apple Watch companion | 56434359907227 | Experimental Apple Watch | No |',
-  ]) assert.ok(inventory.includes(row), row);
-  assert.match(inventory, /The Watch article[\s\S]*remains published, in its existing section/);
+test('support hub retains core magnetic help and the Experimental Watch article in their sections', async () => {
+  const hub = await text('support.html');
+  for (const [slug, title, legacyArticleID, section] of [
+    ['getting-started', 'Get started with Spectra', '56434299423899', 'Getting started'],
+    ['troubleshooting', 'Troubleshoot missing devices and unexpected readings', '56434354083227', 'Troubleshooting'],
+    ['contact', 'Contact Arc Signal support', '56435622772379', 'Company overview'],
+    ['apple-watch', 'Take a sweep with the Experimental Apple Watch companion', '56434359907227', 'Experimental Apple Watch'],
+  ]) {
+    const entry = inventory.find(article => article.slug === slug);
+    assert.equal(entry?.title, title);
+    assert.equal(entry?.legacyArticleID, legacyArticleID);
+    assert.equal(entry?.section, section);
+    assert.ok(hub.includes(`href="/help/${slug}.html"`), slug);
+  }
+  assert.ok(hub.indexOf('href="/help/magnetic-meter.html"') < hub.indexOf('href="/help/apple-watch.html"'));
 });
 
 test('magnetic help uses one real app screenshot with explicit simulated-data disclosure and matching gallery provenance', async () => {
@@ -115,7 +122,8 @@ test('magnetic help uses one real app screenshot with explicit simulated-data di
   assert.match(magnetic, /<figcaption><strong>Example data · Actual app interface\.<\/strong>/);
   assert.match(magnetic, /illustrative readings are not evidence of nearby devices/);
   assert.match(magnetic, /alt="[^"]*Actual field, Delta from reference[^\"]*simulated example readings/);
-  assert.match(magnetic, /width="440" height="956" style="height: auto; max-width: 100%;"/);
+  assert.match(magnetic, /width="440" height="956"/);
+  assert.doesNotMatch(magnetic, /\bstyle=/, 'Supporting images use the reviewed local stylesheet under CSP');
   const provenance = JSON.parse(await text('assets/data/spectra-screenshots.json'));
   const screenshot = provenance.items.find(item => item.id === '03-magnetic-sweep');
   assert.ok(screenshot);

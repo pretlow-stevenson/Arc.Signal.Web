@@ -6,6 +6,8 @@
   "scripts": {
     "guide": "node scripts/render-guide.mjs",
     "guide:check": "node scripts/render-guide.mjs --check",
+    "support": "node scripts/render-support.mjs",
+    "support:check": "node scripts/render-support.mjs --check",
     "test": "node --test tests/*.test.mjs",
     "build": "node scripts/build.mjs"
   },

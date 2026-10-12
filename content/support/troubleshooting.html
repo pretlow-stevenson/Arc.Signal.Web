@@ -1,0 +1,116 @@
+<p>
+  Start with <strong>Coverage</strong> and the current measurement state. Missing
+  or quiet observations do not prove that nothing is nearby.
+</p>
+<h2 id="h_01M3JTCZAH5GWYE55108QGRHVW">A known device does not appear</h2>
+<p>
+  Devices can be silent, sleeping, already connected without recognizable advertisements,
+  outside recognition coverage, or on another network. Use a general
+  <strong>Quick Check</strong> or <strong>Area Sweep</strong> to include unclassified
+  activity; specialist checks show supported matches only. Longer listening may
+  help an intermittent advertiser, but cannot reveal fields the device or collection platform does not supply. Do not connect to unknown equipment to force a result.
+</p>
+<h2 id="live-category-counts">What do the live category counts mean?</h2>
+<p>iPhone scans use the same recognition rules for live counts and completed results. Counts refresh as observations are processed. Finishing organizes the retained evidence; it does not run a stronger scan. <strong>Watches &amp; wearables</strong> counts supported wearable signal identities, not every nearby wearable. <strong>Other &amp; unclassified</strong> may include wearables without a supported match. One physical device can broadcast several identities.</p>
+<p>Company codes and generic services alone do not identify a watch or ring. A supported name or reviewed protocol clue may provide a possible match, but names can be changed and not every broadcast is recognizable. Opening a saved session keeps its recorded interpretation. When available, <strong>Recheck session</strong> creates a separate copy using newer recognition without changing the original.</p>
+<h2 id="observation-handling">Does an observation notice mean storage is full?</h2>
+<p><strong>Some observations were not retained</strong> is not a session-storage warning. Repeated pending readings can be combined, and bounded queues or discovery inventories can omit updates. <strong>Coverage</strong> distinguishes recorded sources and reasons for new iPhone checks. Older totals may not include that breakdown; their cause stays unknown. Counts use the units shown, such as updates, affected inventories or endpoint identities—not missed physical devices or proof of processor overload.</p>
+<p><strong>Result retention limit reached</strong> applies only to recorded refusals to add a new result record. <strong>Result records retired</strong> describes records replaced in the bounded retained list. Retained results remain available. Neither notice by itself means collection stopped, saving failed or you must start a new check. Genuine session-storage or Watch capture-storage errors are separate.</p>
+<h2 id="session-saving">A completed check could not save</h2>
+<p>The <strong>500-session</strong> limit and <strong>256 MiB</strong> primary history budget are independent. Saved sessions are not automatically removed for a new check, recheck, Watch result, or file import. Keep an unsaved result open to review or <strong>Export JSON</strong>. Use <strong>Manage Sessions</strong> to delete saved copies you no longer need, then choose <strong>Save Session</strong> or <strong>Retry Saving</strong> when offered and confirm the saved status. Exporting or managing alone does not save the open result. A forced close, crash, or shutdown can still lose it.</p>
+<p>An available history slot or budget does not guarantee free device space or access to protected storage. Follow the specific warning. A storage-access failure is not permission to overwrite history; unlock the iPhone and retry when offered.</p>
+<h2 id="session-import">A file cannot be imported</h2>
+<p>Choose a supported full <strong>Technical archive</strong> JSON or a Spectra ZIP collection, not <strong>Analysis JSON</strong> or <strong>Reduced identifying information</strong>. Other ZIP files are not supported. A failed checksum or malformed file is different from a supported older archive with <strong>Checksum unavailable</strong>. Re-export a Technical archive from the original source when possible; a newer unsupported schema may require a Spectra update. If history is full, manage saved sessions before retrying. File access may depend on its provider and protected storage; unlock the iPhone or choose the file again as instructed. Canceling file selection is not an import failure. A collection is imported together or not at all: any invalid member, same-ID content conflict, or insufficient capacity blocks the collection without changing existing history. Already-saved copies remain unchanged and use no additional slots. Choose another collection or resolve the reported issue; Spectra does not silently restore only part of it.</p>
+<h2 id="protocol-without-model">A protocol is recognized, but the model is unknown</h2>
+<p>A company or service registration names a public namespace, not necessarily the device’s manufacturer. A complete reviewed broadcast can add a <strong>Nearby Presence broadcast</strong> protocol label or a declared possible category such as <strong>Possible phone · Nearby sharing broadcast</strong> or <strong>Possible HomeKit camera</strong>. These are useful unauthenticated clues—not verified products, owners, or activity.</p>
+<p>Encrypted or private contents stay opaque. An unsupported version, incomplete field, ambiguous name, or unavailable public model mapping can prevent a more specific result. <strong>Technical details</strong> explains retained parser outcomes and sources. Repetition alone cannot confirm identity. Install app updates for recognition improvements; eligible saved sessions can be rechecked as separate copies. Missing historical bytes or discarded metadata cannot be recovered.</p>
+<p>Some complete advertisements contain public Matter vendor/product codes or reviewed MiBeacon product codes that can suggest a <strong>Possible</strong> model or family. Spectra looks these up offline, including readable outer-header clues where encrypted contents remain opaque. Manufacturer-backed names and bounded model families also help with name variations. None authenticates the nearby device, and a public registry does not cover every product or every broadcast mode.</p>
+<p>Reviewed names and product families work across Bluetooth and local-network discovery, but protocol-specific fields and serial-name formats keep their evidence requirements. Shared knowledge does not merge physical devices or raise confidence. A finite public model inventory can supply a possible maker or model-code clue without enough information to assign a precise type. Ambiguous platforms, incompatible product qualifiers, and unpublished internal aliases may still prevent a match.</p>
+<p>Weave, Bluetooth Mesh, and AltBeacon format labels provide protocol context, not an exact device or activity. A registered Google, LG, Razer, Sonos, HP, or other service code alone is not a product signature. Spectra does not guess a proprietary payload layout from its length or join unrelated protocol code namespaces.</p>
+<h2 id="h_01M3JTCZAHBYHRQX2727DEAANX">Wi-Fi works, but no local devices appear</h2>
+<p>
+  Internet access and local discovery are different. Check that Local Network permission
+  is allowed and that you have joined a usable local network. Guest isolation,
+  blocked multicast, separate subnets, or services that do not advertise can prevent
+  results. Spectra does not scan nearby Wi-Fi networks or probe arbitrary ports.
+</p>
+<p>Local-network metadata is interpreted only for the service that defines it. Empty, non-text, conflicting, altered, or unsupported fields are not promoted into a model or device-type claim. New captures preserve bounded rejection facts where available; discarded values are not recoverable.</p>
+<p>A recognized printing, file-sharing, media, scanning, automation, or imaging/audio service can remain useful without identifying physical hardware. A software print queue is not proof of a printer; a camera-related service can also belong to audio equipment. Reviewed names and supported model fields may add a <strong>Possible</strong> product or family, not an authenticated identity.</p>
+<h2 id="h_01M47A9AB97P08QYXGGR914RNV">Follow up on a saved Bluetooth finding</h2>
+<p><strong>Check Bluetooth Proximity</strong> listens for fresh broadcasts, never old signal readings. New Bluetooth captures saved on the collecting iPhone can retain a private reference for recognizing their original framework identity after reopening. If that identity changed or the device is silent, it may not return. With useful clues, choose <strong>Look for Possible Matches Instead</strong> and explicitly confirm a suggestion; names and payloads can be shared or spoofed.</p>
+<p>Older sessions, imported files, and Watch captures may need a possible match near the iPhone. A <strong>System name</strong> may be cached rather than recently broadcast. If there is no retained reference and no usable name or supported payload clue, Spectra cannot distinguish the finding from unrelated activity. A storage-access issue offers a separate retry; Bluetooth access does not guarantee finding a signal. Your original evidence stays unchanged.</p>
+<h2 id="h_01M3JTCZAHQ8RFQ1TXE9ZQ4ECA">The magnetic reading barely changes</h2>
+<p>
+  The magnetometer measures at one small point, not across the whole phone. Sensor
+  location varies by model. On <strong>iPhone 17 Pro Max</strong>, use the lower
+  back near the USB-C end—not the camera area. Keep the angle and gap consistent
+  and move slowly.
+</p>
+<p>
+  In <strong>Guide</strong>, open <strong>Reading the magnetic meter</strong>,
+  choose <strong>Practice with the magnetometer</strong>, then tap
+  <strong>Start Practice</strong>. Practice is also available before a magnetic
+  <strong>Area Sweep</strong>. Compare an ordinary speaker you own with a spot away from
+  electronics. Keep a gap and do not press magnets against your phone or open equipment.
+  Practice is unsaved familiarization, not a pass/fail hardware test. Some devices
+  produce little detectable change.
+</p>
+<p>See <a href="https://arcsignal.app/help/magnetic-meter.html">Use the magnetic meter</a> for the complete practice and magnetic <strong>Area Sweep</strong> workflows. A repeatable field change is a clue; no change does not rule out a device.</p>
+<h2 id="h_01M3JTCZAHHH1YTV66375G31CF">The graph moves, but no spike is saved</h2>
+<p>
+  <strong>Actual Field</strong> shows the measurement in µT.
+  <strong>Δ Reference</strong> shows the signed change from your display reference;
+  larger magnitude means a larger change, not proven distance to an object.
+</p>
+<p>
+  The event detector uses its own calibrated baseline, adaptive threshold, and
+  persistence rules. A strong absolute field alone is not necessarily a qualifying
+  event. A count such as 0/25 describes accepted baseline samples, not permission
+  progress. Follow the readiness instruction, pause away from obvious magnets,
+  and inspect <strong>Measurement Details</strong>. The actual-field trace may
+  work while automatic event detection remains unavailable.
+</p>
+<h2 id="h_01M3JTCZAH0JPBEF8G6MY1ZYZA">A scan stopped early</h2>
+<p><strong>Check ended early</strong> marks a foreground interruption; returning does not resume the check. For <strong>Check interrupted</strong>, choose <strong>Review Coverage</strong> to inspect the measurement problem and <strong>Review Results</strong> to finish reviewing retained measurements—even when there are no signal findings. Check the separate saved status before closing, then start a new check from <strong>Scan</strong> when ready.</p>
+<p>
+  Keep Spectra visible and your iPhone unlocked. Leaving the app, permission changes,
+  radio loss, or finishing early can limit coverage. An iPhone Area Sweep also
+  finishes at its 30-minute limit unless you extend it from the notice shown five
+  minutes before the deadline. This planned finish respects your saving preference;
+  check any save warning. Restore access and start a fresh check. Review retained
+  findings and interruption reasons; do not treat partial coverage as no matches.
+</p>
+<h2 id="measurement-access-recovery">A selected measurement is unavailable</h2>
+<p>If access is not allowed, allow Spectra access in iPhone <strong>Settings</strong> and return for a fresh access check. Restricted access may require your administrator; unavailable hardware cannot be restored by retrying. Cancel to choose different measurements, or continue with the available ones when offered. A missing measurement remains a coverage limit.</p>
+<h2 id="analysis-recovery">On-device analysis is unavailable</h2>
+<p>Scanning, results, and JSON export remain available without Apple Intelligence. Enable Apple Intelligence or review its supported language in iPhone <strong>Settings</strong> when applicable, then choose <strong>Check Availability</strong>. Preparing or temporarily unavailable models can be checked again later; this never starts analysis automatically. Unsupported iPhones do not offer a futile availability retry.</p>
+<p><strong>Retry Analysis</strong> is offered for a timeout or recoverable generation failure. If the summary is too large, has no usable evidence, or Apple Intelligence declines it, review the recorded summary or choose another finding instead. Sharing or copying for external analysis remains a separate deliberate choice, not an automatic fallback.</p>
+<h2 id="h_01M3QHMR9KCN5D1E3E20182DN4">A location tag was not added</h2>
+<p>
+  <strong>Tag location</strong> is off for every new iPhone check. Permission alone
+  does not enable it. Spectra requests one fix near collection start and stops
+  trying after 12 seconds. A denied permission, stale or invalid fix, or reported
+  uncertainty above 5 km produces no tag; the scan continues. Approximate locations
+  can qualify and show their accuracy. Ending a check before a fix arrives may
+  also leave it untagged. Watch captures are not tagged.
+</p>
+<h2 id="h_01M3QHMR9K6QSJFVJJVM3NM6T7">Still need help?</h2>
+<p>
+  In Spectra <strong>Settings</strong>, open <strong>Support information</strong>
+  and choose <strong>Copy support information</strong>. Return to
+  <strong>Settings</strong> for <strong>Support site</strong> or
+  <strong>Email support</strong>. Include the check type, selected measurements,
+  steps, and exact error message. Support information includes versions and hardware
+  context, not scan data. Review screenshots for personal names before sharing.
+</p>
+<p>
+  Email
+  <a href="mailto:support@arcsignalllc.zohodesk.com">support@arcsignalllc.zohodesk.com</a>.
+  Nothing is attached or sent automatically. For Watch problems, include the version
+  and build from the Watch app’s <strong>Settings → About</strong>.
+</p>
+<p>
+  For company and product information, choose <strong>Settings</strong> →
+  <strong>About Spectra</strong> → <strong>Arc Signal website</strong> in Spectra
+  to open <a href="https://arcsignal.app">arcsignal.app</a>.
+</p>

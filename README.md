@@ -83,18 +83,24 @@ All 78 website tests, Guide parity and the 35-file public build pass. GitHub Pag
 deployment, native acceptance and TestFlight availability remain separate gates;
 these checks do not establish signed-out support access or email delivery.
 
-### Zendesk support content
+### Current support content
 
-The independently hosted [Arc Signal Help Center](https://arcsignal.zendesk.com/hc/en-us)
-uses our small [Copenhagen-based custom theme](zendesk/README.md), maintained as a
-Git subtree with documented update and rollback procedures. See [its configuration and article inventory](docs/zendesk-help-center.md)
-for the published support topics, content boundaries, and verification limits.
-[Hero assets and provenance](docs/zendesk-hero.md) and the four supplemental
-article sources in `docs/zendesk-articles.json` are kept in this repository.
-The full [magnetic-meter article](docs/zendesk-magnetic-article.html) is canonical
-for the supplemental magnetic entry; keep their HTML synchronized.
-Zendesk-only artwork stays under `docs/support-assets`, outside the corporate
-website's public bundle. A Git push does not publish Zendesk changes.
+[Arc Signal Support](https://arcsignal.app/support.html) hosts ten complete
+articles under `help/`, alongside the thirteen-topic native-derived Guide.
+`content/support/articles.json` is the explicit source inventory; its reviewed
+HTML manuscripts are canonical. `npm run support` generates all eleven public
+pages, and `npm run support:check` detects stale output. Preserve article anchors
+and complete bodies when updating content; do not edit generated pages by hand.
+The supplemental magnetic entry mirrors its complete canonical manuscript.
+
+Email support uses `support@arcsignalllc.zohodesk.com`. Zoho Desk handles tickets,
+not public help pages. Opening email support attaches and sends nothing. The
+owner confirmed test-ticket creation and receipt of the reply on October 12,
+2026; this is owner-reported delivery, not an automated mailbox check.
+
+The old `zendesk/` theme, manuscripts and publication receipts remain frozen
+historical records, excluded from the public bundle. Do not maintain that
+service or imply that earlier tickets were migrated or erased.
 
 ### Website development
 
@@ -268,14 +274,13 @@ not radio scanning or session storage. It clears readings on Stop, Done, or
 backgrounding and requires an explicit restart. The shared Guide and product FAQ
 explain a safe familiar-speaker comparison, separate from calibration or a
 pass/fail test. Publish this feature copy with the app release that includes it.
-Email support opens the user's mail client at `support@arcsignal.zendesk.com`
-with no scan data or attachments. The separate Support site opens
-`https://arcsignal.zendesk.com`; the offline/native Guide remains available and
-its web edition stays at `https://arcsignal.app/guide.html`. No Zendesk widget,
-SDK, automatic diagnostic upload, or new tracking script is embedded. Product-site
-privacy claims are scoped separately from Zendesk's hosted support service.
-Verify the public help center and inbound email before App Store submission;
-link configuration does not prove service availability or mail delivery.
+Email support opens the user's mail client at `support@arcsignalllc.zohodesk.com`
+with no scan data or attachments. Support site opens
+`https://arcsignal.app/support.html`; the offline/native Guide remains available
+and its web edition stays at `https://arcsignal.app/guide.html`. No support widget,
+SDK, automatic diagnostic upload, or tracking script is embedded. Public help
+uses the Arc Signal website; new email correspondence is processed by Zoho Desk.
+Verify public publication independently from link configuration and mail delivery.
 
 ### Existing hosting
 
@@ -441,7 +446,7 @@ node scripts/import-spectra-wordmark.mjs /path/to/Spectra/repository
 
 The importer checks the approved source and decoded-pixel equality, validates
 both HTML placements, then updates content-hashed URLs. Normal site tests check
-committed hashes and placement without image tooling. The 3.1 MB content budget
+committed hashes and placement without image tooling. The 3.2 MB content budget
 has separate allowances of 415,000 bytes for this
 lossless logo (currently 411,678 bytes) and 50,000 bytes for the owner-supplied
 `assets/images/spectra-icon-inverted.png` (48,187 bytes, retained unchanged).
@@ -693,7 +698,7 @@ Refresh tooling requires `cwebp` and ImageMagick. Lossless WebP preserves native
 1320 × 2868 dimensions and every decoded pixel while reducing transfer size.
 The importer uses maximum-effort lossless encoding (`-q 100 -m 6`), preserves the
 ICC profile, and checks decoded pixels after conversion. Its extra work happens
-only during asset preparation, not in a visitor's browser. The 3.1 MB content
+only during asset preparation, not in a visitor's browser. The 3.2 MB content
 budget excludes only the separately bounded brand images described above.
 The importer also versions homepage/gallery image URLs and full-size links with
 the output content hash, replacing prior versions idempotently. Updated HTML
@@ -758,7 +763,7 @@ captures from the app’s built-in fictional sample flow, exported September 6,
 2026. They contain no customer images or private reproduction data. The Seamless
 icon is copied from the app’s current asset catalog. Homepage screenshot cards
 show cropped previews; full screenshots are available on the product pages.
-The public bundle stays within its 3.1 MB content budget plus the bounded brand-image
+The public bundle stays within its 3.2 MB content budget plus the bounded brand-image
 allowances, with full app screens loaded lazily.
 On October 4 the decimal-byte content cap increased from 3,000,000 to 3,100,000
 bytes, a bounded 3.33% allowance for current Guide explanations and exact-pixel

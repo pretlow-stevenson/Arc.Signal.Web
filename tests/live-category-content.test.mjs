@@ -6,7 +6,7 @@ import {root} from '../scripts/site-files.mjs';
 
 const text = file => readFile(join(root, file), 'utf8');
 const guide = JSON.parse(await text('assets/data/spectra-guide.json'));
-const troubleshooting = await text('docs/zendesk-troubleshooting-article.html');
+const troubleshooting = await text('content/support/troubleshooting.html');
 const product = await text('spectra.html');
 
 test('live count guidance distinguishes recognized signal identities and explicit saved rechecks', () => {

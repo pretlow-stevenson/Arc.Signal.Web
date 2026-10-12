@@ -19,7 +19,7 @@ const text = async path => (await readFile(join(root, path), 'utf8'))
 
 test('saved-session overview preserves original scope and filter-independent signal counts', async () => {
   const overview = section('sessions', 'overview');
-  for (const value of [overview, await text('docs/zendesk-session-article.html')]) {
+  for (const value of [overview, await text('content/support/sessions.html')]) {
     assert.match(value, /original capture time, duration, collector, and recorded measurements/);
     assert.match(value, /totals do not change when you filter results/);
     assert.match(value, /signal identities are not a count of physical devices/);
@@ -40,7 +40,7 @@ test('imported-only survivors cannot retain a private local Bluetooth reference'
   const identity = section('privacy', 'identity');
   assert.match(identity, /last non-imported original or recheck copy/);
   assert.match(identity, /imported copies cannot keep it/);
-  for (const path of ['spectra-privacy.html', 'docs/zendesk-session-article.html']) {
+  for (const path of ['spectra-privacy.html', 'content/support/sessions.html']) {
     const page = await text(path);
     assert.match(page, /last non-imported original or recheck copy/, path);
     assert.match(page, /imported copies cannot keep it/, path);
@@ -59,7 +59,7 @@ test('import is previewed and explicitly confirmed, not an automatic fresh captu
   assert.match(privacy, /not a fresh measurement or authenticated capture/);
   assert.match(privacy, /names, notes, collector details, and any location remain claims/);
   assert.match(privacy, /Private Bluetooth follow-up references are never restored/);
-  for (const path of ['spectra.html', 'spectra-privacy.html', 'docs/zendesk-session-article.html']) {
+  for (const path of ['spectra.html', 'spectra-privacy.html', 'content/support/sessions.html']) {
     const page = await text(path);
     assert.match(page, /Import Sessions/, path);
     assert.match(page, /Technical archive/, path);
@@ -76,14 +76,14 @@ test('checksum matches is byte integrity, while legacy absence differs from fail
   assert.match(integrity, /failed checksum, malformed archive, or unsupported format cannot be imported/);
   assert.match(integrity, /does not start analysis, scanning, a recheck, or a map/);
   assert.match(integrity, /does not change the source file/);
-  const support = await text('docs/zendesk-troubleshooting-article.html');
+  const support = await text('content/support/troubleshooting.html');
   assert.match(support, /not Analysis JSON or Reduced identifying information/);
   assert.match(support, /failed checksum or malformed file is different from a supported older archive/);
   assert.match(support, /Canceling file selection is not an import failure/);
 });
 
 test('Sessions separates storage navigation from import and retains the Settings route', async () => {
-  for (const value of [section('sessions', 'capacity'), await text('docs/zendesk-session-article.html')]) {
+  for (const value of [section('sessions', 'capacity'), await text('content/support/sessions.html')]) {
     assert.match(value, /Tap the upper Storage section for details/);
     assert.match(value, /Import Sessions below is a separate action/);
     assert.match(value, /You can also choose (?:<strong>)?Session storage(?:<\/strong>)? under (?:<strong>)?Privacy &(?:amp;)? storage(?:<\/strong>)? in Spectra (?:<strong>)?Settings/);
@@ -92,7 +92,7 @@ test('Sessions separates storage navigation from import and retains the Settings
 
 test('collection import is atomic and export is an explicitly scoped external copy', async () => {
   const collection = section('sessions', 'import-collection');
-  const support = await text('docs/zendesk-session-article.html');
+  const support = await text('content/support/sessions.html');
   for (const value of [collection, support]) {
     for (const phrase of ['adds all eligible sessions together or adds none',
       'use no additional slots', 'same ID but different saved contents',
@@ -111,13 +111,12 @@ test('collection import is atomic and export is an explicitly scoped external co
   assert.match(privacy, /Other ZIP files are not accepted/);
   assert.match(privacy, /same-ID contents, invalid members, or insufficient capacity block the collection/);
   assert.match(privacy, /Exporting does not remove local history or free space/);
-  const troubleshooting = await text('docs/zendesk-troubleshooting-article.html');
+  const troubleshooting = await text('content/support/troubleshooting.html');
   assert.match(troubleshooting, /A collection is imported together or not at all/);
   assert.match(troubleshooting, /same-ID content conflict/);
-  const supplemental = JSON.parse(await readFile(join(root, 'docs/zendesk-articles.json'), 'utf8'));
-  const contact = supplemental.find(article => article.title === 'Contact Arc Signal support').html;
-  assert.match(contact, /single report uses <strong>Include scan location<\/strong>/);
-  assert.match(contact, /Export All Sessions<\/strong> uses <strong>Include scan locations<\/strong>/);
+  const contact = (await text('content/support/contact.html')).replace(/<strong>([^<>]*)<\/strong>/g, '$1');
+  assert.match(contact, /single report uses Include scan location/);
+  assert.match(contact, /Export All Sessions uses Include scan locations/);
   assert.match(contact, /share only the relevant session rather than a whole collection/);
 });
 
@@ -142,7 +141,7 @@ test('history slots, primary bytes and measured local files remain independent',
 
 test('session-size guidance qualifies comparison units, unknown values and separate copies', async () => {
   const size = section('sessions', 'session-size');
-  const support = await text('docs/zendesk-session-article.html');
+  const support = await text('content/support/sessions.html');
   for (const value of [size, support]) {
     for (const phrase of ['Estimated size', 'Each saved-session row includes',
       'KiB and MiB use binary units', 'Shared history information',
@@ -157,7 +156,7 @@ test('capacity recovery preserves an unsaved result without claiming it is saved
   for (const phrase of ['keep the results open', 'Export JSON', 'Retry Saving', 'Manage Sessions',
     'does not save or discard the open result', 'crash', 'lose it',
     'no continuous autosaved draft']) assert.ok(saving.includes(phrase), phrase);
-  const support = await text('docs/zendesk-troubleshooting-article.html');
+  const support = await text('content/support/troubleshooting.html');
   assert.match(support, /Exporting or managing alone does not save the open result/);
   assert.match(support, /does not guarantee free device space or access to protected storage/);
   assert.match(support, /storage-access failure is not permission to overwrite history/);
@@ -169,7 +168,7 @@ test('genuine Watch-copy retirement is not automatic saved-session removal', asy
     'only inbox copies already processed into Sessions', 'Unsent or unprocessed evidence is not automatically discarded',
     'Saved Sessions are not automatically removed', 'unprocessed inbox copy remains',
     'independently of the Save completed sessions setting']) assert.ok(capacity.includes(phrase), phrase);
-  const watch = await text('docs/zendesk-watch-article.html');
+  const watch = await text('content/support/apple-watch.html');
   assert.match(watch, /Only safely received Watch copies or processed iPhone inbox copies/);
   assert.match(watch, /Saved Sessions are not automatically removed/);
   assert.match(watch, /unprocessed inbox capture remains/);

@@ -1,0 +1,40 @@
+<p>The optional Watch companion is <strong>Experimental</strong>: behavior is still being validated across Watches and environments. It collects one intentional 30-second Bluetooth snapshot for review on your paired iPhone. It is not a background scanner.</p>
+<h2 id="h_01M3JTJ7P91HDTDR3YYNNEWJMX">Requirements and scope</h2>
+<p>You need <strong>watchOS 27 or later</strong> and a paired iPhone running <strong>iOS 27 or later</strong> with Spectra. The iPhone app works without a Watch. Watch collection does not include local-network discovery, magnetic measurements, specialist checks, or on-Watch device identification. Watch captures do not contain a scan location tag; the iPhone does not add its later position to an imported capture.</p>
+<h2 id="h_01M4591YD5WYDH9AF01T5R6WNV">Capture without your iPhone nearby</h2>
+<p>After installing the companion and opening Spectra on your paired iPhone once to prepare transfer, you can leave the phone behind. The Watch uses its own Bluetooth radio and saves captures locally. Collection needs no internet connection or cellular plan. Bluetooth must be available and permitted, and Spectra must stay active with the display fully awake for each 30-second sweep.</p>
+<p>Check <strong>Saved sweeps</strong> before leaving: the Watch holds <strong>up to five captures in total</strong>, including earlier copies. Unsent captures are not automatically overwritten. Only safely received copies can make room automatically; if none can be replaced, free storage before another sweep. Reconnect and open Spectra on your paired iPhone to identify signals and review findings in <strong>Sessions</strong>. The Watch shows capture and transfer status, not identified results.</p>
+<h2 id="h_01M3JTJ7P9M9V6MFEAPM62JH78">Prepare the display</h2>
+<ol>
+<li>Open Spectra on your paired iPhone once to prepare transfer.</li>
+<li>On Apple Watch, open <strong>Settings → Display &amp; Brightness → Wake Duration</strong> and choose <strong>Wake for 70 Seconds</strong>.</li>
+<li>Tap to wake the display fully, open Spectra, and choose <strong>Start Sweep</strong>.</li>
+<li>Keep your wrist raised with Spectra active until the 30-second sweep finishes.</li>
+</ol>
+<p>
+<strong>Always On</strong> can leave the app visible while inactive; that does not keep Bluetooth collection running. The first-start reminder cannot verify or change your Watch setting. If the app becomes inactive, the sweep ends and keeps a partial capture rather than resuming later.</p>
+<h2 id="h_01M3JTJ7P9X7RAZJGNNVB5HMC4">What happens after completion?</h2>
+<p>Spectra saves the capture first, then automatically queues it for the paired iPhone. You do not need to press Send after each sweep.</p>
+<ul>
+<li>
+<strong>Queued:</strong> delivery is pending.</li>
+<li>
+<strong>Received on iPhone:</strong> the phone has stored the capture, but recognition may not be complete.</li>
+<li>Open Spectra on iPhone to process received signals and add them to <strong>Sessions</strong>.</li>
+</ul>
+<p>Transfers may wait for connectivity or Apple’s scheduling. Use the tray button for <strong>Saved sweeps</strong> and transfer status. On iPhone, <strong>Settings → Experimental Watch</strong> provides processing and recovery help. Older manually sent captures may still offer <strong>Add to Sessions</strong>.</p>
+<p>After a newly received result is saved, <strong>Sessions</strong> offers a quiet <strong>Watch sweep added</strong> cue with <strong>View</strong>. It does not open results automatically or send a notification. The session keeps its original capture date, even when it arrives later.</p>
+<p>If local capture storage cannot load, choose <strong>Retry Loading</strong> on the affected device before considering erasure. Retrying loading does not erase copies or resend a capture. <strong>Retry Transfer</strong> and <strong>Retry Processing</strong> address different stages when offered. <strong>Queued</strong> or <strong>Received on iPhone</strong> does not require another send.</p>
+<h2 id="h_01M3JTJ7P95NE80VMB2E4NN6H6">Recognize a Watch session</h2>
+<p>The Watch-with-radio-waves icon and <strong>Apple Watch · Bluetooth-only sweep</strong> label indicate the collection source—not a Watches &amp; Wearables specialist check. The origin survives renaming and rechecking. Review <strong>Experimental</strong>, any partial status, and <strong>Coverage</strong>.</p>
+<p>Historical signal strength was measured by the Watch. A later Bluetooth Proximity check measures at the iPhone and may require confirming a possible matching broadcast. Matching names do not verify that it is the same device.</p>
+<h2 id="h_01M3JTJ7P9BCGF8KXD9N9GNT46">Settings, storage, and reset</h2>
+<p>Watch <strong>Settings</strong> contains <strong>Sweep guidance</strong>, <strong>Storage &amp; transfer</strong>, <strong>Diagnostic reports</strong>, and <strong>About</strong>. <strong>Completion haptic</strong> is on by default and can be turned off. It follows Watch system settings and does not guarantee silence or confirm transfer. The iPhone’s optional completion haptic is off by default and has a separate setting.</p>
+<p>Each device keeps up to five capture copies. Only safely received Watch copies or processed iPhone inbox copies can make room automatically. If the store is full of unsent or unprocessed evidence, resolve transfer or processing before starting again. Saved <strong>Sessions</strong> are not automatically removed. If the phone’s independent session-count or history-byte limit blocks processing, remove saved copies you no longer need and retry; the unprocessed inbox capture remains.</p>
+<p>On iPhone, open <strong>Storage → Session Storage</strong> for <strong>Erase All Sessions</strong>. It clears saved iPhone history and received inbox copies, but does not erase Watch copies or request a Watch reset. <strong>Erase Inbox Copies</strong> in iPhone <strong>Settings → Experimental Watch</strong> clears only that inbox, leaving imported sessions intact.</p>
+<p>
+<strong>Reset Spectra</strong> on iPhone requests erasure from the known paired Watch. A pending request is not confirmed erasure: an offline Watch can still hold data. Keep the devices paired, open Spectra on Watch, and check the separate reset status. Exported copies and system permissions remain.</p>
+<h2 id="h_01M3JTJ7P95SPQWRD8W17ZKZY2">When you need support</h2>
+<p>If diagnostic reports cannot load, choose <strong>Retry Loading</strong> on the affected device; it rechecks stored reports without erasing them.</p>
+<p>Include the version, release, and build from Watch <strong>Settings → About</strong>, plus whether the screen dimmed or the sweep ended early. Timing diagnostics are separate from scan captures and can be deliberately shared from iPhone; they are not sent to support automatically.</p>
+<p>See the <a href="https://arcsignal.app/guide.html">Spectra Guide</a> for detailed transfer, privacy, and erasure behavior. An empty or partial capture is never an all-clear.</p>

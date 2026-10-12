@@ -8,4 +8,5 @@ exclude:
   - package-lock.json
   - README.md
   - docs
+  - content
   - zendesk
