@@ -69,7 +69,7 @@ test('all ten canonical manuscripts produce exactly eleven current, indexed firs
 });
 
 test('support complements all thirteen Guide topics and preserves email-only private-data cautions', async () => {
-  assert.equal(supportEmail, 'support@arcsignalllc.zohodesk.com');
+  assert.equal(supportEmail, 'support@arcsignal.dev');
   const guide = JSON.parse(await text('assets/data/spectra-guide.json'));
   const guideHTML = await text('guide.html');
   assert.deepEqual(guide.articles.map(({ content }) => content.id), ['setup', 'detection', 'travel', 'watch',
@@ -79,15 +79,19 @@ test('support complements all thirteen Guide topics and preserves email-only pri
   assert.match(hub, /complete Spectra Guide/);
   assert.match(hub, /Start with a description—not private scan data/);
   assert.match(hub, /Nothing is attached or sent automatically/);
-  assert.match(hub, /Zoho Desk handles the information you choose to email/);
+  for (const phrase of ['Google Workspace handles support email', 'Zoho Desk handles support tickets and replies']) {
+    assert.ok(hub.includes(phrase), phrase);
+  }
   assert.match(hub, /href="\/spectra-privacy.html#support"/);
-  assert.match(hub, /href="mailto:support@arcsignalllc.zohodesk.com"/);
+  assert.match(hub, /href="mailto:support@arcsignal.dev"/);
   const contact = (await text('content/support/contact.html')).replace(/<strong>([^<>]*)<\/strong>/g, '$1');
   for (const phrase of ['Start without an archive', 'not anonymous', 'excluded from exports by default',
     'share only the relevant session rather than a whole collection', 'Nothing is sent to support automatically',
     'passwords, account recovery codes, or payment-card details', 'cannot certify a location as safe']) {
     assert.ok(contact.includes(phrase), phrase);
   }
+  assert.match(contact, /Google Workspace handles support email/);
+  assert.match(contact, /Zoho Desk handles support tickets and replies/);
   const policy = await text('spectra-privacy.html');
   assert.match(policy, /does not automatically migrate or erase earlier correspondence/);
   assert.match(policy, /expires after ten minutes/);
@@ -118,6 +122,10 @@ test('support manuscript validation rejects executable, ambiguous, unbalanced an
     '<a href="javascript:alert(1)">Bad</a>', '<a href="data:text/html,test">Bad</a>',
     '<a href="https://arcsignal.app.evil.example/guide.html">Bad</a>',
     '<a href="https://user@arcsignal.app/guide.html">Bad</a>', '<a href="mailto:other@example.com">Bad</a>',
+    `<a href="mailto:${supportEmail}?subject=Review">Bad</a>`,
+    `<a href="mailto:${supportEmail}?body=Private%20context">Bad</a>`,
+    `<a href="mailto:${supportEmail}?attachment=private.json">Bad</a>`,
+    `<a href="mailto:${supportEmail}#private-context">Bad</a>`,
     '<a href="https://arcsignal.zendesk.com">Bad</a>', '<img src="https://remote.example/image.png">',
     '<img src="/content/support/private.html">', '<img src="/assets/images/spectra-area-sweep.webp#private">',
     '<a href="&#106;avascript:alert(1)">Bad</a>', '<a href="&Tab;/guide.html">Bad</a>',

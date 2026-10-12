@@ -5,7 +5,7 @@ import {pathToFileURL} from 'node:url';
 import {root, supportDocuments} from './site-files.mjs';
 import {escapeHTML as escape} from './guide-inline.mjs';
 
-export const supportEmail = 'support@arcsignalllc.zohodesk.com';
+export const supportEmail = 'support@arcsignal.dev';
 const origin = 'https://arcsignal.app';
 const tags = new Set(['p','h2','strong','ol','li','ul','a','figure','img','figcaption']);
 const attributes = new Set(['id','href','src','width','height','alt']);
@@ -103,7 +103,7 @@ export async function renderSupport() {
 <p>Tell us what you tried, what you expected, and what happened. Start with a description—not private scan data.</p>
 <a class="button primary" href="mailto:${supportEmail}">Email support</a><p class="support-address">${supportEmail}</p>
 <p class="caption">Opens your mail app. Nothing is attached or sent automatically.</p>
-<p class="caption">Zoho Desk handles the information you choose to email. Review attachments before sending. See our <a href="/spectra-privacy.html#support">support privacy information</a>.</p>
+<p class="caption">Google Workspace handles support email; Zoho Desk handles support tickets and replies. Review attachments before sending. See our <a href="/spectra-privacy.html#support">support privacy information</a>.</p>
 <a class="text-link" href="/help/contact.html">What to include in a support request</a></section>`;
   const groups=[...new Set(articles.map(a=>a.section))];
   const hub=`<div class="guide-intro"><p class="eyebrow">Arc Signal / Support</p><h1>How can we help?</h1>

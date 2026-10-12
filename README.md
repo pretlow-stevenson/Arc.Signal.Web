@@ -93,10 +93,12 @@ pages, and `npm run support:check` detects stale output. Preserve article anchor
 and complete bodies when updating content; do not edit generated pages by hand.
 The supplemental magnetic entry mirrors its complete canonical manuscript.
 
-Email support uses `support@arcsignalllc.zohodesk.com`. Zoho Desk handles tickets,
-not public help pages. Opening email support attaches and sends nothing. The
-owner confirmed test-ticket creation and receipt of the reply on October 12,
-2026; this is owner-reported delivery, not an automated mailbox check.
+Email support uses `support@arcsignal.dev`. Google Workspace handles email;
+Zoho Desk handles tickets and replies, not public help pages. Opening email
+support attaches and sends nothing. The owner confirmed the branded Google
+Workspace address is configured, after confirming test-ticket creation and
+reply receipt on October 12, 2026; this is owner-reported delivery, not an
+automated mailbox check.
 
 The old `zendesk/` theme, manuscripts and publication receipts remain frozen
 historical records, excluded from the public bundle. Do not maintain that
@@ -274,12 +276,13 @@ not radio scanning or session storage. It clears readings on Stop, Done, or
 backgrounding and requires an explicit restart. The shared Guide and product FAQ
 explain a safe familiar-speaker comparison, separate from calibration or a
 pass/fail test. Publish this feature copy with the app release that includes it.
-Email support opens the user's mail client at `support@arcsignalllc.zohodesk.com`
+Email support opens the user's mail client at `support@arcsignal.dev`
 with no scan data or attachments. Support site opens
 `https://arcsignal.app/support.html`; the offline/native Guide remains available
 and its web edition stays at `https://arcsignal.app/guide.html`. No support widget,
 SDK, automatic diagnostic upload, or tracking script is embedded. Public help
-uses the Arc Signal website; new email correspondence is processed by Zoho Desk.
+uses the Arc Signal website; Google Workspace handles support email and Zoho
+Desk handles tickets and replies.
 Verify public publication independently from link configuration and mail delivery.
 
 ### Existing hosting

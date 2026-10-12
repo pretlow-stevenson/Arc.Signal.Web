@@ -1075,7 +1075,7 @@
       "categoryTitle" : "Troubleshooting",
       "content" : {
         "id" : "troubleshooting",
-        "important" : "For a repeatable problem, contact support@arcsignalllc.zohodesk.com or open **Support site** in Spectra **Settings**. Start with support information, the steps taken, and what you expected. Do not send private scan results unless you deliberately choose to share them.",
+        "important" : "For a repeatable problem, contact support@arcsignal.dev or open **Support site** in Spectra **Settings**. Start with support information, the steps taken, and what you expected. Do not send private scan results unless you deliberately choose to share them.",
         "navigationTitle" : "Troubleshooting",
         "sections" : [
           {
@@ -1143,7 +1143,7 @@
             "title" : "Heat, battery, and dense environments"
           },
           {
-            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens Arc Signal’s public articles at arcsignal.app/support.html; **Email support** opens your mail app addressed to support@arcsignalllc.zohodesk.com. Zoho Desk handles support correspondence you choose to send. Nothing is attached or sent automatically. For company and product information, **Settings** → **About Spectra** → **Arc Signal website** opens arcsignal.app. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
+            "body" : "Include the scan mode, selected sources, approximate duration, permission state, whether the app was interrupted, and exact error text. Screenshots may include personal broadcast names; review them before sending. The support clipboard expires after ten minutes and is not shared through Universal Clipboard. **Support site** opens Arc Signal’s public articles at arcsignal.app/support.html; **Email support** opens your mail app addressed to support@arcsignal.dev. Google Workspace handles support email; Zoho Desk handles support tickets and replies. Nothing is attached or sent automatically. For company and product information, **Settings** → **About Spectra** → **Arc Signal website** opens arcsignal.app. For Watch help, start from Spectra **Settings** on your paired iPhone and include the Watch version and build from its **About** screen.",
             "id" : "support",
             "title" : "Help us reproduce it safely"
           }
@@ -1152,13 +1152,13 @@
       }
     }
   ],
-  "build" : "1074",
-  "buildIdentifier" : "1A1074",
+  "build" : "1075",
+  "buildIdentifier" : "1A1075",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
   "schemaVersion" : 1,
-  "supportEmail" : "support@arcsignalllc.zohodesk.com",
+  "supportEmail" : "support@arcsignal.dev",
   "supportURL" : "https://arcsignal.app/support.html",
   "supportedHardware" : "iPhone"
 }
