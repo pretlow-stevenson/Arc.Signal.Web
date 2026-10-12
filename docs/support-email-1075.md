@@ -37,6 +37,23 @@ under the unchanged cap. Genuine capture producers, image hashes and pixels are
 retained; the explicit applicability review is advanced to Guide 1075 because
 the changed support address and provider prose are not pictured.
 
-Anonymous publication-byte verification remains pending the reviewed commit and
-publication. Mail delivery, website publication, native validation and internal
-TestFlight availability are separate evidence gates.
+## Publication verification
+
+Production website commit `a0ab2a1625d55cd24e0e6536dee289dbeb694b14` was pushed
+and built by GitHub Pages. The independent GET-only build-status check reports
+`built`, that exact commit, and an update time of October 12, 2026 at 06:04:48 UTC.
+
+Independent anonymous readback completed at 06:06:13.976 UTC. All 46 reviewed
+public files return HTTP 200 and match the committed bytes and SHA-256 hashes.
+Four excluded source paths return HTTP 404: `content/support/articles.json`,
+this release note, `scripts/render-support.mjs`, and `zendesk/README.md`.
+Anonymous file verification uses release-specific cache-busting, bounded
+own-origin GETs, no redirects, no credentials, no account writes and no
+private-data uploads.
+Budgeted published content remains 3,111,742 bytes. The fresh private receipt is
+`Spectra1075PublicSitePeer.json`; its SHA-256 is
+`0e5629d66228f3020a807d6e959725886db2f31e15afd24049ef8000df97ba7e`.
+
+Mail delivery, website publication, native validation and internal TestFlight
+availability remain separate evidence gates. The mailbox/configured-flow
+statement above remains owner-reported, not an automated email-delivery claim.
