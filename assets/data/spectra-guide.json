@@ -127,6 +127,11 @@
             "title" : "Built to keep getting better"
           },
           {
+            "body" : "A supported name can be more useful when other advertised clues agree. Spectra can combine a transmitted Bluetooth name with company data or offered services from the same broadcast, or read model fields in a supported local-network service. These offline checks can suggest a **Possible** family or model while keeping the evidence and uncertainty visible.",
+            "id" : "combined-clues",
+            "title" : "Put clues together"
+          },
+          {
             "body" : "**Summary** surfaces named findings and supported possible device types, even when the manufacturer or model is unknown. Each result keeps its confidence or name-source label. Related observations stay together; other unnamed activity stays compact. Expand a result for its measurements and supporting evidence.",
             "id" : "explore",
             "title" : "Start with the summary"
@@ -174,6 +179,11 @@
             "body" : "Product-family labels come from reviewed metadata and an offline catalog. **Possible**, **Probable**, and signature labels describe the evidence—not numeric probabilities. A **System name** comes from the collecting device’s Bluetooth framework and may be cached rather than transmitted in that observation. Names and payloads can be changed or spoofed.",
             "id" : "claims",
             "title" : "Names are claims, not authentication"
+          },
+          {
+            "body" : "Selected family names allow limited spacing changes, one-letter spelling differences, or a slightly shortened ending while an identifying word stays unchanged. This applies only to reviewed families, not arbitrary names or exact models. Names shortened by Spectra’s storage limit or stripped of control characters are withheld from name matching. Model numbers and edition qualifiers stay distinct. Conflicting product claims remain unresolved. Bundled recognition does not use generative AI; optional **Analyze on Device** explains a selected finding without changing its match.",
+            "id" : "name-variations",
+            "title" : "Limited name variations"
           },
           {
             "body" : "Bluetooth company codes and member service numbers identify registered namespaces, sometimes belonging to a chip or protocol provider. **Google-registered Bluetooth service**, for example, means Google registered that service code—not that Google made the nearby device. **Device unknown** means Spectra has not identified the device. This is not an account-registration message or evidence that the device is communicating with Google. **Technical details** retain the service codes, parser outcomes, sources and registry versions. A **Registry model** uses a public Matter vendor/product record matched to unverified broadcast identifiers; it does not prove the hardware is genuine. Saved catalog and name-based interpretations remain recorded history. An eligible session can be explicitly rechecked with newer recognition, creating a separate copy without changing the original.",
@@ -1152,8 +1162,8 @@
       }
     }
   ],
-  "build" : "1075",
-  "buildIdentifier" : "1A1075",
+  "build" : "1076",
+  "buildIdentifier" : "1A1076",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",
