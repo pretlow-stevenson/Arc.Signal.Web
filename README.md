@@ -316,8 +316,10 @@ confirmed that the optional Experimental Watch companion is included at launch;
 its 30-second, Bluetooth-only, foreground and paired-iPhone limits stay explicit.
 
 `content/app-store.json` is the single destination setting. Keep `appStoreURL`
-`null` while the listing link is pending. Once the owner supplies the verified
-Spectra URL, set it to the HTTPS `apps.apple.com` product link and run
+`null` until the public listing is verified. The organization app's expected
+product URL is `https://apps.apple.com/app/id6822605110`; the assigned app ID
+alone does not establish public availability. Once that URL opens the correct
+public Spectra listing in an approved storefront, set it as the destination and run
 `npm run downloads`. All three marked controls become ordinary links, usable
 without JavaScript, rather than simulated navigation. Run `npm run downloads:check`
 and the full build before publishing. The configuration and renderer are not
@@ -345,11 +347,13 @@ followed by evidence. One review offers Copy and Share. The user explicitly open
 the native share sheet or writes a local-only, ten-minute clipboard item; only the
 Copy route has that expiration. Recipient handling is outside Spectra’s control,
 and shared copies cannot be recalled. Neither preparation nor preview uploads data.
-The approved U.S. launch price is **$3.99, one-time upfront**, without a discount,
+The approved U.S. launch price is **$2.99, one-time upfront**, without a discount,
 subscription, or in-app purchase. The launch-day copy presents that approved price.
-App Store Connect pricing must be configured and checked separately; repository
-copy is not confirmation of the live price. Regional prices may vary. Do not
-promise a free download or advertise the retired scan-unlock product.
+The organization App Store Connect draft price schedule was independently verified
+on October 14, 2026 with a U.S. base and Apple-managed regional equivalents. This
+does not publish the app; confirm the live listing and price before activating
+downloads. Repository copy alone is not confirmation of the live price. Regional
+prices may vary. Do not promise a free download or advertise the retired scan-unlock product.
 App-owned text remains standard-sized under Larger Text by owner decision;
 do not advertise Larger Text support for the app. Website text resizing remains.
 

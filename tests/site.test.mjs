@@ -854,9 +854,9 @@ test('Spectra result discovery does not imply complete device-category coverage'
 test('launch pricing is explicit, one-time and region-qualified without a promotion', () => {
   for (const name of ['index.html', 'spectra.html']) {
     const html = pages.get(name);
-    assert.match(html, /U\.S\. price:?\s+(?:<strong>)?\$3\.99/);
+    assert.match(html, /U\.S\. price:?\s+(?:<strong>)?\$2\.99/);
     assert.match(html, /One-time purchase/);
-    assert.doesNotMatch(html, /\$2\.99|launch discount|introductory price|was \$3\.99/i);
+    assert.doesNotMatch(html, /\$3\.99|launch discount|introductory price|was \$2\.99/i);
   }
   assert.match(pages.get('spectra.html'), /No subscription/);
   assert.match(pages.get('spectra.html'), /Prices in other regions may vary/);
