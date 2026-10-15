@@ -16,6 +16,17 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 ## Development
 
+Build 1A1079 alignment (October 14, New York): finite household and audio
+recognition extends Possible matches without changing the explicitly synthetic
+identities or workflows in the public gallery. The native-derived Guide release
+identity follows 1079 while all thirteen topics and ten complete support
+articles remain unchanged. Existing large iPhone, medium App Store and Watch
+images retain their genuine 1073, 1078 and 1028 producers and original pixels.
+The approved U.S. $2.99 price copy is published; download controls remain
+placeholders until the correct public listing is verified. Public submission,
+commercial source-rights clearance and physical-device acceptance remain
+separate gates.
+
 Build 1A1070 alignment (October 11 UTC): Sessions and Guide use native bottom
 search within the four existing tabs. History search covers metadata, not every
 device payload. Save Session keeps one completed check without changing future
@@ -189,8 +200,9 @@ The app's `GuideArticle.swift` and `GuideReleaseArticles.swift` are canonical.
 The neighboring Spectra checkout's `scripts/ExportGuide.swift` exports them to
 `assets/data/spectra-guide.json`; `npm run guide` then produces `guide.html`.
 Both generated files are committed so GitHub Pages needs no Swift or JavaScript
-runtime. Compile the exporter with both native Guide sources, then pass the
-output JSON path and the app's `Configurations/BuildNumber.xcconfig` path. The
+runtime. Compile the exporter with the native Guide content and search sources:
+`GuideArticle.swift`, `GuideReleaseArticles.swift` and `GuideSearch.swift`. Then
+pass the output JSON path and the app's `Configurations/BuildNumber.xcconfig` path. The
 export reads the approved release identity from that configuration; it does not
 allocate a build or change the lock. Regenerate after an approved release change.
 `npm test` checks exact HTML parity, thirteen stable topic routes, the
@@ -262,7 +274,7 @@ excluded from sessions and exports, and unavailable states do not block findings
 Open in Maps remains separate. Do not imply that clearing Spectra's preview or
 resetting the app erases Apple's service records or system map caches.
 
-After editing native help, compile its exporter with the two Guide sources,
+After editing native help, compile its exporter with the Guide content and search sources,
 run the executable with this repository's JSON path, then run:
 
 ```sh
