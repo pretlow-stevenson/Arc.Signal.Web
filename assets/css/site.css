@@ -194,7 +194,8 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .related-product p { color: var(--muted); font-size: .9375rem; }
 .related-product strong { color: var(--ink); font-weight: 500; }
 .related-product .text-link { white-space: nowrap; gap: .75rem; }
-.footer-brand p { font-size: .8125rem; margin-top: .75rem; }
+.footer-brand { width: max-content; max-width: 100%; }
+.footer-brand p { font-size: .8125rem; margin-top: .75rem; text-wrap: wrap; }
 .site-footer { padding-block: 3rem; align-items: start; }
 .site-footer nav { gap: .5rem 1.75rem; justify-content: end; }
 .site-footer .copyright { flex-basis: 100%; margin-top: 1rem; }
