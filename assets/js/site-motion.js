@@ -7,7 +7,8 @@
   const targets = document.querySelectorAll(
     // Fading this branded ancestor would isolate its raster matte blending.
     '.hero-copy:not(.hero-copy--branded), .hero-product, .section-intro, .product-card-visual, ' +
-    '.screenshot-grid > figure, .three-column > article, .feature-grid > article, .development-illustration'
+    '.screenshot-grid > figure, .three-column > article, .feature-grid > article, ' +
+    '.section-illustration, .development-illustration'
   );
   const observer = new IntersectionObserver(entries => {
     for (const { target, isIntersecting } of entries) {

@@ -485,11 +485,17 @@ node scripts/import-spectra-wordmark.mjs /path/to/Spectra/repository
 
 The importer checks the approved source and decoded-pixel equality, validates
 both HTML placements, then updates content-hashed URLs. Normal site tests check
-committed hashes and placement without image tooling. The 3.2 MB content budget
+committed hashes and placement without image tooling. The 3.3 MB content budget
 has separate allowances of 415,000 bytes for this
 lossless logo (currently 411,678 bytes) and 50,000 bytes for the owner-supplied
 `assets/images/spectra-icon-inverted.png` (48,187 bytes, retained unchanged).
 Images/fonts remain self-hosted.
+
+The October 17 travel and on-device privacy illustrations add a 0.1 MB allowance
+to the previous content budget. Both use the approved workbench style, local
+transparent WebP assets, lazy loading, reserved dimensions, and the existing
+reduced-motion-aware reveal. Privacy artwork is shared between the homepage
+and Spectra page. See [artwork notes and prompts](docs/marketing-illustrations.md).
 
 ## App screenshots
 
