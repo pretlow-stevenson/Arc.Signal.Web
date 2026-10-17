@@ -2,8 +2,19 @@
 
 The company and Spectra pages include a quiet, matching section after their
 product/download call to action. Existing Bodoni/Inter typography, neutral
-surfaces and responsive two-column layout are reused. No new artwork, payment
-SDK, tracking, cookie, form, or runtime dependency is introduced.
+surfaces and responsive two-column layout are reused. The owner-approved
+workbench illustration sits below the heading on both pages, capped at 400px
+wide and constrained to the available space. It is decorative, loads lazily,
+and reserves its aspect ratio. The existing one-time reveal respects reduced
+motion and keeps the artwork visible without JavaScript. No payment SDK,
+tracking, cookie, form, or runtime dependency is introduced.
+
+The local asset is `assets/images/spectra-independent-development.webp`, an
+800 × 534 transparent WebP optimized from the approved built-in ImageGen preview.
+Its design brief was a minimal laptop, a phone with Spectra's waveform, and a
+notebook and pencil in black linework with restrained blue accents. Transparency
+blends directly into the page; no background, shadow, or animation is added to
+the image itself. This is decorative artwork, not an app screenshot.
 
 On October 1, 2026, the owner confirmed activation of this Payment Link:
 `https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00`.

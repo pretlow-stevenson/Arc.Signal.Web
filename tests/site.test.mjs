@@ -159,7 +159,8 @@ test('voluntary development support uses only the approved checkout with clear p
     assert.match(section, /Optional one-time contribution · Checkout hosted by Stripe\./);
     assert.match(section, /App updates are included—no additional payment is required/);
     assert.match(section, /An optional contribution is a way to show your appreciation for Spectra/);
-    assert.doesNotMatch(section, /\bsrc=|<form\b|<input\b|\bonclick=|\btips?\b|donat|tax.deduct|unlock|subscriber|disabled|pending-verification|Coming soon/i);
+    assert.deepEqual([...section.matchAll(/\bsrc="([^"]+)"/g)].map(match => match[1]), ['assets/images/spectra-independent-development.webp']);
+    assert.doesNotMatch(section, /<form\b|<input\b|\bonclick=|\btips?\b|donat|tax.deduct|unlock|subscriber|disabled|pending-verification|Coming soon/i);
     assert.ok(html.indexOf('id="support-development"') > html.indexOf(name === 'index.html' ? 'id="cta-title"' : 'id="download"'));
     assert.doesNotMatch(html, /(?:src|href)="https:\/\/(?:js|checkout)\.stripe\.com/);
     assert.equal([...html.matchAll(/href="https:\/\/buy\.stripe\.com\/([^"]+)"/g)].length, 1);
@@ -196,7 +197,7 @@ test('keyboard access, reduced motion, responsive layouts and image dimensions r
     assert.match(html, /class="skip-link" href="#main"/);
     assert.match(html, /<main[^>]*id="main"[^>]*tabindex="-1"/);
     for (const [tag] of html.matchAll(/<img\b[^>]*>/g)) {
-      assert.match(tag, /\balt="[^"]+"/);
+      assert.match(tag, /\baria-hidden="true"/.test(tag) ? /\balt=""/ : /\balt="[^"]+"/);
       assert.match(tag, /\bwidth="\d+"/);
       assert.match(tag, /\bheight="\d+"/);
     }

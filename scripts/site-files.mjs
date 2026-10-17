@@ -20,6 +20,7 @@ export const publicAssets = Object.freeze([
   'assets/images/download-on-the-app-store.svg', 'assets/images/nordvpn-logo.svg',
   'assets/images/seamless-icon.png', 'assets/images/seamless-result.png', 'assets/images/seamless-sequence.png',
   'assets/images/spectra-area-sweep.webp', 'assets/images/spectra-icon.png', 'assets/images/spectra-icon-inverted.png',
+  'assets/images/spectra-independent-development.webp',
   'assets/images/spectra-monitor.webp',
   'assets/images/spectra-overview.webp', 'assets/images/spectra-smart-glasses.webp',
   'assets/images/spectra-touch-icon.png', 'assets/images/spectra-wordmark.webp',
