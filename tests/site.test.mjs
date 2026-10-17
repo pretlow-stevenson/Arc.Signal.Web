@@ -134,7 +134,7 @@ test('branded pages fetch the exact CSS and motion revisions needed by the wordm
 test('launch copy preserves compatibility and purchase limits while download state is explicit', () => {
   const html = pages.get('spectra.html');
   assert.match(html, /id="app-store-download"/);
-  assert.ok(html.includes('Now available on the App Store'));
+  assert.ok(html.includes('Preparing for App Store launch'));
   assert.match(html, /id="compatibility"[^>]*>Requires an iPhone running iOS 27 or later/);
   assert.match(html, /Scanning does not require Apple Intelligence/);
   assert.match(html, /No in-app purchases\./);

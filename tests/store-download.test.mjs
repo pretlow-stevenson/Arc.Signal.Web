@@ -20,7 +20,7 @@ test('launch-day pages have one preserved official badge and current download co
   for (const [file, html] of output) {
     assert.equal(await text(file), html, `${file}: stale download controls`);
     assert.equal(html.split('src="assets/images/download-on-the-app-store.svg"').length - 1, 1);
-    assert.ok(html.includes('Now available'));
+    assert.ok(html.includes(file === 'spectra.html' ? 'Preparing for App Store launch' : 'Now available'));
     assert.doesNotMatch(html, /coming soon|coming to the app store|planned U\.S\.|preparing Spectra for release|when Spectra launches|App Store will (?:show|appear)|public.release availability is not yet promised/i);
     assert.doesNotMatch(html, /javascript:|\sonclick=|href="#download"|href="spectra\.html#download"/);
     assert.match(html, /width="180" height="60" alt="Download on the App Store"/);
