@@ -453,8 +453,8 @@ test('company homepage leads with Arc Signal and keeps product identity in its c
 test('public bundle excludes development files and remains lightweight', async () => {
   assert.ok(files.every(name => !/(^|\/)(?:\.git|tests|scripts|node_modules|\.env)(\/|$)/.test(name)));
   const bytes = await Promise.all(files.map(async name => (await stat(join(root, name))).size));
-  // The October 17 travel/privacy artwork adds 0.1 MB to the 3.2 MB content budget. Approved brand
-  // images and the official Watch bezel keep separately bounded allowances to preserve original pixels.
+  // Approved brand images, the official Watch bezel, and the founder portrait
+  // have individual caps; the rest of the public bundle retains its content budget.
   const wordmarkIndex = files.indexOf('assets/images/spectra-wordmark.webp');
   assert.ok(wordmarkIndex >= 0);
   assert.ok(bytes[wordmarkIndex] <= 415_000, 'Wordmark exceeds its bounded allowance');
@@ -464,8 +464,11 @@ test('public bundle excludes development files and remains lightweight', async (
   const watchFrameIndex = files.indexOf('assets/images/spectra-watch-frame.webp');
   assert.ok(watchFrameIndex >= 0);
   assert.ok(bytes[watchFrameIndex] <= 120_000, 'Watch bezel exceeds its bounded allowance');
-  assert.ok(bytes.reduce((sum, value, index) => sum + ([wordmarkIndex, invertedIconIndex, watchFrameIndex].includes(index) ? 0 : value), 0) < 3_300_000,
-    'Public content excluding the approved brand images and Watch bezel exceeds the reviewed 3.3 MB budget');
+  const founderPortraitIndex = files.indexOf('assets/images/founder-portrait.webp');
+  assert.ok(founderPortraitIndex >= 0);
+  assert.ok(bytes[founderPortraitIndex] <= 150_000, 'Founder portrait exceeds its bounded allowance');
+  assert.ok(bytes.reduce((sum, value, index) => sum + ([wordmarkIndex, invertedIconIndex, watchFrameIndex, founderPortraitIndex].includes(index) ? 0 : value), 0) < 3_300_000,
+    'Public content excluding the individually bounded images exceeds the reviewed 3.3 MB budget');
   assert.match(await readFile(join(root, 'README.md'), 'utf8'), /3\.3 MB content budget/);
   assert.equal((await readFile(join(root, 'CNAME'), 'utf8')).trim(), 'arcsignal.app');
   assert.match(await readFile(join(root, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/arcsignal\.app\/<\/loc>/);

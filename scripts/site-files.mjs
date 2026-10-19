@@ -18,6 +18,7 @@ export const publicAssets = Object.freeze([
   'assets/fonts/Bodoni-Moda-OFL.txt', 'assets/fonts/Inter-OFL.txt',
   'assets/fonts/bodoni-moda-latin.woff2', 'assets/fonts/inter-latin.woff2',
   'assets/images/download-on-the-app-store.svg', 'assets/images/nordvpn-logo.svg',
+  'assets/images/founder-portrait.webp',
   'assets/images/seamless-icon.png', 'assets/images/seamless-result.png', 'assets/images/seamless-sequence.png',
   'assets/images/spectra-area-sweep.webp', 'assets/images/spectra-icon.png', 'assets/images/spectra-icon-inverted.png',
   'assets/images/spectra-independent-development.webp',

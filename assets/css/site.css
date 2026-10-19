@@ -207,14 +207,17 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .site-footer .copyright { flex-basis: 100%; margin-top: 1rem; }
 .site-footer .trademark-note { font-size: .8125rem; line-height: 1.7; max-width: 78rem; }
 
-/* The founder profile is complete as text; a portrait can sit above the identity. */
+/* Frame the original portrait in CSS, keeping the face and workspace in view. */
 .founder-hero { min-height: auto; grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr); }
 .founder-hero h1 { max-width: 9ch; }
 .founder-hero .hero-summary { max-width: 34rem; }
-.founder-profile { align-self: center; padding: clamp(1.5rem, 3.5vw, 3rem); border: 1px solid var(--line); border-radius: 12px; background: #eef2f2; }
-.founder-name { font: 400 clamp(2rem, 3.2vw, 2.75rem)/1.15 var(--font-serif); letter-spacing: -.025em; overflow-wrap: anywhere; }
+.founder-profile { align-self: center; justify-self: center; width: 100%; max-width: 26rem; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #eef2f2; }
+.founder-portrait { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 50% 25%; }
+.founder-identity { padding: clamp(1.25rem, 2.5vw, 2rem); }
+.founder-identity .eyebrow { margin-bottom: .75rem; }
+.founder-name { font: 400 clamp(1.75rem, 2.5vw, 2rem)/1.15 var(--font-serif); letter-spacing: -.025em; overflow-wrap: anywhere; }
 .founder-role { margin-top: .75rem; font-size: .9375rem; color: var(--muted); }
-.founder-profile-note { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid #c6ced8; color: var(--muted); font-size: .9375rem; }
+.founder-profile-note { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #c6ced8; color: var(--muted); font-size: .875rem; }
 .founder-story { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
 .founder-story .section-copy { align-content: start; }
 .founder-signoff { padding-top: .5rem; color: var(--ink); font-size: .9375rem; }

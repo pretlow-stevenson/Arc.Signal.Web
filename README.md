@@ -502,6 +502,13 @@ lossless logo (currently 411,678 bytes) and 50,000 bytes for the owner-supplied
 `assets/images/spectra-icon-inverted.png` (48,187 bytes, retained unchanged).
 The official Watch bezel has a separate 120,000-byte allowance (119,308 bytes),
 shared by both previews and converted losslessly without resizing.
+The owner-supplied founder portrait has a separate 150,000-byte allowance
+(139,138 bytes). Its original monochrome photograph is encoded as WebP at quality
+84 with metadata removed, retaining the 1320 × 2334 dimensions. A square CSS crop
+at `object-position: 50% 25%` keeps the face, shoulders, and workspace in view;
+there is no retouching. It loads eagerly on the founder page with reserved
+dimensions and descriptive alternative text. The private HEIC stays outside
+the repository and public bundle.
 Images/fonts remain self-hosted.
 
 The October 17 travel and on-device privacy illustrations add a 0.1 MB allowance
@@ -756,8 +763,8 @@ Refresh tooling requires `cwebp` and ImageMagick. Lossless WebP preserves native
 1320 × 2868 dimensions and every decoded pixel while reducing transfer size.
 The importer uses maximum-effort lossless encoding (`-q 100 -m 6`), preserves the
 ICC profile, and checks decoded pixels after conversion. Its extra work happens
-only during asset preparation, not in a visitor's browser. The 3.2 MB content
-budget excludes only the separately bounded brand images described above.
+only during asset preparation, not in a visitor's browser. The 3.3 MB content
+budget excludes the individually bounded images described above.
 The importer also versions homepage/gallery image URLs and full-size links with
 the output content hash, replacing prior versions idempotently. Updated HTML
 therefore requests updated screenshots without relying on image cache expiry;
@@ -826,7 +833,7 @@ captures from the app’s built-in fictional sample flow, exported September 6,
 2026. They contain no customer images or private reproduction data. The Seamless
 icon is copied from the app’s current asset catalog. Homepage screenshot cards
 show cropped previews; full screenshots are available on the product pages.
-The public bundle stays within its 3.2 MB content budget plus the bounded brand-image
+The public bundle stays within its 3.3 MB content budget plus the bounded image
 allowances, with full app screens loaded lazily.
 On October 4 the decimal-byte content cap increased from 3,000,000 to 3,100,000
 bytes, a bounded 3.33% allowance for current Guide explanations and exact-pixel
