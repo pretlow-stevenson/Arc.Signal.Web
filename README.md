@@ -167,6 +167,16 @@ with a distinct mask ID; no artwork is reconstructed or substituted. It is hidde
 on narrow screens, where the navigation already supplies the company mark. The
 headline stays visible without an entrance animation, and type wraps naturally.
 
+Page order follows the visitor's task. The homepage introduces Spectra and everyday
+use cases before company principles, privacy, and the download action. Product
+pages show actual screens before detailed workflows; Spectra's Watch previews
+immediately follow its iPhone gallery. Privacy and practical FAQs precede the main
+download section, with optional partner guidance and development support afterward.
+Support articles lead with setup or result-review basics before technical details,
+sharing, and storage management. Edit their canonical `content/support` manuscripts
+and regenerate with `npm run support` so contents links follow the same order.
+The complete Guide retains the native app's topic order.
+
 With Node.js 22 or later:
 
 ```sh
@@ -380,8 +390,9 @@ Use HTML-escaped ampersands in anchors. Do not change the three parameters, add
 visitor identifiers, attach scan data, or copy private correspondence into the
 repository. NordPass and other products from the email are not included.
 
-The homepage introduces NordVPN in its everyday-awareness section. The Spectra
-page explains the complementary network-protection use case alongside independent
+The homepage introduces NordVPN in its separate Beyond the scan section, after
+Spectra's download action. The Spectra page also places complementary
+network-protection guidance after its download section, alongside independent
 FTC, EFF, and CISA guidance. Each page has one intentional NordVPN action, with the
 plain commission disclosure immediately before it and connected using
 `aria-describedby`. The link uses `rel="sponsored noreferrer"` and
@@ -755,7 +766,8 @@ Normal site tests/builds need only Node and verify the committed asset hashes.
 The retired PNGs are removed; their earlier versions remain recoverable in Git.
 
 Two separate native Watch screens show starting a sweep and a saved completion
-beside the Experimental Watch explanation. They describe the current TestFlight
+beside the Experimental Watch explanation, immediately after the iPhone gallery.
+They describe the current TestFlight
 companion, not promised public availability. Captures preserve the full native
 screen, with no redrawn UI, crop, or overlaid claims. An official Apple Watch
 Series 11 bezel surrounds each screen using separate HTML images; the original

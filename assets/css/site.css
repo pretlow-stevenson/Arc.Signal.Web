@@ -178,6 +178,7 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .principle-grid h3 { font-size: 1.375rem; margin-bottom: .75rem; }
 .principle-grid p { color: var(--muted); }
 .inline-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+.company-page .section-copy { align-content: start; }
 .company-cta { background: #e9eef4; text-align: center; }
 .company-cta .actions { justify-content: center; }
 /* Voluntary appreciation stays secondary to the product and separate from help. */
