@@ -7,7 +7,7 @@ export const supportDocuments = Object.freeze(['support.html',
   'help/getting-started.html', 'help/travel.html', 'help/findings.html', 'help/magnetic-meter.html',
   'help/monitoring.html', 'help/troubleshooting.html', 'help/sessions.html', 'help/apple-watch.html',
   'help/about.html', 'help/contact.html']);
-export const documents = ['index.html', 'spectra.html', 'seamless.html', 'guide.html', 'spectra-privacy.html', '404.html', ...supportDocuments];
+export const documents = ['index.html', 'spectra.html', 'founder.html', 'seamless.html', 'guide.html', 'spectra-privacy.html', '404.html', ...supportDocuments];
 const publicFiles = [...documents, 'CNAME', 'robots.txt', 'sitemap.xml'];
 // Publishing an asset is a deliberate decision. A supported extension alone
 // cannot distinguish our public Guide from a private scan archive or key.

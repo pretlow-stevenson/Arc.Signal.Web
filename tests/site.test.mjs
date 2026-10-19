@@ -109,8 +109,8 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
 test('only the reviewed local motion and download scripts are permitted; no third-party content or tracking', () => {
   for (const [name, html] of pages) {
     const branded = ['index.html', 'spectra.html'].includes(name);
-    const motion = `<script src="assets/js/site-motion.js${branded ? `?v=${revision(motionSource)}` : ''}" defer></script>`;
-    const marketing = ['index.html', 'spectra.html', 'seamless.html'].includes(name);
+    const motion = `<script src="assets/js/site-motion.js${branded || name === 'founder.html' ? `?v=${revision(motionSource)}` : ''}" defer></script>`;
+    const marketing = ['index.html', 'spectra.html', 'founder.html', 'seamless.html'].includes(name);
     assert.equal(html.split(motion).length - 1, marketing ? 1 : 0, name);
     const download = `<script src="assets/js/site-download.js?v=${revision(downloadSource)}" defer></script>`;
     assert.equal(html.split(download).length - 1, branded ? 1 : 0, name);
@@ -123,8 +123,8 @@ test('only the reviewed local motion and download scripts are permitted; no thir
   assert.doesNotMatch(css, /@import|https?:|data:/i);
 });
 
-test('branded pages fetch the exact CSS and motion revisions needed by the wordmark', () => {
-  for (const name of ['index.html', 'spectra.html']) {
+test('marketing pages fetch the exact CSS and motion revisions', () => {
+  for (const name of ['index.html', 'spectra.html', 'founder.html']) {
     const html = pages.get(name);
     assert.ok(html.includes(`href="assets/css/site.css?v=${revision(css)}"`), `${name}: stale stylesheet URL`);
     assert.ok(html.includes(`src="assets/js/site-motion.js?v=${revision(motionSource)}"`), `${name}: stale motion URL`);
@@ -152,8 +152,9 @@ test('voluntary development support uses only the approved checkout with clear p
     sections.push(section);
     assert.match(section, /data-payment-provider="stripe" data-payment-status="active"/);
     const links = [...section.matchAll(/<a\b[^>]*>/g)].map(match => match[0]);
-    assert.equal(links.length, 1);
-    assert.equal(links[0].match(/href="([^"]+)"/)?.[1], 'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00');
+    assert.deepEqual(links.map(link => link.match(/href="([^"]+)"/)?.[1]), [
+      'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00', 'founder.html',
+    ]);
     assert.match(links[0], /rel="noreferrer" referrerpolicy="no-referrer" aria-describedby="development-payment-note"/);
     assert.match(section, /Support our work <span aria-hidden="true">↗<\/span><\/a>/);
     assert.match(section, /Optional one-time contribution · Checkout hosted by Stripe\./);

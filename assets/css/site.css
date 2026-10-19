@@ -201,6 +201,23 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .site-footer .copyright { flex-basis: 100%; margin-top: 1rem; }
 .site-footer .trademark-note { font-size: .8125rem; line-height: 1.7; max-width: 78rem; }
 
+/* The founder profile is complete as text; a portrait can sit above the identity. */
+.founder-hero { min-height: auto; grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr); }
+.founder-hero h1 { max-width: 9ch; }
+.founder-hero .hero-summary { max-width: 34rem; }
+.founder-profile { align-self: center; padding: clamp(1.5rem, 3.5vw, 3rem); border: 1px solid var(--line); border-radius: 12px; background: #eef2f2; }
+.founder-name { font: 400 clamp(2rem, 3.2vw, 2.75rem)/1.15 var(--font-serif); letter-spacing: -.025em; overflow-wrap: anywhere; }
+.founder-role { margin-top: .75rem; font-size: .9375rem; color: var(--muted); }
+.founder-profile-note { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid #c6ced8; color: var(--muted); font-size: .9375rem; }
+.founder-story { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+.founder-story .section-copy { align-content: start; }
+.founder-signoff { padding-top: .5rem; color: var(--ink); font-size: .9375rem; }
+.founder-signoff span { display: block; color: var(--muted); font-size: .875rem; }
+.founder-cta .section-copy { align-content: start; }
+.founder-cta .actions { margin-top: 0; }
+.founder-introduction { margin-top: 2rem; }
+.founder-introduction .text-link { gap: .75rem; }
+
 @media (max-width: 760px) { .hero { grid-template-columns: minmax(0, 1fr); min-height: auto; } .hero-product { width: 180px; margin-block: 1rem; } .product-section, .download-layout, .three-column, .feature-grid, .questions-section { grid-template-columns: minmax(0, 1fr); } .download-action { justify-self: start; } .site-header { position: static; align-items: start; flex-wrap: wrap; gap: 0 1.5rem; } nav { gap: 0 1.25rem; } .split-heading { display: grid; } .measurement-list article { grid-template-columns: 1.5rem minmax(0, 1fr); } .measurement-list article > div { grid-column: 2; } html { scroll-padding-top: 1rem; } }
 @media (max-width: 560px) { .screenshot-grid { grid-template-columns: minmax(0, 1fr); } }
 /* Keep the complete company identity readable when narrow-screen text enlarges. */
