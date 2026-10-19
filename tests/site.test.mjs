@@ -94,6 +94,7 @@ test('all local links, fragments, images, styles and font preloads resolve', () 
       if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === nordAffiliateHref) continue;
       if (['index.html', 'spectra.html'].includes(name) && attribute.startsWith('href=') && value === 'https://buy.stripe.com/6oU3cufOq6KeftE5tR9MY00') continue;
       if (name === 'spectra-privacy.html' && attribute.startsWith('href=') && value === 'https://stripe.com/privacy') continue;
+      if (name === 'founder.html' && attribute.startsWith('href=') && value === 'https://www.linkedin.com/in/pretlow-stevenson/') continue;
       resolvePublicReference(name, value, files, pageIds);
     }
     for (const [, labels] of html.matchAll(/\baria-(?:labelledby|describedby)="([^"]+)"/g)) {
