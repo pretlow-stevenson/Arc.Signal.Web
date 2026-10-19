@@ -489,6 +489,8 @@ committed hashes and placement without image tooling. The 3.3 MB content budget
 has separate allowances of 415,000 bytes for this
 lossless logo (currently 411,678 bytes) and 50,000 bytes for the owner-supplied
 `assets/images/spectra-icon-inverted.png` (48,187 bytes, retained unchanged).
+The official Watch bezel has a separate 120,000-byte allowance (119,308 bytes),
+shared by both previews and converted losslessly without resizing.
 Images/fonts remain self-hosted.
 
 The October 17 travel and on-device privacy illustrations add a 0.1 MB allowance
@@ -755,8 +757,12 @@ The retired PNGs are removed; their earlier versions remain recoverable in Git.
 Two separate native Watch screens show starting a sweep and a saved completion
 beside the Experimental Watch explanation. They describe the current TestFlight
 companion, not promised public availability. Captures preserve the full native
-screen, with no redrawn UI, crop, fake hardware frame, or overlaid claims. The
-section makes active-screen operation, Bluetooth-only scope, paired-iPhone review,
+screen, with no redrawn UI, crop, or overlaid claims. An official Apple Watch
+Series 11 bezel surrounds each screen using separate HTML images; the original
+captures and their provenance remain unchanged. Text links open the full-size
+screens. The artwork stays static, at the same scale in both previews, without
+added shadows or reflections. See [Watch artwork provenance](docs/apple-watch-artwork.md).
+The section makes active-screen operation, Bluetooth-only scope, paired-iPhone review,
 and the optional watchOS 27 / iOS 27 requirements explicit. Example readings are
 disclosed beside the images. Small screens stack the images vertically.
 

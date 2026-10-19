@@ -63,14 +63,19 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .screenshot-grid img { border-radius: 1.5rem; border: 1px solid #cdd4df; box-shadow: 0 16px 35px -20px rgb(11 31 61 / 25%); }
 .screenshot-grid figcaption { max-width: 340px; text-align: center; }
 .screenshot-grid figcaption p { color: var(--muted); margin-top: .5rem; font-size: .9375rem; }
-/* Full native Watch screens, not invented hardware frames or cropped UI. */
+/* Apple's 560 × 880 bezel has a 416 × 496 screen at (72, 192).
+   Contain preserves the native capture's proportions inside that opening. */
 .watch-preview-content { min-width: 0; }
 .watch-screen-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 2rem; }
 .watch-screen-grid figure { display: grid; justify-items: center; gap: 1.5rem; text-align: center; min-width: 0; }
-.watch-screen-grid a { display: block; width: min(100%, 184px); }
-.watch-screen-grid img { width: 100%; height: auto; }
+.watch-device { position: relative; width: min(100%, 280px); aspect-ratio: 560 / 880; isolation: isolate; }
+.watch-device .watch-device-screen { position: absolute; left: 12.857143%; top: 21.818182%; width: 74.285714%; height: 56.363636%; object-fit: contain; background: #000; }
+.watch-device-frame { position: relative; width: 100%; height: auto; pointer-events: none; }
+.watch-screen-grid figcaption { max-width: 18rem; }
 .watch-screen-grid figcaption p { margin-top: .5rem; color: var(--muted); font-size: .9375rem; }
+.watch-screen-grid .text-link { margin-top: .5rem; }
 .watch-example-note { margin-top: 1.5rem; }
+@media (min-width: 761px) and (max-width: 1100px) { #watch-preview { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .watch-screen-grid { grid-template-columns: minmax(0, 1fr); } }
 .modes-section { background: #eef2f6; }
 .three-column { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3.5rem); }

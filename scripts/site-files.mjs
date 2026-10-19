@@ -25,7 +25,7 @@ export const publicAssets = Object.freeze([
   'assets/images/spectra-overview.webp', 'assets/images/spectra-smart-glasses.webp',
   'assets/images/spectra-privacy-illustration.webp', 'assets/images/spectra-travel-illustration.webp',
   'assets/images/spectra-touch-icon.png', 'assets/images/spectra-wordmark.webp',
-  'assets/images/spectra-watch-start.webp', 'assets/images/spectra-watch-complete.webp',
+  'assets/images/spectra-watch-start.webp', 'assets/images/spectra-watch-complete.webp', 'assets/images/spectra-watch-frame.webp',
   'assets/js/site-motion.js', 'assets/js/site-download.js',
 ]);
 const approvedAssets = new Set(publicAssets);
