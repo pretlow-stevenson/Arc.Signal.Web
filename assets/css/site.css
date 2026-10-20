@@ -154,7 +154,7 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .company-signal { display: block; width: min(100%, 21rem); height: auto; justify-self: center; color: var(--ink); }
 /* The company opening is a stable statement, not an animated content row. */
 .company-hero .hero-copy.is-revealing { animation: none; }
-.principles-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding-block: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8125rem; }
+.principles-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding-block: 1.5rem; color: var(--muted); font-size: .8125rem; }
 .principles-strip p { display: flex; align-items: center; gap: .7rem; }
 .principles-strip p::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex: none; }
 .product-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
