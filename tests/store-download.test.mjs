@@ -20,7 +20,11 @@ test('launch-day pages have one preserved official badge and current download co
   for (const [file, html] of output) {
     assert.equal(await text(file), html, `${file}: stale download controls`);
     assert.equal(html.split('src="assets/images/download-on-the-app-store.svg"').length - 1, 1);
-    assert.ok(html.includes('Preparing for App Store launch'));
+    assert.ok(html.includes('Now available on the App Store'));
+    assert.doesNotMatch(html, /Preparing for App Store launch|data-app-store-stub|Releasing Fall 2026/i);
+    const expected = configuration.appStoreURL;
+    assert.equal(expected, 'https://apps.apple.com/app/spectra-by-arc-signal/id6822605110');
+    assert.equal([...html.matchAll(/href="https:\/\/apps\.apple\.com\/app\/spectra-by-arc-signal\/id6822605110"/g)].length, file === 'index.html' ? 1 : 2);
     assert.doesNotMatch(html, /coming soon|coming to the app store|planned U\.S\.|preparing Spectra for release|when Spectra launches|App Store will (?:show|appear)|public.release availability is not yet promised/i);
     assert.doesNotMatch(html, /javascript:|\sonclick=|href="#download"|href="spectra\.html#download"/);
     assert.match(html, /width="180" height="60" alt="Download on the App Store"/);

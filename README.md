@@ -22,8 +22,8 @@ identities or workflows in the public gallery. The native-derived Guide release
 identity follows 1079 while all thirteen topics and ten complete support
 articles remain unchanged. Existing large iPhone, medium App Store and Watch
 images retain their genuine 1073, 1078 and 1028 producers and original pixels.
-The approved U.S. $2.99 price copy is published; download controls remain
-placeholders until the correct public listing is verified. Public submission,
+The approved U.S. $2.99 price copy is published. The October 20 launch update
+activates the verified App Store destination described below. Public submission,
 commercial source-rights clearance and physical-device acceptance remain
 separate gates.
 
@@ -330,24 +330,24 @@ routine request logging; this site does not claim to eliminate those logs.
 
 ## App Store download
 
-The owner requested launch-day “Now available” copy before supplying the live
-listing link. The current temporary download controls display exactly
-“Releasing Fall 2026” only when activated. This is launch-layout preparation,
-not evidence that Apple has made the app publicly available. The owner also
-confirmed that the optional Experimental Watch companion is included at launch;
-its 30-second, Bluetooth-only, foreground and paired-iPhone limits stay explicit.
+Spectra is publicly available on the App Store. On October 20, 2026, the owner
+authorized launch and supplied the product URL. Its live U.S. listing was checked
+in a signed-out browser: **Spectra by Arc Signal**, seller **Arc Signal LLC**,
+**$2.99**, with iPhone and the included Experimental Apple Watch companion.
 
-`content/app-store.json` is the single destination setting. Keep `appStoreURL`
-`null` until the public listing is verified. The organization app's expected
-product URL is `https://apps.apple.com/app/id6822605110`; the assigned app ID
-alone does not establish public availability. Once that URL opens the correct
-public Spectra listing in an approved storefront, set it as the destination and run
-`npm run downloads`. All three marked controls become ordinary links, usable
-without JavaScript, rather than simulated navigation. Run `npm run downloads:check`
-and the full build before publishing. The configuration and renderer are not
-public assets; only the generated controls and local notice script are shipped.
-Controls are disabled until their notice handler loads, with the same release
-message in a no-JavaScript fallback. Motion preferences do not gate the handler.
+`content/app-store.json` is the single reviewed destination setting:
+`https://apps.apple.com/app/spectra-by-arc-signal/id6822605110`. Run
+`npm run downloads` after an authorized destination change. All three marked
+controls are ordinary anchors, usable without JavaScript. The homepage, product
+page, descriptions and Open Graph copy now state availability. The renderer still
+supports a `null` setting for an intentional prelaunch fixture or rollback; no
+placeholder control or release notice is published in the current live pages.
+Run `npm run downloads:check` and the full build before publishing.
+
+The optional Experimental Watch companion is included with the purchase. Its
+30-second, Bluetooth-only, foreground and paired-iPhone limits remain explicit.
+The configuration and renderer are developer-only files and are not public assets.
+Website publication and live readback must complete before launch emails are sent.
 
 The official black [Download on the App Store badge](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)
 is used unchanged, once on each marketing page. Preserve its proportions
@@ -371,10 +371,9 @@ Copy route has that expiration. Recipient handling is outside Spectra’s contro
 and shared copies cannot be recalled. Neither preparation nor preview uploads data.
 The approved U.S. launch price is **$2.99, one-time upfront**, without a discount,
 subscription, or in-app purchase. The launch-day copy presents that approved price.
-The organization App Store Connect draft price schedule was independently verified
-on October 14, 2026 with a U.S. base and Apple-managed regional equivalents. This
-does not publish the app; confirm the live listing and price before activating
-downloads. Repository copy alone is not confirmation of the live price. Regional
+The public U.S. listing was independently verified on October 20, 2026 at $2.99;
+the earlier App Store Connect schedule used a U.S. base and Apple-managed regional
+equivalents. Recheck the public listing before any future pricing changes. Regional
 prices may vary. Do not promise a free download or advertise the retired scan-unlock product.
 App-owned text remains standard-sized under Larger Text by owner decision;
 do not advertise Larger Text support for the app. Website text resizing remains.
