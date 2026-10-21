@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "platform": "iOS",
   "appSourceCommit": "5259e8ea0a0814c5272f8e0383cec7ca27984caf",
   "appVersion": "1.0.0",
@@ -47,14 +47,27 @@
     },
     {
       "id": "05-monitor",
-      "source": "captures/05-monitor.png",
-      "sourceSHA256": "f0d01de4ca65e0ee6042eb7ad7f0a86590f2856324d3689cddfd941fde2a27d5",
+      "source": "en-US/captures/05-monitor.png",
+      "sourceSHA256": "662a9b734156753ee6ade766dcf541eebc2d6a9f7f188666ef362458639f2029",
       "output": "assets/images/spectra-monitor.webp",
-      "outputSHA256": "ed2eabc8d83278633c47fa6031ea88de20a8d475b6bd17db2da3cf2ffcf8716a",
-      "pixelSHA256": "a2f305afd28224312b384f86271aa110d8c84bcb99671ad09e551f591175e997",
+      "outputSHA256": "868585e324f6eb64e91e0f41be9ae4fa1d29e881611b0a5592293a25013b37a2",
+      "pixelSHA256": "912012d82dbda744e4880a5c41e84adf32bc3d9c6f939dbc538e5175480acba1",
       "width": 1320,
       "height": 2868,
-      "appearance": "dark"
+      "appearance": "dark",
+      "sourcePackage": "submission-1.1.0-en-US",
+      "captureProducer": {
+        "appVersion": "1.1.0",
+        "bundleBuild": "1084",
+        "buildIdentifier": "1B1084",
+        "appSourceCommit": "6bc11baa2bc10e42735f2728020d6d2d7be763b2",
+        "runtimeSourceCommit": "0e1cdfae8964f3afb626b1ccafbdb9ff0fe786cb",
+        "bundleIdentifier": "dev.arcsignal.Spectra",
+        "minimumOSVersion": "27.0",
+        "bundleInfoPlistSHA256": "93d5fa185d2e8a1275c24a614f841bc8f70d8d455992434169778e124b3dd871",
+        "captureDevice": "iPhone 17 Pro Max",
+        "captureRuntime": "iOS 27.0 Simulator; Xcode 27.1; Build version 27A9275"
+      }
     }
   ]
 }

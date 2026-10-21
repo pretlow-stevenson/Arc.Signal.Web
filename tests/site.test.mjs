@@ -25,15 +25,19 @@ const articleProse = article => [article.title, article.takeaway, article.import
 // Accurate, unchanged platform-specific screens may retain their actual older
 // capture identity only with a review pinned to this exact Guide release.
 function assertCaptureIdentity(value) {
+  assert.match(value.appVersion, /^[1-9]\d*\.\d+\.\d+$/);
   assert.match(value.bundleBuild, /^[1-9][0-9]{3}$/);
   assert.match(value.buildIdentifier, /^[1-9][0-9]{0,3}[A-Z]{1,3}[1-9][0-9]{3}$/);
   assert.ok(value.buildIdentifier.endsWith(value.bundleBuild));
   assert.match(value.appSourceCommit, /^[a-f0-9]{40}$/);
+  const [major, minor] = value.appVersion.split('.').map(Number);
+  let remaining = minor + 1, train = '';
+  do { remaining -= 1; train = String.fromCharCode(65 + remaining % 26) + train; remaining = Math.floor(remaining / 26); } while (remaining);
+  assert.equal(value.buildIdentifier, `${major}${train}${value.bundleBuild}`);
 }
 function assertCaptureReview(review, provenance, guide) {
   assert.equal(review.schemaVersion, 2);
   assert.equal(review.appVersion, guide.appVersion);
-  assert.equal(provenance.appVersion, guide.appVersion);
   assert.equal(review.reviewedGuideBuild, guide.build);
   assert.equal(review.reviewedGuideBuildIdentifier, guide.buildIdentifier);
   assert.match(review.reviewedOn, /^\d{4}-\d{2}-\d{2}$/);
@@ -42,10 +46,16 @@ function assertCaptureReview(review, provenance, guide) {
   const source = review.sources[provenance.platform];
   assertCaptureIdentity(provenance);
   assertCaptureIdentity(source);
-  const train = guide.buildIdentifier.slice(0, -guide.build.length);
-  assert.equal(provenance.buildIdentifier, train + provenance.bundleBuild);
-  for (const key of ['bundleBuild', 'buildIdentifier', 'appSourceCommit']) {
+  for (const key of ['appVersion', 'bundleBuild', 'buildIdentifier', 'appSourceCommit']) {
     assert.equal(source[key], provenance[key], `${provenance.platform}: reviewed ${key}`);
+  }
+  const overrides = provenance.items?.filter(item => item.captureProducer) ?? [];
+  assert.deepEqual(overrides.map(item => item.id), provenance.platform === 'iOS' ? ['05-monitor'] : []);
+  for (const item of overrides) {
+    const accepted = review.itemSources?.[provenance.platform]?.[item.id];
+    assert.ok(accepted, `${item.id}: explicit replacement review`);
+    assertCaptureIdentity(item.captureProducer);
+    assert.deepEqual(item.captureProducer, accepted, `${item.id}: reviewed producer`);
   }
 }
 // Exact owner-approved program URL. Do not allow arbitrary tracking destinations
@@ -239,7 +249,6 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   assert.equal(provenance.exampleData, true);
   assert.equal(provenance.platform, 'iOS');
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
-  assert.equal(provenance.appVersion, guide.appVersion);
   if (provenance.bundleBuild !== guide.build) {
     // A release not changing pictured screens can retain accurate imagery without falsifying its
     // capture provenance. The explicit review expires at the next Guide build.
@@ -248,7 +257,7 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   } else {
     assert.equal(provenance.buildIdentifier, guide.buildIdentifier);
   }
-  assert.equal(provenance.buildIdentifier, `1A${provenance.bundleBuild}`);
+  assertCaptureIdentity(provenance);
   assert.equal(provenance.minimumOSVersion, '27.0');
   assert.match(provenance.bundleInfoPlistSHA256, /^[a-f0-9]{64}$/);
   assert.match(provenance.appSourceCommit, /^[a-f0-9]{40}$/);
@@ -306,7 +315,6 @@ test('Watch screenshots preserve current native dimensions and identify experime
   // An older unchanged screen requires an explicit, expiring platform review.
   assert.match(provenance.appSourceCommit, /^[a-f0-9]{40}$/);
   assertCaptureIdentity(provenance);
-  assert.equal(provenance.appVersion, guide.appVersion);
   if (provenance.bundleBuild !== guide.build) {
     const review = JSON.parse(await readFile(join(root, 'docs/screenshot-content-review.json'), 'utf8'));
     assertCaptureReview(review, provenance, guide);
@@ -351,14 +359,14 @@ test('platform capture reviews reject stale releases and altered provenance', as
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   const ios = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
   const readme = await readFile(join(root, 'README.md'), 'utf8');
-  assert.ok(readme.includes(`The iPhone capture identity is version ${ios.appVersion} / ${ios.buildIdentifier} / ${ios.bundleBuild}`),
+  assert.ok(readme.includes(`The default iPhone capture identity is version ${ios.appVersion} / ${ios.buildIdentifier} / ${ios.bundleBuild}`),
     'README must describe the actual current iPhone producer');
   assert.ok(readme.includes(`captured from reviewed source \`${ios.appSourceCommit}\``),
     'README must retain the actual current capture source');
   for (const file of ['spectra-screenshots.json', 'spectra-watch-screenshots.json']) {
     const provenance = JSON.parse(await readFile(join(root, `assets/data/${file}`), 'utf8'));
     assertCaptureReview(review, provenance, guide);
-    for (const key of ['bundleBuild', 'buildIdentifier', 'appSourceCommit']) {
+    for (const key of ['appVersion', 'bundleBuild', 'buildIdentifier', 'appSourceCommit']) {
       const altered = structuredClone(review);
       altered.sources[provenance.platform][key] = 'altered';
       assert.throws(() => assertCaptureReview(altered, provenance, guide), key);
@@ -387,6 +395,14 @@ test('platform capture reviews reject stale releases and altered provenance', as
       assert.throws(() => assertCaptureReview(inconsistentReview, { ...provenance, buildIdentifier: value }, guide));
     }
   }
+  const monitor = ios.items.find(item => item.id === '05-monitor');
+  assert.ok(readme.includes(`Monitor alone is version ${monitor.captureProducer.appVersion} / ${monitor.captureProducer.buildIdentifier} / ${monitor.captureProducer.bundleBuild}`));
+  const changedProducer = structuredClone(ios);
+  changedProducer.items.at(-1).captureProducer.bundleBuild = '1086';
+  assert.throws(() => assertCaptureReview(review, changedProducer, guide));
+  const missingReview = structuredClone(review);
+  delete missingReview.itemSources.iOS['05-monitor'];
+  assert.throws(() => assertCaptureReview(missingReview, ios, guide));
 });
 
 test('Spectra product wordmark preserves approved pixels and accessible placement', async () => {
@@ -577,7 +593,7 @@ test('magnetic guidance explains placement, practice, and inconclusive quiet rea
 
 test('website Guide is generated from all native topics with release and support context', async () => {
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
-  assert.equal(payload.appVersion, '1.0.0');
+  assert.equal(payload.appVersion, '1.1.0');
   assert.match(payload.build, /^\d{4,}$/);
   assert.match(payload.buildIdentifier, /^\d+[A-Z]+\d{4,}$/);
   assert.ok(payload.buildIdentifier.endsWith(payload.build));
@@ -672,15 +688,15 @@ test('Guide labels distinguish status meaning, real actions and Watch support me
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   const monitor = payload.articles.find(article => article.content.id === 'monitoring')?.content;
   assert.ok(monitor);
-  const silence = monitor.technicalSections.find(section => section.id === 'silence')?.body;
+  const silence = monitor.sections.find(section => section.id === 'silence')?.body;
   assert.ok(silence);
-  assert.match(silence, /^The \*\*Not recently seen\*\* label means/);
+  assert.match(silence, /^The \*\*Not recently seen\*\* label in earlier dashboards, and \*\*Not recently observed\*\* in activity, mean/);
   const readable = guidePlainText(silence);
   assert.match(readable, /For Bluetooth, Spectra waits 45 seconds without an observation/);
   assert.match(readable, /For local-network services, it follows Bonjour announcements and removals/);
   assert.match(readable, /without physical movement/);
   assert.ok(monitor.steps.some(step => step.startsWith('Choose **Stop Monitor**')));
-  assert.match(pages.get('guide.html'), /The <b class="ui-label">Not recently seen<\/b> label means/);
+  assert.match(pages.get('guide.html'), /The <b class="ui-label">Not recently seen<\/b> label in earlier dashboards, and <b class="ui-label">Not recently observed<\/b> in activity, mean/);
   const watch = payload.articles.find(article => article.content.id === 'watch')?.content;
   const settings = watch?.sections.find(section => section.id === 'settings')?.body;
   assert.ok(settings);

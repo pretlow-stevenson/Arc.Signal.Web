@@ -1,5 +1,5 @@
 {
-  "appVersion" : "1.0.0",
+  "appVersion" : "1.1.0",
   "articles" : [
     {
       "category" : "gettingStarted",
@@ -162,7 +162,7 @@
             "title" : "Understand the wearable overview"
           },
           {
-            "body" : "**Monitor** compares Bluetooth and local-network observations with a starting baseline while your iPhone stays in one place. The dashboard retains new, returned, and no-longer-recent observations. Choose **Stop Monitor** to review details. Rotating or intermittent broadcasts can cause changes without a device arriving or leaving. Magnetic exploration belongs in **Area Sweep**.",
+            "body" : "**Monitor** compares Bluetooth and local-network observations with a baseline while your iPhone stays in one place. **New identities recorded** counts identities first seen after that baseline, excluding identities seen earlier in this Monitor session. Open **View activity & help** for a fixed activity snapshot while Monitor continues; close and reopen for later activity. **Stop Monitor** opens the full retained inventory. Rotating or intermittent broadcasts can cause changes without a device arriving or leaving. Magnetic exploration belongs in **Area Sweep**.",
             "id" : "monitor",
             "title" : "Watch for radio changes"
           }
@@ -613,48 +613,58 @@
         "navigationTitle" : "Monitor",
         "sections" : [
           {
-            "body" : "Monitor starts establishing a baseline automatically. Keep the iPhone stationary: each available radio source needs 30 seconds of active observation. Permission waiting does not count. The countdown follows the slowest participating source. **Observe 30 seconds longer** extends that comparison once to 60 seconds per source. When the baseline is ready, the change counters start at zero and the panel shows its capture time and elapsed comparison time. No duration guarantees discovery of every device.",
+            "body" : "Monitor starts establishing a baseline automatically. Keep the iPhone stationary: each available radio source needs 30 seconds of active observation. Permission waiting does not count. The countdown follows the slowest participating source. **Add 30 seconds to baseline** extends that comparison once to 60 seconds per source. When the baseline is ready, **New identities recorded** starts at zero and the panel shows its capture time and elapsed comparison time. No duration guarantees discovery of every device.",
             "id" : "baseline",
             "title" : "Give the starting comparison time"
           },
           {
-            "body" : "Baseline signals remain in the final inventory. A potentially concerning device already present is not cleared or hidden. A device first observed during baseline collection becomes part of that starting comparison; one first observed afterward is newly observed, not necessarily newly arrived.",
+            "body" : "Baseline signals remain in the retained inventory. A potentially concerning device already present is not cleared or hidden. **New identities recorded** requires a first sighting after this baseline and enough history to establish that the identity was not seen earlier in this Monitor session. A previously seen identity does not become new after a fresh baseline, a quiet period, or inventory eviction. Newly observed does not mean newly arrived, authenticated, or unsafe.",
             "id" : "meaning",
             "title" : "Initially observed does not mean trusted"
           },
           {
-            "body" : "The **Newly observed**, **Returned**, and **Not recently seen** rows count distinct signal identities in the current comparison’s latest 40 retained change events. Repeated changes for the same identity count once in each row. Counts may decrease as older events leave that bounded history. One identity can appear in more than one row, so do not add these counts as a total device count. **Mark changes reviewed** acknowledges the latest change without zeroing these counters, trusting a device, changing the baseline, or erasing evidence.",
+            "body" : "**New identities recorded** counts recorded new source-identity lineages for this comparison, across all Monitor measurements regardless of result filters. It is independent of the latest 40 events and retained inventory: an older activity event or inventory row leaving its bounded history does not remove that recorded count. Later evidence or an explicit discovery-identity replacement can correct it. Incomplete history or a recording limit is disclosed; uncertain identities are not invented as new. Older or imported reports without a recorded count show **Unavailable**, not zero. The count is not a physical-device count, current-presence total, or all-clear.",
             "id" : "dashboard",
-            "title" : "Read changes at a glance"
+            "title" : "Read the recorded comparison count"
           },
           {
-            "body" : "Tap **New Baseline** in the main Monitor panel when you want a fresh reference, such as after moving the phone or changing networks. The tap starts a new 30-second observation window immediately; it does not simply clear the numbers. When the new baseline is ready, its change counters begin at zero. Earlier comparisons and their retained events remain in the same session for review after **Stop Monitor**. Wait for the current baseline to finish before starting another. Up to nine comparisons fit in one session; stop and start another **Monitor** when that limit is reached. Spectra does not automatically judge that you moved or silently replace your baseline.",
+            "body" : "Open **View activity & help** for timestamped retained activity and these meanings while Monitor continues. The view freezes when opened, so incoming observations do not move its rows while you read. Close and reopen for later activity. Up to 40 raw events are retained, including baseline capture when present; repeated identity-and-kind events are combined. Older activity may no longer be available, and one identity can have several kinds of activity. **Mark changes reviewed** is a separate acknowledgement of the latest displayed change. Viewing activity or the Guide does not acknowledge changes, reset the count, start a baseline, or stop measurement.",
+            "id" : "activity",
+            "title" : "Read activity without stopping Monitor"
+          },
+          {
+            "body" : "**Signal returned** means an already-known identity was observed again. It may be a baseline identity, an earlier session identity, or one already recorded as new. The retained timeline need not contain its earlier quiet period. This is a historical observation event, not proof that a physical device left and returned or is still present.",
+            "id" : "returned",
+            "title" : "What does Signal returned mean?"
+          },
+          {
+            "body" : "The **Not recently seen** label in earlier dashboards, and **Not recently observed** in activity, mean that a previously observed identity stopped being observed. For Bluetooth, Spectra waits 45 seconds without an observation before showing it. For local-network services, it follows Bonjour announcements and removals. Sleep, identity rotation, interference, and changing broadcast behavior can produce changes without physical movement. A later return does not erase the earlier event; the timeline is not a current missing-device total. Matching names or vendors never justify combining separate identities.",
+            "id" : "silence",
+            "title" : "Why did an identity disappear or return?"
+          },
+          {
+            "body" : "Tap **New Baseline** in the main Monitor panel when you want a fresh reference, such as after moving the phone or changing networks. The tap starts a new 30-second observation window immediately; it does not simply clear the numbers. When the new baseline is ready, its recorded count begins at zero, but identities known earlier in this Monitor session remain known. Earlier comparisons, their recorded counts when available, and retained events stay in the session after **Stop Monitor**. Wait for the current baseline to finish before starting another. Up to nine comparisons fit in one session; stop and start another **Monitor** when that limit is reached. Spectra does not automatically judge that you moved or silently replace your baseline.",
             "id" : "restart",
             "title" : "Choose a fresh comparison"
           }
         ],
         "steps" : [
           "Choose **Monitor** and the radio measurements you need. Place the phone where it can stay.",
-          "Wait for the starting comparison, then glance at the change summary. Do not interpret a quiet screen as an all-clear.",
-          "Choose **Stop Monitor** to explore named/grouped results, repeat counts, change times, and any earlier comparisons."
+          "Wait for the starting comparison, then read **New identities recorded** with its scope and Coverage. Open **View activity & help** without ending Monitor. Do not interpret a quiet screen as an all-clear.",
+          "Choose **Stop Monitor** to explore retained named/grouped results, repeat counts, change times, and any earlier comparisons."
         ],
         "symbol" : "waveform.path",
         "takeaway" : "Keep the iPhone stationary and watch for observation changes—not a stream of device arrivals.",
         "technicalSections" : [
           {
-            "body" : "The **Not recently seen** label means that a previously observed identity has stopped being observed. For Bluetooth, Spectra waits 45 seconds without an observation before showing it. For local-network services, it follows Bonjour announcements and removals. Sleep, identity rotation, interference, and changing broadcast behavior can produce changes without physical movement. Matching names or vendors never justify combining separate identities.",
-            "id" : "silence",
-            "title" : "Why did an identity disappear or return?"
-          },
-          {
-            "body" : "**Coverage** describes source loss rather than calling every device gone. A late or recovering source gets a 30-second source-local observation window; its initial identities join that source’s comparison instead of creating a burst of apparent arrivals. A network reconnection can change which services are visible; use a new baseline when the surroundings or network have changed.",
+            "body" : "**Coverage** describes source loss rather than calling every device gone. A late or recovering source gets a 30-second source-local observation window. Sightings during that window do not become new merely because the source recovered; recovery does not rewrite the original baseline or erase a genuine earlier New decision. Partial local-network coverage can keep novelty uncertain until full recovery and warm-up. A network reconnection can change which services are visible; use a new baseline when the surroundings or network have changed.",
             "id" : "recovery",
             "title" : "What happens when a source stops?"
           },
           {
-            "body" : "Each comparison retains up to 40 recent raw change events. The display combines the same identity and change type, with retained occurrence count and first/latest times; full JSON preserves retained raw events. Counts may change as older events leave this bounded history. Radio intensity is not a measure of risk.",
+            "body" : "The recorded comparison count can exceed the identities and activity still available for inspection. The recent timeline retains up to 40 raw events, not a lifetime history, and saved reports do not claim every counted identity remains openable. First-sighting and comparison recording have separate bounded limits. Incomplete or unavailable information is disclosed rather than reported as a complete total. Radio intensity is not a measure of risk.",
             "id" : "limits",
-            "title" : "Bounded events, not a lifetime counter"
+            "title" : "Separate recorded count and retained detail"
           }
         ],
         "title" : "Understand Monitor and its baseline"
@@ -1162,8 +1172,8 @@
       }
     }
   ],
-  "build" : "1079",
-  "buildIdentifier" : "1A1079",
+  "build" : "1086",
+  "buildIdentifier" : "1B1086",
   "minimumOS" : "iOS 27 or later",
   "minimumWatchOS" : "watchOS 27 or later",
   "privacyPolicyURL" : "https://arcsignal.app/spectra-privacy.html",

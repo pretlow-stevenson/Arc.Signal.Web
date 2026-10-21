@@ -9,6 +9,14 @@ import { escapeHTML as escape, renderGuideInline as inline } from './guide-inlin
 export async function renderGuide() {
   const styleRevision = async file => createHash('sha256').update(await readFile(join(root, file))).digest('hex').slice(0, 12);
   const document = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
+  const publication = JSON.parse(await readFile(join(root, 'content/guide-publication.json'), 'utf8'));
+  if (publication.schemaVersion !== 1 || !['release-candidate', 'released'].includes(publication.status)
+    || publication.documentationVersion !== document.appVersion || publication.documentationBuild !== document.build
+    || !/^\d+\.\d+\.\d+$/.test(publication.publicVersion) || !/^[1-9]\d{3,}$/.test(publication.publicBuild)
+    || (publication.status === 'released' && (publication.publicVersion !== document.appVersion || publication.publicBuild !== document.build))
+    || (publication.status === 'release-candidate' && Number(publication.publicBuild) >= Number(document.build))) {
+    throw new Error('Guide publication review is stale or inconsistent. Confirm the public release before updating it.');
+  }
   const product = await readFile(join(root, 'spectra.html'), 'utf8');
   const header = product.match(/<header\b[\s\S]*?<\/header>/)?.[0];
   const footer = product.match(/<footer\b[\s\S]*?<\/footer>/)?.[0];
@@ -40,7 +48,8 @@ export async function renderGuide() {
   <main id="main" tabindex="-1" class="shell guide-page">
     <div class="guide-intro"><p class="eyebrow">Spectra / Guide</p><h1>Understand what<br>you’re <em>seeing.</em></h1>
     <p class="lead">Choose a topic for practical steps, clear explanations, and the limits that matter.</p>
-    <p class="caption">Release ${escape(document.appVersion)} · Build ${escape(document.buildIdentifier)} · Also available offline in the app.</p>
+    <p class="caption">Guide for version ${escape(document.appVersion)} · Build ${escape(document.buildIdentifier)} · Also available offline in the app.</p>
+    ${publication.status === 'release-candidate' ? `<p class="caption">This Guide covers the ${escape(document.appVersion)} release candidate. The public App Store version is ${escape(publication.publicVersion)}; some Monitor controls described here are not in that version.</p>` : ''}
     <p class="caption">${escape(document.supportedHardware)} · ${escape(document.minimumOS)}</p>
     <p class="caption">Optional Experimental Watch companion · ${escape(document.minimumWatchOS)} · Paired iPhone required</p></div>
     <div class="guide-layout"><nav class="guide-contents" aria-label="Guide topics">

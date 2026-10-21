@@ -4,6 +4,15 @@ import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { root } from './site-files.mjs';
 
+// The reviewed 1.1.0 package replaces only the changed Monitor screen. Keep
+// this explicit path separate from the historical four-screen importer.
+if (process.argv[2] === '--monitor-only') {
+  if (process.argv.length !== 4) throw new Error('Pass --monitor-only and the Spectra repository path.');
+  const { importMonitorCapture } = await import('./import-spectra-monitor.mjs');
+  await importMonitorCapture(process.argv[3]);
+  process.exit(0);
+}
+
 // Native captures only. Compression changes neither pixels nor UI content.
 // Run after the app capture suite and its manifest/OCR checks succeed.
 const appRoot = process.argv[2];

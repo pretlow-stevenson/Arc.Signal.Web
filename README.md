@@ -16,6 +16,20 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 ## Development
 
+Build 1B1086 alignment (October 21, New York): the native-derived Guide and
+Findings/Monitor support distinguish the comparison-to-date **New identities
+recorded** count from the latest 40 retained activity events. Earlier identities
+in the same Monitor session remain known across fresh baselines and quiet periods.
+**View activity & help** is a fixed snapshot while measurement continues; reopen
+for later activity. **Stop Monitor** opens the full retained inventory, not the
+only route to activity. The Guide publication record explicitly marks this as
+1.1.0 release-candidate documentation while public 1.0.0/1079 remains current;
+confirm public release before changing `content/guide-publication.json`.
+Only the changed Monitor gallery image is refreshed, preserving its genuine
+1084 capture identity. The three other iPhone images and both Watch images remain
+byte-identical, with independently reviewed 1073/1028 producers. No App Store
+submission, public release or website deployment is implied by this local alignment.
+
 Build 1A1079 alignment (October 14, New York): finite household and audio
 recognition extends Possible matches without changing the explicitly synthetic
 identities or workflows in the public gallery. The native-derived Guide release
@@ -669,13 +683,14 @@ unchanged Watch idle/completion frames retain 1028 provenance. The scoped review
 is pinned to Guide 1052 without relabeling capture identities. Fresh App Store
 Sessions and QA imagery is verified separately in the app's 1052 release record.
 
-The website uses four verified native captures from Spectra’s October 12 UTC
-1073 App Store set: Home, Smart Glasses results, magnetic Area Sweep, and the
-Monitor change dashboard. The approved app interface is not retouched. Fictional
+The website retains three verified native captures from Spectra’s October 12 UTC
+1073 App Store set: Home, Smart Glasses results and magnetic Area Sweep. Monitor
+alone is refreshed from the approved 1.1.0 capture package described below.
+The approved app interface is not retouched. Fictional
 Acme names and isolated simulator readings are disclosed in the gallery caption.
 Light/dark appearance follows each original capture. App Store marketing frames
 and traveler artwork remain in the app repository; website images are UI-only.
-The iPhone capture identity is version 1.0.0 / 1A1073 / 1073, with its exact
+The default iPhone capture identity is version 1.0.0 / 1A1073 / 1073, with its exact
 source revision recorded in the provenance manifest, captured on iOS 27.0 with
 Xcode 27.0 (27A266a). Home uses the owner's exact Circular wordmark,
 and the bottom navigation now has Scan, Sessions, Guide, and Settings. Guide
@@ -710,12 +725,12 @@ and 256 MiB primary-history limits; both large-system-text QA frames
 assert those actual labels above the tabs. The canonical Guide and published
 Sessions/Troubleshooting/Watch articles explain full Technical restoration,
 checksum limitations and history management without automatic removal. The
-Monitor image shows the main-panel **New Baseline** action, capture time,
-elapsed comparison time and the latest-40-event counter limit. These 1073
+historical 1073 Monitor image showed the main-panel **New Baseline** action,
+capture time, elapsed comparison time and the old latest-40-event counters. These 1073
 screenshots and light/dark QA passed the native capture pipeline. Root/peer direct
 review covered six native frames, four QA images, six composites and the contact
 sheet. Source/export hashes and six-frame OCR checks passed. All four website
-derivatives preserve native pixels and receive direct visual review. Imported
+derivatives preserved native pixels and received direct visual review. Imported
 copies still cannot retain private local Bluetooth references; this release
 does not change those privacy boundaries.
 The final production runtime `9867d6c0d56b818b13d8f40671f63e356cc822e4`
@@ -746,6 +761,24 @@ count and inline check-type icons. Each row identifies its collector and recorde
 measurement scope; rechecks distinguish original capture time from evaluation time.
 This site's generated Guide explains that interaction;
 the existing four-image gallery remains focused on discovery and measurements.
+
+Monitor alone is version 1.1.0 / 1B1084 / 1084, captured from working source
+`6bc11baa2bc10e42735f2728020d6d2d7be763b2` against accepted runtime source
+`0e1cdfae8964f3afb626b1ccafbdb9ff0fe786cb`. The 1.1.0/1086 Guide-only correction
+does not change that pictured interface. The native Monitor PNG SHA-256 is
+`662a9b734156753ee6ade766dcf541eebc2d6a9f7f188666ef362458639f2029`.
+Its explicit `captureProducer` override in the schema-2 image manifest keeps the
+other three items on the default 1073 producer. `docs/screenshot-content-review.json`
+pins both the default sources and the single override to Guide 1086. Do not
+overwrite every producer to match the current Guide version.
+
+To repeat only this approved import, run
+`node scripts/import-spectra-captures.mjs --monitor-only /path/to/SigInt.Scanner`.
+This checks the fixed submission-package source, original capture hash,
+composition/test/source receipts, actual capture Info.plist hash and native
+dimensions before lossless encoding. All three unrelated iPhone WebPs must retain
+their reviewed hashes and bytes. The historical four-image importer remains
+unchanged without `--monitor-only`; do not use it to replace this mixed set.
 
 `assets/data/spectra-screenshots.json` records the exact app source commit,
 verified built-bundle identity, capture SHA-256 hashes, output hashes, dimensions,

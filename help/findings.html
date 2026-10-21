@@ -146,10 +146,18 @@
 <h2 id="h_01M3JTA5MK0G3W9MG5QEMAW3YT">Monitor reports observations, not arrivals with certainty</h2>
 <p>
   Keep your iPhone stationary and Spectra visible. Monitor compares radio observations
-  with its starting baseline. The <strong>Not recently seen</strong> label means
-  an observation is no longer recent—not proof that a device has left. Rotating
-  or intermittent broadcasts can create changes without anyone arriving or leaving.
-  Choose <strong>Stop Monitor</strong> to review details.
+  with a baseline. In the 1.1.0 release candidate, <strong>New identities recorded</strong> counts signal identities
+  newly observed since that baseline, excluding those seen earlier in the same
+  Monitor session. It is independent of the latest 40 retained activity events,
+  not a count of physical devices or proof that one arrived.
+</p>
+<p>
+  Open <strong>View activity &amp; help</strong> to review a fixed activity snapshot
+  while measurement continues; close and reopen it for later activity.
+  <strong>Not recently observed</strong> means an identity stopped being observed,
+  not proof that a device left. Rotating or intermittent broadcasts can create
+  changes without anyone arriving or leaving. Choose <strong>Stop Monitor</strong>
+  for the full retained inventory and detailed results.
 </p>
 <h2 id="observation-accounting">Observation handling is separate from device identity</h2>
 <p>Repeated pending readings can be combined without filling the result list. <strong>Coverage</strong> records available source-and-reason counts for combined readings, bounded omissions and genuine result-admission limits. Counts describe the units shown, not missed devices. Older totals without a recorded breakdown remain unattributed; they do not establish throughput pressure or a full result list.</p>

@@ -1,20 +1,38 @@
 {
   "schemaVersion": 2,
-  "appVersion": "1.0.0",
+  "appVersion": "1.1.0",
   "sources": {
     "iOS": {
+      "appVersion": "1.0.0",
       "bundleBuild": "1073",
       "buildIdentifier": "1A1073",
       "appSourceCommit": "5259e8ea0a0814c5272f8e0383cec7ca27984caf"
     },
     "watchOS": {
+      "appVersion": "1.0.0",
       "bundleBuild": "1028",
       "buildIdentifier": "1A1028",
       "appSourceCommit": "0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d"
     }
   },
-  "reviewedGuideBuild": "1079",
-  "reviewedGuideBuildIdentifier": "1A1079",
-  "reviewedOn": "2026-10-14",
-  "reason": "1079 expands finite, evidence-qualified household recognition in engine 31/catalog 35/schema 20. New Possible family/model hypotheses and a narrow separated ResMed grammar do not alter the explicitly synthetic identities or iPhone/Experimental Watch workflows pictured in these images. The native-derived Guide release identity is regenerated; all 13 Guide topics and ten support articles retain their routes, wording and limits. Genuine website iPhone producer 5259e8ea0a0814c5272f8e0383cec7ca27984caf at 1073 and Watch producer 0c2cbfb1bcc0b54abf939be844f47bdb24a00f1d at 1028 retain their exact image hashes and decoded pixels, not a fabricated 1079 capture identity. The separately captured medium-size App Store pack retains its actual 1078 producer. Branded support links and support@arcsignal.dev remain current. Approved U.S. $2.99 copy is independently published; App Store downloads remain placeholders until the correct public listing is verified. A valid internal candidate and published privacy label do not imply App Review submission, approval or public availability. Source/native regression, signed delivery, internal availability, hardware acceptance, hands-on VoiceOver, unrestricted Dynamic Type, default search-placeholder contrast and commercial source-rights clearance remain separate gates or documented limits. Revalidate at the next Guide build or affected pictured-workflow change."
+  "itemSources": {
+    "iOS": {
+      "05-monitor": {
+        "appVersion": "1.1.0",
+        "bundleBuild": "1084",
+        "buildIdentifier": "1B1084",
+        "appSourceCommit": "6bc11baa2bc10e42735f2728020d6d2d7be763b2",
+        "runtimeSourceCommit": "0e1cdfae8964f3afb626b1ccafbdb9ff0fe786cb",
+        "bundleIdentifier": "dev.arcsignal.Spectra",
+        "minimumOSVersion": "27.0",
+        "bundleInfoPlistSHA256": "93d5fa185d2e8a1275c24a614f841bc8f70d8d455992434169778e124b3dd871",
+        "captureDevice": "iPhone 17 Pro Max",
+        "captureRuntime": "iOS 27.0 Simulator; Xcode 27.1; Build version 27A9275"
+      }
+    }
+  },
+  "reviewedGuideBuild": "1086",
+  "reviewedGuideBuildIdentifier": "1B1086",
+  "reviewedOn": "2026-10-21",
+  "reason": "The 1.1.0 release candidate changes Monitor's recorded comparison count, activity snapshot and signal-context guidance. Replace only the stale Monitor web image with the genuine, synthetic 1084 native capture from the approved submission package; validate its original PNG, capture binary Info.plist, source/test receipts and lossless decoded pixels. Keep its actual 1084 working/captured-runtime identities. Build 1086 corrects native Guide prose only and does not change the pictured Monitor components. Home, Smart Glasses and magnetic Area Sweep retain the genuine 1073 producer and exact WebP hashes; the pictured workflows remain applicable. Watch idle/completion retain the separately captured 1028 producer, not a claim that every Watch screen is unchanged. Generated Guide and current Findings/Monitor support now explain earlier-session exclusion, independent recorded count and bounded retained activity, fixed snapshots while measurement continues, and Stop Monitor for the full retained inventory. They preserve existing routes and evidence/privacy limits. Candidate-only controls are distinguished from public 1.0.0/1079. No image is relabeled as a 1086 capture; source provenance, synthetic examples, native pixel preservation and physical-device/accessibility acceptance remain separate gates. Revalidate at the next Guide build or affected pictured-workflow change."
 }
