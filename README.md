@@ -524,6 +524,12 @@ dimensions and descriptive alternative text. The private HEIC stays outside
 the repository and public bundle.
 Images/fonts remain self-hosted.
 
+The supplied App Store QR image is retained unchanged as
+`assets/images/spectra-app-store-qr.jpg` (400 × 400, 66,519 bytes; 70,000-byte
+allowance). Its Apple short link resolves to Spectra's listing, ID 6822605110.
+The download renderer includes it only for that app, beside the official badge
+on the home and Spectra pages. CSS adds a rounded border outside its white margin.
+
 The October 17 travel and on-device privacy illustrations add a 0.1 MB allowance
 to the previous content budget. Both use the approved workbench style, local
 transparent WebP assets, lazy loading, reserved dimensions, and the existing

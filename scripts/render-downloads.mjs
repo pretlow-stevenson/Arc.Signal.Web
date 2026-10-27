@@ -32,11 +32,16 @@ export function appStoreDestination(configuration) {
 export function downloadControl(destination, [slot, id, classes, badge]) {
   const identity = id ? ` id="${id}"` : '';
   const label = badge ? ' aria-label="Download Spectra on the App Store"' : '';
-  const content = badge
+  // The supplied QR code belongs to this listing; do not pair it with another app.
+  const qr = badge && destination && /\/id6822605110\/?$/.test(new URL(destination).pathname);
+  const badgeContent = badge
     ? '<img src="assets/images/download-on-the-app-store.svg" width="180" height="60" alt="Download on the App Store">'
     : 'Get Spectra <span aria-hidden="true">↗</span>';
+  const content = qr
+    ? `<span class="app-store-qr"><img src="assets/images/spectra-app-store-qr.jpg" width="400" height="400" alt="QR code to download Spectra on the App Store" loading="lazy" decoding="async"></span><span class="app-store-badge">${badgeContent}<span class="app-store-hint">Scan with your iPhone</span></span>`
+    : badgeContent;
   const control = destination
-    ? `<a class="${classes}"${identity}${label} href="${escape(destination)}" rel="noreferrer" referrerpolicy="no-referrer">${content}</a>`
+    ? `<a class="${classes}${qr ? ' app-store-link--qr' : ''}"${identity}${label} href="${escape(destination)}" rel="noreferrer" referrerpolicy="no-referrer">${content}</a>`
     : `<button type="button" class="${classes}"${identity}${label} data-app-store-stub disabled>${content}</button><noscript><p class="caption">Releasing Fall 2026</p></noscript>`;
   return `<!-- spectra-download:${slot} -->${control}<!-- /spectra-download:${slot} -->`;
 }

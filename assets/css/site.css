@@ -138,6 +138,13 @@ nav a:hover, nav a[aria-current="page"], .text-link:hover { color: var(--blue); 
 .app-store-link { display: inline-flex; align-items: center; justify-content: center; padding: 1rem; border: 0; border-radius: 4px; background: transparent; cursor: pointer; text-decoration: none; }
 .app-store-link:disabled { cursor: not-allowed; opacity: 1; }
 .app-store-link img { width: 180px; height: auto; }
+.app-store-link--qr { max-width: 100%; flex-wrap: wrap; gap: 1.5rem; }
+.download-action .app-store-link--qr { margin-inline-start: 0; padding-inline: 0; }
+/* Keep the border outside the code and its white scanning margin. */
+.app-store-qr { flex: none; padding: .75rem; border: 1px solid #aeb9c6; border-radius: 1rem; background: #fff; }
+.app-store-qr img { width: 200px; height: 200px; }
+.app-store-badge { display: grid; justify-items: center; gap: .75rem; }
+.app-store-hint { font-size: .875rem; line-height: 1.5; }
 .download-section .app-store-link:focus-visible { outline-color: #f7f7f5; }
 .download-action .caption { margin-top: 1rem; }
 .site-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem 2rem; padding-block: 2rem; font-size: .875rem; color: var(--muted); }
