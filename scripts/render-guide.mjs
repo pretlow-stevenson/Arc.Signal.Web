@@ -26,7 +26,7 @@ export async function renderGuide() {
   const articles = document.articles;
   const seen = new Set();
   for (const { content: article } of articles) {
-    if (!/^[a-z]+$/.test(article.id) || seen.has(article.id)) throw new Error('Invalid or duplicate topic');
+    if (!/^[a-z][A-Za-z]*$/.test(article.id) || seen.has(article.id)) throw new Error('Invalid or duplicate topic');
     seen.add(article.id);
   }
   const sections = items => items.map(item => `<section><h3>${escape(item.title)}</h3><p>${inline(item.body)}</p></section>`).join('\n');
@@ -49,7 +49,7 @@ export async function renderGuide() {
     <div class="guide-intro"><p class="eyebrow">Spectra / Guide</p><h1>Understand what<br>you’re <em>seeing.</em></h1>
     <p class="lead">Choose a topic for practical steps, clear explanations, and the limits that matter.</p>
     <p class="caption">Guide for version ${escape(document.appVersion)} · Build ${escape(document.buildIdentifier)} · Also available offline in the app.</p>
-    ${publication.status === 'release-candidate' ? `<p class="caption">This Guide covers the ${escape(document.appVersion)} release candidate. The public App Store version is ${escape(publication.publicVersion)}; some Monitor controls described here are not in that version.</p>` : ''}
+    ${publication.status === 'release-candidate' ? `<p class="caption">This Guide covers the ${escape(document.appVersion)} release candidate. The public App Store version is ${escape(publication.publicVersion)}; some screens and options described here are not yet in that version.</p>` : ''}
     <p class="caption">${escape(document.supportedHardware)} · ${escape(document.minimumOS)}</p>
     <p class="caption">Optional Experimental Watch companion · ${escape(document.minimumWatchOS)} · Paired iPhone required</p></div>
     <div class="guide-layout"><nav class="guide-contents" aria-label="Guide topics">
@@ -63,9 +63,9 @@ export async function renderGuide() {
       ${articles.map(({ content: article }) => `<article id="${escape(article.id)}" class="guide-topic">
         <h2>${escape(article.title)}</h2><p class="guide-takeaway">${inline(article.takeaway)}</p>
         <aside class="guide-important"><strong>Important to know</strong><p>${inline(article.important)}</p></aside>
-        <section><h3>What to try</h3><ol>${article.steps.map(step => `<li>${inline(step)}</li>`).join('')}</ol></section>
+${article.steps.length ? `        <section><h3>What to try</h3><ol>${article.steps.map(step => `<li>${inline(step)}</li>`).join('')}</ol></section>` : ''}
         ${sections(article.sections)}
-        <details><summary>Technical detail</summary>${sections(article.technicalSections)}</details>
+${article.technicalSections.length ? `        <details><summary>Technical detail</summary>${sections(article.technicalSections)}</details>` : ''}
         <a class="text-link" href="#main">Back to topics ↑</a>
       </article>`).join('\n')}
       <section id="support" class="guide-topic"><p class="eyebrow">A person can help</p><h2>Still have a question?</h2>

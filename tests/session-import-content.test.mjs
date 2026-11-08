@@ -32,7 +32,7 @@ test('saved-session overview preserves original scope and filter-independent sig
     assert.match(value, /nothing is sent automatically/);
     assert.match(value, /not authenticate its evidence/);
     assert.match(value, /Add notes/);
-    assert.match(value, /saved notes are separate from sensor evidence/);
+    assert.match(value, /(?:saved|session) notes are separate from sensor evidence/);
   }
 });
 

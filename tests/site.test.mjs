@@ -50,7 +50,7 @@ function assertCaptureReview(review, provenance, guide) {
     assert.equal(source[key], provenance[key], `${provenance.platform}: reviewed ${key}`);
   }
   const overrides = provenance.items?.filter(item => item.captureProducer) ?? [];
-  assert.deepEqual(overrides.map(item => item.id), provenance.platform === 'iOS' ? ['05-monitor'] : []);
+  assert.deepEqual(overrides.map(item => item.id), provenance.platform === 'iOS' ? ['01-quick-check', '05-monitor'] : []);
   for (const item of overrides) {
     const accepted = review.itemSources?.[provenance.platform]?.[item.id];
     assert.ok(accepted, `${item.id}: explicit replacement review`);
@@ -249,6 +249,15 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   const provenance = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
   assert.equal(provenance.exampleData, true);
   assert.equal(provenance.platform, 'iOS');
+  assert.match(html, /Home shown from the 1\.2\.1 candidate; the public App Store version is 1\.2\.0/);
+  assert.match(pages.get('index.html'), /Spectra · 1\.2\.1 candidate · Public: 1\.2\.0/);
+  const home = provenance.items.find(item => item.id === '01-quick-check');
+  assert.equal(home.captureProducer.bundleBuild, '1099');
+  assert.equal(home.captureProducer.captureMode, 'standard');
+  assert.equal(home.sourcePackage, 'home-1C1099');
+  assert.equal(home.sourceSHA256, 'c7ceb2b158065f865047b9a53a34a9f143650f3d67ab5ceecdb7140e357ca6e6');
+  assert.match(home.captureProducer.captureProvenanceSHA256, /^[a-f0-9]{64}$/);
+  assert.equal(home.captureProducer.captureTestIdentifier, 'AppStoreCaptureTests/testCaptureStandardAndCompactHome()');
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   if (provenance.bundleBuild !== guide.build) {
     // A release not changing pictured screens can retain accurate imagery without falsifying its
@@ -597,7 +606,7 @@ test('magnetic guidance explains placement, practice, and inconclusive quiet rea
 
 test('website Guide is generated from all native topics with release and support context', async () => {
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
-  assert.equal(payload.appVersion, '1.1.0');
+  assert.equal(payload.appVersion, '1.2.1');
   assert.match(payload.build, /^\d{4,}$/);
   assert.match(payload.buildIdentifier, /^\d+[A-Z]+\d{4,}$/);
   assert.ok(payload.buildIdentifier.endsWith(payload.build));
@@ -607,7 +616,7 @@ test('website Guide is generated from all native topics with release and support
   assert.equal(payload.privacyPolicyURL, 'https://arcsignal.app/spectra-privacy.html');
   assert.equal(payload.supportEmail, 'support@arcsignal.dev');
   assert.equal(payload.supportURL, 'https://arcsignal.app/support.html');
-  assert.equal(payload.articles.length, 13);
+  assert.equal(payload.articles.length, 14);
   assert.equal(pages.get('guide.html'), await renderGuide(), 'Stale generated Guide');
   for (const {content} of payload.articles) assert.ok(ids(pages.get('guide.html')).includes(content.id));
   assert.match(pages.get('guide.html'), /not anonymous/);
@@ -831,7 +840,7 @@ test('location tagging remains per-check, optional, source-specific and separate
 test('Guide setup order and access review match the current application', async () => {
   const guide = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
   assert.deepEqual(guide.articles.filter(a => a.category === 'gettingStarted').map(a => a.content.id),
-    ['setup', 'detection', 'travel', 'watch']);
+    ['setup', 'choosingCheck', 'detection', 'travel', 'watch']);
   const setup = guide.articles.find(a => a.content.id === 'setup').content;
   assert.match(setup.steps[0], /\*\*Privacy & storage\*\*/);
   assert.match(setup.steps[0], /\*\*Done\*\*/);
@@ -1010,8 +1019,10 @@ test('backup disclosures distinguish the exclusion request from guarantees and e
 test('Guide and policy distinguish Spectra Settings from iPhone permissions', () => {
   const guide = prose(pages.get('guide.html'));
   const policy = prose(pages.get('spectra-privacy.html'));
-  assert.match(guide, /Settings → App icon/);
-  assert.match(guide, /Classic, Spectra Blue, Light, or Blue on White/);
+  assert.match(guide, /Settings → Preferences → App icon/);
+  assert.match(guide, /Satin Monochrome/);
+  assert.match(guide, /The 27 choices are grouped into Signature, Patterns, Mesh and Seasonal/);
+  assert.match(guide, /confirmed icon also appears on Spectra’s privacy cover/);
   assert.match(guide, /For Access not allowed, change Spectra’s access in iPhone Settings/);
   assert.match(guide, /fresh access check/);
   assert.match(guide, /cannot add unsupported hardware or override an iOS restriction/);

@@ -41,8 +41,10 @@ test('capture importers reject missing or contradictory identity before publicat
   assert.deepEqual(await readFile(join(root, 'spectra.html')), before);
 });
 
-test('single Monitor replacement preserves unrelated records and rejects producer/hash/order drift', async () => {
-  const current = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
+test('historical single Monitor replacement preserves unrelated records and rejects producer/hash/order drift', async () => {
+  // This importer accepts only the reviewed pre-1099 gallery. New Home captures
+  // must not weaken its historical producer/hash guard or depend on live data.
+  const current = JSON.parse(await readFile(join(root, 'tests/fixtures/spectra-gallery-before-home-1099.json'), 'utf8'));
   const replacement = { ...current.items.at(-1), source: 'en-US/captures/05-monitor.png',
     sourcePackage: 'submission-1.1.0-en-US', sourceSHA256: monitorCapture.sourceSHA256,
     captureProducer: { ...monitorCapture } };

@@ -16,6 +16,8 @@ this is not access control. Keep it crawlable so search engines can read that di
 
 ## Development
 
+November 8 candidate alignment: the native-derived Guide describes 1.2.1 / 1C1099, while the verified public App Store version remains 1.2.0 / 1093. Compact Scan view adds General signal checks above the unchanged focused Bluetooth section; the confirmed app icon also appears on the privacy cover. The canonical export includes the short mode comparison and 27 icon choices. Only the affected Home gallery derivative is replaced with the approved 1099 Standard light native capture (1320×2868). Its lossless WebP preserves every decoded RGBA pixel; candidate captions and the per-item producer record distinguish it from public 1.2.0. Smart Glasses, magnetic Area Sweep, Monitor and Watch images retain their original producers and exact bytes. Native delivery and website publication are separate gates.
+
 Build 1B1086 alignment (October 21, New York): the native-derived Guide and
 Findings/Monitor support distinguish the comparison-to-date **New identities
 recorded** count from the latest 40 retained activity events. Earlier identities
@@ -111,7 +113,7 @@ these checks do not establish signed-out support access or email delivery.
 ### Current support content
 
 [Arc Signal Support](https://arcsignal.app/support.html) hosts ten complete
-articles under `help/`, alongside the thirteen-topic native-derived Guide.
+articles under `help/`, alongside the fourteen-topic native-derived Guide.
 `content/support/articles.json` is the explicit source inventory; its reviewed
 HTML manuscripts are canonical. `npm run support` generates all eleven public
 pages, and `npm run support:check` detects stale output. Preserve article anchors
@@ -229,7 +231,7 @@ runtime. Compile the exporter with the native Guide content and search sources:
 pass the output JSON path and the app's `Configurations/BuildNumber.xcconfig` path. The
 export reads the approved release identity from that configuration; it does not
 allocate a build or change the lock. Regenerate after an approved release change.
-`npm test` checks exact HTML parity, thirteen stable topic routes, the
+`npm test` checks exact HTML parity, fourteen stable topic routes, the
 release identity shape and matching numeric/public build suffix, support address,
 compatibility, and the public policy link.
 

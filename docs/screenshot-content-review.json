@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "appVersion": "1.1.0",
+  "appVersion": "1.2.1",
   "sources": {
     "iOS": {
       "appVersion": "1.0.0",
@@ -17,6 +17,23 @@
   },
   "itemSources": {
     "iOS": {
+      "01-quick-check": {
+        "appVersion": "1.2.1",
+        "bundleBuild": "1099",
+        "buildIdentifier": "1C1099",
+        "appSourceCommit": "1dbb52cdd48729da2b7e50f4ba7bb84f321f7328",
+        "bundleIdentifier": "dev.arcsignal.Spectra",
+        "minimumOSVersion": "27.0",
+        "bundleInfoPlistSHA256": "dd9824933e44119c22775344f6ccd1877802534927488782ccaa7ae76c18bcdf",
+        "bundleExecutableSHA256": "786566e4b3a6d92fa3f3dafdce566059b47c92f67a2470d7e8eb89f5bf998f59",
+        "archiveInputsSHA256": "613a564ad84b2af948724c7e579e4cd03c0f343f31ccc9a94cd3531d0291edff",
+        "captureDevice": "iPhone 17 Pro Max",
+        "captureRuntime": "iOS 27.0 Simulator (24A5423a)",
+        "captureMode": "standard",
+        "captureTestIdentifier": "AppStoreCaptureTests/testCaptureStandardAndCompactHome()",
+        "captureTimestamp": 1794152868.254,
+        "captureProvenanceSHA256": "aeb6254beae77ad1dafeb974b8a3b1f6039ce0dc8c053c0daeb753339ba33293"
+      },
       "05-monitor": {
         "appVersion": "1.1.0",
         "bundleBuild": "1084",
@@ -31,8 +48,8 @@
       }
     }
   },
-  "reviewedGuideBuild": "1086",
-  "reviewedGuideBuildIdentifier": "1B1086",
-  "reviewedOn": "2026-10-21",
-  "reason": "The 1.1.0 release candidate changes Monitor's recorded comparison count, activity snapshot and signal-context guidance. Replace only the stale Monitor web image with the genuine, synthetic 1084 native capture from the approved submission package; validate its original PNG, capture binary Info.plist, source/test receipts and lossless decoded pixels. Keep its actual 1084 working/captured-runtime identities. Build 1086 corrects native Guide prose only and does not change the pictured Monitor components. Home, Smart Glasses and magnetic Area Sweep retain the genuine 1073 producer and exact WebP hashes; the pictured workflows remain applicable. Watch idle/completion retain the separately captured 1028 producer, not a claim that every Watch screen is unchanged. Generated Guide and current Findings/Monitor support now explain earlier-session exclusion, independent recorded count and bounded retained activity, fixed snapshots while measurement continues, and Stop Monitor for the full retained inventory. They preserve existing routes and evidence/privacy limits. Candidate-only controls are distinguished from public 1.0.0/1079. No image is relabeled as a 1086 capture; source provenance, synthetic examples, native pixel preservation and physical-device/accessibility acceptance remain separate gates. Revalidate at the next Guide build or affected pictured-workflow change."
+  "reviewedGuideBuild": "1099",
+  "reviewedGuideBuildIdentifier": "1C1099",
+  "reviewedOn": "2026-11-08",
+  "reason": "The 1.2.1 candidate adds Compact Scan view with General signal checks above Focused Bluetooth checks, a short Guide comparison, 27 icon choices and the confirmed-icon privacy cover. Replace only Home with the approved genuine Standard light native XCTest screenshot from 1099; preserve every decoded RGBA pixel in lossless WebP and bind its producer, binary hashes, frozen archive inputs, exact source, timestamp and attachment provenance. The visible website captions identify this as the 1.2.1 candidate while public App Store 1.2.0/1093 remains unchanged. Smart Glasses and magnetic Area Sweep retain their actual 1073 producer and bytes; the pictured supported-match evidence and magnetic reference/delta workflows remain applicable. Monitor retains its actual 1084 producer and bytes; recorded counts, fixed activity snapshots and foreground limits remain applicable. Experimental Watch idle/completion retain their separately captured 1028 producer and bytes; the pictured 30-second collection and iPhone handoff remain representative, not a claim that all Watch screens are unchanged. Root and independent review inspect the selected original and derivative; unchanged feature examples are checked against current workflow/source. All examples remain synthetic and separate from real history. Existing historical App Store packages are untouched. This applicability review expires at the next Guide build or affected pictured-workflow change; physical-device timing, hands-on accessibility and browser rendering remain separate checks."
 }

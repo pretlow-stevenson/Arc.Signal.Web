@@ -10,7 +10,7 @@ const html = await readFile(join(root, 'guide.html'), 'utf8');
 
 test('Guide groups all stable topics by the reader task without omissions', () => {
   const groups = new Map([
-    ['gettingStarted', ['setup', 'detection', 'travel', 'watch']],
+    ['gettingStarted', ['setup', 'choosingCheck', 'detection', 'travel', 'watch']],
     ['understandingResults', ['bluetooth', 'magnetic', 'grouping', 'monitoring', 'limitations']],
     ['savedSessionsAndSharing', ['sessions', 'exporting', 'privacy']],
     ['troubleshooting', ['troubleshooting']],
@@ -19,10 +19,10 @@ test('Guide groups all stable topics by the reader task without omissions', () =
   for (const [category, topics] of groups) {
     assert.deepEqual(guide.articles.filter(x => x.category === category).map(x => x.content.id), topics);
   }
-  assert.equal(guide.articles.length, 13);
+  assert.equal(guide.articles.length, 14);
 });
 
-test('Every public topic keeps cautions and practical steps before detailed reading', () => {
+test('Guide omits empty reference blocks and keeps cautions before detailed reading', () => {
   for (const {content: article} of guide.articles) {
     const body = html.split(`<article id="${article.id}" class="guide-topic">`)[1]?.split('</article>')[0];
     assert.ok(body, article.id);
@@ -30,7 +30,11 @@ test('Every public topic keeps cautions and practical steps before detailed read
     const steps = body.indexOf('<h3>What to try</h3>');
     const explanation = body.indexOf(`<h3>${escapeHTML(article.sections[0].title)}</h3>`);
     const technical = body.indexOf('<details><summary>Technical detail</summary>');
-    assert.ok(warning >= 0 && warning < steps && steps < explanation && explanation < technical, article.id);
+    assert.ok(warning >= 0 && warning < explanation, article.id);
+    if (article.steps.length) assert.ok(warning < steps && steps < explanation, article.id);
+    else assert.equal(steps, -1, article.id + ': empty steps must be omitted');
+    if (article.technicalSections.length) assert.ok(explanation < technical, article.id);
+    else assert.equal(technical, -1, article.id + ': empty technical detail must be omitted');
   }
 });
 

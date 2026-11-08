@@ -68,11 +68,11 @@ test('all ten canonical manuscripts produce exactly eleven current, indexed firs
   assert.equal(result.status, 0, result.stdout + result.stderr);
 });
 
-test('support complements all thirteen Guide topics and preserves email-only private-data cautions', async () => {
+test('support complements all fourteen Guide topics and preserves email-only private-data cautions', async () => {
   assert.equal(supportEmail, 'support@arcsignal.dev');
   const guide = JSON.parse(await text('assets/data/spectra-guide.json'));
   const guideHTML = await text('guide.html');
-  assert.deepEqual(guide.articles.map(({ content }) => content.id), ['setup', 'detection', 'travel', 'watch',
+  assert.deepEqual(guide.articles.map(({ content }) => content.id), ['setup', 'choosingCheck', 'detection', 'travel', 'watch',
     'bluetooth', 'magnetic', 'grouping', 'monitoring', 'limitations', 'sessions', 'exporting', 'privacy', 'troubleshooting']);
   for (const { content } of guide.articles) assert.ok(ids(guideHTML).includes(content.id), content.id);
   const hub = await text('support.html');

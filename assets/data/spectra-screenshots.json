@@ -14,14 +14,32 @@
   "items": [
     {
       "id": "01-quick-check",
-      "source": "captures/01-quick-check.png",
-      "sourceSHA256": "cbdc99b9f5a20c314d2b82b477efd19f57c6ec986897dfc47da1f21faa64f45e",
+      "source": "large-standard-light.png",
+      "sourceSHA256": "c7ceb2b158065f865047b9a53a34a9f143650f3d67ab5ceecdb7140e357ca6e6",
       "output": "assets/images/spectra-overview.webp",
-      "outputSHA256": "4422fc5da169b2500e72d3deea230cb8723a8884a1ad92fa0d784a95d4703e88",
-      "pixelSHA256": "66e34f60f2b121a5b8ede7c7b654f17049c746fb81a06a4b9e2cba4d8d3dfd78",
+      "outputSHA256": "c6d20484c1cbe7d5fdac3571c02b7292299a7786c2845524346ac1afa7830dad",
+      "pixelSHA256": "07db529eda832ec1e8656c11e975a345c2307af5018a2277a9d46e732c35e352",
       "width": 1320,
       "height": 2868,
-      "appearance": "light"
+      "appearance": "light",
+      "sourcePackage": "home-1C1099",
+      "captureProducer": {
+        "appVersion": "1.2.1",
+        "bundleBuild": "1099",
+        "buildIdentifier": "1C1099",
+        "appSourceCommit": "1dbb52cdd48729da2b7e50f4ba7bb84f321f7328",
+        "bundleIdentifier": "dev.arcsignal.Spectra",
+        "minimumOSVersion": "27.0",
+        "bundleInfoPlistSHA256": "dd9824933e44119c22775344f6ccd1877802534927488782ccaa7ae76c18bcdf",
+        "bundleExecutableSHA256": "786566e4b3a6d92fa3f3dafdce566059b47c92f67a2470d7e8eb89f5bf998f59",
+        "archiveInputsSHA256": "613a564ad84b2af948724c7e579e4cd03c0f343f31ccc9a94cd3531d0291edff",
+        "captureDevice": "iPhone 17 Pro Max",
+        "captureRuntime": "iOS 27.0 Simulator (24A5423a)",
+        "captureMode": "standard",
+        "captureTestIdentifier": "AppStoreCaptureTests/testCaptureStandardAndCompactHome()",
+        "captureTimestamp": 1794152868.254,
+        "captureProvenanceSHA256": "aeb6254beae77ad1dafeb974b8a3b1f6039ce0dc8c053c0daeb753339ba33293"
+      }
     },
     {
       "id": "02-smart-glasses",

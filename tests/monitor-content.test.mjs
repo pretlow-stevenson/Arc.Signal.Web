@@ -28,7 +28,7 @@ test('public Monitor help follows the native recorded-count and fixed-snapshot c
   const monitor = plain(await text('content/support/monitoring.html'));
   for (const phrase of ['independent of the latest 40 retained events', 'fresh baseline, a quiet period, or inventory eviction',
     'fixed snapshot', 'Add 30 seconds to baseline', 'Unavailable, not zero', '45 seconds', 'Bonjour',
-    'not required to read the activity snapshot', 'release candidate', 'public App Store version is 1.0.0']) {
+    'not required to read the activity snapshot']) {
     assert.ok(monitor.includes(phrase), phrase);
   }
   const generated = (await renderSupport()).get('help/monitoring.html');
@@ -38,18 +38,18 @@ test('public Monitor help follows the native recorded-count and fixed-snapshot c
   ]);
 });
 
-test('candidate documentation and marketing do not claim 1.1.0 is already public', async () => {
+test('candidate Guide is distinguished from public1.2.0 without mislabeling released Monitor controls', async () => {
   const publication = JSON.parse(await text('content/guide-publication.json'));
   const guide = JSON.parse(await text('assets/data/spectra-guide.json'));
   assert.equal(publication.documentationVersion, guide.appVersion);
   assert.equal(publication.documentationBuild, guide.build);
   assert.equal(publication.status, 'release-candidate');
-  assert.equal(publication.publicVersion, '1.0.0');
-  assert.equal(publication.publicBuild, '1079');
-  assert.match(await text('guide.html'), /This Guide covers the 1\.1\.0 release candidate\. The public App Store version is 1\.0\.0/);
+  assert.equal(publication.publicVersion, '1.2.0');
+  assert.equal(publication.publicBuild, '1093');
+  assert.match(await text('guide.html'), /This Guide covers the 1\.2\.1 release candidate\. The public App Store version is 1\.2\.0/);
   const product = plain(await text('spectra.html'));
   for (const phrase of ['New identities recorded', 'excludes identities seen earlier in this Monitor session',
-    'fixed snapshot while measurement continues', 'full retained inventory', '1.1.0 release candidate']) {
+    'fixed snapshot while measurement continues', 'full retained inventory']) {
     assert.ok(product.includes(phrase), phrase);
   }
 });
