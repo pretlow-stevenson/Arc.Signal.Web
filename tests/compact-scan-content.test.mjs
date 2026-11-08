@@ -16,9 +16,18 @@ test('candidate Guide describes the Compact-only grouping without changing measu
     assert.ok(compact.includes(phrase),phrase);
   }
   const support=await text('help/getting-started.html');
-  assert.match(support,/1\.2\.1 candidate Guide/);
+  assert.match(support,/1\.3\.0 candidate Guide/);
   assert.match(support,/public App Store version is 1\.2\.0/);
   assert.match(support,/General signal checks/);
+  const publication=JSON.parse(await text('content/guide-publication.json'));
+  const review=JSON.parse(await text('docs/screenshot-content-review.json'));
+  assert.deepEqual(publication.holds,{appReviewSubmission:true,appStoreScreenshotUploads:true});
+  assert.equal(publication.documentationVersion,guide.appVersion);
+  assert.equal(publication.documentationBuild,guide.build);
+  assert.equal(review.sourceEquivalence.candidateSourceCommit,publication.nativeSourceCommit);
+  assert.match(publication.nativeSourceCommit,/^[a-f0-9]{40}$/);
+  assert.equal(review.sourceEquivalence.unchangedRuntimeInputCount,527);
+  assert.equal(review.sourceEquivalence.freshCapturesAttributedTo1100,0);
 });
 
 test('the short mode comparison remains complete without empty reference blocks',async()=>{

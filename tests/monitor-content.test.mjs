@@ -46,7 +46,7 @@ test('candidate Guide is distinguished from public1.2.0 without mislabeling rele
   assert.equal(publication.status, 'release-candidate');
   assert.equal(publication.publicVersion, '1.2.0');
   assert.equal(publication.publicBuild, '1093');
-  assert.match(await text('guide.html'), /This Guide covers the 1\.2\.1 release candidate\. The public App Store version is 1\.2\.0/);
+  assert.match(await text('guide.html'), /This Guide covers the 1\.3\.0 release candidate\. The public App Store version is 1\.2\.0/);
   const product = plain(await text('spectra.html'));
   for (const phrase of ['New identities recorded', 'excludes identities seen earlier in this Monitor session',
     'fixed snapshot while measurement continues', 'full retained inventory']) {

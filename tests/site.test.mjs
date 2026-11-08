@@ -249,8 +249,8 @@ test('app screenshots have matching dimensions and explicit simulated-data discl
   const provenance = JSON.parse(await readFile(join(root, 'assets/data/spectra-screenshots.json'), 'utf8'));
   assert.equal(provenance.exampleData, true);
   assert.equal(provenance.platform, 'iOS');
-  assert.match(html, /Home shown from the 1\.2\.1 candidate; the public App Store version is 1\.2\.0/);
-  assert.match(pages.get('index.html'), /Spectra · 1\.2\.1 candidate · Public: 1\.2\.0/);
+  assert.match(html, /The 1\.3\.0 candidate uses this Home screen; the public App Store version is 1\.2\.0/);
+  assert.match(pages.get('index.html'), /Spectra · 1\.3\.0 candidate · Public: 1\.2\.0/);
   const home = provenance.items.find(item => item.id === '01-quick-check');
   assert.equal(home.captureProducer.bundleBuild, '1099');
   assert.equal(home.captureProducer.captureMode, 'standard');
@@ -606,7 +606,7 @@ test('magnetic guidance explains placement, practice, and inconclusive quiet rea
 
 test('website Guide is generated from all native topics with release and support context', async () => {
   const payload = JSON.parse(await readFile(join(root, 'assets/data/spectra-guide.json'), 'utf8'));
-  assert.equal(payload.appVersion, '1.2.1');
+  assert.equal(payload.appVersion, '1.3.0');
   assert.match(payload.build, /^\d{4,}$/);
   assert.match(payload.buildIdentifier, /^\d+[A-Z]+\d{4,}$/);
   assert.ok(payload.buildIdentifier.endsWith(payload.build));

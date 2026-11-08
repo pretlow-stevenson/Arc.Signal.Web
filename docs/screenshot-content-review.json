@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "appVersion": "1.2.1",
+  "appVersion": "1.3.0",
   "sources": {
     "iOS": {
       "appVersion": "1.0.0",
@@ -48,8 +48,25 @@
       }
     }
   },
-  "reviewedGuideBuild": "1099",
-  "reviewedGuideBuildIdentifier": "1C1099",
+  "reviewedGuideBuild": "1100",
+  "reviewedGuideBuildIdentifier": "1D1100",
   "reviewedOn": "2026-11-08",
-  "reason": "The 1.2.1 candidate adds Compact Scan view with General signal checks above Focused Bluetooth checks, a short Guide comparison, 27 icon choices and the confirmed-icon privacy cover. Replace only Home with the approved genuine Standard light native XCTest screenshot from 1099; preserve every decoded RGBA pixel in lossless WebP and bind its producer, binary hashes, frozen archive inputs, exact source, timestamp and attachment provenance. The visible website captions identify this as the 1.2.1 candidate while public App Store 1.2.0/1093 remains unchanged. Smart Glasses and magnetic Area Sweep retain their actual 1073 producer and bytes; the pictured supported-match evidence and magnetic reference/delta workflows remain applicable. Monitor retains its actual 1084 producer and bytes; recorded counts, fixed activity snapshots and foreground limits remain applicable. Experimental Watch idle/completion retain their separately captured 1028 producer and bytes; the pictured 30-second collection and iPhone handoff remain representative, not a claim that all Watch screens are unchanged. Root and independent review inspect the selected original and derivative; unchanged feature examples are checked against current workflow/source. All examples remain synthetic and separate from real history. Existing historical App Store packages are untouched. This applicability review expires at the next Guide build or affected pictured-workflow change; physical-device timing, hands-on accessibility and browser rendering remain separate checks."
+  "reason": "The 1.3.0 candidate carries the Compact Scan view, General signal checks grouping, short Guide comparison, 27 icon choices and confirmed-icon privacy cover introduced during internal testing. All 527 non-identity runtime inputs match the accepted 1099 source byte-for-byte; only the version/build/train assignments differ in the remaining configuration file. The existing Standard light native Home image and lossless WebP are reused without changing any pixel, file hash or original 1.2.1/1099 producer, binary hash, source, timestamp or capture-provenance binding. Website captions identify applicability to the 1.3.0 candidate rather than claiming a fresh 1100 capture. Public App Store 1.2.0/1093 remains unchanged. Smart Glasses and magnetic Area Sweep retain their actual 1073 producer and bytes; Monitor retains its actual 1084 producer and bytes; Experimental Watch idle/completion retain their actual 1028 producer and bytes. Their reviewed workflows remain representative, not a claim that every historical screen is unchanged. The canonical Guide content is unchanged apart from its three release-identity fields. No image is regenerated, copied or relabeled, and no fresh capture execution is attributed to 1100. All examples remain synthetic and separate from real history. App Review submission and App Store image uploads remain on hold pending the owner product-image decision; this website applicability review does not approve that separate provisional image package. Revalidate at the next Guide build or affected pictured-workflow change. Browser rendering, physical-device timing and hands-on accessibility remain separate checks.",
+  "sourceEquivalence": {
+    "candidateSourceCommit": "3e83895fe5e9ee3896478bc155a24355c7adada6",
+    "candidateSourceFreezeSHA256": "df3db39d60e317ce21a2cbaa824840257ed3afbcbff118a25bbd44680cc0e449",
+    "priorSourceCommit": "1dbb52cdd48729da2b7e50f4ba7bb84f321f7328",
+    "priorArchiveInputsSHA256": "613a564ad84b2af948724c7e579e4cd03c0f343f31ccc9a94cd3531d0291edff",
+    "runtimeInputCount": 528,
+    "unchangedRuntimeInputCount": 527,
+    "changedInputs": [
+      "Configurations/BuildNumber.xcconfig"
+    ],
+    "onlyEffectiveAssignmentChanges": [
+      "SPECTRA_RELEASE_VERSION",
+      "SPECTRA_BUILD_NUMBER",
+      "SPECTRA_RELEASE_TRAIN"
+    ],
+    "freshCapturesAttributedTo1100": 0
+  }
 }
